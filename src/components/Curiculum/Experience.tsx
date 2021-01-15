@@ -18,20 +18,21 @@ const Experience: React.FC<Props> = ({
 }) => {
   return (
     <MainContainer>
-      <div className={'d-flex'}>
-        <h3 className={'font-bold'}>{date}</h3>
-        <div>
-          <h4>{title}</h4>
-          <p>
-            {subtitle + ' '}
-            <span style={{ color: noteColor }}>{note}</span>
-          </p>
-        </div>
+      <h4 className={'font-bold w-1/4 text-base'}>{date}</h4>
+      <div className={'w-3/4'}>
+        <h4 className={'font-semibold text-base'}>{title}</h4>
+        <p className={'font-semibold text-xs'} style={{ color: '#545454' }}>
+          {subtitle + ' '}
+          <span style={{ color: noteColor }}>{note}</span>
+        </p>
       </div>
     </MainContainer>
   );
 };
 
-const MainContainer = styled.div``;
+const MainContainer = styled.div`
+  display: flex;
+  margin: 10px 0;
+`;
 
 export default Experience;
