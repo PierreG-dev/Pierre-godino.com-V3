@@ -178,7 +178,7 @@ const Curiculum: NextPage = () => {
                 <a
                   href={'https://www.github.com/pierreG-dev'}
                   target={'_blank'}>
-                  https://www.github.com/pierreG-dev
+                  www.github.com/pierreG-dev
                 </a>
               </div>
 
@@ -187,7 +187,7 @@ const Curiculum: NextPage = () => {
                 <a
                   href={'https://www.malt.fr/profile/pierregodino'}
                   target={'_blank'}>
-                  https://www.malt.fr/profile/pierregodino
+                  www.malt.fr/profile/pierregodino
                 </a>
               </div>
 
@@ -196,7 +196,7 @@ const Curiculum: NextPage = () => {
                 <a
                   href={'https://www.linkedin.com/in/pierre-godino-50b503186'}
                   target={'_blank'}>
-                  https://www.linkedin.com/in/pierre-godino-50b503186
+                  www.linkedin.com/in/pierre-godino-50b503186
                 </a>
               </div>
             </section>
