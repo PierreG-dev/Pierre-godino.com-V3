@@ -6,7 +6,7 @@ export default function Home() {
       <a href="/about/experiences">Experiences</a>
       <a href="/about/curiculum">CV</a>
 
-      <p>port: {process.env.MY_SECRET_KEY}</p>
+      <p>port: {process.env.PORT}</p>
     </div>
   );
 }
