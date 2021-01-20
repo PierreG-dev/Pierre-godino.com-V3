@@ -6,6 +6,7 @@ import { NextPage } from 'next';
 import Experience from '../../src/components/Curiculum/Experience';
 
 const Curiculum: NextPage = () => {
+  console.log(process.env);
   return (
     <MainContainer>
       <img
