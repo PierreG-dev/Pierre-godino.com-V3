@@ -39,7 +39,7 @@ const Experiences: React.FC = () => {
                 description={elem.description}
                 period={elem.period}
               />
-              {key === data.length-1 ||key % 2 !== 0 || (
+              {key % 2 !== 0 || (
                 <React.Fragment>
                   <MiddleStick className="h-full m-auto">
                     <div className={'pin'}></div>
@@ -50,7 +50,7 @@ const Experiences: React.FC = () => {
                     <div className={'pin'}></div>
                   </MiddleStick>
                 </React.Fragment>
-              )}}
+              )}
             </React.Fragment>
           );
           break;
