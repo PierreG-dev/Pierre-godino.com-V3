@@ -1,5 +1,3 @@
 module.exports = {
-  env: {
-    PORT: 6666,
-  },
+  env: {},
 };

@@ -55,7 +55,7 @@ const data: Xp[] = [
     title: "Entrée à l'Université Toulouse III",
     description: '',
     collaboratorsAmount: 0,
-    technologies: ['js'],
+    technologies: [],
     environnements: [],
   },
   {

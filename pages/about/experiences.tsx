@@ -4,42 +4,85 @@ import Experience from '../../src/components/Experiences/Experience';
 import data from '../../src/components/Experiences/data';
 
 const Experiences: React.FC = () => {
-  const displayExperiences = () => {
+  const displayExperiences = (smallScreen?: boolean) => {
     return data.reverse().map((elem, key) => {
-      return (
-        <React.Fragment>
-          <Experience
-            title={elem.title}
-            collaboratorsAmount={0}
-            date={elem.date || '19/12/1997'}
-            description={elem.description}
-            period={elem.period}
-          />
-          {key % 2 !== 0 || (
+      switch (smallScreen) {
+        case true:
+          return (
             <React.Fragment>
-              <MiddleStick className="h-full m-auto">
-                <div className={'pin'}></div>
-              </MiddleStick>
-              <div></div>
-              <div></div>
-              <MiddleStick className="h-full m-auto">
-                <div className={'pin'}></div>
-              </MiddleStick>
+              <Experience
+                title={elem.title}
+                collaboratorsAmount={0}
+                date={elem.date || '19/12/1997'}
+                description={elem.description}
+                period={elem.period}
+              />
+              {key === data.length || (
+                <React.Fragment>
+                  <MiddleStick className="h-full m-auto">
+                    <div className={'pin'}></div>
+                  </MiddleStick>
+                </React.Fragment>
+              )}
+              {console.log(key + ' || ' + data.length)}
             </React.Fragment>
-          )}
-        </React.Fragment>
-      );
+          );
+          break;
+
+        case false:
+          return (
+            <React.Fragment>
+              <Experience
+                title={elem.title}
+                collaboratorsAmount={0}
+                date={elem.date || '19/12/1997'}
+                description={elem.description}
+                period={elem.period}
+              />
+              {key === data.length-1 ||key % 2 !== 0 || (
+                <React.Fragment>
+                  <MiddleStick className="h-full m-auto">
+                    <div className={'pin'}></div>
+                  </MiddleStick>
+                  <div></div>
+                  <div></div>
+                  <MiddleStick className="h-full m-auto">
+                    <div className={'pin'}></div>
+                  </MiddleStick>
+                </React.Fragment>
+              )}}
+            </React.Fragment>
+          );
+          break;
+
+        default:
+          console.error('Erreur interne, veuillez recharger la page.');
+      }
     });
   };
 
   return (
     <MainContainer>
+      <img src="/res/background-3.jpg" alt="" className={'background'} />
       <Overlay />
-      <div
-        className="w-full m-auto md:grid gap-1"
-        style={{ gridTemplateColumns: '47% 6% 47%' }}>
-        {displayExperiences()}
-      </div>
+      <ExperiencesWrapper
+        className="w-full m-auto hidden md:grid"
+        style={{
+          width: '100%',
+          height: '100vh',
+          overflow: 'scroll',
+        }}>
+        {displayExperiences(false)}
+      </ExperiencesWrapper>
+      <ExperiencesWrapper
+        className="w-full m-auto grid md:hidden"
+        style={{
+          width: '100%',
+          height: '100vh',
+          overflow: 'scroll',
+        }}>
+        {displayExperiences(true)}
+      </ExperiencesWrapper>
     </MainContainer>
   );
 };
@@ -52,9 +95,15 @@ const MainContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   transition: 1s;
-  background: url('/res/freelance-background.jpg') rgba(255, 255, 255, 0.2)
-    fixed;
-  background-blend-mode: color;
+
+  .background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    position: absolute;
+    z-index: -2;
+  }
 `;
 
 const MiddleStick = styled.div`
@@ -80,7 +129,16 @@ const Overlay = styled.div`
   width: 100%;
   position: fixed;
   opacity: 0.3;
-  z-index: 0;
+  z-index: -1;
+`;
+
+const ExperiencesWrapper = styled.div`
+  grid-template-columns: 47% 6% 47%;
+  @media (max-width: 767px) {
+    & {
+      grid-template-columns: 90% 10%;
+    }
+  }
 `;
 
 export default Experiences;

@@ -37,11 +37,7 @@ const Experience: React.FC<Props> = ({
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header">
-          <img
-            src="/icons/jsLogo.png"
-            alt=""
-            className={'w-5 h-5 my-auto mx-3'}
-          />
+          <img src="/icons/js.png" alt="" className={'w-5 h-5 my-auto mx-3'} />
           <h2>{title}</h2>
         </AccordionSummary>
         <AccordionDetails className={'flex flex-col'}>
@@ -75,7 +71,7 @@ const MainContainer = styled.div`
   position: relative;
   margin: 0 50px;
   width: auto;
-  height: 300px;
+  margin-bottom: 200px;
 
   h2 {
     font-family: BebasNeue;
