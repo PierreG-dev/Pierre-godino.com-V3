@@ -1,94 +1,109 @@
-import React from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 import Experience from '../../src/components/Experiences/Experience';
 import data from '../../src/components/Experiences/data';
+import { NextPage } from 'next';
+import Layout from '../../src/components/Layout';
 
-const Experiences: React.FC = () => {
-  const displayExperiences = (smallScreen?: boolean) => {
-    return data.reverse().map((elem, key) => {
-      switch (smallScreen) {
-        case true:
-          return (
-            <React.Fragment>
-              <Experience
-                title={elem.title}
-                collaboratorsAmount={0}
-                date={elem.date || '19/12/1997'}
-                description={elem.description}
-                period={elem.period}
-              />
-              {key === data.length || (
-                <React.Fragment>
-                  <MiddleStick className="h-full m-auto">
-                    <div className={'pin'}></div>
-                  </MiddleStick>
-                </React.Fragment>
-              )}
-              {console.log(key + ' || ' + data.length)}
-            </React.Fragment>
-          );
-          break;
+const Experiences: NextPage = () => {
+  const [scroll, setScroll] = useState(0);
+  const [screenSize, setScreenSize] = useState(0);
 
-        case false:
-          return (
-            <React.Fragment>
-              <Experience
-                title={elem.title}
-                collaboratorsAmount={0}
-                date={elem.date || '19/12/1997'}
-                description={elem.description}
-                period={elem.period}
-              />
-              {key % 2 !== 0 || (
+  const experienceWrapperRef = useRef({ scrollTop: 0 });
+
+  useEffect(() => {
+    // eslint-disable-next-line no-restricted-globals
+    setScreenSize(window.innerWidth);
+    // eslint-disable-next-line no-restricted-globals
+    addEventListener('resize', () => setScreenSize(window.innerWidth));
+
+    return () =>
+      // eslint-disable-next-line no-restricted-globals
+      removeEventListener('resize', () => setScreenSize(window.innerWidth));
+  }, []);
+  useEffect(() => {
+    //console.log(scroll);
+  }, [scroll]);
+
+  const displayExperiences = useCallback(() => {
+    return data
+      .slice(0)
+      .reverse()
+      .map((elem, key) => {
+        return (
+          <React.Fragment key={key}>
+            <Experience
+              title={elem.title}
+              collaboratorsAmount={elem.collaboratorsAmount}
+              date={elem.date}
+              description={elem.description}
+              period={elem.period}
+              environnements={elem.environnements}
+              technologies={elem.technologies}
+              link={elem.link}
+            />
+            {screenSize >= 768 ? (
+              key % 2 !== 0 || (
                 <React.Fragment>
                   <MiddleStick className="h-full m-auto">
                     <div className={'pin'}></div>
                   </MiddleStick>
                   <div></div>
                   <div></div>
-                  <MiddleStick className="h-full m-auto">
+                  <MiddleStick
+                    className={
+                      'h-full m-auto ' +
+                      (key !== data.length - 2 || 'middle-stick-transparent')
+                    }>
                     <div className={'pin'}></div>
                   </MiddleStick>
                 </React.Fragment>
-              )}
-            </React.Fragment>
-          );
-          break;
-
-        default:
-          console.error('Erreur interne, veuillez recharger la page.');
-      }
-    });
-  };
+              )
+            ) : (
+              <React.Fragment>
+                <MiddleStick
+                  className={
+                    'h-full m-auto ' +
+                    (key !== data.length - 1 || 'middle-stick-transparent')
+                  }>
+                  <div className={'pin'}></div>
+                </MiddleStick>
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        );
+      });
+  }, [screenSize]);
 
   return (
-    <MainContainer>
-      <img src="/res/background-3.jpg" alt="" className={'background'} />
-      <Overlay />
-      <ExperiencesWrapper
-        className="w-full m-auto hidden md:grid"
-        style={{
-          width: '100%',
-          height: '100vh',
-          overflow: 'scroll',
-        }}>
-        {displayExperiences(false)}
-      </ExperiencesWrapper>
-      <ExperiencesWrapper
-        className="w-full m-auto grid md:hidden"
-        style={{
-          width: '100%',
-          height: '100vh',
-          overflow: 'scroll',
-        }}>
-        {displayExperiences(true)}
-      </ExperiencesWrapper>
-    </MainContainer>
+    <Layout>
+      <MainContainer>
+        <img src="/res/background-3.jpg" alt="" className={'background'} />
+        <Overlay />
+        <ExperiencesWrapper
+          ref={experienceWrapperRef}
+          onScroll={() => setScroll(experienceWrapperRef.current.scrollTop)}
+          className="w-full m-auto grid"
+          style={{
+            width: '100%',
+            height: '100vh',
+            overflowY: 'scroll',
+            padding: '5rem 0',
+          }}>
+          {displayExperiences()}
+        </ExperiencesWrapper>
+      </MainContainer>
+    </Layout>
   );
 };
 
 const MainContainer = styled.div`
-  position: relative;
   overflow: hidden;
   padding: 0;
   margin: 0;
@@ -103,6 +118,10 @@ const MainContainer = styled.div`
     opacity: 0.8;
     position: absolute;
     z-index: -2;
+  }
+
+  .middle-stick-transparent {
+    background: transparent !important;
   }
 `;
 

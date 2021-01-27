@@ -1,210 +1,211 @@
 import React from 'react';
 import { AiOutlineDownload } from 'react-icons/ai';
-
+import Layout from '../../src/components/Layout';
 import styled from 'styled-components';
 import { NextPage } from 'next';
 import Experience from '../../src/components/Curiculum/Experience';
 
 const Curiculum: NextPage = () => {
-  console.log(process.env);
   return (
-    <MainContainer>
-      <img
-        className={'background'}
-        src="/res/curiculum-background.jpg"
-        alt=""
-      />
-      <div
-        style={{
-          background: "url('/res/overlay.png')",
-          height: '100%',
-          width: '100%',
-          position: 'absolute',
-          opacity: 0.3,
-          zIndex: -1,
-        }}></div>
-      <div
-        className={
-          'grid grid-cols-1 md:grid-cols-2 gap-4 p-6 max-w-6xl mx-auto my-auto'
-        }>
-        <InfosContainer>
-          <div className="flex flex-col justify-between p-6 block md:hidden mb-7">
-            <img className={'mb-7'} src="/res/LOGO.svg" alt="pierre godino" />
-            <h1 style={{ color: '#fafafa' }}>
-              Pierre <br />
-              Godino
-            </h1>
-          </div>
-
-          <section>
-            <h2>Compétences</h2>
-
-            <div className="flex justify-between">
-              <div>
-                <h3 className={'text-center w-full'}>Informatique</h3>
-                <ul className={'text-sm'}>
-                  <li>JavaScript</li>
-                  <li>ReactJs | NextJs</li>
-                  <li>HTML5 | CSS3</li>
-                  <li>Cordova</li>
-                  <li>React Native</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className={'text-center w-full'}>Langues</h3>
-                <ul>
-                  <li>Français natif</li>
-                  <li>
-                    Anglais professionnel <br />
-                    (77/100 EF SET)
-                  </li>
-                </ul>
-              </div>
+    <Layout>
+      <MainContainer>
+        <img
+          className={'background'}
+          src="/res/curiculum-background.jpg"
+          alt=""
+        />
+        <div
+          style={{
+            background: "url('/res/overlay.png')",
+            height: '100%',
+            width: '100%',
+            position: 'absolute',
+            opacity: 0.3,
+            zIndex: -1,
+          }}></div>
+        <div
+          className={
+            'grid grid-cols-1 md:grid-cols-2 gap-4 p-6 max-w-6xl mx-auto my-auto'
+          }>
+          <InfosContainer>
+            <div className="flex flex-col justify-between p-6 block md:hidden mb-7">
+              <img className={'mb-7'} src="/res/LOGO.svg" alt="pierre godino" />
+              <h1 style={{ color: '#fafafa' }}>
+                Pierre <br />
+                Godino
+              </h1>
             </div>
-          </section>
 
-          <section title={'Mes expériences'}>
-            <h2>Experiences</h2>
+            <section>
+              <h2>Compétences</h2>
 
-            <Experience
-              date={'Dec. 2020'}
-              title={'Front-end React | Next'}
-              subtitle={'Hackathon 60-Dozer'}
-              note={'(1ère place)'}
-              noteColor={'#ffbd59'}
-            />
+              <div className="flex justify-between">
+                <div>
+                  <h3 className={'text-center w-full'}>Informatique</h3>
+                  <ul className={'text-sm'}>
+                    <li>JavaScript</li>
+                    <li>ReactJs | NextJs</li>
+                    <li>HTML5 | CSS3</li>
+                    <li>Cordova</li>
+                    <li>React Native</li>
+                  </ul>
+                </div>
 
-            <Experience
-              date={'Août 2020'}
-              title={'Full-stack PHP | Symfony'}
-              subtitle={'SARL Garage BRINCAT'}
-            />
-
-            <Experience
-              date={'Mars 2020'}
-              title={'Full-stack Node | React'}
-              subtitle={'Startup SpeedyNanie'}
-            />
-          </section>
-
-          <section title={'Mes diplômes'}>
-            <h2>Diplômes</h2>
-
-            <Experience
-              date={'2016'}
-              title={'Baccalauréat Scientifique'}
-              subtitle={'Lycée Jean de Prades, Castelsarrasin'}
-            />
-
-            <Experience
-              date={'2019'}
-              title={'Licence Informatique'}
-              subtitle={'Université Paul Sabatier, Toulouse'}
-            />
-
-            <Experience
-              date={'2020'}
-              title={'Titre Développeur WEB/Mobile'}
-              subtitle={'Digital Campus, Labège'}
-            />
-          </section>
-
-          <section title={'Mon profil'}>
-            <h2>Profil</h2>
-
-            <p className={'text-sm'}>
-              Passionné d'informatique depuis toujours, le développement ne
-              dérogeant pas à la règle, je suis très impliqué dans les projets
-              auxquels je prends part, spécialement quand il s'agît de
-              travailler avec mes technologies favorites: <br />
-              React.js & Node.js (MERN).
-            </p>
-          </section>
-        </InfosContainer>
-
-        <ContactContainer>
-          <form
-            method={'get'}
-            action="/res/CV_FR.pdf"
-            target={'_blank'}
-            className={'w-full flex justify-end absolute'}
-            style={{ top: 0, right: 0 }}>
-            <button type={'submit'}>
-              <span>Télécharger au format PDF </span> <AiOutlineDownload />
-            </button>
-          </form>
-
-          <div className="flex flex-col justify-between p-6 hidden md:block">
-            <img src="/res/LOGO.svg" alt="pierre godino" />
-            <h1>
-              Pierre <br />
-              Godino
-            </h1>
-          </div>
-
-          <div className={'w-full'}>
-            <section title={'Mes coordonnées'}>
-              <h2 className={'mb-3'}>Coordonnées</h2>
-
-              <p className={'text-sm md:text-base'}>
-                Pierre GODINO <br />
-                <a href="tel:+33651710497">+33 6 51 71 04 97</a> <br />
-                <a
-                  href={'mailto:pierregodino.contact@yahoo.com'}
-                  className={'text-xs md:text-base'}>
-                  pierregodino.contact@yahoo.com
-                </a>
-              </p>
-
-              <hr className={'opacity-50 m-3'} />
-
-              <p className={'text-sm md:text-base mb-2'}>
-                Toulouse, Agen, <br />
-                France
-              </p>
-
-              <a
-                href={'www.pierre-godino.com'}
-                className={'text-sm md:text-base'}>
-                www.pierre-godino.com
-              </a>
-            </section>
-
-            <section title={'Mes réseaux'}>
-              <h2 className={'mb-4'}>Réseaux</h2>
-
-              <div className={'w-full break-words mb-3'}>
-                <h3>Github</h3>
-                <a
-                  href={'https://www.github.com/pierreG-dev'}
-                  target={'_blank'}>
-                  www.github.com/pierreG-dev
-                </a>
-              </div>
-
-              <div className={'w-full break-words mb-3'}>
-                <h3>Malt</h3>
-                <a
-                  href={'https://www.malt.fr/profile/pierregodino'}
-                  target={'_blank'}>
-                  www.malt.fr/profile/pierregodino
-                </a>
-              </div>
-
-              <div className={'w-full break-words mb-3'}>
-                <h3>LinkedIn</h3>
-                <a
-                  href={'https://www.linkedin.com/in/pierre-godino-50b503186'}
-                  target={'_blank'}>
-                  www.linkedin.com/in/pierre-godino-50b503186
-                </a>
+                <div>
+                  <h3 className={'text-center w-full'}>Langues</h3>
+                  <ul>
+                    <li>Français natif</li>
+                    <li>
+                      Anglais professionnel <br />
+                      (77/100 EF SET)
+                    </li>
+                  </ul>
+                </div>
               </div>
             </section>
-          </div>
-        </ContactContainer>
-      </div>
-    </MainContainer>
+
+            <section title={'Mes expériences'}>
+              <h2>Experiences</h2>
+
+              <Experience
+                date={'Dec. 2020'}
+                title={'Front-end React | Next'}
+                subtitle={'Hackathon 60-Dozer'}
+                note={'(1ère place)'}
+                noteColor={'#ffbd59'}
+              />
+
+              <Experience
+                date={'Août 2020'}
+                title={'Full-stack PHP | Symfony'}
+                subtitle={'SARL Garage BRINCAT'}
+              />
+
+              <Experience
+                date={'Mars 2020'}
+                title={'Full-stack Node | React'}
+                subtitle={'Startup SpeedyNanie'}
+              />
+            </section>
+
+            <section title={'Mes diplômes'}>
+              <h2>Diplômes</h2>
+
+              <Experience
+                date={'2016'}
+                title={'Baccalauréat Scientifique'}
+                subtitle={'Lycée Jean de Prades, Castelsarrasin'}
+              />
+
+              <Experience
+                date={'2019'}
+                title={'Licence Informatique'}
+                subtitle={'Université Paul Sabatier, Toulouse'}
+              />
+
+              <Experience
+                date={'2020'}
+                title={'Titre Développeur WEB/Mobile'}
+                subtitle={'Digital Campus, Labège'}
+              />
+            </section>
+
+            <section title={'Mon profil'}>
+              <h2>Profil</h2>
+
+              <p className={'text-sm'}>
+                Passionné d'informatique depuis toujours, le développement ne
+                dérogeant pas à la règle, je suis très impliqué dans les projets
+                auxquels je prends part, spécialement quand il s'agît de
+                travailler avec mes technologies favorites: <br />
+                React.js & Node.js (MERN).
+              </p>
+            </section>
+          </InfosContainer>
+
+          <ContactContainer>
+            <form
+              method={'get'}
+              action="/res/CV_FR.pdf"
+              target={'_blank'}
+              className={'w-full flex justify-end absolute'}
+              style={{ top: 0, right: 0 }}>
+              <button type={'submit'}>
+                <span>Télécharger au format PDF </span> <AiOutlineDownload />
+              </button>
+            </form>
+
+            <div className="flex flex-col justify-between p-6 hidden md:block">
+              <img src="/res/LOGO.svg" alt="pierre godino" />
+              <h1>
+                Pierre <br />
+                Godino
+              </h1>
+            </div>
+
+            <div className={'w-full'}>
+              <section title={'Mes coordonnées'}>
+                <h2 className={'mb-3'}>Coordonnées</h2>
+
+                <p className={'text-sm md:text-base'}>
+                  Pierre GODINO <br />
+                  <a href="tel:+33651710497">+33 6 51 71 04 97</a> <br />
+                  <a
+                    href={'mailto:pierregodino.contact@yahoo.com'}
+                    className={'text-xs md:text-base'}>
+                    pierregodino.contact@yahoo.com
+                  </a>
+                </p>
+
+                <hr className={'opacity-50 m-3'} />
+
+                <p className={'text-sm md:text-base mb-2'}>
+                  Toulouse, Agen, <br />
+                  France
+                </p>
+
+                <a
+                  href={'www.pierre-godino.com'}
+                  className={'text-sm md:text-base'}>
+                  www.pierre-godino.com
+                </a>
+              </section>
+
+              <section title={'Mes réseaux'}>
+                <h2 className={'mb-4'}>Réseaux</h2>
+
+                <div className={'w-full break-words mb-3'}>
+                  <h3>Github</h3>
+                  <a
+                    href={'https://www.github.com/pierreG-dev'}
+                    target={'_blank'}>
+                    www.github.com/pierreG-dev
+                  </a>
+                </div>
+
+                <div className={'w-full break-words mb-3'}>
+                  <h3>Malt</h3>
+                  <a
+                    href={'https://www.malt.fr/profile/pierregodino'}
+                    target={'_blank'}>
+                    www.malt.fr/profile/pierregodino
+                  </a>
+                </div>
+
+                <div className={'w-full break-words mb-3'}>
+                  <h3>LinkedIn</h3>
+                  <a
+                    href={'https://www.linkedin.com/in/pierre-godino-50b503186'}
+                    target={'_blank'}>
+                    www.linkedin.com/in/pierre-godino-50b503186
+                  </a>
+                </div>
+              </section>
+            </div>
+          </ContactContainer>
+        </div>
+      </MainContainer>
+    </Layout>
   );
 };
 
