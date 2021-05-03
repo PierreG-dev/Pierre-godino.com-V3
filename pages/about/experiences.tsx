@@ -11,6 +11,8 @@ import data from '../../src/components/Experiences/data';
 import { NextPage } from 'next';
 import Layout from '../../src/components/Layout';
 
+import Timeline from '@material-ui/lab/Timeline';
+
 const Experiences: NextPage = () => {
   const [scroll, setScroll] = useState(0);
   const [screenSize, setScreenSize] = useState(0);
@@ -48,7 +50,7 @@ const Experiences: NextPage = () => {
               technologies={elem.technologies}
               link={elem.link}
             />
-            {screenSize >= 768 ? (
+            {/*screenSize >= 768 ? (
               key % 2 !== 0 || (
                 <React.Fragment>
                   <MiddleStick className="h-full m-auto">
@@ -75,7 +77,7 @@ const Experiences: NextPage = () => {
                   <div className={'pin'}></div>
                 </MiddleStick>
               </React.Fragment>
-            )}
+            )*/}
           </React.Fragment>
         );
       });
@@ -86,7 +88,17 @@ const Experiences: NextPage = () => {
       <MainContainer>
         <img src="/res/background-3.jpg" alt="" className={'background'} />
         <Overlay />
-        <ExperiencesWrapper
+        <Timeline
+          align={screenSize >= 768 ? 'alternate' : 'left'}
+          style={{ marginTop: 200 }}>
+          {displayExperiences()}
+        </Timeline>
+      </MainContainer>
+    </Layout>
+  );
+};
+
+/* <ExperiencesWrapper
           ref={experienceWrapperRef}
           onScroll={() => setScroll(experienceWrapperRef.current.scrollTop)}
           className="w-full m-auto grid"
@@ -97,12 +109,7 @@ const Experiences: NextPage = () => {
             padding: '5rem 0',
           }}>
           {displayExperiences()}
-        </ExperiencesWrapper>
-      </MainContainer>
-    </Layout>
-  );
-};
-
+        </ExperiencesWrapper> */
 const MainContainer = styled.div`
   overflow: hidden;
   padding: 0;
@@ -122,6 +129,71 @@ const MainContainer = styled.div`
 
   .middle-stick-transparent {
     background: transparent !important;
+  }
+
+  .experience-wrapper {
+    position: relative;
+    margin: 0 50px;
+    width: 200px;
+    margin-top: -100px;
+    margin-bottom: 100px;
+
+    h2 {
+      font-family: BebasNeue;
+      font-size: 1rem;
+    }
+    p {
+      font-family: Montserrat;
+    }
+
+    .mini-card {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      padding: 10px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fafafa;
+      border-radius: 5px;
+      transition: 0.2s;
+    }
+    .mini-card:hover {
+      transform: translate3d(0, -7%, 0);
+      box-shadow: 0 6px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    .collaborators-container {
+      img {
+        width: 40px;
+        height: auto;
+      }
+    }
+
+    .technologies-container {
+      img {
+        border-radius: 3px;
+        text-align: center;
+        height: 50px;
+        width: auto;
+        object-fit: contain;
+      }
+    }
+
+    .environnements-container {
+      img {
+        border-radius: 3px;
+        text-align: center;
+        height: 50px;
+        width: auto;
+        object-fit: contain;
+      }
+    }
+
+    .date-container {
+      font-size: 20px;
+      font-family: BebasNeue;
+    }
   }
 `;
 
