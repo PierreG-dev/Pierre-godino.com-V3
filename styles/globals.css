@@ -36,3 +36,93 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
+
+/* ----------------- CLOCK ------------------ */
+
+.react-clock {
+  display: block;
+  position: relative;
+}
+.react-clock,
+.react-clock *,
+.react-clock *:before,
+.react-clock *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.react-clock__face {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 7px solid #171717;
+  border-radius: 50%;
+}
+.react-clock__hand {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+}
+.react-clock__hand__body {
+  position: absolute;
+  width: 6px !important;
+  border-radius: 20px;
+  background-color: #171717;
+  transform: translateX(-50%);
+}
+.react-clock__mark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+}
+.react-clock__mark__body {
+  display: none;
+  position: absolute;
+  background-color: #171717;
+  transform: translateX(-50%);
+}
+.react-clock__mark__number {
+  position: absolute;
+  left: -40px;
+  width: 80px;
+  text-align: center;
+}
+.react-clock__second-hand__body {
+  background-color: #676767;
+}
+
+/* ---------------- CLOCK END -------------------- */
+
+/* ---------------- TYPEWRITER ------------------- */
+
+.typewriter h4 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .12em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation:
+    typing 2.5s steps(12, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+/* ------------------TYPEWRITER END ------------------ */

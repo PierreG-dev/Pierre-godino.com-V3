@@ -12,12 +12,19 @@ import { NextPage } from 'next';
 import Layout from '../../src/components/Layout';
 
 import Timeline from '@material-ui/lab/Timeline';
+import Clock from 'react-clock';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { More } from '@material-ui/icons';
+
+const clockOptions = {
+  className: 'clock',
+};
 
 const Experiences: NextPage = () => {
   const [scroll, setScroll] = useState(0);
   const [screenSize, setScreenSize] = useState(0);
-
-  const experienceWrapperRef = useRef({ scrollTop: 0 });
+  const [expandedXp, setExpandedXp] = useState('');
+  const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     // eslint-disable-next-line no-restricted-globals
@@ -25,13 +32,20 @@ const Experiences: NextPage = () => {
     // eslint-disable-next-line no-restricted-globals
     addEventListener('resize', () => setScreenSize(window.innerWidth));
 
-    return () =>
-      // eslint-disable-next-line no-restricted-globals
-      removeEventListener('resize', () => setScreenSize(window.innerWidth));
+    const interval = setInterval(() => setTime(new Date()), 1000);
+
+    return () => clearInterval(interval);
+    // eslint-disable-next-line no-restricted-globals
+    removeEventListener('resize', () => setScreenSize(window.innerWidth));
   }, []);
   useEffect(() => {
     //console.log(scroll);
   }, [scroll]);
+
+  const setExpanded = (title) => {
+    console.log(expandedXp + ' / ' + title);
+    setExpandedXp((prevState) => (prevState === title ? '' : title));
+  };
 
   const displayExperiences = useCallback(() => {
     return data
@@ -49,67 +63,87 @@ const Experiences: NextPage = () => {
               environnements={elem.environnements}
               technologies={elem.technologies}
               link={elem.link}
+              setExpanded={setExpanded}
+              expandedXp={expandedXp}
+              phone={screenSize <= 768}
             />
-            {/*screenSize >= 768 ? (
-              key % 2 !== 0 || (
-                <React.Fragment>
-                  <MiddleStick className="h-full m-auto">
-                    <div className={'pin'}></div>
-                  </MiddleStick>
-                  <div></div>
-                  <div></div>
-                  <MiddleStick
-                    className={
-                      'h-full m-auto ' +
-                      (key !== data.length - 2 || 'middle-stick-transparent')
-                    }>
-                    <div className={'pin'}></div>
-                  </MiddleStick>
-                </React.Fragment>
-              )
-            ) : (
-              <React.Fragment>
-                <MiddleStick
-                  className={
-                    'h-full m-auto ' +
-                    (key !== data.length - 1 || 'middle-stick-transparent')
-                  }>
-                  <div className={'pin'}></div>
-                </MiddleStick>
-              </React.Fragment>
-            )*/}
           </React.Fragment>
         );
       });
-  }, [screenSize]);
+  }, [screenSize, expandedXp]);
 
   return (
     <Layout>
+      <BackgroundContainer
+        style={{
+          position: 'absolute',
+          height: '100%',
+          width: '100vw',
+          overflow: 'hidden',
+        }}>
+        <img
+          src="/res/experiences-background.jpg"
+          alt=""
+          className={'background'}
+        />
+      </BackgroundContainer>
+
       <MainContainer>
-        <img src="/res/background-3.jpg" alt="" className={'background'} />
         <Overlay />
-        <Timeline
-          align={screenSize >= 768 ? 'alternate' : 'left'}
-          style={{ marginTop: 200 }}>
-          {displayExperiences()}
-        </Timeline>
+
+        <section id={'clock-section'}>
+          <Clock
+            value={time}
+            {...clockOptions}
+            size={screenSize <= 768 ? 150 : 300}
+          />
+          <div className="typewriter">
+            <h4
+              style={{
+                fontSize: screenSize <= 768 ? '1.5rem' : '3rem',
+                margin: screenSize <= 768 ? '30px 0px 75px 0px' : 0,
+              }}>
+              J'ai 23 ans.
+            </h4>
+          </div>
+        </section>
+
+        <div
+          className={screenSize <= 768 && 'timeline-phone'}
+          style={{
+            position: 'relative',
+            width: '100%',
+            marginLeft: 0,
+            padding: 0,
+          }}>
+          <Timeline
+            align={screenSize >= 768 ? 'alternate' : 'left'}
+            style={{
+              marginTop: -50,
+              width: '100vw',
+              padding: '5vw',
+              overflow: 'hidden',
+              position: 'relative',
+            }}>
+            {displayExperiences()}
+          </Timeline>
+          <div
+            style={{
+              display: 'flex',
+              width: '100%',
+              justifyContent: screenSize <= 768 ? 'flex-start' : 'center',
+              marginLeft: screenSize <= 768 ? '2.8vw' : 12,
+              marginTop: screenSize <= 768 ? -20 : -50,
+              color: '#cacaca',
+            }}>
+            <MoreHorizIcon style={{ fontSize: '4rem' }} />
+          </div>
+        </div>
       </MainContainer>
     </Layout>
   );
 };
 
-/* <ExperiencesWrapper
-          ref={experienceWrapperRef}
-          onScroll={() => setScroll(experienceWrapperRef.current.scrollTop)}
-          className="w-full m-auto grid"
-          style={{
-            width: '100%',
-            height: '100vh',
-            overflowY: 'scroll',
-            padding: '5rem 0',
-          }}>
-          {displayExperiences()}
-        </ExperiencesWrapper> */
 const MainContainer = styled.div`
   overflow: hidden;
   padding: 0;
@@ -118,29 +152,25 @@ const MainContainer = styled.div`
   min-height: 100vh;
   transition: 1s;
 
-  .background {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
-    position: absolute;
-    z-index: -2;
+  #clock-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+
+    h4 {
+      color: #cacaca;
+    }
   }
 
-  .middle-stick-transparent {
-    background: transparent !important;
+  .timeline-phone {
+    margin-left: 0;
   }
-
   .experience-wrapper {
-    position: relative;
-    margin: 0 50px;
-    width: 200px;
-    margin-top: -100px;
-    margin-bottom: 100px;
-
+    min-height: 150px;
     h2 {
       font-family: BebasNeue;
-      font-size: 1rem;
     }
     p {
       font-family: Montserrat;
@@ -196,24 +226,18 @@ const MainContainer = styled.div`
     }
   }
 `;
-
-const MiddleStick = styled.div`
-  margin-top: 10px;
-  background: #fafafa;
-  width: 12px;
-  z-index: 1;
-
-  filter: drop-shadow(1px 2px 1px #545454);
-  .pin {
-    background: #fafafa;
-    width: 35px;
-    height: 35px;
-    margin-left: -11.5px;
-    margin-top: -25px;
-    border-radius: 50px;
+const BackgroundContainer = styled.div`
+  .background {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    opacity: 0.8;
+    position: absolute;
+    object-position: top;
+    filter: contrast(1.5);
+    z-index: -2;
   }
 `;
-
 const Overlay = styled.div`
   background: url('/res/overlay.png');
   height: 100%;
@@ -221,15 +245,6 @@ const Overlay = styled.div`
   position: fixed;
   opacity: 0.3;
   z-index: -1;
-`;
-
-const ExperiencesWrapper = styled.div`
-  grid-template-columns: 47% 6% 47%;
-  @media (max-width: 767px) {
-    & {
-      grid-template-columns: 90% 10%;
-    }
-  }
 `;
 
 export default Experiences;

@@ -73,15 +73,13 @@ const Home: NextPage = () => {
         className={displayLoadingScreen ? 'opacity-0' : 'opacity-1'}
         style={{
           position: 'absolute',
-          background: 'royalblue',
+          background: '#373737',
           height: '100%',
           width: '100%',
           top: 0,
           left: 0,
           color: '#fafafa',
-        }}>
-        <p>Chargement en cours...</p>
-      </LoadingScreen>
+        }}></LoadingScreen>
 
       {loaded ? (
         <Video
@@ -133,7 +131,7 @@ const MainContainer = styled.div`
 const LoadingScreen = styled.div`
   position: absolute;
   z-index: 2;
-  background: royalBlue;
+  background: #373737;
   transition: 1.5s;
   display: flex;
 `;

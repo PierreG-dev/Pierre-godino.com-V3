@@ -8,10 +8,13 @@ import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import Typography from '@material-ui/core/Typography';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import TimelineDot from '@material-ui/lab/TimelineDot';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
+import CodeIcon from '@material-ui/icons/Code';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineItem from '@material-ui/lab/TimelineItem';
+import { red } from '@material-ui/core/colors';
+import { colors } from '@material-ui/core';
 
 export type Props = {
   period: 'University' | 'DC' | 'Freelance';
@@ -22,6 +25,9 @@ export type Props = {
   environnements: Environment[];
   technologies: Technology[];
   link: string;
+  setExpanded: (name: string) => void;
+  expandedXp: string;
+  phone: boolean;
 };
 
 const displayCollaborators = (collaboratorsAmount: number) => {
@@ -63,6 +69,22 @@ const displayTechnology = (technology: Technology[]) => {
   ));
 };
 
+const periodPicker = (period) => {
+  switch (period) {
+    case 'University':
+      return <MenuBookIcon />;
+      break;
+    case 'DC':
+      return <MenuBookIcon />;
+      break;
+    case 'Freelance':
+      return <CodeIcon />;
+      break;
+    default:
+      return null;
+  }
+};
+
 const Experience: React.FC<Props> = ({
   period,
   title,
@@ -72,25 +94,36 @@ const Experience: React.FC<Props> = ({
   environnements,
   technologies,
   link,
+  expandedXp,
+  setExpanded,
+  phone,
 }) => {
+  console.log(expandedXp);
   return (
     <React.Fragment>
-      <TimelineItem className={'experience-wrapper'}>
-        <TimelineOppositeContent>
+      <TimelineItem className={'experience-wrapper'} style={{}}>
+        <TimelineOppositeContent
+          style={{
+            width: 150,
+            display: phone ? 'none' : 'block',
+          }}>
           <Typography variant="body2" color="textSecondary">
-            9:30 am
+            {date}
           </Typography>
         </TimelineOppositeContent>
 
         <TimelineSeparator>
-          <TimelineDot>
-            <FastfoodIcon />
+          <TimelineDot color={period === 'Freelance' ? 'secondary' : 'primary'}>
+            {periodPicker(period)}
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
 
-        <TimelineContent>
-          <Accordion>
+        <TimelineContent style={{ position: 'relative', width: '60%' }}>
+          <Accordion
+            expanded={expandedXp === title}
+            onClick={() => setExpanded(title)}
+            style={{ width: '100%' }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -100,20 +133,30 @@ const Experience: React.FC<Props> = ({
                 alt=""
                 className={'w-5 h-5 my-auto mx-3'}
               />
-              <h2>{title}</h2>
+              <h2 style={{ fontSize: phone ? '1rem' : '1.3rem' }}>{title}</h2>
             </AccordionSummary>
             <AccordionDetails className={'flex flex-col'}>
               <p>{description}</p>
               <hr className={'my-5 w-3/4 mx-auto'} />
               {technologies.length !== 0 ? (
                 <React.Fragment>
-                  <h3 style={{ fontFamily: 'BebasNeue', fontSize: 20 }}>
+                  <h3
+                    style={{
+                      fontFamily: 'BebasNeue',
+                      fontSize: 20,
+                      alignSelf: 'flex-start',
+                    }}>
                     Technologies
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-4 mb-8">
                     {displayTechnology(technologies)}
                   </div>
-                  <h3 style={{ fontFamily: 'BebasNeue', fontSize: 20 }}>
+                  <h3
+                    style={{
+                      fontFamily: 'BebasNeue',
+                      fontSize: 20,
+                      alignSelf: 'flex-start',
+                    }}>
                     Environnement
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-8 gap-4">
