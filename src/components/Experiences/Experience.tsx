@@ -3,6 +3,8 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import LinkIcon from '@material-ui/icons/Link';
+import LinkOffIcon from '@material-ui/icons/LinkOff';
 import { Environment, Technology } from './data';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +17,7 @@ import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import { red } from '@material-ui/core/colors';
 import { colors } from '@material-ui/core';
+import styled from 'styled-components';
 
 export type Props = {
   period: 'University' | 'DC' | 'Freelance';
@@ -25,6 +28,7 @@ export type Props = {
   environnements: Environment[];
   technologies: Technology[];
   link: string;
+  icon: string;
   setExpanded: (name: string) => void;
   expandedXp: string;
   phone: boolean;
@@ -93,6 +97,7 @@ const Experience: React.FC<Props> = ({
   date,
   environnements,
   technologies,
+  icon,
   link,
   expandedXp,
   setExpanded,
@@ -107,9 +112,9 @@ const Experience: React.FC<Props> = ({
             width: 150,
             display: phone ? 'none' : 'block',
           }}>
-          <Typography variant="body2" color="textSecondary">
+          <span style={{ color: '#acacac', fontFamily: 'Montserrat' }}>
             {date}
-          </Typography>
+          </span>
         </TimelineOppositeContent>
 
         <TimelineSeparator>
@@ -129,14 +134,14 @@ const Experience: React.FC<Props> = ({
               aria-controls="panel1a-content"
               id="panel1a-header">
               <img
-                src="/icons/js.png"
+                src={icon}
                 alt=""
-                className={'w-5 h-5 my-auto mx-3'}
+                className={'w-8 h-7 mx-3 object-contain'}
               />
               <h2 style={{ fontSize: phone ? '1rem' : '1.3rem' }}>{title}</h2>
             </AccordionSummary>
             <AccordionDetails className={'flex flex-col'}>
-              <p>{description}</p>
+              {description}
               <hr className={'my-5 w-3/4 mx-auto'} />
               {technologies.length !== 0 ? (
                 <React.Fragment>
@@ -167,6 +172,9 @@ const Experience: React.FC<Props> = ({
               ) : null}
               <div className="flex justify-between items-end">
                 <p className={'date-container'}>{date}</p>
+                <Link href={link || '#'} target={link && '_blank'}>
+                  {link ? <LinkIcon /> : <LinkOffIcon />}
+                </Link>
                 <div className={'flex collaborators-container'}>
                   {displayCollaborators(collaboratorsAmount)}
                 </div>
@@ -178,5 +186,7 @@ const Experience: React.FC<Props> = ({
     </React.Fragment>
   );
 };
+
+const Link = styled.a``;
 
 export default Experience;

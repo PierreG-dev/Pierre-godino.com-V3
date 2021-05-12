@@ -64,6 +64,7 @@ const Experiences: NextPage = () => {
               period={elem.period}
               environnements={elem.environnements}
               technologies={elem.technologies}
+              icon={elem.icon}
               link={elem.link}
               setExpanded={setExpanded}
               expandedXp={expandedXp}
@@ -93,6 +94,8 @@ const Experiences: NextPage = () => {
       <MainContainer>
         <Overlay />
 
+        <h1>Mes Experiences</h1>
+
         <section id={'clock-section'}>
           <Clock
             value={time}
@@ -102,7 +105,7 @@ const Experiences: NextPage = () => {
           <div className="typewriter">
             <h4
               style={{
-                fontSize: screenSize <= 768 ? '1.5rem' : '3rem',
+                fontSize: screenSize <= 768 ? '1.2rem' : '3rem',
                 margin: screenSize <= 768 ? '30px 0px 75px 0px' : 0,
               }}>
               {TITLE}
@@ -154,6 +157,13 @@ const MainContainer = styled.div`
   min-height: 100vh;
   transition: 1s;
 
+  h1 {
+    font-family: Montserrat;
+    font-size: 3rem;
+    color: #dadada;
+    text-align: center;
+  }
+
   #clock-section {
     display: flex;
     flex-direction: column;
@@ -176,6 +186,7 @@ const MainContainer = styled.div`
     }
     p {
       font-family: Montserrat;
+      text-align: left;
     }
 
     .mini-card {

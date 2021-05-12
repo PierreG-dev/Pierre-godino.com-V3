@@ -43,7 +43,8 @@ export type Environment =
   | 'npm'
   | 'bash'
   | 'netbeans'
-  | 'intellijIdea';
+  | 'intellijIdea'
+  | 'github';
 
 interface Xp {
   period: 'University' | 'DC' | 'Freelance';
@@ -53,6 +54,7 @@ interface Xp {
   technologies?: Technology[];
   environnements?: Environment[];
   date: string;
+  icon: string;
   link?: string;
 }
 
@@ -61,6 +63,7 @@ const data: Xp[] = [
     period: 'University',
     date: '09/2016',
     title: "Entrée à l'Université Toulouse III",
+    icon: '/icons/ups.jpg',
     description: (
       <p>
         Entrée à l'Université Toulouse III Paul Sabatier, section informatique
@@ -73,6 +76,7 @@ const data: Xp[] = [
     period: 'University',
     date: '02/2017',
     title: 'Jeu de KONO sur CLI',
+    icon: '/icons/ups.jpg',
     description: (
       <p>
         Création d'un jeu de Kono sur invité de commande dans le cadre d'un
@@ -90,6 +94,7 @@ const data: Xp[] = [
     period: 'University',
     date: '12/2017',
     title: 'Encrypteur | décrypteur avec crack',
+    icon: '/icons/ups.jpg',
     description: (
       <p>
         Création d'un logiciel sur CLI permettant d'encrypter n'importe quel
@@ -116,6 +121,7 @@ const data: Xp[] = [
     period: 'University',
     date: '02/2018',
     title: 'Simulateur de blockchain',
+    icon: '/icons/ups.jpg',
     description: (
       <p>
         Création d'un logiciel simulant une blockchain. <br />
@@ -142,6 +148,7 @@ const data: Xp[] = [
     period: 'University',
     date: '12/2018',
     title: "Gestionnaire des capteurs de l'université",
+    icon: '/icons/ups.jpg',
     description: (
       <p>
         Création d'un logiciel de gestion des capteurs (pluie, humidité,
@@ -163,6 +170,7 @@ const data: Xp[] = [
     period: 'University',
     date: '03/2019',
     title: "Jeu ludique pour apprendre l'anglais",
+    icon: '/icons/checkyoursmile.png',
     description: (
       <p>
         Projet d'amélioration d'une plateforme en ligne, en y ajoutant un jeu
@@ -185,6 +193,7 @@ const data: Xp[] = [
     period: 'University',
     date: '07/2019',
     title: "Obtention de ma licence d'informatique",
+    icon: '/icons/confettis.png',
     description: (
       <p>
         J'obtiens ma licence informatique après trois années à l'Université Paul
@@ -204,6 +213,7 @@ const data: Xp[] = [
     period: 'DC',
     date: '09/2019',
     title: 'Entrée à Digital-campus Toulouse',
+    icon: '/icons/dc.png',
     description: (
       <p>
         Entrée à l'école Digital Campus spécialisée dans les métiers du
@@ -219,6 +229,7 @@ const data: Xp[] = [
     period: 'DC',
     date: '11/2019',
     title: 'Pierre-godino.com V2',
+    icon: '/res/LOGO.svg',
     description: (
       <p>
         Refonte totale de mon site vitrine pour l'entreprise, site sans
@@ -236,6 +247,7 @@ const data: Xp[] = [
     period: 'DC',
     date: '01/2020',
     title: 'Site de E-Commerce ABNature',
+    icon: '/icons/abnature.svg',
     description: (
       <p>
         Production d'un site de E-commerce sur Prestashop pour une jeune
@@ -253,6 +265,8 @@ const data: Xp[] = [
     period: 'DC',
     date: '04/2020',
     title: 'Application WEB Speedy-Nanie',
+    icon:
+      'https://www.speedynanie.fr/wp-content/uploads/2020/09/Plan-de-travail-1.svg',
     description: (
       <p>
         Développeur pour une startup Toulousaine de mise en relation entre
@@ -300,6 +314,7 @@ const data: Xp[] = [
     period: 'DC',
     date: '07/2020',
     title: 'Obtention de mon titre Développeur WEB & Mobile',
+    icon: '/icons/confettis.png',
     description: (
       <p>
         Obtention de mon titre de Développeur WEB & Mobile après une année à
@@ -315,6 +330,7 @@ const data: Xp[] = [
     period: 'Freelance',
     date: '08/2020',
     title: 'Site vitrine pour le garage BRINCAT',
+    icon: '/icons/garagebrincat.webp',
     description: (
       <p>
         Création d'un petit CMS en Symfony pour le compte d'un garage basé sur
@@ -355,6 +371,7 @@ const data: Xp[] = [
     period: 'Freelance',
     date: '12/2020',
     title: 'Gagnant hackathon 60-Dozer',
+    icon: '/icons/dozer.png',
     description: (
       <p>
         Je me suis inscrit au hackathon 60-dozer pour participer à l'initiative
@@ -398,6 +415,7 @@ const data: Xp[] = [
     period: 'Freelance',
     date: '01/2020',
     title: 'Pierre-godino.com V3',
+    icon: '/res/LOGO.svg',
     description: (
       <p>
         Deuxième refonte de mon site personnel, pour que cette fois-ci il
@@ -422,6 +440,60 @@ const data: Xp[] = [
     ],
     environnements: ['webstorm', 'trello', 'git', 'adobexd', 'bash', 'yarn'],
     link: 'https://github.com/PierreG-dev/Pierre-godino.com-V3',
+  },
+  {
+    period: 'Freelance',
+    date: '02/2020',
+    title: 'Gagnant Ultra Dev Challenge Février 2021',
+    icon: '/icons/js.png',
+    description: (
+      <p>
+        Gagnant de l'Ultra Dev Challenge (Association JS & Co) <br />
+        Le challenge reposait sur le fait reproduire le front-end de Netflix en
+        4 heures, le tout en React vanilla.
+      </p>
+    ),
+    technologies: [
+      'html',
+      'css',
+      'js',
+      'nodejs',
+      'tailwind',
+      'jsx',
+      'react',
+      'typescript',
+      'graphql',
+    ],
+    environnements: [
+      'webstorm',
+      'git',
+      'bash',
+      'yarn',
+      'npm',
+      'scrum',
+      'vscode',
+      'github',
+    ],
+    link: 'https://github.com/PierreG-dev/Ultra-dev-challenge',
+  },
+  {
+    period: 'Freelance',
+    date: '03/2020',
+    title: 'Consultant',
+    icon: '/icons/videomenthe.png',
+    description: <p>Consultant pour la société VideoMenthe</p>,
+    technologies: [
+      'html',
+      'css',
+      'js',
+      'nodejs',
+      'jsx',
+      'react',
+      'graphql',
+      'typescript',
+    ],
+    environnements: ['webstorm', 'git', 'bash', 'yarn', 'github'],
+    link: '',
   },
 ];
 
