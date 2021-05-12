@@ -61,7 +61,6 @@ const Navbar: React.FC = () => {
 
 const MainContainer = styled.div`
   position: fixed;
-  width: 100%;
   padding: 1rem;
   transition: 0.2s;
   color: #373737;
