@@ -20,6 +20,8 @@ const clockOptions = {
   className: 'clock',
 };
 
+const TITLE = "5 ans dans l'informatique.";
+
 const Experiences: NextPage = () => {
   const [scroll, setScroll] = useState(0);
   const [screenSize, setScreenSize] = useState(0);
@@ -103,7 +105,7 @@ const Experiences: NextPage = () => {
                 fontSize: screenSize <= 768 ? '1.5rem' : '3rem',
                 margin: screenSize <= 768 ? '30px 0px 75px 0px' : 0,
               }}>
-              J'ai 23 ans.
+              {TITLE}
             </h4>
           </div>
         </section>
