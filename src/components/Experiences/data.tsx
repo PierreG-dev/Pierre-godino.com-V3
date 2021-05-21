@@ -6,7 +6,6 @@ export type Technology =
   | 'symfony'
   | 'html'
   | 'css'
-  | 'js'
   | 'php'
   | 'bootstrap'
   | 'twig'
@@ -80,8 +79,8 @@ const data: Xp[] = [
     description: (
       <p>
         Création d'un jeu de Kono sur invité de commande dans le cadre d'un
-        projet pour l'Université. <br />
-        Possibilité de jouer seul contre une IA et de jouer à deux joueurs
+        projet pour l'Université. <br /> <br />
+        Possibilité de jouer seul contre une IA ou de jouer à deux joueurs
         chacun son tour.
       </p>
     ),
@@ -98,17 +97,18 @@ const data: Xp[] = [
     description: (
       <p>
         Création d'un logiciel sur CLI permettant d'encrypter n'importe quel
-        fichier à l'aide de l'opérateur XOR. <br />
-        Le logiciel fournit une clé d'encryptage, permettant à l'utilisateur de
-        décrypter son fichier à n'importe quel moment si il possède cette
-        dernière. <br />
-        Le logiciel possède aussi une fonctionnalité de crack du fichier crypté
-        (l'obtenir sans l'avoir eu lors de l'encryption) et ainsi pouvoir le
-        déchiffrer même sans la clé qui lui est associée. <br />
-        Le crack est réalisé via un brute force qui va utiliser un dictionnaire
-        afin de décoder les mots présents dans le fichier encrypté et retenir la
-        bonne clé en cas de forte probabilité de réussite (basé sur un score).
-        <br />
+        fichier à l'aide de l'opérateur XOR. <br /> <br />
+        Le logiciel fournit une clé d'encryptage qui offre à l'utilisateur la
+        possibilité de décrypter son fichier à n'importe quel moment s'il la
+        possède. <br /> <br />
+        Le logiciel possède aussi une fonctionnalité de crack de fichiers
+        cryptés et peut ainsi déchiffrer sans la clé associée.
+        <br /> <br />
+        Le crack est réalisé via une "brute force" qui va utiliser un
+        dictionnaire afin de décoder les mots présents dans le fichier encrypté
+        et retenir la bonne clé en cas de forte ressemblance (basé sur un
+        score).
+        <br /> <br />
         Projet réalisé en 2 semaines.
       </p>
     ),
@@ -120,23 +120,19 @@ const data: Xp[] = [
   {
     period: 'University',
     date: '02/2018',
-    title: 'Simulateur de blockchain',
+    title: 'Blockchain de transactions financières',
     icon: '/icons/ups.jpg',
     description: (
       <p>
-        Création d'un logiciel simulant une blockchain. <br />
+        Création d'un logiciel simulant une blockchain. <br /> <br />
         Permet de générer aléatoirement des transactions entre différentes
         personnes tout en garantissant la fiabilité de ces données en
-        recalculant les hashs de chaque block de transaction à partir des
-        anciens, <br />
-        garantissant ainsi qu'aucun bloc n'a pu être rajouté entre temps
-        (évitant ainsi que de la monnaie ne soit créée). <br />
-        possibilité de générer une blockchain dont la longueur est décidée par
+        recalculant les hashs de chaque block. <br />
+        Possibilité de générer une blockchain dont la longueur est décidée par
         l'utilisateur, de vérifier son intégrité, de la sauvegarder au format
         JSON, et de rajouter des transactions manuellement, <br />
-        et le tout dans une interface faite en SWING. <br />
-        Projet réalisé sur trois semaines en deux versions: une en C et une en
-        JAVA.
+        le tout dans une interface faite en SWING. <br /> <br />
+        Projet réalisé sur 3 semaines en 2 versions: C et JAVA.
       </p>
     ),
     collaboratorsAmount: 2,
@@ -152,12 +148,12 @@ const data: Xp[] = [
     description: (
       <p>
         Création d'un logiciel de gestion des capteurs (pluie, humidité,
-        température etc...) présents dans l'Université. <br />
-        Le logiciel permet de gérer les capteurs en temps réel en visionnant les
-        informations qu'ils procurent, un graphique montrant l'évolution des
-        informations récoltées, <br />
-        ainsi qu'un historique montrant à une période donnée l'état de ces
-        derniers avec leur évolution. <br />
+        température etc...) présents dans l'Université. <br /> <br />
+        Le logiciel permet de gérer des capteurs météorologiques en temps réel
+        grâce à un graphique montrant l'évolution des informations récoltées.
+        <br />
+        Un historique indique à une période donnée l'état de ces derniers.
+        <br /> <br />
         Projet réalisé en 3 semaines.
       </p>
     ),
@@ -174,14 +170,15 @@ const data: Xp[] = [
     description: (
       <p>
         Projet d'amélioration d'une plateforme en ligne, en y ajoutant un jeu
-        pour apprendre l'anglais oral. <br />
-        Jeu ayant pour concept de réécrire un mot entendu avec un temps de plus
-        en plus limité selon la difficultée choisie. <br />
-        Méthodologie Scrum utilisée avec des daily scrums & et des réunions avec
-        le client toutes les semaines. <br />
-        Je considère que ce projet m'a fait trouver la branche de l'informatique
-        dans laquelle je voulais me diriger: le WEB. <br />
-        Projet réalisé sur deux mois (durée du bureau d'étude).
+        pour apprendre l'anglais parlé. <br /> <br />
+        Jeu ayant pour concept de réécrire un mot entendu dans un temps imparti
+        (plusieurs difficultés disponibles). <br />
+        Méthodologie Scrum utilisée avec des daily, et des réunions avec le
+        client toutes les semaines. <br /> <br />
+        Je considère que ce projet a été un tournant pour mes futurs choix
+        professionnels.
+        <br /> <br />
+        Projet réalisé sur 2 mois (durée du bureau d'étude).
       </p>
     ),
     collaboratorsAmount: 4,
@@ -196,11 +193,11 @@ const data: Xp[] = [
     icon: '/icons/confettis.png',
     description: (
       <p>
-        J'obtiens ma licence informatique après trois années à l'Université Paul
-        Sabatier. <br />
-        Malheureusement ce sera ma dernière année à l'Université, étant donné
-        qu'aucun cursus de développement WEB n'y était disponible pour la suite.
-        <br />
+        J'ai obtenu ma licence informatique après trois années à l'Université
+        Paul Sabatier. <br /> <br />
+        Malheureusement ce fût ma dernière année là-bas car aucun cursus de
+        développement WEB n'était disponible à cette date.
+        <br /> <br />
         Lancement de mon entreprise de création de sites internet dans la même
         période.
       </p>
@@ -217,8 +214,8 @@ const data: Xp[] = [
     description: (
       <p>
         Entrée à l'école Digital Campus spécialisée dans les métiers du
-        numérique (design, programmation..) <br />
-        section développement WEB (condensé en 1 année).
+        numérique (design, programmation...). <br /> <br />
+        Section développement WEB (condensé en 1 année).
       </p>
     ),
     collaboratorsAmount: 0,
@@ -232,9 +229,9 @@ const data: Xp[] = [
     icon: '/res/LOGO.svg',
     description: (
       <p>
-        Refonte totale de mon site vitrine pour l'entreprise, site sans
-        back-end, avec script PHP pour envoyer des mails. <br />
-        Design réalisé sur Adobe XD, puis intégré en HTML CSS pur. <br />
+        Refonte totale de ma vitrine, site sans back-end, avec script PHP pour
+        envoyer des mails. <br /> <br />
+        Design réalisé sur Adobe XD, puis intégré en HTML CSS Vanilla. <br />
         Projet réalisé en 2 semaines sur mon temps libre.
       </p>
     ),
@@ -246,15 +243,15 @@ const data: Xp[] = [
   {
     period: 'DC',
     date: '01/2020',
-    title: 'Site de E-Commerce ABNature',
+    title: "Site d'E-Commerce ABNature",
     icon: '/icons/abnature.svg',
     description: (
       <p>
         Production d'un site de E-commerce sur Prestashop pour une jeune
         entreprise fabricant des produits de soins pour le corps à partir
-        d'ingrédients d'origine naturels et bio. <br />
-        Réalisé en 1 semaine sur mon temps libre à l'aide d'un thème déjà fait
-        auquel j'ai effectuée quelques modifications.
+        d'ingrédients d'origine naturelle et bio. <br /> <br />
+        Réalisé en 1 semaine sur mon temps libre à l'aide d'un thème auquel j'ai
+        effectué quelques modifications.
       </p>
     ),
     collaboratorsAmount: 1,
@@ -269,24 +266,22 @@ const data: Xp[] = [
       'https://www.speedynanie.fr/wp-content/uploads/2020/09/Plan-de-travail-1.svg',
     description: (
       <p>
-        Développeur pour une startup Toulousaine de mise en relation entre
-        parents et nounous. <br />
-        Une 1ère partie d'analyse du cahier des charges fait par le client, et
-        modification de ce dernier pour coller avec les ressources allouées.{' '}
+        Développement d'une application pour une start-up Toulousaine, qui met
+        en relation parents et babysitters. <br /> <br />
+        Analyse du cahier des charges avec le client, et modification de ce
+        dernier afin d'optimiser les coûts.
+        <br /> <br />
+        Maquettes produites sur Adobe XD et développement après validation du
+        client. <br /> <br />
+        Chargé de la création du workflow, d'une grande partie du back-end
+        (REST), de la base de données ainsi que de sa sécurité, en parallèle,
+        j'ai grandement contribué au développement du front-end.
         <br />
-        Par la suite nous avons produits des maquettes sur Adobe XD et après le
-        feu vert du client nous avons commencés à développer. <br />
-        J'ai été en charge de créer tout le workflow, une grande partie du
-        back-end, de la base de données ainsi que la sécurité de celle-ci et
-        l'API REST. <br />
-        Le reste du temps j'ai fait la partie fron-end du site avec mon
-        coéquipier en React pur. <br />
+        <br />
         En résumé j'ai assumé les responsabilités d'un développeur full-stack
-        sur 4 mois. <br />
-        Nous avons coordonnés tout le projet avec une méthodologie Scrum avec
-        des daily scrums, des sprints, <br />
-        des réunions régulières avec le client et des burning charts afin de
-        gérer le temps de la manière la plus efficace possible.
+        sur 4 mois. <br /> <br />
+        Nous avons coordonnés tout le projet avec une méthodologie Scrum, donc
+        des daily, des sprints et des réunions régulières avec le client.
       </p>
     ),
     collaboratorsAmount: 2,
@@ -318,8 +313,8 @@ const data: Xp[] = [
     description: (
       <p>
         Obtention de mon titre de Développeur WEB & Mobile après une année à
-        Digital Campus Toulouse en présentant au jury l'application faite pour
-        la startup Speedy-Nanie."
+        Digital Campus Toulouse. <br /> <br /> Présentation au jury de la
+        plateforme Speedy-Nanie.
       </p>
     ),
     collaboratorsAmount: 0,
@@ -333,15 +328,13 @@ const data: Xp[] = [
     icon: '/icons/garagebrincat.webp',
     description: (
       <p>
-        Création d'un petit CMS en Symfony pour le compte d'un garage basé sur
-        Castelsarrasin. <br />
-        Design produit en premiers lieux sur Adobe XD, puis je suis passé au
-        développement. <br />
-        Le site possède un back office pour gérer les voitures actuellement en
-        vente dans la concession, <br />
-        ainsi que les messages laissés par les clients. <br />
-        Site réalisé en 3 semaine avec un entretien sur quelques semaines de
-        plus par rapport au SEO général du site.
+        Création d'un CMS en Symfony pour le compte d'un garage basé sur
+        Castelsarrasin. <br /> <br />
+        Le design a été produit sur Adobe XD. <br /> <br />
+        Le site possède un back office pour gérer les voitures en vente dans la
+        concession, <br />
+        ainsi que les messages laissés par les clients. <br /> <br />
+        Plateforme réalisée en 3 semaines avec un entretien long terme.
       </p>
     ),
     collaboratorsAmount: 1,
@@ -370,25 +363,21 @@ const data: Xp[] = [
   {
     period: 'Freelance',
     date: '12/2020',
-    title: 'Gagnant hackathon 60-Dozer',
+    title: 'Vainqueur hackathon 60-Dozer',
     icon: '/icons/dozer.png',
     description: (
       <p>
-        Je me suis inscrit au hackathon 60-dozer pour participer à l'initiative
-        d'aider les commerces toulousains en ces temps de crise. <br />
-        Le projet à réaliser en 3 jours consiste en un CMS E-commerce sur lequel
-        des entreprises toulousaines peuvent s'inscrire et vendre leurs produits
-        en click-and-collect. <br />
-        Ils peuvent orienter la récupération du produit par le client au
-        commerce directement ou à un marché qui regroupe plusieurs points de
-        collecte en un. <br />
-        Pour le design, une équipe de designers de l'école Digital Campus nous
-        l'a fourni (conformément aux règles). <br />
-        En équipe avec un autre participant, nous avons produit un CMS quasi
-        terminé en 42 heures de travail dispatchées sur 3 jours, et avons fini à
-        la première place. <br />
-        Nous nous sommes gérés avec un trello et des objectifs bien définis pour
-        être efficaces au maximum.
+        Afin de soutenir les commerces toulousains en cette période de crise,
+        j'ai participé au Hackathon de l'association Dozer. <br /> <br />
+        Le but étant de créer un CMS d'E-Commerce permettant aux entreprises
+        toulousaines de s'inscrire et d'y vendre leurs produits en
+        click-and-collect. <br />
+        <br />
+        Une équipe de designers de l'école Digital Campus nous a fournie une
+        maquette, ainsi, nous avons produit un CMS en 42 heures de travail.
+        <br /> <br />
+        Nous avons utilisé la méthode agile et des objectifs bien définis afin
+        d'être le plus efficace possible.
       </p>
     ),
     collaboratorsAmount: 2,
@@ -418,13 +407,13 @@ const data: Xp[] = [
     icon: '/res/LOGO.svg',
     description: (
       <p>
-        Deuxième refonte de mon site personnel, pour que cette fois-ci il
-        corresponde autant à des clients de petites entreprises qu'à des
-        recruteurs de grosses sociétés/startups. <br />
+        Deuxième refonte de mon site personnel, afin qu'il corresponde autant à
+        des clients de petites entreprises qu'à des recruteurs de grosses
+        sociétés/startups. <br /> <br />
         Plus recherché, plus moderne dans les technologies utilisées, ce site me
         correspond beaucoup plus que l'ancien que j'ai eu pendant près d'un an.{' '}
         <br />
-        Réalisé sur 3 semaines (seul évidemment).
+        Réalisé sur 3 semaines.
       </p>
     ),
     technologies: [
@@ -444,13 +433,13 @@ const data: Xp[] = [
   {
     period: 'Freelance',
     date: '02/2020',
-    title: 'Gagnant Ultra Dev Challenge Février 2021',
+    title: 'Vainqueur Ultra Dev Challenge Février 2021',
     icon: '/icons/js.png',
     description: (
       <p>
-        Gagnant de l'Ultra Dev Challenge (Association JS & Co) <br />
-        Le challenge reposait sur le fait reproduire le front-end de Netflix en
-        4 heures, le tout en React vanilla.
+        Gagnant de l'Ultra Dev Challenge (Association JS & Co) <br /> <br />
+        Le challenge consistait à reproduire le front-end de Netflix en 4
+        heures, le tout en React Vanilla.
       </p>
     ),
     technologies: [
