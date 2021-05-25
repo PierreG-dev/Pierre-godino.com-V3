@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="/about/technologies" className="effect-underline">
+                <a href="/about/skills" className="effect-underline">
                   Technologies
                 </a>
               </li>
