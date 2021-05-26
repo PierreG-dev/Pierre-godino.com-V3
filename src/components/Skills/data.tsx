@@ -246,8 +246,8 @@ const skills: Skill[] = [
     id: 29,
     name: 'Webstorm',
     icon: '/icons/webstorm.png',
-    xp: 4,
-    mastery: 4,
+    xp: 3,
+    mastery: 3,
     affinity: 4,
   },
 ];
