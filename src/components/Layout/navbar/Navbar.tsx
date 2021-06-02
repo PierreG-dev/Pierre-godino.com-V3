@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompass } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import HomeIcon from '@material-ui/icons/Home';
+import Link from 'next/link';
 
 const Navbar: React.FC = () => {
   const [displayNav, setDisplayNav] = useState(false);
@@ -29,22 +31,29 @@ const Navbar: React.FC = () => {
           }>
           {displayNav && (
             <React.Fragment>
-              <li>
-                <a href="/about/curiculum" className="effect-underline">
-                  CV
-                </a>
+              <li className="effect-underline">
+                <div style={{ zIndex: 1 }}>
+                  <Link href="/about">
+                    <HomeIcon />
+                  </Link>
+                </div>
               </li>
-              <li>
-                <a href="/about/experiences" className="effect-underline">
-                  Expériences
-                </a>
+              <li className="effect-underline">
+                <div style={{ zIndex: 1 }}>
+                  <Link href="/about/curiculum">CV</Link>
+                </div>
               </li>
-              <li>
-                <a href="/about/skills" className="effect-underline">
-                  Technologies
-                </a>
+              <li className="effect-underline">
+                <div style={{ zIndex: 1 }}>
+                  <Link href="/about/experiences">Expériences</Link>
+                </div>
               </li>
-              <li>
+              <li className="effect-underline">
+                <div style={{ zIndex: 1 }}>
+                  <Link href="/about/skills">Technologies</Link>
+                </div>
+              </li>
+              <li className="w-1">
                 <FontAwesomeIcon
                   icon={faTimes}
                   onClick={() => setDisplayNav(false)}
@@ -80,7 +89,12 @@ const MainContainer = styled.div`
   }
   #times {
     font-size: 1rem;
-    margin-right: -40px;
+    margin-right: -10px;
+    transition: 0.1s;
+  }
+  #times:hover {
+    width: 20px !important;
+    height: 20px !important;
   }
   @media screen and (max-width: 600px) {
     .displayed {
@@ -136,7 +150,7 @@ const MainContainer = styled.div`
     }
 
     /*effect-underline*/
-    a.effect-underline:after {
+    li.effect-underline:after {
       content: '';
       position: absolute;
       left: 0;
@@ -152,7 +166,7 @@ const MainContainer = styled.div`
       transform: scale(0, 1);
     }
 
-    a.effect-underline:hover:after {
+    li.effect-underline:hover:after {
       opacity: 1;
       -webkit-transform: scale(1);
       transform: scale(1);
