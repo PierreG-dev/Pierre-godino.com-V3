@@ -7,7 +7,7 @@ import Video from '../../src/components/Home/Video';
 
 const Index: NextPage = () => {
   return (
-    <Layout>
+    <Layout variant={'classic'}>
       <MainContainer>
         <div>
           <h2 className="text-center">Bienvenue !</h2>
@@ -77,7 +77,7 @@ const MainContainer = styled.div`
     object-fit: cover;
     opacity: 0;
     transition: 0.5s;
-    transform: scale(1.02);
+    //transform: scale(1.02);
   }
 
   button {
@@ -92,9 +92,14 @@ const MainContainer = styled.div`
     animation: 1s appearing;
     animation-fill-mode: forwards;
     opacity: 0;
+    transition: 0.2s;
+    border: 2px solid rgba(255, 255, 255, 0.4);
   }
   button h3 {
     z-index: 2;
+  }
+  button:hover {
+    transform: translate3d(0, -2%, 0);
   }
   button:hover video {
     opacity: 1;
@@ -138,6 +143,13 @@ const MainContainer = styled.div`
     }
     100% {
       opacity: 0.9;
+    }
+  }
+
+  @media (max-width: 500px) {
+    h2,
+    p {
+      font-size: 1.4rem;
     }
   }
 `;

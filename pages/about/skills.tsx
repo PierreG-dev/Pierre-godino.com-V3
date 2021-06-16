@@ -59,7 +59,7 @@ const Skills: NextPage = () => {
   };
 
   return (
-    <Layout>
+    <Layout variant={'about'}>
       <MainContainer>
         {/*<img className={'background'} src="/res/skills-background.jpg" alt="" />*/}
         <div

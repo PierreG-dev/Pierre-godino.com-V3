@@ -76,7 +76,7 @@ const Experiences: NextPage = () => {
   }, [screenSize, expandedXp]);
 
   return (
-    <Layout>
+    <Layout variant={'about'}>
       <BackgroundContainer
         style={{
           position: 'absolute',

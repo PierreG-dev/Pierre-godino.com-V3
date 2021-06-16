@@ -7,7 +7,7 @@ import Experience from '../../src/components/Curiculum/Experience';
 
 const Curiculum: NextPage = () => {
   return (
-    <Layout>
+    <Layout variant={'about'}>
       <MainContainer>
         <img
           className={'background'}
