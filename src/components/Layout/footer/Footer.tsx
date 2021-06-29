@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -16,129 +16,256 @@ const Footer: React.FC<Props> = ({ loaded }) => {
     setDisplayed('hidden');
   }, [loaded]);
 
-  const translationPicker = (): { transform: string | void } => {
+  const translationPicker = useCallback((): { transform: string | void } => {
     switch (displayed as displayType) {
       case 'full':
-        return { transform: '' };
+        return { transform: 'translate3d(0, 0%, 0)' };
       case 'displayed':
         return { transform: 'translate3d(0, 60%, 0)' };
       default:
-        return { transform: 'translate3d(0, 99%, 0)' };
+        return { transform: 'translate3d(0, 95%, 0)' };
     }
-  };
+  }, [displayed]);
 
-  const interactionHandler = (): void => {
+  const interactionHandler = useCallback((): void => {
     if ((displayed as displayType) === 'full') return;
     if ((displayed as displayType) === 'hidden') setDisplayed('displayed');
     if ((displayed as displayType) === 'displayed') setDisplayed('hidden');
-
     return;
-  };
+  }, [displayed]);
 
   return (
     <MainContainer style={translationPicker()}>
-      <footer>
-        <div className="middle-filler"></div>
-        <div className="side-bars"></div>
+      <div>
+        <span
+          className="burger-container"
+          onClick={interactionHandler}
+          style={{
+            opacity: (displayed as displayType) !== 'full' ? 1 : 0,
+          }}>
+          <MenuIcon />
+        </span>
+        <div className="side-bars" />
         <div className="flex justify-center">
-          <div className="middle-square">
-            <span
-              onClick={interactionHandler}
-              style={{
-                opacity: (displayed as displayType) !== 'full' ? 1 : 0,
-              }}>
-              <MenuIcon></MenuIcon>
-            </span>
-          </div>
+          <div className="middle-square" />
         </div>
-        <div className="side-bars" style={{ right: 0, top: 0 }}></div>
+        <div className="side-bars" style={{ right: 0, top: 0 }} />
+      </div>
+      <footer>
+        <div id="main-footer" className="flex justify-around items-center">
+          <div id="left-side">
+            <h5>Navigation</h5>
+            <ul>
+              <li>Accueil</li>
+              <li>Mes réalisations</li>
+              <li>
+                Devis en ligne <sup>beta</sup>
+              </li>
+              <li>Contact</li>
+              <li>A propos de moi</li>
+            </ul>
+          </div>
+          <div id="center"></div>
+          <div id="right-side"></div>
+        </div>
+        <div id="sub-footer" className="w-full h-10">
+          <p>
+            Pierre-godino.com <sup>V3</sup>
+          </p>
+          <p>2019 - 2021</p>
+        </div>
       </footer>
     </MainContainer>
   );
 };
 
 const MainContainer = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
   height: 50vh;
   background: transparent;
-  transition: 0.8s ease;
+  transition: 0.5s ease;
   z-index: 5;
 
-  .side-bars {
+  .burger-container {
     position: absolute;
-    width: calc(50% - 100px);
-    height: 50vh;
-    background: green;
-  }
-  .middle-square {
-    position: relative;
+    width: 20vw;
+    height: 4vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: transparent;
-    width: 200px;
-    height: 100%;
-    border-bottom: 100px solid green;
-    border-left: 100px solid green;
-    border-right: 100px solid green;
-    border-top: 100px solid transparent;
+    transition: 0.2s;
+    top: 1px;
+    left: 40vw;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    z-index: 2;
 
-    span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: 0.5s;
-      margin-top: -280px;
-      border-radius: 50%;
-      color: rgba(255, 255, 255, 0.3);
-      padding: 4px;
-      cursor: pointer;
-    }
-    span:hover {
-      background: rgba(255, 255, 255, 0.4);
+    svg {
+      transition: 0.1s;
+      margin-top: -2vh;
+      font-size: 20px;
     }
   }
-  .middle-filler {
+
+  .burger-container:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .burger-container:active {
+    background: rgba(255, 255, 255, 0.05);
+
+    svg {
+      transform: scale3d(0.9, 0.9, 1);
+    }
+  }
+
+  .side-bars {
+    filter: drop-shadow(0 -4px 3px rgba(0, 0, 0, 0.2));
     position: absolute;
-    width: 100%;
-    height: 29vh;
-    background: green;
-    bottom: 0;
+    width: 40vw;
+    height: 50vh;
+    background: #2d3436;
+    z-index: 1;
   }
-  @media (max-width: 500px) {
-    .side-bars {
-      position: absolute;
-      width: calc(50% - 50px);
-      height: 50vh;
-      background: green;
-    }
-    .middle-square {
-      background: transparent;
-      width: 102px;
-      height: 100%;
-      border-left: 50px solid green;
-      border-right: 50px solid green;
-      border-bottom: 50px solid green;
-      border-top: 50px solid transparent;
-      border-bottom: 0;
 
-      span {
-        transition: 0.7s;
-        margin-top: -170px;
+  .middle-square {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #2d3436;
+    width: 20vw;
+    height: 50vh;
+    margin-top: 1.9vw;
+    z-index: 2;
+  }
+
+  .middle-square::before {
+    filter: drop-shadow(3px -4px 3px rgba(0, 0, 0, 0.2));
+    content: '';
+    width: 1px;
+    border-left: 3vw solid #2d3436;
+    border-right: 0 solid transparent;
+    border-top: 2vw solid transparent;
+    margin-top: -1.9vw;
+  }
+
+  .middle-square::after {
+    filter: drop-shadow(-3px -4px 3px rgba(0, 0, 0, 0.2));
+    content: '';
+    width: 1px;
+    border-left: 0 solid transparent;
+    border-right: 3vw solid #2d3436;
+    border-top: 2vw solid transparent;
+    margin-top: -1.9vw;
+  }
+
+  /* ------ CONTENT ------ */
+
+  footer {
+    position: absolute;
+    top: 4vh;
+    z-index: 5;
+    width: 100vw;
+    height: 26vh;
+
+    #main-footer {
+      height: 13vh;
+
+      h5 {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      ul {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-left: 4px;
+
+        li:hover {
+          color: rgba(255, 255, 255, 0.7);
+          cursor: pointer;
+        }
       }
     }
 
-    .middle-filler {
-      position: absolute;
-      width: 100%;
-      height: 43.2vh;
-      background: green;
-      bottom: 0;
+    #left-side {
+      margin-top: -4vh;
+    }
+
+    #sub-footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 3vh;
+      background: #262626;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      font-family: BebasNeue;
     }
   }
+
+  /* --------------------- */
+  @media (max-width: 800px) {
+    .side-bars {
+      position: absolute;
+      width: 35vw;
+      height: 50vh;
+      background: #2d3436;
+    }
+
+    .middle-square {
+      position: relative;
+      background: #2d3436;
+      width: 30vw;
+      height: 50vh;
+      margin-top: 4.8vw;
+    }
+
+    .middle-square::before {
+      width: 3vw;
+      margin-top: -4.8vw;
+      border-left: 4.5vw solid #2d3436;
+      border-right: 4.5vw solid transparent;
+      border-top: 5vw solid transparent;
+    }
+
+    .middle-square::after {
+      width: 3vw;
+      margin-top: -4.8vw;
+      border-left: 4.5vw solid transparent;
+      border-right: 4.5vw solid #2d3436;
+      border-top: 5vw solid transparent;
+    }
+
+    .burger-container {
+      left: 30vw;
+      width: 40vw;
+
+      svg {
+        transition: 0.1s;
+        margin-top: -4vw;
+        font-size: 20px;
+      }
+    }
+
+    /* ---- CONTENT ---- */
+    footer {
+      #main-footer {
+        h5 {
+          font-size: 0.9rem;
+        }
+
+        ul {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
 `;
 
 export default Footer;
