@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import MenuIcon from '@material-ui/icons/Menu';
+import Link from 'next/link';
 
 export type displayType = 'full' | 'displayed' | 'hidden';
 
@@ -51,22 +52,67 @@ const Footer: React.FC<Props> = ({ loaded }) => {
         </div>
         <div className="side-bars" style={{ right: 0, top: 0 }} />
       </div>
-      <footer>
+      <footer style={{ opacity: displayed === 'full' ? 0 : 1 }}>
         <div id="main-footer" className="flex justify-around items-center">
           <div id="left-side">
-            <h5>Navigation</h5>
-            <ul>
-              <li>Accueil</li>
-              <li>Mes réalisations</li>
-              <li>
-                Devis en ligne <sup>beta</sup>
-              </li>
-              <li>Contact</li>
-              <li>A propos de moi</li>
-            </ul>
+            <div>
+              <h5>Navigation</h5>
+              <ul>
+                <li>
+                  <Link href={'/'}>Accueil</Link>
+                </li>
+                <li>
+                  <Link href={'/realisations'}>Mes réalisations</Link>
+                </li>
+                <li>
+                  <Link href={'/simulator'}>Devis en ligne</Link>{' '}
+                  <sup>beta</sup>
+                </li>
+                <li>
+                  <Link href={'/contact'}>Contact</Link>
+                </li>
+                <li>
+                  <Link href={'/about'}>A propos de moi</Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div id="center"></div>
-          <div id="right-side"></div>
+          <div id="center">
+            <img src="/res/LOGO.png" />
+          </div>
+          <div id="right-side">
+            <div>
+              <h5>Réseaux</h5>
+              <ul>
+                <li>
+                  <a
+                    href="https://www.malt.fr/profile/pierregodino"
+                    target={'_blank'}>
+                    Malt
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/pierre-godino-50b503186"
+                    target={'_blank'}>
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.google.fr/maps/place/D%C3%A9veloppeur+WEB+-+Pierre+Godino/@44.2010925,0.6126983,14z/data=!3m1!4b1!4m5!3m4!1s0x12abf374e1251189:0x8265400e1564dd61!8m2!3d44.201063!4d0.6302079"
+                    target={'_blank'}>
+                    Maps
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/PierreG-dev" target={'_blank'}>
+                    GitHub
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div id="sub-footer" className="w-full h-10">
           <p>
@@ -171,6 +217,7 @@ const MainContainer = styled.div`
     z-index: 5;
     width: 100vw;
     height: 26vh;
+    transition:1s;
 
     #main-footer {
       height: 13vh;
@@ -194,6 +241,31 @@ const MainContainer = styled.div`
 
     #left-side {
       margin-top: -4vh;
+      display: flex;
+      justify-content: center;
+      width: 15%;
+    }
+    #center {
+      display: flex;
+      justify-content: center;
+      width: 15%;
+      img {
+        filter: grayscale(0.5);
+        width: 100px;
+        height: auto;
+        margin: auto;
+        transition: 0.2s;
+      }
+      img:hover {
+        filter: grayscale(0);
+      }
+    }
+
+    #right-side {
+      margin-top: -6vh;
+      display: flex;
+      justify-content: center;
+      width: 15%;
     }
 
     #sub-footer {
