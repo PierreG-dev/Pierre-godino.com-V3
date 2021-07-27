@@ -39,6 +39,32 @@ const Navbar: React.FC<Props> = ({ loaded }) => {
             <div className="middle-square"></div>
           </div>
         </div>
+        <ul>
+          <li
+            className="effect-underline"
+            style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <Link href={'/realisations'}>Mes réalisations</Link>
+          </li>
+          <li
+            className="effect-underline"
+            style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <Link href={'/simulator'}>Devis en ligne</Link>
+            <sup>beta</sup>
+          </li>
+          <li>
+            <img src="/res/LOGO.png" />
+          </li>
+          <li
+            className="effect-underline"
+            style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <Link href={'/contact'}>Contact</Link>
+          </li>
+          <li
+            className="effect-underline"
+            style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <Link href={'/about'}>A propos de moi</Link>
+          </li>
+        </ul>
       </nav>
     </MainContainer>
   );
@@ -57,11 +83,54 @@ const MainContainer = styled.div`
 
   nav {
     position: absolute;
+    display: flex;
+    justify-content: space-around;
     width: 100vw;
     height: 50vh;
     background: #2d3436;
     z-index: 3;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
+
+    ul {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 5;
+
+      li {
+        position: relative;
+        max-width: 20%;
+        min-width: 10%;
+        display: flex;
+        justify-content: center;
+        transition-delay: 4s;
+        transition: 1s;
+        font-size: 1.1rem;
+
+        a,
+        sup {
+          color: rgba(255, 255, 255, 0.5);
+          transition: 0.2s;
+        }
+        sup {
+          transform: translateY(8px);
+        }
+
+        img {
+          transform: translateY(2vh);
+          width: 100px;
+        }
+      }
+      li:hover a {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      li:hover sup {
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
   }
 
   .middle-square {
@@ -108,18 +177,30 @@ const MainContainer = styled.div`
       border-right: 4.5vw solid transparent;
     }
   }
+
+  /*effect-underline*/
+  li.effect-underline a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    height: 1em;
+    width: 60%;
+    margin-left: 20%;
+    border-bottom: 1px solid;
+    margin-top: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+
+  li.effect-underline a:hover:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 `;
 
 export default Navbar;
-
-/*
-<ul>
-        <li className={'section-marker home'}>Accueil</li>
-        <li className={'section-marker portfolio'}>Réalisations</li>
-        <li className={'section-marker simulator'}>
-          Simulateur de devis <span>BETA</span>
-        </li>
-        <li className={'section-marker contact'}>Contact</li>
-        <li className={'section-marker about'}>A propos de moi</li>
-      </ul>
- */

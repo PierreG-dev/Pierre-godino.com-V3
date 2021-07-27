@@ -52,7 +52,7 @@ const Footer: React.FC<Props> = ({ loaded }) => {
         </div>
         <div className="side-bars" style={{ right: 0, top: 0 }} />
       </div>
-      <footer style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+      <footer style={{ opacity: displayed === 'displayed' ? 1 : 0 }}>
         <div id="main-footer" className="flex justify-around items-center">
           <div id="left-side">
             <div>
@@ -63,10 +63,6 @@ const Footer: React.FC<Props> = ({ loaded }) => {
                 </li>
                 <li>
                   <Link href={'/realisations'}>Mes réalisations</Link>
-                </li>
-                <li>
-                  <Link href={'/simulator'}>Devis en ligne</Link>{' '}
-                  <sup>beta</sup>
                 </li>
                 <li>
                   <Link href={'/contact'}>Contact</Link>
@@ -223,6 +219,8 @@ const MainContainer = styled.div`
       height: 13vh;
 
       h5 {
+        margin-left: -10px;
+        text-align: center;
         font-size: 1.1rem;
         color: rgba(255, 255, 255, 0.8);
       }
@@ -240,15 +238,26 @@ const MainContainer = styled.div`
     }
 
     #left-side {
+      margin-left: 10px;
       margin-top: -4vh;
       display: flex;
       justify-content: center;
-      width: 15%;
+      width: 31%;
+      height: 15vh;
+
+      ul {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+        max-width: 100%;
+        flex-wrap: wrap;
+      }
     }
     #center {
       display: flex;
       justify-content: center;
-      width: 15%;
+      width: 31%;
       img {
         filter: grayscale(0.5);
         width: 100px;
@@ -262,10 +271,11 @@ const MainContainer = styled.div`
     }
 
     #right-side {
-      margin-top: -6vh;
+      margin-top: -4vh;
       display: flex;
       justify-content: center;
-      width: 15%;
+      width: 31%;
+      height: 15vh;
     }
 
     #sub-footer {
