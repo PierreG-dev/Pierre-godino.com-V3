@@ -52,7 +52,10 @@ const Footer: React.FC<Props> = ({ loaded }) => {
         </div>
         <div className="side-bars" style={{ right: 0, top: 0 }} />
       </div>
-      <footer style={{ opacity: displayed === 'displayed' ? 1 : 0 }}>
+      <footer
+        style={{
+          opacity: displayed !== 'full' && displayed !== 'hidden' ? 1 : 0,
+        }}>
         <div id="main-footer" className="flex justify-around items-center">
           <div id="left-side">
             <div>

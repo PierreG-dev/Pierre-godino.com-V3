@@ -46,7 +46,7 @@ const Navbar: React.FC<Props> = ({ loaded }) => {
             <Link href={'/realisations'}>Mes réalisations</Link>
           </li>
           <li
-            className="effect-underline"
+            className="effect-underline small-hidden"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
             <Link href={'/simulator'}>Devis en ligne</Link>
             <sup>beta</sup>
@@ -60,7 +60,7 @@ const Navbar: React.FC<Props> = ({ loaded }) => {
             <Link href={'/contact'}>Contact</Link>
           </li>
           <li
-            className="effect-underline"
+            className="effect-underline small-hidden"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
             <Link href={'/about'}>A propos de moi</Link>
           </li>
@@ -103,6 +103,7 @@ const MainContainer = styled.div`
       li {
         position: relative;
         max-width: 20%;
+        width: 20%;
         min-width: 10%;
         display: flex;
         justify-content: center;
@@ -120,7 +121,7 @@ const MainContainer = styled.div`
         }
 
         img {
-          transform: translateY(2vh);
+          transform: translateY(1.2vw);
           width: 100px;
         }
       }
@@ -155,6 +156,19 @@ const MainContainer = styled.div`
     filter: drop-shadow(0 6px 5px rgba(0, 0, 0, 0.2));
   }
   @media (max-width: 800px) {
+    nav li img {
+      transform: translateY(2.4vw) !important;
+      width: 80px !important;
+    }
+
+    nav li {
+      max-width: 50% !important;
+      width: 30% !important;
+    }
+
+    .small-hidden {
+      display: none;
+    }
     .side-bars {
       position: absolute;
       width: 30vw;
@@ -185,8 +199,8 @@ const MainContainer = styled.div`
     left: 0;
     display: inline-block;
     height: 1em;
-    width: 60%;
-    margin-left: 20%;
+    width: 100px;
+    margin-left: calc((100% - 100px) / 2);
     border-bottom: 1px solid;
     margin-top: 10px;
     opacity: 0;
