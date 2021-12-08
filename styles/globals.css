@@ -58,7 +58,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  border: 7px solid #171717;
+  border: 7px solid #cacaca;
   border-radius: 50%;
 }
 .react-clock__hand {
@@ -72,7 +72,7 @@ body {
   position: absolute;
   width: 6px !important;
   border-radius: 20px;
-  background-color: #171717;
+  background-color: #aaaaaa;
   transform: translateX(-50%);
 }
 .react-clock__mark {

@@ -20,7 +20,7 @@ const clockOptions = {
   className: 'clock',
 };
 
-const TITLE = "5 ans dans l'informatique.";
+const TITLE = "6 ans dans l'informatique.";
 
 const Experiences: NextPage = () => {
   const [scroll, setScroll] = useState(0);
@@ -69,6 +69,8 @@ const Experiences: NextPage = () => {
               setExpanded={setExpanded}
               expandedXp={expandedXp}
               phone={screenSize <= 768}
+              actual={elem.actual}
+              success={elem.success}
             />
           </React.Fragment>
         );
@@ -77,22 +79,14 @@ const Experiences: NextPage = () => {
 
   return (
     <Layout variant={'about'}>
-      <BackgroundContainer
-        style={{
-          position: 'absolute',
-          height: '100%',
-          width: '100vw',
-          overflow: 'hidden',
-        }}>
-        <img
-          src="/res/experiences-background.jpg"
-          alt=""
-          className={'background'}
-        />
-      </BackgroundContainer>
-
       <MainContainer>
-        <Overlay />
+        <BackgroundContainer className={'bcg-star'}>
+          <div className="bcg-star">
+            <div id="stars"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+          </div>
+        </BackgroundContainer>
 
         <h1>Mes Experiences</h1>
 
@@ -102,7 +96,7 @@ const Experiences: NextPage = () => {
             {...clockOptions}
             size={screenSize <= 768 ? 150 : 300}
           />
-          <div className="typewriter">
+          <div className="typewriter mt-8">
             <h4
               style={{
                 fontSize: screenSize <= 768 ? '1.2rem' : '3rem',
@@ -150,11 +144,11 @@ const Experiences: NextPage = () => {
 };
 
 const MainContainer = styled.div`
+  position: relative;
   overflow: hidden;
   padding: 0;
   margin: 0;
   width: 100%;
-  min-height: 100vh;
   transition: 1s;
 
   h1 {
@@ -240,24 +234,10 @@ const MainContainer = styled.div`
   }
 `;
 const BackgroundContainer = styled.div`
-  .background {
-    width: 100%;
-    height: 120%;
-    object-fit: cover;
-    opacity: 0.8;
-    position: absolute;
-    object-position: top;
-    filter: contrast(1.5);
-    z-index: -2;
-  }
-`;
-const Overlay = styled.div`
-  background: url('/res/overlay.png');
+  width: 100vw;
   height: 100%;
-  width: 100%;
-  position: fixed;
-  opacity: 0.3;
-  z-index: -1;
+  position: absolute;
+  z-index: -6;
 `;
 
 export default Experiences;

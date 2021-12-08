@@ -55,13 +55,15 @@ interface Xp {
   date: string;
   icon: string;
   link?: string;
+  actual?: boolean;
+  success?: boolean;
 }
 
 const data: Xp[] = [
   {
     period: 'University',
     date: '09/2016',
-    title: "Entrée à l'Université Toulouse III",
+    title: "Entrée à l'Université Toulouse III 🎓",
     icon: '/icons/ups.jpg',
     description: (
       <p>
@@ -74,7 +76,7 @@ const data: Xp[] = [
   {
     period: 'University',
     date: '02/2017',
-    title: 'Jeu de KONO sur CLI',
+    title: 'Jeu de KONO sur CLI 🎮',
     icon: '/icons/ups.jpg',
     description: (
       <p>
@@ -92,7 +94,7 @@ const data: Xp[] = [
   {
     period: 'University',
     date: '12/2017',
-    title: 'Encrypteur | décrypteur avec crack',
+    title: 'Encrypteur | décrypteur avec crack 💾',
     icon: '/icons/ups.jpg',
     description: (
       <p>
@@ -120,7 +122,7 @@ const data: Xp[] = [
   {
     period: 'University',
     date: '02/2018',
-    title: 'Blockchain de transactions financières',
+    title: 'Blockchain de transactions financières 💰',
     icon: '/icons/ups.jpg',
     description: (
       <p>
@@ -143,7 +145,7 @@ const data: Xp[] = [
   {
     period: 'University',
     date: '12/2018',
-    title: "Gestionnaire des capteurs de l'université",
+    title: "Gestionnaire des capteurs de l'université 📡",
     icon: '/icons/ups.jpg',
     description: (
       <p>
@@ -165,7 +167,7 @@ const data: Xp[] = [
   {
     period: 'University',
     date: '03/2019',
-    title: "Jeu ludique pour apprendre l'anglais",
+    title: "Jeu ludique pour apprendre l'anglais 📚",
     icon: '/icons/checkyoursmile.png',
     description: (
       <p>
@@ -189,7 +191,7 @@ const data: Xp[] = [
   {
     period: 'University',
     date: '07/2019',
-    title: "Obtention de ma licence d'informatique",
+    title: "Obtention de ma licence d'informatique 🎉",
     icon: '/icons/confettis.png',
     description: (
       <p>
@@ -205,11 +207,12 @@ const data: Xp[] = [
     collaboratorsAmount: 0,
     technologies: [],
     environnements: [],
+    success: true,
   },
   {
     period: 'DC',
     date: '09/2019',
-    title: 'Entrée à Digital-campus Toulouse',
+    title: 'Entrée à Digital-campus Toulouse 🎓',
     icon: '/icons/dc.png',
     description: (
       <p>
@@ -225,7 +228,7 @@ const data: Xp[] = [
   {
     period: 'DC',
     date: '11/2019',
-    title: 'Pierre-godino.com V2',
+    title: 'Pierre-godino.com V2 🚩',
     icon: '/res/LOGO.svg',
     description: (
       <p>
@@ -243,7 +246,7 @@ const data: Xp[] = [
   {
     period: 'DC',
     date: '01/2020',
-    title: "Site d'E-Commerce ABNature",
+    title: "Site d'E-Commerce ABNature 🧪",
     icon: '/icons/abnature.svg',
     description: (
       <p>
@@ -261,7 +264,7 @@ const data: Xp[] = [
   {
     period: 'DC',
     date: '04/2020',
-    title: 'Application WEB Speedy-Nanie',
+    title: 'Application WEB Speedy-Nanie 🧸',
     icon:
       'https://www.speedynanie.fr/wp-content/uploads/2020/09/Plan-de-travail-1.svg',
     description: (
@@ -308,7 +311,7 @@ const data: Xp[] = [
   {
     period: 'DC',
     date: '07/2020',
-    title: 'Obtention de mon titre Développeur WEB & Mobile',
+    title: 'Obtention de mon titre Développeur WEB & Mobile 🎉',
     icon: '/icons/confettis.png',
     description: (
       <p>
@@ -320,11 +323,12 @@ const data: Xp[] = [
     collaboratorsAmount: 0,
     technologies: [],
     environnements: [],
+    success: true,
   },
   {
     period: 'Freelance',
     date: '08/2020',
-    title: 'Site vitrine pour le garage BRINCAT',
+    title: 'Site vitrine pour le garage BRINCAT 👓',
     icon: '/icons/garagebrincat.webp',
     description: (
       <p>
@@ -363,7 +367,7 @@ const data: Xp[] = [
   {
     period: 'Freelance',
     date: '12/2020',
-    title: 'Vainqueur hackathon 60-Dozer',
+    title: '1ère place hackathon 60-Dozer 🥇',
     icon: '/icons/dozer.png',
     description: (
       <p>
@@ -399,11 +403,12 @@ const data: Xp[] = [
     ],
     environnements: ['webstorm', 'trello', 'git', 'bash', 'yarn', 'adobexd'],
     link: 'https://github.com/Hackathon-60-Dozer/Hackathon-2020',
+    success: true,
   },
   {
     period: 'Freelance',
     date: '01/2020',
-    title: 'Pierre-godino.com V3',
+    title: 'Pierre-godino.com V3 🚀',
     icon: '/res/LOGO.svg',
     description: (
       <p>
@@ -433,7 +438,7 @@ const data: Xp[] = [
   {
     period: 'Freelance',
     date: '02/2020',
-    title: 'Vainqueur Ultra Dev Challenge Février 2021',
+    title: '1ère place Ultra Dev Challenge Février 2021 🥇',
     icon: '/icons/js.png',
     description: (
       <p>
@@ -464,11 +469,12 @@ const data: Xp[] = [
       'github',
     ],
     link: 'https://github.com/PierreG-dev/Ultra-dev-challenge',
+    success: true,
   },
   {
     period: 'Freelance',
     date: '03/2020',
-    title: 'Consultant',
+    title: 'Consultant 👔',
     icon: '/icons/videomenthe.png',
     description: <p>Consultant pour la société VideoMenthe</p>,
     technologies: [
@@ -483,6 +489,52 @@ const data: Xp[] = [
     ],
     environnements: ['webstorm', 'git', 'bash', 'yarn', 'github'],
     link: '',
+  },
+  {
+    period: 'Freelance',
+    date: '07/2021',
+    title: 'Formateur Philliance 📘',
+    icon: '/icons/philliance.png',
+    description: (
+      <p>
+        Formateur pour le compte de l'école Philliance. <br /> Ingéniérie
+        logicielle, culture du WEB, la palette de compétences transmises est
+        large.
+      </p>
+    ),
+    technologies: [
+      'html',
+      'css',
+      'js',
+      'algo',
+      'nodejs',
+      'react',
+      'bootstrap',
+      'jsx',
+    ],
+    environnements: ['bash', 'git', 'github', 'npm', 'vscode', 'yarn'],
+    link: '',
+    actual: true,
+  },
+  {
+    period: 'Freelance',
+    date: '12/2021',
+    title: 'Formateur Axe Academy 📗',
+    icon: '/icons/axeacademy.png',
+    description: <p>Formateur chez Axe Academy.</p>,
+    technologies: [
+      'html',
+      'css',
+      'js',
+      'algo',
+      'nodejs',
+      'react',
+      'bootstrap',
+      'jsx',
+    ],
+    environnements: ['bash', 'git', 'github', 'npm', 'vscode', 'yarn'],
+    link: '',
+    actual: true,
   },
 ];
 
