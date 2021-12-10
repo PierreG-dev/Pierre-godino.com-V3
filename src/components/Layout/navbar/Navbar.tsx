@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompass } from '@fortawesome/free-regular-svg-icons';
@@ -10,9 +10,10 @@ export type displayType = 'full' | 'displayed';
 
 export type Props = {
   loaded: boolean;
+  noLayoutMode: boolean;
 };
 
-const Navbar: React.FC<Props> = ({ loaded }) => {
+const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
   const [displayed, setDisplayed]: [displayType, any] = useState('full');
 
   useEffect(() => {
@@ -20,16 +21,25 @@ const Navbar: React.FC<Props> = ({ loaded }) => {
     setDisplayed('displayed');
   }, [loaded]);
 
-  const translationPicker = (): { transform: string | void } => {
+  const translationPicker = useCallback((): {
+    transform: string | void;
+    display: string | void;
+  } => {
     switch (displayed as displayType) {
       case 'full':
-        return { transform: 'translate3d(0, 0%, 0)' };
+        return {
+          transform: 'translate3d(0, 0%, 0)',
+          display: noLayoutMode ? 'none' : 'block',
+        };
       case 'displayed':
-        return { transform: 'translate3d(0, -80%, 0)' };
+        return {
+          transform: 'translate3d(0, -80%, 0)',
+          display: noLayoutMode ? 'none' : 'block',
+        };
       default:
         console.error('wrong translation type in Navbar');
     }
-  };
+  }, [displayed, noLayoutMode]);
 
   return (
     <MainContainer style={translationPicker()}>
@@ -147,13 +157,13 @@ const MainContainer = styled.div`
   }
   .middle-square::before {
     content: '';
-    margin-bottom: -1.9vw;
+    margin-bottom: -2vw;
     width: 21vw;
     border-radius: 0 0 20px 20px;
     border-top: 2vw solid #2d3436;
     border-left: 3vw solid transparent;
     border-right: 3vw solid transparent;
-    filter: drop-shadow(0 6px 5px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
   }
   @media (max-width: 800px) {
     nav li img {

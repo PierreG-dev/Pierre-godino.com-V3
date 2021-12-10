@@ -1,11 +1,74 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import Layout from '../../src/components/Layout/';
 import styled from 'styled-components';
 import Link from 'next/link';
-import Video from '../../src/components/Home/Video';
 
 const Index: NextPage = () => {
+  const ref = useRef();
+
+  let step = 0;
+  const colors = [
+    [62, 35, 255],
+    [60, 255, 60],
+    [255, 35, 98],
+    [45, 175, 230],
+    [255, 0, 255],
+    [255, 128, 0],
+  ];
+  const colorIndices = [0, 1, 2, 3];
+  const gradientSpeed = 0.002;
+
+  const updateGradient = useCallback(() => {
+    const col1 = colors[colorIndices[0]];
+    const col2 = colors[colorIndices[1]];
+    const e = colors[colorIndices[2]];
+    const t = colors[colorIndices[3]];
+    const c = 1 - step;
+
+    const fromColor =
+      'rgb(' +
+      Math.round(c * col1[0] + step * col2[0]) +
+      ',' +
+      Math.round(c * col1[1] + step * col2[1]) +
+      ',' +
+      Math.round(c * col1[2] + step * col2[2]) +
+      ')';
+    const toColor =
+      'rgb(' +
+      Math.round(c * e[0] + step * t[0]) +
+      ',' +
+      Math.round(c * e[1] + step * t[1]) +
+      ',' +
+      Math.round(c * e[2] + step * t[2]) +
+      ')';
+
+    if ((step += gradientSpeed) >= 1 && (step %= 1)) {
+      colorIndices[0] = colorIndices[1];
+      colorIndices[2] = colorIndices[3];
+      colorIndices[1] =
+        Math.floor(1 + Math.random() * (colors.length - 1)) % colors.length;
+      colorIndices[3] =
+        Math.floor(1 + Math.random() * (colors.length - 1)) % colors.length;
+    }
+
+    console.log(step);
+
+    if (ref.current)
+      // @ts-ignore
+      ref.current.style.background = `linear-gradient(90deg, ${fromColor} 0%, ${toColor} 100%)`;
+  }, [step, colors, colorIndices]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updateGradient();
+    }, 10);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <Layout variant={'classic'}>
       <MainContainer>
@@ -13,16 +76,21 @@ const Index: NextPage = () => {
           <h2 className="text-center">Bienvenue !</h2>
           <p className="text-center">Envie d'en savoir plus sur moi ?</p>
         </div>
-        <img className={'background'} src="/res/about-background.jpg" alt="" />
+
         <div
+          ref={ref}
+          className={'bcg-bubble'}
           style={{
-            background: "url('/res/overlay.png')",
             height: '100%',
             width: '100%',
             position: 'absolute',
-            opacity: 0.3,
+            opacity: 0.7,
             zIndex: -1,
-          }}></div>
+          }}>
+          <div id="bubbles1"></div>
+          <div id="bubbles2"></div>
+          <div id="bubbles3"></div>
+        </div>
         <div className="flex flex-col">
           <div style={{ maxWidth: '100vw' }}>
             <Link href={'/about/skills'}>

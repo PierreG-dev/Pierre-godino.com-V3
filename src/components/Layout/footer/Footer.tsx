@@ -7,9 +7,10 @@ export type displayType = 'full' | 'displayed' | 'hidden';
 
 export type Props = {
   loaded: boolean;
+  noLayoutMode: boolean;
 };
 
-const Footer: React.FC<Props> = ({ loaded }) => {
+const Footer: React.FC<Props> = ({ loaded, noLayoutMode }) => {
   const [displayed, setDisplayed]: [displayType, any] = useState('full');
 
   useEffect(() => {
@@ -17,16 +18,28 @@ const Footer: React.FC<Props> = ({ loaded }) => {
     setDisplayed('hidden');
   }, [loaded]);
 
-  const translationPicker = useCallback((): { transform: string | void } => {
+  const translationPicker = useCallback((): {
+    transform: string | void;
+    display: string | void;
+  } => {
     switch (displayed as displayType) {
       case 'full':
-        return { transform: 'translate3d(0, 0%, 0)' };
+        return {
+          transform: 'translate3d(0, 0%, 0)',
+          display: noLayoutMode ? 'none' : 'block',
+        };
       case 'displayed':
-        return { transform: 'translate3d(0, 60%, 0)' };
+        return {
+          transform: 'translate3d(0, 60%, 0)',
+          display: noLayoutMode ? 'none' : 'block',
+        };
       default:
-        return { transform: 'translate3d(0, 95%, 0)' };
+        return {
+          transform: 'translate3d(0, 95%, 0)',
+          display: noLayoutMode ? 'none' : 'block',
+        };
     }
-  }, [displayed]);
+  }, [displayed, noLayoutMode]);
 
   const interactionHandler = useCallback((): void => {
     if ((displayed as displayType) === 'full') return;

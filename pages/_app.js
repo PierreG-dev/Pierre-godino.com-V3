@@ -1,7 +1,8 @@
 import '@styles/globals.css';
 import 'tailwindcss/tailwind.css';
 import '../styles/nprogress.min.css';
-import '../styles/stars.css'
+import '../styles/stars.css';
+import '../styles/bubbles.css';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useState } from 'react';
 import NProgress from 'nprogress';

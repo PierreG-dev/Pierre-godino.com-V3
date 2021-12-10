@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import AboutNavbar from './navbar/AboutNavbar';
@@ -11,13 +11,10 @@ export type Props = {
 
 const Index: NextPage<Props> = ({ children, variant }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [noLayoutMode, setNoLayoutMode] = useState(false);
 
-  useEffect(() => {
-    handleLoad();
-
-    return () => {
-      handleLoad();
-    };
+  const handleKeyDown = useCallback((event) => {
+    if (event.key === '$') setNoLayoutMode((prevState) => !prevState);
   }, []);
 
   const handleLoad = () => {
@@ -27,10 +24,20 @@ const Index: NextPage<Props> = ({ children, variant }) => {
     }, 3000);
   };
 
+  useEffect(() => {
+    handleLoad();
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      handleLoad();
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   const navbarPicker = () => {
     switch (variant) {
       case 'classic':
-        return <Navbar loaded={isLoaded} />;
+        return <Navbar loaded={isLoaded} noLayoutMode={noLayoutMode} />;
       case 'about':
         return <AboutNavbar />;
       default:
@@ -40,11 +47,14 @@ const Index: NextPage<Props> = ({ children, variant }) => {
   };
   return (
     <MainContainer>
+      {noLayoutMode && (
+        <NoLayoutWarning>|LayoutLess mode activated|</NoLayoutWarning>
+      )}
       {navbarPicker()}
-      <div className={'relative' + (variant === 'classic' && ' pt-12')}>
-        {children}
-      </div>
-      {variant === 'classic' && <Footer loaded={isLoaded} />}
+      <div className={'relative'}>{children}</div>
+      {variant === 'classic' && (
+        <Footer loaded={isLoaded} noLayoutMode={noLayoutMode} />
+      )}
     </MainContainer>
   );
 };
@@ -54,6 +64,16 @@ const MainContainer = styled.div`
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+`;
+
+const NoLayoutWarning = styled.p`
+  color: orangered;
+  font-weight: bold;
+  letter-spacing: 0.8rem;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
 `;
 
 export default Index;
