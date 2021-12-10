@@ -72,10 +72,9 @@ const Index: NextPage = () => {
   return (
     <Layout variant={'classic'}>
       <MainContainer>
-        <div>
-          <h2 className="text-center">Bienvenue !</h2>
-          <p className="text-center">Envie d'en savoir plus sur moi ?</p>
-        </div>
+        <DetectiveContainer>
+          <span>🕵️‍♂</span>
+        </DetectiveContainer>
 
         <div
           ref={ref}
@@ -84,14 +83,15 @@ const Index: NextPage = () => {
             height: '100%',
             width: '100%',
             position: 'absolute',
-            opacity: 0.7,
+            opacity: 0.85,
             zIndex: -1,
+            animationDelay: '0.5s',
           }}>
           <div id="bubbles1"></div>
           <div id="bubbles2"></div>
           <div id="bubbles3"></div>
         </div>
-        <div className="flex flex-col">
+        <section className="flex flex-col">
           <div style={{ maxWidth: '100vw' }}>
             <Link href={'/about/skills'}>
               <button style={{ animationDelay: '1s' }}>
@@ -121,7 +121,7 @@ const Index: NextPage = () => {
               <h3>Mon CV</h3>
             </button>
           </Link>
-        </div>
+        </section>
       </MainContainer>
     </Layout>
   );
@@ -132,7 +132,8 @@ const MainContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 5vh;
   align-items: center;
   overflow: hidden;
 
@@ -157,7 +158,7 @@ const MainContainer = styled.div`
     background: rgba(255, 255, 255, 0.3);
     font-size: 2.5rem;
     color: rgba(0, 0, 0, 0.5);
-    animation: 1s appearing;
+    animation: 6s appearing;
     animation-fill-mode: forwards;
     opacity: 0;
     transition: 0.2s;
@@ -187,7 +188,7 @@ const MainContainer = styled.div`
     color: #fafafa;
     font-size: 2rem;
     opacity: 0;
-    animation: 1s appearingText 0.5s;
+    animation: 6s appearingText 0.5s;
     animation-fill-mode: forwards;
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   }
@@ -200,6 +201,9 @@ const MainContainer = styled.div`
     0% {
       opacity: 0;
     }
+    75% {
+      opacity: 0;
+    }
     100% {
       opacity: 1;
     }
@@ -207,6 +211,9 @@ const MainContainer = styled.div`
 
   @keyframes appearingText {
     0% {
+      opacity: 0;
+    }
+    75% {
       opacity: 0;
     }
     100% {
@@ -220,6 +227,15 @@ const MainContainer = styled.div`
       font-size: 1.4rem;
     }
   }
+`;
+
+const DetectiveContainer = styled.section`
+  font-size: 10rem;
+  height: 209px;
+  border-bottom: 1px solid #171717;
+  animation: 7s appearing;
+  overflow-y: hidden;
+  position: relative;
 `;
 
 export default Index;
