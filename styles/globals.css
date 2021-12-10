@@ -126,3 +126,12 @@ body {
 }
 
 /* ------------------TYPEWRITER END ------------------ */
+
+/* ------------------MUI SELECTOR OVERRIDE START ------------------ */
+
+.MuiPaper-root {
+  background: rgba(37, 37, 37, 0.95) !important;
+  color: rgba(255,255,255, 0.8)!important;
+}
+
+/* ------------------MUI SELECTOR END ------------------ */

@@ -65,15 +65,14 @@ const Skills: NextPage = () => {
         <div
           style={{
             background: 'url("/res/overlay.png")',
+            backgroundSize: '0.22vw',
             height: '100%',
             width: '100%',
             position: 'absolute',
             opacity: 0.3,
             zIndex: 0,
             filter: 'contrast(1.5)',
-          }}
-        />
-
+          }}></div>
         <FilterContainer>
           <Select
             id={'filter-selector'}
@@ -275,6 +274,25 @@ const MainContainer = styled.div`
   overflow-x: hidden;
   background: url('/res/skills-background.jpg');
   background-size: cover;
+
+  #filter-selector {
+    background: rgba(37, 37, 37, 0.6);
+    transition: 0.1s;
+    z-index: 5;
+
+    border: none;
+    p {
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+  }
+
+  #filter-selector:hover {
+    background: rgba(37, 37, 37, 0.9);
+  }
+
+  .Mui-focused {
+    border: none !important;
+  }
 
   svg {
     color: rgba(0, 0, 0, 0.3);
