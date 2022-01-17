@@ -35,6 +35,7 @@ export type Props = {
   expandedXp: string;
   phone: boolean;
   actual: boolean;
+  success: boolean;
 };
 
 const displayCollaborators = (collaboratorsAmount: number) => {
@@ -166,7 +167,9 @@ const Experience: React.FC<Props> = ({
         </TimelineOppositeContent>
 
         <TimelineSeparator>
-          <TimelineDot color={period === 'Freelance' ? 'secondary' : 'primary'}>
+          <TimelineDot
+            className={'timeline-separator-exp'}
+            color={period === 'Freelance' ? 'secondary' : 'primary'}>
             {periodPicker(period)}
           </TimelineDot>
           <TimelineConnector />

@@ -536,6 +536,26 @@ const data: Xp[] = [
     link: '',
     actual: true,
   },
+  {
+    period: 'Freelance',
+    date: '01/2021',
+    title: 'Formateur AP Formation 📚',
+    icon: '/icons/apformation.png',
+    description: <p>Formateur chez AP Formation Toulouse.</p>,
+    technologies: [
+      'html',
+      'css',
+      'js',
+      'algo',
+      'nodejs',
+      'react',
+      'bootstrap',
+      'jsx',
+    ],
+    environnements: ['bash', 'git', 'github', 'npm', 'vscode', 'yarn'],
+    link: '',
+    actual: true,
+  },
 ];
 
 export default data;

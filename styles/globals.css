@@ -127,11 +127,84 @@ body {
 
 /* ------------------TYPEWRITER END ------------------ */
 
+
+
+/* ------------------ EXPERIENCES START ------------------ */
+.timeline-separator-exp {
+  transition: 0.2s;
+}
+
+.timeline-separator-exp:hover {
+  transform: scale3d(1.1,1.1,1);
+}
+
+/* ------------------ EXPERIENCES END ------------------ */
+
+
+
 /* ------------------MUI SELECTOR OVERRIDE START ------------------ */
 
-.MuiPaper-root {
+.MuiMenu-list {
   background: rgba(37, 37, 37, 0.95) !important;
   color: rgba(255,255,255, 0.8)!important;
 }
 
 /* ------------------MUI SELECTOR END ------------------ */
+
+/* ------------------ CURVY MOUNTAINS START ------------------ */
+
+.nectar-shape-divider-wrap {
+  position:absolute;
+  top:auto;
+  bottom:0;
+  left:0;
+  right:0;
+  width:100%;
+  height:150px;
+  z-index:3;
+  transform:translateZ(0)
+}
+.post-area.span_9 .nectar-shape-divider-wrap {
+  overflow:hidden
+}
+.nectar-shape-divider-wrap[data-position=top] {
+  top:-1px;
+  bottom:auto
+}
+.nectar-shape-divider-wrap[data-position=top] {
+  transform:rotate(180deg)
+}
+.nectar-shape-divider-wrap[data-front=true] {
+  z-index:50
+}
+.nectar-shape-divider-wrap[data-style=mountains] svg path:first-child {
+  opacity:.1
+}
+.nectar-shape-divider-wrap[data-style=mountains] svg path:nth-child(2) {
+  opacity:.12
+}
+.nectar-shape-divider-wrap[data-style=mountains] svg path:nth-child(3) {
+  opacity:.18
+}
+.nectar-shape-divider-wrap[data-style=mountains] svg path:nth-child(4) {
+  opacity:.33
+}
+.nectar-shape-divider {
+  width:100%;
+  left:0;
+  bottom:-1px;
+  height:100%;
+  position:absolute
+}
+@media only screen and (max-width:999px) {
+  .nectar-shape-divider-wrap:not([data-using-percent-val=true]) .nectar-shape-divider {
+    height:75%
+  }
+}
+@media only screen and (max-width:690px) {
+  .nectar-shape-divider-wrap:not([data-using-percent-val=true]) .nectar-shape-divider {
+    height:33%
+  }
+}
+
+/* ------------------ CURVY MOUNTAINS END ------------------ */
