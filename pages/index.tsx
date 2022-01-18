@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Video from '../src/components/Home/Video';
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { LayersOutlined } from '@material-ui/icons';
+import { LayersOutlined } from '@mui/icons-material';
 import Layout from '../src/components/Layout';
 
 const Home: NextPage = () => {

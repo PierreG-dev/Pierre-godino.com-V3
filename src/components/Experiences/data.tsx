@@ -265,8 +265,7 @@ const data: Xp[] = [
     period: 'DC',
     date: '04/2020',
     title: 'Application WEB Speedy-Nanie 🧸',
-    icon:
-      'https://www.speedynanie.fr/wp-content/uploads/2020/09/Plan-de-travail-1.svg',
+    icon: 'https://www.speedynanie.fr/wp-content/uploads/2020/09/Plan-de-travail-1.svg',
     description: (
       <p>
         Développement d'une application pour une start-up Toulousaine, qui met

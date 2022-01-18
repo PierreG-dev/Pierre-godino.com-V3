@@ -11,10 +11,10 @@ import data from '../../src/components/Experiences/data';
 import { NextPage } from 'next';
 import Layout from '../../src/components/Layout';
 
-import Timeline from '@material-ui/lab/Timeline';
+import Timeline from '@mui/lab/Timeline';
 import Clock from 'react-clock';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import { More } from '@material-ui/icons';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { More } from '@mui/icons-material';
 
 const clockOptions = {
   className: 'clock',
@@ -116,7 +116,7 @@ const Experiences: NextPage = () => {
             padding: 0,
           }}>
           <Timeline
-            align={screenSize >= 768 ? 'alternate' : 'left'}
+            position={screenSize >= 768 ? 'alternate' : 'left'}
             style={{
               marginTop: -50,
               width: '100vw',

@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../../src/components/Layout';
 import { NextPage } from 'next';
 import styled from 'styled-components';
-import Select from '@material-ui/core/Select';
+import Select from '@mui/material/Select';
 import data from '../../src/components/Skills/data';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { MenuItem } from '@material-ui/core';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { MenuItem } from '@mui/material';
 import Bar from '../../src/components/Skills/bar';
 
-import TimelapseIcon from '@material-ui/icons/Timelapse';
-import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import TimelapseIcon from '@mui/icons-material/Timelapse';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 const Skills: NextPage = () => {
   const [displayedSkillId, setDisplayedSkillId] = useState(0);
