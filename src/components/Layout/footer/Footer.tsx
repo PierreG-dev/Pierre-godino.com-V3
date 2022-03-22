@@ -14,8 +14,8 @@ const Footer: React.FC<Props> = ({ loaded, noLayoutMode }) => {
   const [displayed, setDisplayed]: [displayType, any] = useState('full');
 
   useEffect(() => {
-    if (loaded === false) return;
-    setDisplayed('hidden');
+    if (!loaded) setDisplayed('full');
+    else setDisplayed('hidden');
   }, [loaded]);
 
   const translationPicker = useCallback((): {

@@ -1,6 +1,15 @@
 import { createContext } from 'react';
 
-const LoadingContext = createContext({});
-const ThemeContext = createContext({});
+interface ColorPackageType {
+  primary: string;
+  secondary: string;
+  text: string;
+}
 
-export { LoadingContext, ThemeContext };
+interface ThemeContextType {
+  light: ColorPackageType;
+  dark: ColorPackageType;
+}
+const ThemeContext = createContext({} as ThemeContextType);
+
+export { ThemeContext };

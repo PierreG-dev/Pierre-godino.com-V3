@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Layout from '../../src/components/Layout';
+import React, { useState } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Select from '@mui/material/Select';
@@ -59,119 +58,114 @@ const Skills: NextPage = () => {
   };
 
   return (
-    <Layout variant={'about'}>
-      <MainContainer>
-        {/*<img className={'background'} src="/res/skills-background.jpg" alt="" />*/}
+    <MainContainer>
+      {/*<img className={'background'} src="/res/skills-background.jpg" alt="" />*/}
+      <div
+        style={{
+          background: 'url("/res/overlay.png")',
+          backgroundSize: '0.22vw',
+          height: '100%',
+          width: '100%',
+          position: 'absolute',
+          opacity: 0.3,
+          zIndex: 0,
+          filter: 'contrast(1.5)',
+        }}></div>
+      <FilterContainer>
+        <Select
+          id={'filter-selector'}
+          variant={'outlined'}
+          value={data[displayedSkillId].name}
+          onChange={(event: any): void => {
+            setDisplayedSkillId(event.target.value);
+          }}
+          label="Age">
+          <MenuItem value={data[displayedSkillId].name}>
+            <p style={{ color: '#575757' }}>{data[displayedSkillId].name}</p>
+          </MenuItem>
+          {data.map((skill, key) => {
+            return (
+              <MenuItem value={skill.id} key={key}>
+                {skill.name}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FilterContainer>
+
+      <button
+        onClick={previousSkill}
+        style={{
+          position: 'absolute',
+          top: '25%',
+          left: '5%',
+          zIndex: 2,
+        }}>
+        <ChevronLeftIcon
+          fontSize={'large'}
+          style={{ transform: 'scale3d(4,4,1' }}
+        />
+      </button>
+      <button
+        onClick={nextSkill}
+        style={{
+          position: 'absolute',
+          top: '25%',
+          right: '5%',
+          zIndex: 2,
+        }}>
+        <ChevronRightIcon
+          fontSize={'large'}
+          style={{ transform: 'scale3d(4,4,1' }}
+        />
+      </button>
+
+      <SkillsContainer
+        style={{
+          transform: `translate3d(${-(displayedSkillId * 100)}vw, 0,0)`,
+        }}>
+        {displaySkills()}
+      </SkillsContainer>
+
+      <InfosContainer>
         <div
-          style={{
-            background: 'url("/res/overlay.png")',
-            backgroundSize: '0.22vw',
-            height: '100%',
-            width: '100%',
-            position: 'absolute',
-            opacity: 0.3,
-            zIndex: 0,
-            filter: 'contrast(1.5)',
-          }}></div>
-        <FilterContainer>
-          <Select
-            id={'filter-selector'}
-            variant={'outlined'}
-            value={data[displayedSkillId].name}
-            onChange={(event: any): void => {
-              setDisplayedSkillId(event.target.value);
-            }}
-            label="Age">
-            <MenuItem value={data[displayedSkillId].name}>
-              <p style={{ color: '#575757' }}>{data[displayedSkillId].name}</p>
-            </MenuItem>
-            {data.map((skill, key) => {
-              return (
-                <MenuItem value={skill.id} key={key}>
-                  {skill.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FilterContainer>
-
-        <button
-          onClick={previousSkill}
-          style={{
-            position: 'absolute',
-            top: '25%',
-            left: '5%',
-            zIndex: 2,
-          }}>
-          <ChevronLeftIcon
-            fontSize={'large'}
-            style={{ transform: 'scale3d(4,4,1' }}
-          />
-        </button>
-        <button
-          onClick={nextSkill}
-          style={{
-            position: 'absolute',
-            top: '25%',
-            right: '5%',
-            zIndex: 2,
-          }}>
-          <ChevronRightIcon
-            fontSize={'large'}
-            style={{ transform: 'scale3d(4,4,1' }}
-          />
-        </button>
-
-        <SkillsContainer
-          style={{
-            transform: `translate3d(${-(displayedSkillId * 100)}vw, 0,0)`,
-          }}>
-          {displaySkills()}
-        </SkillsContainer>
-
-        <InfosContainer>
-          <div
-            className={
-              'w-full text-center flex justify-around items-center p-3 h-2 -mt-16 mb-12'
-            }
-            style={{ maxWidth: 1000 }}>
-            {displayDots()}
+          className={
+            'w-full text-center flex justify-around items-center p-3 h-2 -mt-16 mb-12'
+          }
+          style={{ maxWidth: 1000 }}>
+          {displayDots()}
+        </div>
+        <div id={'infos'}>
+          <div className="flex items-center" title={'Expérience'}>
+            <TimelapseIcon
+              style={{
+                color: 'green',
+                filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.3))',
+              }}
+            />
+            <Bar variant={'experience'} level={data[displayedSkillId].xp} />
           </div>
-          <div id={'infos'}>
-            <div className="flex items-center" title={'Expérience'}>
-              <TimelapseIcon
-                style={{
-                  color: 'green',
-                  filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.3))',
-                }}
-              />
-              <Bar variant={'experience'} level={data[displayedSkillId].xp} />
-            </div>
-            <div className="flex items-center" title={'Maîtrise'}>
-              <FitnessCenterIcon
-                style={{
-                  color: 'royalblue',
-                  filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.3))',
-                }}
-              />
-              <Bar variant={'mastery'} level={data[displayedSkillId].mastery} />
-            </div>
-            <div className="flex items-center" title={'Affinité'}>
-              <FavoriteIcon
-                style={{
-                  color: 'orangered',
-                  filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.3))',
-                }}
-              />
-              <Bar
-                variant={'affinity'}
-                level={data[displayedSkillId].affinity}
-              />
-            </div>
+          <div className="flex items-center" title={'Maîtrise'}>
+            <FitnessCenterIcon
+              style={{
+                color: 'royalblue',
+                filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.3))',
+              }}
+            />
+            <Bar variant={'mastery'} level={data[displayedSkillId].mastery} />
           </div>
-        </InfosContainer>
-      </MainContainer>
-    </Layout>
+          <div className="flex items-center" title={'Affinité'}>
+            <FavoriteIcon
+              style={{
+                color: 'orangered',
+                filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.3))',
+              }}
+            />
+            <Bar variant={'affinity'} level={data[displayedSkillId].affinity} />
+          </div>
+        </div>
+      </InfosContainer>
+    </MainContainer>
   );
 };
 const IconContainer = styled.div`

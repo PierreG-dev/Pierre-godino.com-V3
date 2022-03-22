@@ -17,8 +17,8 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
   const [displayed, setDisplayed]: [displayType, any] = useState('full');
 
   useEffect(() => {
-    if (loaded === false) return;
-    setDisplayed('displayed');
+    if (!loaded) setDisplayed('full');
+    else setDisplayed('hidden');
   }, [loaded]);
 
   const translationPicker = useCallback((): {
@@ -37,7 +37,9 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           display: noLayoutMode ? 'none' : 'block',
         };
       default:
-        console.error('wrong translation type in Navbar');
+        return {
+          display: noLayoutMode ? 'none' : 'block',
+        };
     }
   }, [displayed, noLayoutMode]);
 
@@ -118,7 +120,7 @@ const MainContainer = styled.div`
         display: flex;
         justify-content: center;
         transition-delay: 4s;
-        transition: 1s;
+        transition: 0.2s;
         font-size: 1.1rem;
 
         a,

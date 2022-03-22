@@ -2,29 +2,29 @@
 
 /* Bebas Neue */
 @font-face {
-  font-family: "BebasNeue";
-  src: url("/fonts/BebasNeue/BebasNeue-Regular.ttf");
+  font-family: 'BebasNeue';
+  src: url('/fonts/BebasNeue/BebasNeue-Regular.ttf');
 }
 
 /* Montserrat */
 @font-face {
-  font-family: "Montserrat";
-  src: url("/fonts/Montserrat/Montserrat-Bold.ttf");
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat/Montserrat-Bold.ttf');
   font-weight: bold;
 }
 @font-face {
-  font-family: "Montserrat";
-  src: url("/fonts/Montserrat/Montserrat-SemiBold.ttf");
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat/Montserrat-SemiBold.ttf');
   font-weight: 600;
 }
 @font-face {
-  font-family: "Montserrat";
-  src: url("/fonts/Montserrat/Montserrat-Italic.ttf");
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat/Montserrat-Italic.ttf');
   font-style: italic;
 }
 @font-face {
-  font-family: "Montserrat";
-  src: url("/fonts/Montserrat/Montserrat-Regular.ttf");
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat/Montserrat-Regular.ttf');
 }
 
 /* ----------------------- */
@@ -36,7 +36,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
 
 /* ----------------- CLOCK ------------------ */
 
@@ -104,30 +103,36 @@ body {
 
 .typewriter h4 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .12em solid orange; /* The typwriter cursor */
+  border-right: 0.12em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: 0.15em; /* Adjust as needed */
-  animation:
-    typing 3.5s steps(32, end),
-    blink-caret .75s step-end infinite 3.5s;
+  animation: typing 3.5s steps(32, end),
+    blink-caret 0.75s step-end infinite 3.5s;
 }
 
 /* The typing effect */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
 }
 
 /* ------------------TYPEWRITER END ------------------ */
-
-
 
 /* ------------------ EXPERIENCES START ------------------ */
 .timeline-separator-exp {
@@ -135,18 +140,16 @@ body {
 }
 
 .timeline-separator-exp:hover {
-  transform: scale3d(1.1,1.1,1);
+  transform: scale3d(1.1, 1.1, 1);
 }
 
 /* ------------------ EXPERIENCES END ------------------ */
-
-
 
 /* ------------------MUI SELECTOR OVERRIDE START ------------------ */
 
 .MuiMenu-list {
   background: rgba(37, 37, 37, 0.95) !important;
-  color: rgba(255,255,255, 0.8)!important;
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* ------------------MUI SELECTOR END ------------------ */
@@ -154,56 +157,58 @@ body {
 /* ------------------ CURVY MOUNTAINS START ------------------ */
 
 .nectar-shape-divider-wrap {
-  position:absolute;
-  top:auto;
-  bottom:0;
-  left:0;
-  right:0;
-  width:100%;
-  height:150px;
-  z-index:3;
-  transform:translateZ(0)
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 3;
+  transform: translateZ(0);
 }
 .post-area.span_9 .nectar-shape-divider-wrap {
-  overflow:hidden
+  overflow: hidden;
 }
-.nectar-shape-divider-wrap[data-position=top] {
-  top:-1px;
-  bottom:auto
+.nectar-shape-divider-wrap[data-position='top'] {
+  top: -1px;
+  bottom: auto;
 }
-.nectar-shape-divider-wrap[data-position=top] {
-  transform:rotate(180deg)
+.nectar-shape-divider-wrap[data-position='top'] {
+  transform: rotate(180deg);
 }
-.nectar-shape-divider-wrap[data-front=true] {
-  z-index:50
+.nectar-shape-divider-wrap[data-front='true'] {
+  z-index: 50;
 }
-.nectar-shape-divider-wrap[data-style=mountains] svg path:first-child {
-  opacity:.1
+.nectar-shape-divider-wrap[data-style='mountains'] svg path:first-child {
+  opacity: 0.1;
 }
-.nectar-shape-divider-wrap[data-style=mountains] svg path:nth-child(2) {
-  opacity:.12
+.nectar-shape-divider-wrap[data-style='mountains'] svg path:nth-child(2) {
+  opacity: 0.12;
 }
-.nectar-shape-divider-wrap[data-style=mountains] svg path:nth-child(3) {
-  opacity:.18
+.nectar-shape-divider-wrap[data-style='mountains'] svg path:nth-child(3) {
+  opacity: 0.18;
 }
-.nectar-shape-divider-wrap[data-style=mountains] svg path:nth-child(4) {
-  opacity:.33
+.nectar-shape-divider-wrap[data-style='mountains'] svg path:nth-child(4) {
+  opacity: 0.33;
 }
 .nectar-shape-divider {
-  width:100%;
-  left:0;
-  bottom:-1px;
-  height:100%;
-  position:absolute
+  width: 100%;
+  left: 0;
+  bottom: -1px;
+  height: 100%;
+  position: absolute;
 }
-@media only screen and (max-width:999px) {
-  .nectar-shape-divider-wrap:not([data-using-percent-val=true]) .nectar-shape-divider {
-    height:75%
+@media only screen and (max-width: 999px) {
+  .nectar-shape-divider-wrap:not([data-using-percent-val='true'])
+    .nectar-shape-divider {
+    height: 75%;
   }
 }
-@media only screen and (max-width:690px) {
-  .nectar-shape-divider-wrap:not([data-using-percent-val=true]) .nectar-shape-divider {
-    height:33%
+@media only screen and (max-width: 690px) {
+  .nectar-shape-divider-wrap:not([data-using-percent-val='true'])
+    .nectar-shape-divider {
+    height: 33%;
   }
 }
 

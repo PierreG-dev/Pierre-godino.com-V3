@@ -7,34 +7,26 @@ import Footer from './footer/Footer';
 
 export type Props = {
   variant: 'classic' | 'about';
+  isLoaded: boolean;
+  handleLoad: () => void;
 };
 
-const Index: NextPage<Props> = ({ children, variant }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+const Index: NextPage<Props> = ({ children, variant, isLoaded }) => {
   const [noLayoutMode, setNoLayoutMode] = useState(false);
 
   const handleKeyDown = useCallback((event) => {
     if (event.key === '$') setNoLayoutMode((prevState) => !prevState);
   }, []);
 
-  const handleLoad = () => {
-    console.log('loaded !');
-    setTimeout(() => {
-      setIsLoaded((prevState) => !prevState);
-    }, 3000);
-  };
-
   useEffect(() => {
-    handleLoad();
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      handleLoad();
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [handleKeyDown]);
 
-  const navbarPicker = () => {
+  const navbarPicker = useCallback(() => {
     switch (variant) {
       case 'classic':
         return <Navbar loaded={isLoaded} noLayoutMode={noLayoutMode} />;
@@ -44,9 +36,14 @@ const Index: NextPage<Props> = ({ children, variant }) => {
         console.error('unknown navbar type');
         break;
     }
-  };
+  }, [noLayoutMode, isLoaded, variant]);
+
   return (
-    <MainContainer>
+    <MainContainer
+      style={{
+        background: isLoaded ? 'transparent' : '#373737',
+        zIndex: isLoaded ? 0 : 10,
+      }}>
       {noLayoutMode && (
         <NoLayoutWarning>|LayoutLess mode activated|</NoLayoutWarning>
       )}
@@ -64,6 +61,7 @@ const MainContainer = styled.div`
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  transition: 0.3s;
 `;
 
 const NoLayoutWarning = styled.p`

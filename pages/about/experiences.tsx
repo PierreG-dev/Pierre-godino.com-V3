@@ -1,20 +1,12 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Experience from '../../src/components/Experiences/Experience';
 import data from '../../src/components/Experiences/data';
 import { NextPage } from 'next';
-import Layout from '../../src/components/Layout';
 
 import Timeline from '@mui/lab/Timeline';
 import Clock from 'react-clock';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { More } from '@mui/icons-material';
 
 const clockOptions = {
   className: 'clock',
@@ -78,68 +70,66 @@ const Experiences: NextPage = () => {
   }, [screenSize, expandedXp]);
 
   return (
-    <Layout variant={'about'}>
-      <MainContainer>
-        <BackgroundContainer className={'bcg-star'}>
-          <div className="bcg-star">
-            <div id="stars"></div>
-            <div id="stars2"></div>
-            <div id="stars3"></div>
-          </div>
-        </BackgroundContainer>
-
-        <h1>Mes Experiences</h1>
-
-        <section id={'clock-section'}>
-          <Clock
-            value={time}
-            {...clockOptions}
-            size={screenSize <= 768 ? 150 : 300}
-          />
-          <div className="typewriter mt-8">
-            <h4
-              style={{
-                fontSize: screenSize <= 768 ? '1.2rem' : '3rem',
-                margin: screenSize <= 768 ? '30px 0px 75px 0px' : 0,
-              }}>
-              {TITLE}
-            </h4>
-          </div>
-        </section>
-
-        <div
-          className={screenSize <= 768 && 'timeline-phone'}
-          style={{
-            position: 'relative',
-            width: '100%',
-            marginLeft: 0,
-            padding: 0,
-          }}>
-          <Timeline
-            position={screenSize >= 768 ? 'alternate' : 'left'}
-            style={{
-              marginTop: -50,
-              width: '100vw',
-              padding: '5vw',
-              overflow: 'hidden',
-              position: 'relative',
-            }}>
-            {displayExperiences()}
-          </Timeline>
-          <div
-            style={{
-              display: 'flex',
-              width: '100%',
-              justifyContent: screenSize <= 768 ? 'flex-start' : 'center',
-              marginLeft: screenSize <= 768 ? '2.8vw' : 12,
-              marginTop: screenSize <= 768 ? -20 : -50,
-              color: '#cacaca',
-            }}>
-            <MoreHorizIcon style={{ fontSize: '4rem' }} />
-          </div>
+    <MainContainer>
+      <BackgroundContainer className={'bcg-star'}>
+        <div className="bcg-star">
+          <div id="stars"></div>
+          <div id="stars2"></div>
+          <div id="stars3"></div>
         </div>
-      </MainContainer>
-    </Layout>
+      </BackgroundContainer>
+
+      <h1>Mes Experiences</h1>
+
+      <section id={'clock-section'}>
+        <Clock
+          value={time}
+          {...clockOptions}
+          size={screenSize <= 768 ? 150 : 300}
+        />
+        <div className="typewriter mt-8">
+          <h4
+            style={{
+              fontSize: screenSize <= 768 ? '1.2rem' : '3rem',
+              margin: screenSize <= 768 ? '30px 0px 75px 0px' : 0,
+            }}>
+            {TITLE}
+          </h4>
+        </div>
+      </section>
+
+      <div
+        className={screenSize <= 768 && 'timeline-phone'}
+        style={{
+          position: 'relative',
+          width: '100%',
+          marginLeft: 0,
+          padding: 0,
+        }}>
+        <Timeline
+          position={screenSize >= 768 ? 'alternate' : 'left'}
+          style={{
+            marginTop: -50,
+            width: '100vw',
+            padding: '5vw',
+            overflow: 'hidden',
+            position: 'relative',
+          }}>
+          {displayExperiences()}
+        </Timeline>
+        <div
+          style={{
+            display: 'flex',
+            width: '100%',
+            justifyContent: screenSize <= 768 ? 'flex-start' : 'center',
+            marginLeft: screenSize <= 768 ? '2.8vw' : 12,
+            marginTop: screenSize <= 768 ? -20 : -50,
+            color: '#cacaca',
+          }}>
+          <MoreHorizIcon style={{ fontSize: '4rem' }} />
+        </div>
+      </div>
+    </MainContainer>
   );
 };
 

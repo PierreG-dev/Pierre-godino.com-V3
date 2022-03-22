@@ -1,16 +1,8 @@
-import Head from 'next/head';
-import React, {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Video from '../src/components/Home/Video';
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { LayersOutlined } from '@mui/icons-material';
-import Layout from '../src/components/Layout';
 
 const Home: NextPage = () => {
   const [devMode, setDevMode] = useState(false);
@@ -67,51 +59,49 @@ const Home: NextPage = () => {
       // eslint-disable-next-line no-restricted-globals
       removeEventListener('DOMContentLoaded', handleLoad);
     };
-  }, []);
+  }, [handleKeyDown, handleLoad, handleTouch]);
 
   return (
-    <Layout variant="classic">
-      <MainContainer>
-        <LoadingScreen
-          className={displayLoadingScreen ? 'opacity-0' : 'opacity-1'}
-          style={{
-            position: 'absolute',
-            background: '#373737',
-            height: '100%',
-            width: '100%',
-            top: 0,
-            left: 0,
-            color: '#fafafa',
-          }}></LoadingScreen>
+    <MainContainer>
+      <LoadingScreen
+        className={displayLoadingScreen ? 'opacity-0' : 'opacity-1'}
+        style={{
+          position: 'absolute',
+          background: '#373737',
+          height: '100%',
+          width: '100%',
+          top: 0,
+          left: 0,
+          color: '#fafafa',
+        }}></LoadingScreen>
 
-        {loaded ? (
-          <Video
-            url={'/video/neon-background.webm'}
-            handleLoadingScreen={handleLoadingScreen}
-          />
-        ) : null}
+      {loaded ? (
+        <Video
+          url={'/video/neon-background.webm'}
+          handleLoadingScreen={handleLoadingScreen}
+        />
+      ) : null}
 
-        <div
-          className="w-full h-full m-auto flex flex-col text-center gap-5 justify-center -my-24"
-          style={{ zIndex: 2 }}>
-          {devMode ? (
-            <React.Fragment>
-              <Link href="/about">ESPACE RECRUTEUR</Link>
-              <Link href="/about/experiences">EXPERIENCES</Link>
-              <Link href="/about/technologies">TECHNOLOGIES</Link>
-              <Link href="/about/curiculum">CV</Link>
-              <Link href="/contact">CONTACT</Link>
-              <Link href="/realisations">REALISATIONS</Link>
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              <h1 style={{ fontSize: '4rem' }}>Site en maintenance</h1>
-              <p className="text-sm">Revenez plus tard</p>
-            </React.Fragment>
-          )}
-        </div>
-      </MainContainer>
-    </Layout>
+      <div
+        className="w-full h-full m-auto flex flex-col text-center gap-5 justify-center -my-24"
+        style={{ zIndex: 2 }}>
+        {devMode ? (
+          <React.Fragment>
+            <Link href="/about">ESPACE RECRUTEUR</Link>
+            <Link href="/about/experiences">EXPERIENCES</Link>
+            <Link href="/about/technologies">TECHNOLOGIES</Link>
+            <Link href="/about/curiculum">CV</Link>
+            <Link href="/contact">CONTACT</Link>
+            <Link href="/realisations">REALISATIONS</Link>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <h1 style={{ fontSize: '4rem' }}>Site en maintenance</h1>
+            <p className="text-sm">Revenez plus tard</p>
+          </React.Fragment>
+        )}
+      </div>
+    </MainContainer>
   );
 };
 
