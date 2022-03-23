@@ -38,6 +38,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
         };
       default:
         return {
+          transform: 'translate3d(0, -80%, 0)',
           display: noLayoutMode ? 'none' : 'block',
         };
     }
@@ -64,7 +65,9 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
             <sup>beta</sup>
           </li>
           <li>
-            <img src="/res/LOGO.png" />
+            <Link href={'/'}>
+              <img src="/res/LOGO.png" className="HomeLogo" />
+            </Link>
           </li>
           <li
             className="effect-underline"
@@ -133,8 +136,14 @@ const MainContainer = styled.div`
         }
 
         img {
+          filter: grayscale(0.3);
           transform: translateY(1.2vw);
           width: 100px;
+          cursor: pointer;
+          transition: 0.2s;
+        }
+        img:hover {
+          filter: grayscale(0.1);
         }
       }
       li:hover a {
