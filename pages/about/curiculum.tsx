@@ -41,11 +41,11 @@ const Curiculum: NextPage = () => {
               <div>
                 <h3 className={'text-center w-full'}>Informatique</h3>
                 <ul className={'text-sm'}>
-                  <li>JavaScript</li>
-                  <li>ReactJs | NextJs</li>
+                  <li>JavaScript 🚀</li>
+                  <li>ReactJs | NextJs 🚀</li>
                   <li>HTML5 | CSS3</li>
-                  <li>Cordova</li>
-                  <li>React Native</li>
+                  <li>Algorithmie</li>
+                  <li>GIT</li>
                 </ul>
               </div>
 
@@ -66,17 +66,18 @@ const Curiculum: NextPage = () => {
             <h2>Experiences</h2>
 
             <Experience
-              date={'Dec. 2020'}
+              date={'Jui. 2021'}
+              title={'Formateur'}
+              subtitle={'Formawave | Axe Academy | AP Formations'}
+              actual={true}
+            />
+
+            <Experience
+              date={'Déc. 2020'}
               title={'Front-end React | Next'}
               subtitle={'Hackathon 60-Dozer'}
               note={'(1ère place)'}
               noteColor={'#ffbd59'}
-            />
-
-            <Experience
-              date={'Août 2020'}
-              title={'Full-stack PHP | Symfony'}
-              subtitle={'SARL Garage BRINCAT'}
             />
 
             <Experience
@@ -90,21 +91,24 @@ const Curiculum: NextPage = () => {
             <h2>Diplômes</h2>
 
             <Experience
-              date={'2016'}
-              title={'Baccalauréat Scientifique'}
-              subtitle={'Lycée Jean de Prades, Castelsarrasin'}
+              date={'2020'}
+              title={'Développeur WEB/Mobile'}
+              subtitle={'Digital Campus, Labège'}
+              titleColor={'#8e44ad'}
             />
 
             <Experience
               date={'2019'}
               title={'Licence Informatique'}
               subtitle={'Université Paul Sabatier, Toulouse'}
+              titleColor={'#c0392b'}
             />
 
             <Experience
-              date={'2020'}
-              title={'Titre Développeur WEB/Mobile'}
-              subtitle={'Digital Campus, Labège'}
+              date={'2016'}
+              title={'Baccalauréat Scientifique'}
+              subtitle={'Lycée Jean de Prades, Castelsarrasin'}
+              titleColor={'#f39c12'}
             />
           </section>
 
@@ -112,11 +116,10 @@ const Curiculum: NextPage = () => {
             <h2>Profil</h2>
 
             <p className={'text-sm'}>
-              Passionné d'informatique depuis toujours, le développement ne
-              dérogeant pas à la règle, je suis très impliqué dans les projets
-              auxquels je prends part, spécialement quand il s'agît de
-              travailler avec mes technologies favorites: <br />
-              React.js & Node.js (MERN).
+              Ancien développeur tombé amoureux de la formation, j'interviens
+              dans diverses écoles pour des modules orientés autour de la
+              programmation, <br />
+              en présentiel comme en visioconférence.
             </p>
           </section>
         </InfosContainer>
@@ -207,9 +210,10 @@ const Curiculum: NextPage = () => {
 };
 
 const MainContainer = styled.div`
+  margin-top: 6vh;
   position: relative;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   z-index: 0;
   overflow-x: hidden;
 
