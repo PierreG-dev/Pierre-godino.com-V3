@@ -168,7 +168,7 @@ const MainContainer = styled.div`
   }
   .middle-square::before {
     content: '';
-    margin-bottom: -2vw;
+    margin-bottom: -1.95vw;
     width: 21vw;
     border-radius: 0 0 20px 20px;
     border-top: 2vw solid #2d3436;
