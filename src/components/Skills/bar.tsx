@@ -83,7 +83,7 @@ const MainContainer = styled.div`
 const Filler = styled.div`
   width: 0;
   position: absolute;
-  height: 15px;
+  height: 17px;
   border-radius: 0 30px 30px 0;
   top: 0;
   left: 0;
