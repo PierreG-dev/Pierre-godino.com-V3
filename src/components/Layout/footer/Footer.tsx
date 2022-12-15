@@ -130,7 +130,7 @@ const Footer: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <p>
             Pierre-godino.com <sup>V3</sup>
           </p>
-          <p>2019 - 2021</p>
+          <p>2019 - 2022</p>
         </div>
       </footer>
     </MainContainer>

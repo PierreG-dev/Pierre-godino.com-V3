@@ -17,6 +17,29 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const titlePicker = useCallback((pathname) => {
+    switch (pathname.toLowerCase().trim()) {
+      case '/':
+        return 'Accueil';
+      case '/realisations':
+        return 'Réalisations';
+      case '/simulator':
+        return 'Simulation';
+      case '/contact':
+        return 'Contact';
+      case '/about':
+        return 'A propos';
+      case '/about/curiculum':
+        return 'CV';
+      case '/about/skills':
+        return 'Technologies';
+      case '/about/experiences':
+        return 'Experiences';
+      default:
+        return '404';
+    }
+  }, []);
+
   const handleLoad = () => {
     console.log('loaded !');
     setTimeout(() => {
@@ -27,6 +50,10 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     handleLoad();
   }, []);
+
+  useEffect(() => {
+    document.title = 'Pierre | ' + titlePicker(window.location.pathname);
+  });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleStart = useCallback(() => {
