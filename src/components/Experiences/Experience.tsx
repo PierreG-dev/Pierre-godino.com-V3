@@ -78,7 +78,9 @@ const periodPicker = (period) => {
   switch (period) {
     case 'University':
       return (
-        <div title={'University'} style={{ cursor: 'help' }}>
+        <div
+          title={'Université des Sciences Toulouse III'}
+          style={{ cursor: 'help' }}>
           <MenuBookIcon />
         </div>
       );
@@ -92,7 +94,7 @@ const periodPicker = (period) => {
       break;
     case 'Freelance':
       return (
-        <div title={'Freelance'} style={{ cursor: 'help' }}>
+        <div title={'Indépendant'} style={{ cursor: 'help' }}>
           <CodeIcon />
         </div>
       );
@@ -210,7 +212,7 @@ const Experience: React.FC<Props> = ({
                     }}>
                     Technologies
                   </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-4 mb-8">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-8">
                     {displayTechnology(technologies)}
                   </div>
                   <h3
@@ -221,7 +223,7 @@ const Experience: React.FC<Props> = ({
                     }}>
                     Environnement
                   </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-8 gap-6 flex-wrap">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-8">
                     {displayEnvironnements(environnements)}
                   </div>
                   <hr className={'my-5 w-3/4 mx-auto'} />

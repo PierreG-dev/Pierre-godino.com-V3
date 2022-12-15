@@ -12,7 +12,7 @@ const clockOptions = {
   className: 'clock',
 };
 
-const TITLE = "6 ans dans l'informatique.";
+const TITLE = "8 ans dans l'informatique.";
 
 const Experiences: NextPage = () => {
   const [scroll, setScroll] = useState(0);
@@ -121,12 +121,18 @@ const Experiences: NextPage = () => {
           style={{
             display: 'flex',
             width: '100%',
-            justifyContent: screenSize <= 768 ? 'flex-start' : 'center',
-            marginLeft: screenSize <= 768 ? '2.8vw' : 12,
-            marginTop: screenSize <= 768 ? -20 : -50,
+            justifyContent: screenSize <= 768 ? 'flex-end' : 'center',
+            marginLeft: screenSize <= 768 ? '-1.7vw' : '0.03vw',
+            marginTop: screenSize <= 768 ? -20 : -40,
             color: '#cacaca',
           }}>
-          <MoreHorizIcon style={{ fontSize: '4rem' }} />
+          <MoreHorizIcon
+            style={{
+              fontSize: '4rem',
+              transform: 'rotate(90deg)',
+              visibility: screenSize <= 768 ? 'hidden' : 'visible',
+            }}
+          />
         </div>
       </div>
     </MainContainer>
@@ -140,8 +146,10 @@ const MainContainer = styled.div`
   margin: 0;
   width: 100%;
   transition: 1s;
+  padding-bottom: 5vh;
 
   h1 {
+    margin-top: 10vh;
     font-family: Montserrat;
     font-size: 3rem;
     color: #dadada;

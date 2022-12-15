@@ -244,7 +244,7 @@ const data: Xp[] = [
     link: 'https://github.com/PierreG-dev/pierre-godino.com_V2',
   },
   {
-    period: 'DC',
+    period: 'Freelance',
     date: '01/2020',
     title: "Site d'E-Commerce ABNature 🧪",
     icon: '/icons/abnature.svg',
@@ -262,7 +262,7 @@ const data: Xp[] = [
     environnements: ['vscode', 'wamp', 'bash', 'phpmyadmin'],
   },
   {
-    period: 'DC',
+    period: 'Freelance',
     date: '04/2020',
     title: 'Application WEB Speedy-Nanie 🧸',
     icon: 'https://www.speedynanie.fr/wp-content/uploads/2020/09/Plan-de-travail-1.svg',
