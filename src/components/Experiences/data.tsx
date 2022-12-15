@@ -24,7 +24,9 @@ export type Technology =
   | 'java'
   | 'swing'
   | 'prestashop'
-  | 'tailwind';
+  | 'tailwind'
+  | 'express'
+  | 'pug';
 
 export type Environment =
   | 'trello'
@@ -433,6 +435,7 @@ const data: Xp[] = [
     ],
     environnements: ['webstorm', 'trello', 'git', 'adobexd', 'bash', 'yarn'],
     link: 'https://github.com/PierreG-dev/Pierre-godino.com-V3',
+    actual: true,
   },
   {
     period: 'Freelance',
@@ -553,6 +556,44 @@ const data: Xp[] = [
     ],
     environnements: ['bash', 'git', 'github', 'npm', 'vscode', 'yarn'],
     link: '',
+    actual: true,
+  },
+  {
+    period: 'Freelance',
+    date: '09/2022',
+    title: 'Plateforme LEARN',
+    icon: '/icons/LEARN.png',
+    description: (
+      <p>
+        Plateforme permettant à mes apprenants d'avoir à disposition les
+        instructions pratiques, corrections d'exercices et avancement du cours
+        en temps réel. <br />
+        Fournit également un support de cours produit par mes soins.
+        <br />
+        Toutes les informations sont en accès dynamique, synchronisé en temps
+        réel au back office piloté par moi-même pendant la classe.
+        <br />
+        <br />
+        Projet ambitieux, mais qui a fait ses preuves et a nettement amélioré
+        l'apprentissage des élèves.
+      </p>
+    ),
+    technologies: [
+      'html',
+      'css',
+      'js',
+      'nodejs',
+      'bootstrap',
+      'jsx',
+      'next',
+      'react',
+      'nosql',
+      'pug',
+      'express',
+      'materialui',
+    ],
+    environnements: ['vscode', 'trello', 'git', 'adobexd', 'bash', 'npm'],
+    link: 'https://github.com/PierreG-dev/LEARN',
     actual: true,
   },
 ];

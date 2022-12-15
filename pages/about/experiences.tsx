@@ -135,6 +135,11 @@ const Experiences: NextPage = () => {
           />
         </div>
       </div>
+
+      <aside>
+        <div></div>
+        Toujours en cours
+      </aside>
     </MainContainer>
   );
 };
@@ -148,12 +153,32 @@ const MainContainer = styled.div`
   transition: 1s;
   padding-bottom: 5vh;
 
+  aside {
+    display: flex;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Montserrat';
+    letter-spacing: 1px;
+    position: absolute;
+    top: 82vh;
+    right: 42.5vw;
+    justify-content: center;
+    width: 15vw;
+    div {
+      background: rgba(155, 253, 113, 0.63);
+      width: 25px;
+      height: 25px;
+      border-radius: 5px;
+    }
+  }
+
   h1 {
     margin-top: 10vh;
     font-family: Montserrat;
     font-size: 3rem;
     color: #dadada;
     text-align: center;
+    letter-spacing: 5px;
   }
 
   #clock-section {
