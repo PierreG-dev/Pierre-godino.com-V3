@@ -5,73 +5,73 @@ import Link from 'next/link';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const Index: NextPage = () => {
-  const ref = useRef();
+  // const ref = useRef();
 
-  let step = 0;
-  const colors = [
-    [62, 35, 255],
-    [60, 255, 60],
-    [255, 35, 98],
-    [45, 175, 230],
-    [255, 0, 255],
-    [255, 128, 0],
-  ];
-  const colorIndices = [0, 1, 2, 3];
-  const gradientSpeed = 0.002;
+  // let step = 0;
+  // const colors = [
+  //   [62, 35, 255],
+  //   [60, 255, 60],
+  //   [255, 35, 98],
+  //   [45, 175, 230],
+  //   [255, 0, 255],
+  //   [255, 128, 0],
+  // ];
+  // const colorIndices = [0, 1, 2, 3];
+  // const gradientSpeed = 0.002;
 
-  const updateGradient = useCallback(() => {
-    const col1 = colors[colorIndices[0]];
-    const col2 = colors[colorIndices[1]];
-    const e = colors[colorIndices[2]];
-    const t = colors[colorIndices[3]];
-    const c = 1 - step;
+  // const updateGradient = useCallback(() => {
+  //   const col1 = colors[colorIndices[0]];
+  //   const col2 = colors[colorIndices[1]];
+  //   const e = colors[colorIndices[2]];
+  //   const t = colors[colorIndices[3]];
+  //   const c = 1 - step;
 
-    const fromColor =
-      'rgb(' +
-      Math.round(c * col1[0] + step * col2[0]) +
-      ',' +
-      Math.round(c * col1[1] + step * col2[1]) +
-      ',' +
-      Math.round(c * col1[2] + step * col2[2]) +
-      ')';
-    const toColor =
-      'rgb(' +
-      Math.round(c * e[0] + step * t[0]) +
-      ',' +
-      Math.round(c * e[1] + step * t[1]) +
-      ',' +
-      Math.round(c * e[2] + step * t[2]) +
-      ')';
+  //   const fromColor =
+  //     'rgb(' +
+  //     Math.round(c * col1[0] + step * col2[0]) +
+  //     ',' +
+  //     Math.round(c * col1[1] + step * col2[1]) +
+  //     ',' +
+  //     Math.round(c * col1[2] + step * col2[2]) +
+  //     ')';
+  //   const toColor =
+  //     'rgb(' +
+  //     Math.round(c * e[0] + step * t[0]) +
+  //     ',' +
+  //     Math.round(c * e[1] + step * t[1]) +
+  //     ',' +
+  //     Math.round(c * e[2] + step * t[2]) +
+  //     ')';
 
-    if ((step += gradientSpeed) >= 1 && (step %= 1)) {
-      colorIndices[0] = colorIndices[1];
-      colorIndices[2] = colorIndices[3];
-      colorIndices[1] =
-        Math.floor(1 + Math.random() * (colors.length - 1)) % colors.length;
-      colorIndices[3] =
-        Math.floor(1 + Math.random() * (colors.length - 1)) % colors.length;
-    }
+  //   if ((step += gradientSpeed) >= 1 && (step %= 1)) {
+  //     colorIndices[0] = colorIndices[1];
+  //     colorIndices[2] = colorIndices[3];
+  //     colorIndices[1] =
+  //       Math.floor(1 + Math.random() * (colors.length - 1)) % colors.length;
+  //     colorIndices[3] =
+  //       Math.floor(1 + Math.random() * (colors.length - 1)) % colors.length;
+  //   }
 
-    console.log(step);
+  //   console.log(step);
 
-    if (ref.current)
-      // @ts-ignore
-      ref.current.style.background = `linear-gradient(90deg, ${fromColor} 0%, ${toColor} 100%)`;
-  }, [step, colors, colorIndices]);
+  //   if (ref.current)
+  //     // @ts-ignore
+  //     ref.current.style.background = `linear-gradient(90deg, ${fromColor} 0%, ${toColor} 100%)`;
+  // }, [step, colors, colorIndices]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      updateGradient();
-    }, 10);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     updateGradient();
+  //   }, 10);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
 
   return (
     <MainContainer>
-      <div
+      {/* <div
         ref={ref}
         className={'bcg-bubble'}
         style={{
@@ -85,7 +85,7 @@ const Index: NextPage = () => {
         <div id="bubbles1"></div>
         <div id="bubbles2"></div>
         <div id="bubbles3"></div>
-      </div>
+      </div> */}
       <section className="flex flex-col buttons-container">
         <div style={{ maxWidth: '100vw' }}>
           <Link href={'/about/skills'}>
@@ -113,12 +113,12 @@ const Index: NextPage = () => {
             <h3>Mon CV</h3>
           </button>
         </Link>
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <KeyboardArrowDownIcon />
-        </div>
+        </div> */}
       </section>
 
-      <section style={{ background: '#2c2f33' }} className={'relative'}>
+      {/* <section style={{ background: '#2c2f33' }} className={'relative'}>
         <div
           className="nectar-shape-divider-wrap "
           style={{ height: 350, top: -350 }}
@@ -248,11 +248,12 @@ const Index: NextPage = () => {
         ipsam molestias, repudiandae soluta suscipit vel! Aliquam consequuntur
         cupiditate debitis dolore doloremque fugiat, ipsam magnam natus nostrum
         quasi quia quo recusandae repellendus soluta tempora veritatis!
-      </section>
+      </section> */}
     </MainContainer>
   );
 };
 const MainContainer = styled.div`
+  background: #ecf0f1;
   width: 100vw;
   min-height: 100vh;
   position: relative;
@@ -271,7 +272,7 @@ const MainContainer = styled.div`
     object-fit: cover;
     opacity: 0;
     transition: 0.5s;
-    //transform: scale(1.02);
+    transform: scale(1.02);
   }
 
   button {
@@ -280,20 +281,22 @@ const MainContainer = styled.div`
     border-radius: 15px;
     margin: 10px;
     padding: 60px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.6);
     font-size: 2.5rem;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.7);
     animation: 6s appearing;
     animation-fill-mode: forwards;
     opacity: 0;
     transition: 0.2s;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.4);
   }
   button h3 {
     z-index: 2;
   }
   button:hover {
-    transform: translate3d(0, -2%, 0);
+    transform: translate3d(0, -15px, 0);
+    box-shadow: 5px 20px 15px 1px rgba(0, 0, 0, 0.4);
   }
   button:hover video {
     opacity: 1;
@@ -306,6 +309,10 @@ const MainContainer = styled.div`
     height: 100%;
     object-fit: cover;
     z-index: -2;
+  }
+
+  h3 {
+    font-family: BebasNeue;
   }
 
   h2,
@@ -323,7 +330,7 @@ const MainContainer = styled.div`
   }
 
   .buttons-container {
-    height: 125vh;
+    min-height: 100%;
     justify-content: center;
   }
 
