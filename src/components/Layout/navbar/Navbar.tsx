@@ -33,12 +33,12 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
         };
       case 'displayed':
         return {
-          transform: 'translate3d(0, -80%, 0)',
+          transform: 'translate3d(0, -78%, 0)',
           display: noLayoutMode ? 'none' : 'block',
         };
       default:
         return {
-          transform: 'translate3d(0, -80%, 0)',
+          transform: 'translate3d(0, -78%, 0)',
           display: noLayoutMode ? 'none' : 'block',
         };
     }
@@ -130,20 +130,24 @@ const MainContainer = styled.div`
         sup {
           color: rgba(255, 255, 255, 0.5);
           transition: 0.2s;
+          font-family: 'Montserrat';
+          letter-spacing: 1px;
         }
         sup {
           transform: translateY(8px);
+          font-size: 0.6rem;
         }
 
         img {
           filter: grayscale(0.3);
-          transform: translateY(1.2vw);
-          width: 100px;
+          transform: translateY(0.8vw);
+          width: 85px;
           cursor: pointer;
           transition: 0.2s;
         }
         img:hover {
           filter: grayscale(0.1);
+          transform: scale3d(1.1, 1.1, 1) translateY(0.8vw);
         }
       }
       li:hover a {
