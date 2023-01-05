@@ -9,6 +9,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import NProgress from 'nprogress';
 import { ThemeContext } from '../src/contexts';
 import Layout from '../src/components/Layout';
+import Maintenance from '../src/components/Maintenance/Maintenance';
 
 NProgress.configure({ showSpinner: true });
 
@@ -16,6 +17,7 @@ NProgress.configure({ showSpinner: true });
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [onMaintenance, setOnMaintenance] = useState(false);
 
   const titlePicker = useCallback((pathname) => {
     switch (pathname.toLowerCase().trim()) {
@@ -40,26 +42,18 @@ function MyApp({ Component, pageProps }) {
     }
   }, []);
 
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     console.log('loaded !');
     setTimeout(() => {
       setIsLoaded(true);
     }, 1000);
-  };
-
-  useEffect(() => {
-    handleLoad();
   }, []);
-
-  useEffect(() => {
-    document.title = 'Pierre | ' + titlePicker(window.location.pathname);
-  });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleStart = useCallback(() => {
     NProgress.start();
     setIsLoaded(false);
-  });
+  }, []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleComplete = useCallback(() => {
@@ -67,7 +61,15 @@ function MyApp({ Component, pageProps }) {
       NProgress.done();
       handleLoad();
     }, 1500);
-  });
+  }, []);
+
+  useEffect(() => {
+    handleLoad();
+  }, []);
+
+  useEffect(() => {
+    document.title = 'Pierre | ' + titlePicker(window.location.pathname);
+  }, [pageProps]);
 
   useEffect(() => {
     router.events.on('routeChangeStart', handleStart);
@@ -84,7 +86,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeContext.Provider>
       <Layout handleLoad={handleLoad} isLoaded={isLoaded} variant="classic">
-        <Component {...pageProps}></Component>
+        {onMaintenance ? (
+          <Maintenance />
+        ) : (
+          <Component {...pageProps}></Component>
+        )}
       </Layout>
     </ThemeContext.Provider>
   );
