@@ -91,10 +91,9 @@ const MainContainer = styled.div`
   left: 0;
   width: 100vw;
   height: 54vh;
-  z-index: 5;
+  z-index: 7;
   transition: 0.5s ease;
   transform: translate3d(0, -80%, 0);
-  z-index: 6;
 
   nav {
     position: absolute;

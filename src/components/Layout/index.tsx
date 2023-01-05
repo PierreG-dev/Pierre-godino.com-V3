@@ -44,6 +44,11 @@ const Index: NextPage<Props> = ({ children, variant, isLoaded }) => {
         background: isLoaded ? 'transparent' : '#373737',
         zIndex: isLoaded ? 0 : 10,
       }}>
+      <div
+        id="load_screen"
+        style={{
+          opacity: isLoaded ? 0 : 1,
+        }}></div>
       {noLayoutMode && (
         <NoLayoutWarning>|LayoutLess mode activated|</NoLayoutWarning>
       )}
@@ -62,6 +67,15 @@ const MainContainer = styled.div`
   height: 100vh;
   overflow-x: hidden;
   transition: 0.3s;
+
+  #load_screen {
+    top: 0;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: #272727;
+    z-index: 5;
+  }
 `;
 
 const NoLayoutWarning = styled.p`

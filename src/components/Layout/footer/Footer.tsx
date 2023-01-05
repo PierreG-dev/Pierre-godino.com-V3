@@ -145,7 +145,7 @@ const MainContainer = styled.div`
   height: 50vh;
   background: transparent;
   transition: 0.5s ease;
-  z-index: 5;
+  z-index: 6;
 
   .burger-container {
     position: absolute;
@@ -226,7 +226,7 @@ const MainContainer = styled.div`
   footer {
     position: absolute;
     top: 4vh;
-    z-index: 5;
+    z-index: 6;
     width: 100vw;
     height: 26vh;
     transition:1s;
