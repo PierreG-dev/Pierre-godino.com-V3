@@ -1,9 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCompass } from '@fortawesome/free-regular-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import HomeIcon from '@mui/icons-material/Home';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Link from 'next/link';
 
 export type displayType = 'full' | 'displayed';
@@ -15,6 +12,7 @@ export type Props = {
 
 const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
   const [displayed, setDisplayed]: [displayType, any] = useState('full');
+  const [dropdownDisplay, setDropdownDisplay] = useState(false);
 
   useEffect(() => {
     if (!loaded) setDisplayed('full');
@@ -52,7 +50,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
             <div className="middle-square"></div>
           </div>
         </div>
-        <ul>
+        <ul id="links_list">
           <li
             className="effect-underline"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
@@ -77,7 +75,37 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline small-hidden"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <Link href={'/about'}>A propos de moi</Link>
+            <Link href={'/about'}>
+              <div
+                id="custom_nav_dropdown"
+                onMouseEnter={() => setDropdownDisplay(true)}
+                onMouseLeave={() => setDropdownDisplay(false)}>
+                A propos de moi{' '}
+                <KeyboardArrowDownIcon
+                  style={{
+                    transform: dropdownDisplay
+                      ? 'rotate(0deg)'
+                      : 'rotate(180deg)',
+                    transition: '0.2s',
+                  }}
+                />
+                <ul
+                  style={{
+                    maxHeight: dropdownDisplay ? 1000 : 0,
+                    padding: dropdownDisplay ? 5 : 0,
+                  }}>
+                  <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
+                    <Link href={'/about/skills'}>Technologies</Link>
+                  </li>
+                  <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
+                    <Link href={'/about/experiences'}>Expériences</Link>
+                  </li>
+                  <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
+                    <Link href={'/about/curiculum'}>CV</Link>
+                  </li>
+                </ul>
+              </div>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -105,7 +133,61 @@ const MainContainer = styled.div`
     z-index: 3;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
 
-    ul {
+    #custom_nav_dropdown ul {
+      position: absolute;
+      max-height: 0;
+      min-width: 150px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      border-radius: 5px;
+      background: #2d3436;
+      color: white;
+      gap: 5px;
+      transition: 0.2s;
+      box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
+
+      li {
+        animation: 0.2s links_slide_down ease-out 1;
+        transition: 0.1s;
+        width: 100% !important;
+        max-width: 100% !important;
+        position: relative !important;
+
+        a {
+          color: rgba(255, 255, 255, 0.5) !important;
+          transition: 0.2s;
+          font-family: 'Montserrat';
+          letter-spacing: 1px;
+          width: 100% !important;
+          display: block;
+        }
+
+        a:hover {
+          color: rgba(255, 255, 255, 0.8) !important;
+          cursor: pointer;
+        }
+
+        a::after {
+          content: none !important;
+        }
+      }
+
+      li:hover {
+        position: relative;
+        max-width: 20%;
+        width: 20%;
+        min-width: 10%;
+        display: flex;
+        justify-content: center;
+        transition-delay: 4s;
+        transition: 0.2s;
+        font-size: 1.1rem;
+      }
+    }
+
+    #links_list {
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -126,7 +208,8 @@ const MainContainer = styled.div`
         font-size: 1.1rem;
 
         a,
-        sup {
+        sup,
+        #custom_nav_dropdown {
           color: rgba(255, 255, 255, 0.5);
           transition: 0.2s;
           font-family: 'Montserrat';
@@ -149,8 +232,10 @@ const MainContainer = styled.div`
           transform: scale3d(1.1, 1.1, 1) translateY(0.8vw);
         }
       }
-      li:hover a {
+      li:hover a,
+      li:hover #custom_nav_dropdown {
         color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
       }
       li:hover sup {
         color: rgba(255, 255, 255, 0.8);
@@ -217,7 +302,7 @@ const MainContainer = styled.div`
   }
 
   /*effect-underline*/
-  li.effect-underline a:after {
+  #links_list > li.effect-underline a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -234,10 +319,25 @@ const MainContainer = styled.div`
     transform: scale(0, 1);
   }
 
-  li.effect-underline a:hover:after {
+  #links_list > li.effect-underline a:hover::after {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
+  }
+
+  @keyframes links_slide_down {
+    0% {
+      opacity: 0;
+      margin-top: -20px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    100% {
+      opacity: 1;
+      margin-top: 0;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
   }
 `;
 

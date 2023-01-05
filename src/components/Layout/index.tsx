@@ -48,6 +48,7 @@ const Index: NextPage<Props> = ({ children, variant, isLoaded }) => {
         id="load_screen"
         style={{
           opacity: isLoaded ? 0 : 1,
+          zIndex: isLoaded ? -1 : 5,
         }}></div>
       {noLayoutMode && (
         <NoLayoutWarning>|LayoutLess mode activated|</NoLayoutWarning>
