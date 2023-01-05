@@ -31,12 +31,12 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
         };
       case 'displayed':
         return {
-          transform: 'translate3d(0, -78%, 0)',
+          transform: 'translate3d(0, -86%, 0)',
           display: noLayoutMode ? 'none' : 'block',
         };
       default:
         return {
-          transform: 'translate3d(0, -78%, 0)',
+          transform: 'translate3d(0, -86%, 0)',
           display: noLayoutMode ? 'none' : 'block',
         };
     }
@@ -121,7 +121,7 @@ const MainContainer = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 54vh;
+  height: 50vh;
   z-index: 7;
   transition: 0.5s ease;
   transform: translate3d(0, -80%, 0);
