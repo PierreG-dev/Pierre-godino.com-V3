@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Video from './Video';
+import MaintenenanceVideo from './MaintenanceVideo';
 import { NextPage } from 'next';
 import Link from 'next/link';
 
@@ -76,7 +76,7 @@ const Maintenance: NextPage = () => {
         }}></LoadingScreen>
 
       {loaded ? (
-        <Video
+        <MaintenenanceVideo
           url={'/video/neon-background.webm'}
           handleLoadingScreen={handleLoadingScreen}
         />
