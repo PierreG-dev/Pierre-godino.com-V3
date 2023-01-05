@@ -93,6 +93,9 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                   style={{
                     maxHeight: dropdownDisplay ? 1000 : 0,
                     padding: dropdownDisplay ? 5 : 0,
+                    boxShadow: dropdownDisplay
+                      ? '0 1px 5px 1px rgba(0, 0, 0, 0.3)'
+                      : 'none',
                   }}>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
                     <Link href={'/about/skills'}>Technologies</Link>
@@ -146,7 +149,6 @@ const MainContainer = styled.div`
       color: white;
       gap: 5px;
       transition: 0.2s;
-      box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
 
       li {
         animation: 0.2s links_slide_down ease-out 1;
