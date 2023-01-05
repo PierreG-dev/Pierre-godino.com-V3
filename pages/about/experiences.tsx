@@ -98,6 +98,11 @@ const Experiences: NextPage = () => {
         </div>
       </section>
 
+      <aside>
+        <div></div>
+        Toujours en cours
+      </aside>
+
       <div
         className={screenSize <= 768 && 'timeline-phone'}
         style={{
@@ -109,7 +114,6 @@ const Experiences: NextPage = () => {
         <Timeline
           position={screenSize >= 768 ? 'alternate' : 'left'}
           style={{
-            marginTop: -50,
             width: '100vw',
             padding: '5vw',
             overflow: 'hidden',
@@ -125,21 +129,8 @@ const Experiences: NextPage = () => {
             marginLeft: screenSize <= 768 ? '-1.7vw' : '0.03vw',
             marginTop: screenSize <= 768 ? -20 : -40,
             color: '#cacaca',
-          }}>
-          <MoreHorizIcon
-            style={{
-              fontSize: '4rem',
-              transform: 'rotate(90deg)',
-              visibility: screenSize <= 768 ? 'hidden' : 'visible',
-            }}
-          />
-        </div>
+          }}></div>
       </div>
-
-      <aside>
-        <div></div>
-        Toujours en cours
-      </aside>
     </MainContainer>
   );
 };
@@ -159,11 +150,8 @@ const MainContainer = styled.div`
     color: rgba(255, 255, 255, 0.8);
     font-family: 'Montserrat';
     letter-spacing: 1px;
-    position: absolute;
-    top: 82vh;
-    right: 42.5vw;
     justify-content: center;
-    width: 15vw;
+    width: 100vw;
     div {
       background: rgba(155, 253, 113, 0.63);
       width: 25px;
