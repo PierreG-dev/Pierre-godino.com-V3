@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import GlobeVideo from '../src/components/Home/GlobeVideo';
 import createGlobe from 'cobe';
 import { NextPage } from 'next';
 
