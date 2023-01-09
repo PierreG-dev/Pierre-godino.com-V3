@@ -65,9 +65,13 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     handleLoad();
+    fetch('http://localhost:8001/api/newVisit', { method: 'POST' }).catch(
+      (error) => console.error(error)
+    );
   }, []);
 
   useEffect(() => {
+    console.log('page changed');
     document.title = 'Pierre | ' + titlePicker(window.location.pathname);
   }, [pageProps]);
 
