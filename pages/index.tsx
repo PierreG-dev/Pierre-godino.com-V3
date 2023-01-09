@@ -2,12 +2,10 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import createGlobe from 'cobe';
 import { NextPage } from 'next';
-import Glitch from '../src/components/Home/Glitch';
-import { JsxElement } from 'typescript';
-import Word from '../src/components/Home/Word';
+import Sentence from '../src/components/Home/Sentence';
 
 const Home: NextPage = () => {
-  const [isGlitching, setIsGlitching] = useState(true);
+  const [sentence, setSentence] = useState('lorem ipsum dolor sit amet');
   const canvasRef = useRef();
   const starsArray: any = useRef();
 
@@ -33,8 +31,9 @@ const Home: NextPage = () => {
     return myStars;
   }, []);
 
-  //Génère la Terre
+  //Génère la Terre et les étoiles
   useEffect(() => {
+    starsArray.current = starsGenerator();
     let phi = 0;
 
     const globe = createGlobe(canvasRef.current, {
@@ -68,18 +67,31 @@ const Home: NextPage = () => {
   }, []);
 
   useEffect(() => {
-    starsArray.current = starsGenerator();
+    const sentencesArray = [
+      'lorem ipsum dolor sit amet',
+      'i link people together',
+      'je relie les gens entre eux',
+    ];
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') setIsGlitching((previousState) => !previousState);
+      if (e.key === 'Enter')
+        setSentence(
+          sentencesArray[Math.floor(Math.random() * sentencesArray.length)]
+        );
     });
 
     return () => {
       window.removeEventListener('keydown', (e) => {
         if (e.key === 'Enter')
-          setIsGlitching((previousState) => !previousState);
+          setSentence(
+            sentencesArray[Math.floor(Math.random() * sentencesArray.length)]
+          );
       });
     };
   }, []);
+
+  useEffect(() => {
+    console.log(Sentence);
+  }, [sentence]);
 
   return (
     <MainContainer>
@@ -88,7 +100,7 @@ const Home: NextPage = () => {
         <canvas ref={canvasRef} id="globe" />
         <div id="content">
           <h1>
-            <Word word="azerty17" isGlitching={isGlitching} />
+            <Sentence sentence={sentence} isGlitching={true} />
           </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -125,6 +137,8 @@ const MainContainer = styled.div`
 
       h1 {
         color: white;
+        font-family: 'Righteous', cursive;
+        font-size: 2.5rem;
       }
     }
 

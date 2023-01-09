@@ -17,7 +17,7 @@ const Word: React.FC<Props> = ({ word, isGlitching }) => {
     [word, isGlitching]
   );
 
-  return <React.Fragment>{wordCutter()}</React.Fragment>;
+  return <React.Fragment>{wordCutter()} </React.Fragment>;
 };
 
 export default Word;
