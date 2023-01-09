@@ -1,15 +1,19 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import createGlobe from 'cobe';
 import { NextPage } from 'next';
+import Glitch from '../src/components/Home/Glitch';
+import { JsxElement } from 'typescript';
 
 const Home: NextPage = () => {
+  const [isGlitching, setIsGlitching] = useState(true);
   const canvasRef = useRef();
-  const [pageWidth, setPageWidth] = useState(100);
+  const starsArray: any = useRef();
   console.log(canvasRef.current);
 
+  //Générateur d'étoiles
   const starsGenerator = useCallback(() => {
-    const myStars = [];
+    const myStars: Array<JSX.Element> = [];
     for (let i = 0; i < 200; ++i) {
       const size = Math.ceil(Math.random() * 3) + 'px';
 
@@ -27,10 +31,10 @@ const Home: NextPage = () => {
       );
     }
     return myStars;
-  }, [pageWidth]);
+  }, []);
 
+  //Génère la Terre
   useEffect(() => {
-    setPageWidth(window.innerWidth);
     let phi = 0;
 
     const globe = createGlobe(canvasRef.current, {
@@ -63,13 +67,36 @@ const Home: NextPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    starsArray.current = starsGenerator();
+    window.addEventListener('keydown', (e) => {
+      console.log('prout');
+      if (e.key === 'Enter') setIsGlitching((previousState) => !previousState);
+    });
+
+    return () => {
+      window.removeEventListener('keydown', (e) => {
+        console.log('prout');
+        if (e.key === 'Enter')
+          setIsGlitching((previousState) => !previousState);
+      });
+    };
+  }, []);
+
   return (
     <MainContainer>
       <section id="landing">
-        {starsGenerator()}
+        {starsArray.current}
         <canvas ref={canvasRef} id="globe" />
         <div id="content">
-          <h1>Je suis développeur</h1>
+          <h1>
+            <Glitch letter="a" isGlitching={isGlitching} />
+            <Glitch letter="z" isGlitching={isGlitching} />
+            <Glitch letter="e" isGlitching={isGlitching} />
+            <Glitch letter="r" isGlitching={isGlitching} />
+            <Glitch letter="t" isGlitching={isGlitching} />
+            <Glitch letter="y" isGlitching={isGlitching} />
+          </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             Consequatur commodi vero doloremque placeat corporis magnam et natus
