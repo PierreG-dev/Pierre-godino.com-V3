@@ -4,12 +4,12 @@ import createGlobe from 'cobe';
 import { NextPage } from 'next';
 import Glitch from '../src/components/Home/Glitch';
 import { JsxElement } from 'typescript';
+import Word from '../src/components/Home/Word';
 
 const Home: NextPage = () => {
   const [isGlitching, setIsGlitching] = useState(true);
   const canvasRef = useRef();
   const starsArray: any = useRef();
-  console.log(canvasRef.current);
 
   //Générateur d'étoiles
   const starsGenerator = useCallback(() => {
@@ -70,13 +70,11 @@ const Home: NextPage = () => {
   useEffect(() => {
     starsArray.current = starsGenerator();
     window.addEventListener('keydown', (e) => {
-      console.log('prout');
       if (e.key === 'Enter') setIsGlitching((previousState) => !previousState);
     });
 
     return () => {
       window.removeEventListener('keydown', (e) => {
-        console.log('prout');
         if (e.key === 'Enter')
           setIsGlitching((previousState) => !previousState);
       });
@@ -90,12 +88,7 @@ const Home: NextPage = () => {
         <canvas ref={canvasRef} id="globe" />
         <div id="content">
           <h1>
-            <Glitch letter="a" isGlitching={isGlitching} />
-            <Glitch letter="z" isGlitching={isGlitching} />
-            <Glitch letter="e" isGlitching={isGlitching} />
-            <Glitch letter="r" isGlitching={isGlitching} />
-            <Glitch letter="t" isGlitching={isGlitching} />
-            <Glitch letter="y" isGlitching={isGlitching} />
+            <Word word="azerty17" isGlitching={isGlitching} />
           </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.

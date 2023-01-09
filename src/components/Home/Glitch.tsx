@@ -20,7 +20,6 @@ const Glitch: React.FC<Props> = ({ letter, isGlitching }) => {
   //fonction pour démarrer le glitch (avec délai)
   const delayedGlitchStart = useCallback(() => {
     setTimeout(() => {
-      console.log(delay.current);
       intervalCode.current = setInterval(charGenerator, 100);
     }, delay.current);
   }, [intervalCode, charGenerator]);
@@ -28,7 +27,6 @@ const Glitch: React.FC<Props> = ({ letter, isGlitching }) => {
   //fonction pour arréter le glitch (avec délai)
   const delayedGlitchStop = useCallback(() => {
     setTimeout(() => {
-      console.log(delay.current);
       intervalCode.current = clearInterval(intervalCode.current);
       setDisplayedLetter(letter);
     }, delay.current);
