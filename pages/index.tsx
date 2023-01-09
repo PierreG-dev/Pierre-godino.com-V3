@@ -5,19 +5,31 @@ import { NextPage } from 'next';
 import GlitchHandler from '../src/components/Home/GlitchHandler';
 
 const Home: NextPage = () => {
-  const prefixArray = useRef<string[]>(['Je suis', 'I am']);
+  const prefixArray = useRef<string[]>([
+    'Je suis',
+    'Je forge',
+    'I am',
+    'I forge',
+  ]);
   const titleArray = useRef<string[]>([
     'développeur',
     'formateur',
-    'rêveur',
+    'le net',
+    'des esprits',
     'a developer',
     'a trainer',
-    'a dreamer',
+    'the internet',
+    'minds',
   ]);
   const sentencesArray = useRef<string[]>([
-    'Je relie les gens ensemble',
-    'i link people together',
-    'je vole',
+    "Les logiciels et les cathédrales, c'est un peu la même chose: d'abord on les construit, ensuite on prie.",
+    "N'importe quel idiot peut écrire du code qu'un ordinateur peut comprendre. Les bons programmeurs écrivent du code que les humains peuvent comprendre.",
+    'Toute technologie suffisamment avancée est indiscernable de la magie.',
+    "L'enseignement devrait être tel que ce qui est offert soit perçu comme un cadeau précieux et non comme une tâche difficile.",
+    'Software and cathedrals are a bit the same thing: first we build them, then we pray.',
+    'Any idiot can write code that a computer can understand. Good programmers write code that humans can understand.',
+    'Any sufficiently advanced technology is indistinguishable from magic.',
+    'Teaching should be such that what is offered is perceived as a precious gift and not as a difficult task.',
   ]);
   const canvasRef = useRef();
   const starsArray: any = useRef();
@@ -64,7 +76,7 @@ const Home: NextPage = () => {
       glowColor: [0.102, 0.357, 0.7395],
       markers: [
         // longitude latitude
-        { location: [43.6, 1.433333], size: 0.05 },
+        { location: [43.6, 1.433333], size: 0.03 },
       ],
       onRender: (state) => {
         // Called on every animation frame.
@@ -86,7 +98,7 @@ const Home: NextPage = () => {
         <canvas ref={canvasRef} id="globe" />
         <div id="content">
           <h1>
-            <GlitchHandler sentences={prefixArray.current} delay={21250} />
+            <GlitchHandler sentences={prefixArray.current} delay={14000} />
             <GlitchHandler sentences={titleArray.current} delay={7000} />
           </h1>
           <i>
@@ -118,7 +130,7 @@ const MainContainer = styled.div`
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      width: 35vw;
+      width: 50vw;
       justify-content: center;
       gap: 10px;
 
@@ -135,7 +147,7 @@ const MainContainer = styled.div`
         color: rgba(255, 255, 255, 0.6);
         text-shadow: 1px 1px 4px rgba(250, 250, 250, 0.4);
         font-size: 1.2rem;
-        margin-left: 30px;
+        margin-left: 10px;
       }
     }
 
