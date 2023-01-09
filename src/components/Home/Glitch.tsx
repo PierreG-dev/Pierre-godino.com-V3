@@ -20,7 +20,7 @@ const Glitch: React.FC<Props> = ({ letter, isGlitching }) => {
   //fonction pour démarrer le glitch (avec délai)
   const delayedGlitchStart = useCallback(() => {
     setTimeout(() => {
-      intervalCode.current = setInterval(charGenerator, 100);
+      intervalCode.current = setInterval(charGenerator, 150);
     }, delay.current);
   }, [intervalCode, charGenerator]);
 
@@ -44,7 +44,7 @@ const Glitch: React.FC<Props> = ({ letter, isGlitching }) => {
 
   // Effet de gestion de vie du composant
   useEffect(() => {
-    delay.current = Math.floor(Math.random() * 1000);
+    delay.current = Math.floor(Math.random() * 1500);
 
     return () => {
       clearInterval(intervalCode.current);

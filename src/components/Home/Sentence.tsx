@@ -17,8 +17,6 @@ const Sentence: React.FC<Props> = ({ sentence, isGlitching }) => {
     [sentence, isGlitching]
   );
 
-  console.log(sentenceCutter());
-
   return <React.Fragment>{sentenceCutter()}</React.Fragment>;
 };
 

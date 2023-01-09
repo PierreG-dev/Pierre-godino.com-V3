@@ -2,10 +2,23 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import createGlobe from 'cobe';
 import { NextPage } from 'next';
-import Sentence from '../src/components/Home/Sentence';
+import GlitchHandler from '../src/components/Home/GlitchHandler';
 
 const Home: NextPage = () => {
-  const [sentence, setSentence] = useState('lorem ipsum dolor sit amet');
+  const prefixArray = useRef<string[]>(['Je suis', 'I am']);
+  const titleArray = useRef<string[]>([
+    'développeur',
+    'formateur',
+    'rêveur',
+    'a developer',
+    'a trainer',
+    'a dreamer',
+  ]);
+  const sentencesArray = useRef<string[]>([
+    'Je relie les gens ensemble',
+    'i link people together',
+    'je vole',
+  ]);
   const canvasRef = useRef();
   const starsArray: any = useRef();
 
@@ -66,33 +79,6 @@ const Home: NextPage = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const sentencesArray = [
-      'lorem ipsum dolor sit amet',
-      'i link people together',
-      'je relie les gens entre eux',
-    ];
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter')
-        setSentence(
-          sentencesArray[Math.floor(Math.random() * sentencesArray.length)]
-        );
-    });
-
-    return () => {
-      window.removeEventListener('keydown', (e) => {
-        if (e.key === 'Enter')
-          setSentence(
-            sentencesArray[Math.floor(Math.random() * sentencesArray.length)]
-          );
-      });
-    };
-  }, []);
-
-  useEffect(() => {
-    console.log(Sentence);
-  }, [sentence]);
-
   return (
     <MainContainer>
       <section id="landing">
@@ -100,13 +86,12 @@ const Home: NextPage = () => {
         <canvas ref={canvasRef} id="globe" />
         <div id="content">
           <h1>
-            <Sentence sentence={sentence} isGlitching={true} />
+            <GlitchHandler sentences={prefixArray.current} delay={21250} />
+            <GlitchHandler sentences={titleArray.current} delay={7000} />
           </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Consequatur commodi vero doloremque placeat corporis magnam et natus
-            beatae.
-          </p>
+          <i>
+            <GlitchHandler sentences={sentencesArray.current} delay={7000} />
+          </i>
         </div>
       </section>
     </MainContainer>
@@ -129,16 +114,28 @@ const MainContainer = styled.div`
     overflow: hidden;
 
     #content {
+      padding: 5vw;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      width: 45vw;
+      align-items: flex-start;
+      width: 35vw;
       justify-content: center;
+      gap: 10px;
 
       h1 {
-        color: white;
+        margin-top: -20vh;
         font-family: 'Righteous', cursive;
+        font-family: 'Space Mono', monospace;
         font-size: 2.5rem;
+        text-shadow: 1px 1px 5px rgba(250, 250, 250, 0.7);
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      i {
+        color: rgba(255, 255, 255, 0.6);
+        text-shadow: 1px 1px 4px rgba(250, 250, 250, 0.4);
+        font-size: 1.2rem;
+        margin-left: 30px;
       }
     }
 
