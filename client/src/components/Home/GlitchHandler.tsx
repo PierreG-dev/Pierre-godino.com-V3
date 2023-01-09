@@ -28,11 +28,11 @@ const GlitchHandler: React.FC<Props> = ({ sentences, delay }) => {
     setIsGlitching(true);
     setTimeout(() => {
       setDisplayedSentence(sentencePicker());
-    }, 2000);
+    }, 1000);
 
     setTimeout(() => {
       setIsGlitching(false);
-    }, 2600);
+    }, 1600);
   }, [sentencePicker]);
 
   useEffect(() => {
