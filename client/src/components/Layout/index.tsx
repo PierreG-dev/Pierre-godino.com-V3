@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import AboutNavbar from './navbar/AboutNavbar';
 import Navbar from './navbar/Navbar';
 import Footer from './footer/Footer';
+import AdminModal from './admin/adminModal';
 
 export type Props = {
   variant: 'classic' | 'about';
@@ -11,20 +12,20 @@ export type Props = {
   handleLoad: () => void;
 };
 
-const Index: NextPage<Props> = ({ children, variant, isLoaded }) => {
+const Index: React.FC<Props> = ({ children, variant, isLoaded }) => {
   const [noLayoutMode, setNoLayoutMode] = useState(false);
+  const [isAdminModalOpened, setIsAdminModalOpened] = useState(false);
+
+  const HandleAdminModalOpen = useCallback(() => {
+    setIsAdminModalOpened(true);
+  }, []);
+  const HandleAdminModalClose = useCallback(() => {
+    setIsAdminModalOpened(false);
+  }, []);
 
   const handleKeyDown = useCallback((event) => {
     if (event.key === '$') setNoLayoutMode((prevState) => !prevState);
   }, []);
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleKeyDown]);
 
   const navbarPicker = useCallback(() => {
     switch (variant) {
@@ -38,6 +39,14 @@ const Index: NextPage<Props> = ({ children, variant, isLoaded }) => {
     }
   }, [noLayoutMode, isLoaded, variant]);
 
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
   return (
     <MainContainer
       style={{
@@ -50,13 +59,23 @@ const Index: NextPage<Props> = ({ children, variant, isLoaded }) => {
           opacity: isLoaded ? 0 : 1,
           zIndex: isLoaded ? -1 : 5,
         }}></div>
+
+      <AdminModal
+        isOpened={isAdminModalOpened}
+        handleClose={HandleAdminModalClose}
+      />
+
       {noLayoutMode && (
         <NoLayoutWarning>|LayoutLess mode activated|</NoLayoutWarning>
       )}
       {navbarPicker()}
       <div className={'relative'}>{children}</div>
       {variant === 'classic' && (
-        <Footer loaded={isLoaded} noLayoutMode={noLayoutMode} />
+        <Footer
+          loaded={isLoaded}
+          noLayoutMode={noLayoutMode}
+          handleAdminModalOpen={HandleAdminModalOpen}
+        />
       )}
     </MainContainer>
   );

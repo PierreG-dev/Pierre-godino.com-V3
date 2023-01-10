@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import MenuIcon from '@mui/icons-material/Menu';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import Link from 'next/link';
 
 export type displayType = 'full' | 'displayed' | 'hidden';
@@ -8,15 +9,16 @@ export type displayType = 'full' | 'displayed' | 'hidden';
 export type Props = {
   loaded: boolean;
   noLayoutMode: boolean;
+  handleAdminModalOpen: () => void;
 };
 
-const Footer: React.FC<Props> = ({ loaded, noLayoutMode }) => {
-  const [displayed, setDisplayed]: [displayType, any] = useState('full');
-
-  useEffect(() => {
-    if (!loaded) setDisplayed('full');
-    else setDisplayed('hidden');
-  }, [loaded]);
+const Footer: React.FC<Props> = ({
+  loaded,
+  noLayoutMode,
+  handleAdminModalOpen,
+}) => {
+  const [displayed, setDisplayed] = useState<displayType>('full');
+  const [displayLock, setDisplayLock] = useState<boolean>(false);
 
   const translationPicker = useCallback((): {
     transform: string | void;
@@ -47,6 +49,19 @@ const Footer: React.FC<Props> = ({ loaded, noLayoutMode }) => {
     if ((displayed as displayType) === 'displayed') setDisplayed('hidden');
     return;
   }, [displayed]);
+
+  const handleLogoHover = useCallback(() => {
+    setDisplayLock(true);
+  }, []);
+
+  const handleLogoLeave = useCallback(() => {
+    setDisplayLock(false);
+  }, []);
+
+  useEffect(() => {
+    if (!loaded) setDisplayed('full');
+    else setDisplayed('hidden');
+  }, [loaded]);
 
   return (
     <MainContainer style={translationPicker()}>
@@ -90,7 +105,43 @@ const Footer: React.FC<Props> = ({ loaded, noLayoutMode }) => {
             </div>
           </div>
           <div id="center">
-            <img src="/res/LOGO.png" />
+            <CenterIcon
+              style={{ transform: displayLock ? 'rotate(-90deg)' : 'none' }}
+              onMouseOver={handleLogoHover}
+              onMouseLeave={handleLogoLeave}>
+              <img
+                src="/res/LOGO_upperpart.png"
+                id="logo_upperpart"
+                style={{
+                  transform:
+                    !displayLock &&
+                    'translateY(13px) translateX(-2px) rotate(1deg)',
+                  height: 30,
+                  animation: displayLock
+                    ? '0.7s 0.5s upperpart_up ease 1 both'
+                    : 'none',
+                }}
+                alt="LOGO upperpart"
+              />
+              <VpnKeyIcon
+                onClick={handleAdminModalOpen}
+                style={{
+                  opacity: displayLock ? 0.6 : 0,
+                  transform: displayLock
+                    ? 'rotate(90deg) scale3d(1,1,1)'
+                    : 'rotate(90deg) scale3d(0.7,0.7,1)',
+                }}
+              />
+              <img
+                id="logo_lowerpart"
+                src="/res/LOGO_lowerpart.png"
+                style={{
+                  transform: !displayLock && 'translateY(-13.5px)',
+                  height: 40,
+                }}
+                alt="LOGO lowerpart"
+              />
+            </CenterIcon>
           </div>
           <div id="right-side">
             <div>
@@ -99,26 +150,32 @@ const Footer: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 <li>
                   <a
                     href="https://www.malt.fr/profile/pierregodino"
-                    target={'_blank'}>
+                    target={'_blank'}
+                    rel="noreferrer">
                     Malt
                   </a>
                 </li>
                 <li>
                   <a
                     href="https://www.linkedin.com/in/pierre-godino-50b503186"
-                    target={'_blank'}>
+                    target={'_blank'}
+                    rel="noreferrer">
                     LinkedIn
                   </a>
                 </li>
                 <li>
                   <a
                     href="https://www.google.fr/maps/place/D%C3%A9veloppeur+WEB+-+Pierre+Godino/@44.2010925,0.6126983,14z/data=!3m1!4b1!4m5!3m4!1s0x12abf374e1251189:0x8265400e1564dd61!8m2!3d44.201063!4d0.6302079"
-                    target={'_blank'}>
+                    target={'_blank'}
+                    rel="noreferrer">
                     Maps
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/PierreG-dev" target={'_blank'}>
+                  <a
+                    href="https://github.com/PierreG-dev"
+                    target={'_blank'}
+                    rel="noreferrer">
                     GitHub
                   </a>
                 </li>
@@ -146,6 +203,7 @@ const MainContainer = styled.div`
   background: transparent;
   transition: 0.5s ease;
   z-index: 6;
+  overflow: hidden;
 
   .burger-container {
     position: absolute;
@@ -279,11 +337,8 @@ const MainContainer = styled.div`
         width: 100px;
         height: auto;
         margin: auto;
-        transition: 0.2s;
       }
-      img:hover {
-        filter: grayscale(0);
-      }
+      
     }
 
     #right-side {
@@ -364,6 +419,47 @@ const MainContainer = styled.div`
     }
   }
 }
+`;
+
+const CenterIcon = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transition: 0.3s;
+
+  img {
+    height: 10px; !important;
+    width: auto !important;
+    background: transparent;
+    transition: 0.5s !important;
+    transition-delay: 0.3s !important;
+    z-index: 10;
+  }
+  img:hover {
+    transition-delay: 0s !important;
+  }
+
+
+
+  [data-testid="VpnKeyIcon"] {
+    color: gold;
+    position: absolute;
+    top: 33px;
+    left: 38px;
+    transition: transform 0.3s ease 0.5s, opacity 0.1s ease 0.5s !important;
+
+    &:hover {
+      cursor: pointer;
+      
+    }
+  }
+
+
+
 `;
 
 export default Footer;

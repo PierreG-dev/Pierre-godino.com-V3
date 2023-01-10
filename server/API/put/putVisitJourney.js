@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
       date: now.toLocaleDateString("fr"),
     },
     {
-      journey: visit.journey + [req.body.newPage],
+      journey: visit.journey.concat([req.body.newPage]),
     }
   )
     .then(() => {

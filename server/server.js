@@ -11,38 +11,63 @@ app.use(
   cors({
     origin: ["http://localhost:3000", "http://pierre-godino.com"],
     optionSuccessStatus: 200,
+
+    credentials: true,
   })
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
-  session({ secret: "A$h83TkD", resave: false, saveUninitialized: false })
+  session({
+    name: "session",
+    secret: "A$h83TkD",
+    resave: false,
+    saveUninitialized: false,
+    expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+  })
 );
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-//   );
-//   if (req.method == "OPTIONS") {
-//     res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-//     return res.status(200).json({});
-//   }
-
-//   next();
-// });
 
 const port = process.env.PORT || 8000;
-
-app.get("/", (req, res) => {
-  res.set("Content-Type", "text/html");
-  res.send("Hello world !!");
-});
 
 app.post;
 
 app.listen(port, () => {
   console.log("Server app listening on port " + port);
+});
+
+// ========== AUTH ==========//
+app.get("/isConnected", (req, res) => {
+  res.status(200).send({ connected: req.session.isConnected });
+});
+
+app.post("/auth", (req, res) => {
+  if (req.session.isConnected) {
+    res.status(200).send({
+      connected: true,
+      msg: "Already Connected",
+    });
+    return;
+  }
+  if (!req.body.password) {
+    res.status(401).send({
+      connected: false,
+      msg: "Missing parameters",
+    });
+    return;
+  }
+  if (req.body.password !== process.env.ADMIN_PASSWORD) {
+    res.status(401).send({
+      connected: false,
+      msg: "Wrong password",
+    });
+    return;
+  }
+
+  req.session.isConnected = true;
+  res.status(200).send({
+    connected: true,
+    msg: "You are now connected",
+  });
 });
 
 // ========== ROUTES ==========//

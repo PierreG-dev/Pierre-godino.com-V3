@@ -37,6 +37,7 @@ module.exports = async (req, res) => {
     timeSpent: 0,
     journey: [],
     date: now.toLocaleDateString("fr"),
+    time: `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`,
   })
     .then(() => {
       res.status(200).send("well received !");

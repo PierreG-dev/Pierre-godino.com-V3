@@ -10,7 +10,7 @@ const Index: NextPage = () => {
       <section className="flex flex-col buttons-container">
         <div style={{ maxWidth: '100vw' }}>
           <Link href={'/about/skills'}>
-            <button style={{ animationDelay: '1s' }}>
+            <button style={{ animationDelay: '0s' }}>
               <video loop autoPlay muted>
                 <source src={'/video/skills-preview.mp4'} type={'video/mp4'} />
               </video>
@@ -18,7 +18,7 @@ const Index: NextPage = () => {
             </button>
           </Link>
           <Link href={'/about/experiences'}>
-            <button style={{ animationDelay: '1.5s' }}>
+            <button style={{ animationDelay: '0.5s' }}>
               <video loop autoPlay muted>
                 <source src={'/video/exp-preview.mp4'} type={'video/mp4'} />
               </video>
@@ -27,7 +27,7 @@ const Index: NextPage = () => {
           </Link>
         </div>
         <Link href={'/about/curiculum'}>
-          <button style={{ animationDelay: '2s' }}>
+          <button style={{ animationDelay: '1s' }}>
             <video loop autoPlay muted>
               <source src={'/video/cv-preview.mp4'} type={'video/mp4'} />
             </video>
@@ -76,7 +76,7 @@ const MainContainer = styled.div`
     background: rgba(0, 0, 0, 0.2);
     font-size: 2.5rem;
     color: rgba(255, 255, 255, 0.7);
-    animation: 6s appearing;
+    animation: 3s appearing;
     animation-fill-mode: forwards;
     opacity: 0;
     transition: 0.2s;

@@ -6,6 +6,7 @@ let schema = new Schema({
   ip: String,
   location: Object,
   date: String,
+  time: String,
   timeSpent: Number,
   journey: Array,
 });
