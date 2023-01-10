@@ -5,7 +5,7 @@ import '../styles/stars.css';
 import '../styles/bubbles.css';
 import { useRouter } from 'next/router';
 // eslint-disable-next-line no-use-before-define
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import NProgress from 'nprogress';
 import { ThemeContext } from '../src/contexts';
 import Layout from '../src/components/Layout';
@@ -18,6 +18,9 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
   const [onMaintenance, setOnMaintenance] = useState(false);
+  const visitUpdateInterval = useRef();
+  const actualPage = useRef();
+  const firstLoad = useRef(true);
 
   const titlePicker = useCallback((pathname) => {
     switch (pathname.toLowerCase().trim()) {
@@ -60,19 +63,54 @@ function MyApp({ Component, pageProps }) {
     setTimeout(() => {
       NProgress.done();
       handleLoad();
-    }, 1500);
+    }, 700);
+  }, []);
+
+  const initiateMetrics = useCallback(() => {
+    //visit init
+    fetch('http://localhost:8001/newVisit', { method: 'POST' }).catch((error) =>
+      console.error(error)
+    );
+
+    //visit update
+    visitUpdateInterval.current = setInterval(() => {
+      fetch('http://localhost:8001/updateVisitTime', {
+        method: 'PUT',
+      }).catch((error) => console.error(error));
+    }, 30000);
+  }, []);
+
+  const updateJourney = useCallback((pageName) => {
+    //visit journey update
+    fetch('http://localhost:8001/updateVisitJourney', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        newPage: pageName,
+      }),
+    }).catch((error) => console.error(error));
+  });
+
+  const firstLoadFinished = useCallback(() => {
+    setTimeout(() => {
+      updateJourney(actualPage.current);
+      firstLoad.current = false;
+    }, 5000);
   }, []);
 
   useEffect(() => {
     handleLoad();
-    fetch('http://localhost:8001/api/newVisit', { method: 'POST' }).catch(
-      (error) => console.error(error)
-    );
+    initiateMetrics();
+    firstLoadFinished();
   }, []);
 
   useEffect(() => {
     console.log('page changed');
-    document.title = 'Pierre | ' + titlePicker(window.location.pathname);
+    actualPage.current = titlePicker(window.location.pathname);
+    document.title = 'Pierre | ' + actualPage.current;
+    if (!firstLoad.current) updateJourney(actualPage.current);
   }, [pageProps]);
 
   useEffect(() => {

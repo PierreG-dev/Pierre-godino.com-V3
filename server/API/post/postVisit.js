@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
   let ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
   let now = new Date();
 
-  let exists = await collections.Visit.find({
+  let exists = await collections.Visit.findOne({
     ip: ip,
     date: now.toLocaleDateString("fr"),
   });
@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
       longitude: location.lon || "N/A",
     },
     timeSpent: 0,
-    journey: ["Home"],
+    journey: [],
     date: now.toLocaleDateString("fr"),
   })
     .then(() => {
