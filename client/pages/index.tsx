@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import createGlobe from 'cobe';
 import { NextPage } from 'next';
 import GlitchHandler from '../src/components/Home/GlitchHandler';
+import TextSlider from '../src/components/Home/TextSlider';
 
 const Home: NextPage = () => {
   const prefixArray = useRef<string[]>([
@@ -102,7 +103,7 @@ const Home: NextPage = () => {
             <GlitchHandler sentences={titleArray.current} delay={7000} />
           </h1>
           <i>
-            <GlitchHandler sentences={sentencesArray.current} delay={7000} />
+            <TextSlider textArray={sentencesArray.current} delay={7000} />
           </i>
         </div>
       </section>

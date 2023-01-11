@@ -190,6 +190,15 @@ const AdminModalContent = styled.div`
   color: #373737;
   display: flex;
   flex-direction: column;
+
+  input {
+    width: 200px;
+    border-radius: 50px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    padding: 3px 15px;
+    font-size: 0.8rem;
+    color: rgba(0,0,0,0.7);
+  }
   
 
   @keyframes appearing {
