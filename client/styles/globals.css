@@ -149,9 +149,14 @@ body {
 
 /* ------------------MUI SELECTOR OVERRIDE START ------------------ */
 
+.MuiOutlinedInput-notchedOutline {
+  border: 0 !important;
+}
+
 .MuiMenu-list {
   background: rgba(37, 37, 37, 0.95) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  outline: none !important;
 }
 
 /* ------------------MUI SELECTOR END ------------------ */

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Select from '@mui/material/Select';
@@ -15,6 +15,29 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 const Skills: NextPage = () => {
   const [displayedSkillId, setDisplayedSkillId] = useState(0);
+  const starsArray: any = useRef();
+
+  //Générateur d'étoiles
+  const starsGenerator = useCallback(() => {
+    const myStars: Array<JSX.Element> = [];
+    for (let i = 0; i < 200; ++i) {
+      const size = Math.ceil(Math.random() * 3) + 'px';
+
+      myStars.push(
+        <div
+          className="star"
+          key={i}
+          style={{
+            width: size,
+            height: size,
+            top: Math.floor(Math.random() * 100) + '%',
+            left: Math.floor(Math.random() * 100) + '%',
+            animationDelay: Math.floor(Math.random() * 500) + 's',
+          }}></div>
+      );
+    }
+    return myStars;
+  }, []);
 
   const displaySkills = () => {
     return data.map((skill, key) => (
@@ -33,7 +56,7 @@ const Skills: NextPage = () => {
             style={{
               width: displayedSkillId === skill.id ? 10 : 5,
               height: displayedSkillId === skill.id ? 10 : 5,
-              color: displayedSkillId === skill.id && 'rgba(0,0,0,0.5)',
+              color: displayedSkillId === skill.id && 'rgba(255,255,255,0.5)',
             }}
             onClick={() => setDisplayedSkillId(skill.id)}
             className={'skill-dot'}
@@ -57,20 +80,22 @@ const Skills: NextPage = () => {
     });
   };
 
+  useEffect(() => {
+    starsArray.current = starsGenerator();
+  }, []);
+
   return (
     <MainContainer>
-      {/*<img className={'background'} src="/res/skills-background.jpg" alt="" />*/}
-      <div
-        style={{
-          background: 'url("/res/overlay.png")',
-          backgroundSize: '0.22vw',
-          height: '100%',
-          width: '100%',
-          position: 'absolute',
-          opacity: 0.3,
-          zIndex: 0,
-          filter: 'contrast(1.5)',
-        }}></div>
+      {starsArray.current}
+      <AnimationContainer>
+        <img
+          id="space_station"
+          src="/res/space-station.png"
+          alt="station spatiale"
+        />
+        <img id="astronaut" src="/res/astronaut.png" alt="astronaute" />
+        <div id="welding_object"></div>
+      </AnimationContainer>
       <FilterContainer>
         <Select
           id={'filter-selector'}
@@ -85,7 +110,15 @@ const Skills: NextPage = () => {
           </MenuItem>
           {data.map((skill, key) => {
             return (
-              <MenuItem value={skill.id} key={key}>
+              <MenuItem
+                value={skill.id}
+                key={key}
+                sx={{
+                  color:
+                    displayedSkillId === key
+                      ? 'rgba(255, 255, 255, 1)'
+                      : 'rgba(255, 255, 255, 0.4)',
+                }}>
                 {skill.name}
               </MenuItem>
             );
@@ -97,26 +130,26 @@ const Skills: NextPage = () => {
         onClick={previousSkill}
         style={{
           position: 'absolute',
-          top: '25%',
+          top: '20%',
           left: '5%',
           zIndex: 2,
         }}>
         <ChevronLeftIcon
           fontSize={'large'}
-          style={{ transform: 'scale3d(4,4,1' }}
+          style={{ transform: 'scale3d(4,4,1)' }}
         />
       </button>
       <button
         onClick={nextSkill}
         style={{
           position: 'absolute',
-          top: '25%',
+          top: '20%',
           right: '5%',
           zIndex: 2,
         }}>
         <ChevronRightIcon
           fontSize={'large'}
-          style={{ transform: 'scale3d(4,4,1' }}
+          style={{ transform: 'scale3d(4,4,1)' }}
         />
       </button>
 
@@ -168,12 +201,84 @@ const Skills: NextPage = () => {
     </MainContainer>
   );
 };
+const MainContainer = styled.div`
+  position: relative;
+  background: #040e1d;
+  width: 100vw;
+  height: 93vh;
+  overflow-x: hidden;
+  margin-top: 7vh;
+
+  #filter-selector {
+    background: rgba(37, 37, 37, 0.6);
+    transition: 0.1s;
+    z-index: 5;
+
+    border: none;
+    p {
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+  }
+
+  #filter-selector:hover {
+    background: rgba(37, 37, 37, 0.9);
+  }
+
+  .Mui-focused {
+    border: none !important;
+  }
+
+  svg {
+    color: rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+  }
+  svg:hover {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  button {
+    outline: none !important;
+    box-shadow: none;
+  }
+  button:active:focus {
+    outline: none !important;
+    box-shadow: none;
+  }
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .star {
+    background: #fafafa;
+    z-index: 0;
+    position: absolute;
+    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
+    animation: 6s star_glow infinite linear;
+  }
+}
+
+@keyframes star_glow {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(2, 2, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+`;
 const IconContainer = styled.div`
   width: 100vw;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 3;
 
   img {
     width: 40%;
@@ -198,10 +303,11 @@ const IconContainer = styled.div`
     }
   }
 `;
+
 const SkillsContainer = styled.section`
   position: relative;
   padding-top: 10vh;
-  height: 40vh;
+  height: 30vh;
   min-width: 100%;
   display: -webkit-box;
   align-items: center;
@@ -212,10 +318,12 @@ const FilterContainer = styled.div`
   top: 0;
   right: 0;
   padding: 15px;
+  outline: none !important;
 
   #filter-selector {
-    background: #fafafa;
+    background: #373737;
     padding: 12px 32px;
+    outline: none !important;
   }
 `;
 const InfosContainer = styled.section`
@@ -234,7 +342,7 @@ const InfosContainer = styled.section`
 
   .skill-dot:hover {
     cursor: pointer;
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.4);
     /*transform: scale3d(2.8, 2.8, 1);*/
     width: 8px !important;
     height: 8px !important;
@@ -244,7 +352,12 @@ const InfosContainer = styled.section`
     width: 80%;
     max-width: 1000px;
     height: 60%;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.8px);
+    -webkit-backdrop-filter: blur(1.8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     z-index: 3;
     padding: 3vh 3vw;
     border-radius: 15px;
@@ -261,54 +374,125 @@ const InfosContainer = styled.section`
     cursor: help;
   }
 `;
-const MainContainer = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  background: url('/res/skills-background.jpg');
-  background-size: cover;
 
-  #filter-selector {
-    background: rgba(37, 37, 37, 0.6);
-    transition: 0.1s;
-    z-index: 5;
+const AnimationContainer = styled.div`
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  left: 30%;
+  animation: 360s station_moves 1 ease-out forwards,
+    10s station_floating ease infinite 360s;
 
-    border: none;
-    p {
-      color: rgba(255, 255, 255, 0.8) !important;
+  #space_station {
+    width: 60%;
+    position: absolute;
+    z-index: 1;
+  }
+
+  #astronaut {
+    width: 10%;
+    position: absolute;
+    top: 16%;
+    left: 22%;
+    transform: rotate(80deg);
+    z-index: 3;
+  }
+
+  #welding_object {
+    position: absolute;
+    top: 18.7%;
+    border-radius: 50%;
+    left: 32%;
+    width: 1px;
+    height: 1px;
+    box-shadow: 0px 0px 10px 5px gold;
+    transition: 0.3s;
+    background: transparent;
+    z-index: 2;
+    animation: 5s welding_animation linear infinite;
+  }
+
+  @keyframes welding_animation {
+    0% {
+      box-shadow: 0px 0px 3px 0px gold;
+    }
+    1% {
+      box-shadow: 0px 0px 20px 15px gold;
+    }
+    2% {
+      box-shadow: 0px 0px 3px 0px gold;
+    }
+
+    8% {
+      box-shadow: 0px 0px 3px 0px gold;
+    }
+    9% {
+      box-shadow: 0px 0px 20px 15px gold;
+    }
+    10% {
+      box-shadow: 0px 0px 20px 0px gold;
+    }
+    11% {
+      box-shadow: 0px 0px 20px 15px gold;
+    }
+    12% {
+      box-shadow: 0px 0px 20px 0px gold;
+    }
+
+    18% {
+      box-shadow: 0px 0px 20px 0px gold;
+    }
+    19% {
+      box-shadow: 0px 0px 20px 15px gold;
+    }
+    20% {
+      box-shadow: 0px 0px 20px 0px gold;
+    }
+
+    30% {
+      box-shadow: 0px 0px 20px 0px gold;
+    }
+    31% {
+      box-shadow: 0px 0px 20px 15px gold;
+    }
+    32% {
+      box-shadow: 0px 0px 20px 0px gold;
+    }
+    33% {
+      box-shadow: 0px 0px 20px 15px gold;
+    }
+    34% {
+      box-shadow: 0px 0px 20px 0px gold;
+    }
+    100% {
+      box-shadow: 0px 0px 20px 0px gold;
     }
   }
 
-  #filter-selector:hover {
-    background: rgba(37, 37, 37, 0.9);
+  @keyframes station_floating {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(100deg) scale3d(0.1, 0.1, 1);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0) rotate(100deg) scale3d(0.1, 0.1, 1);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) rotate(100deg) scale3d(0.1, 0.1, 1);
+    }
   }
 
-  .Mui-focused {
-    border: none !important;
-  }
-
-  svg {
-    color: rgba(0, 0, 0, 0.3);
-    transition: 0.3s;
-  }
-  svg:hover {
-    color: rgba(0, 0, 0, 0.6);
-  }
-  button {
-    outline: none !important;
-    box-shadow: none;
-  }
-  button:active:focus {
-    outline: none !important;
-    box-shadow: none;
-  }
-  .background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
+  @keyframes station_moves {
+    0% {
+      transform: scale3d(1, 1, 1) rotate(0deg);
+      left: 0%;
+      top: 90%;
+    }
+    100% {
+      transform: scale3d(0.1, 0.1, 1) rotate(100deg);
+      left: 80%;
+      top: 0%;
+    }
   }
 `;
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import CachedIcon from '@mui/icons-material/Cached';
@@ -25,6 +25,7 @@ const networks = [
 
 const Contact: NextPage = () => {
   const [buttonAnimationActive, setButtonAnimationActive] = useState('idle');
+  const starsArray = useRef<JSX.Element[]>();
 
   const handleButtonAnimation = useCallback(() => {
     setButtonAnimationActive('active');
@@ -56,9 +57,13 @@ const Contact: NextPage = () => {
     return myStars;
   }, []);
 
+  useEffect(() => {
+    starsArray.current = starsGenerator();
+  }, []);
+
   return (
     <MainContainer>
-      {starsGenerator()}
+      {starsArray.current}
       <div id="satelite_container">
         <img src="/res/satelite.png" alt="Satellite" className="satelite" />
       </div>

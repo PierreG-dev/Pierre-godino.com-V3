@@ -53,7 +53,13 @@ const Bar: React.FC<Props> = ({ variant, level }) => {
 
   return (
     <MainContainer>
-      <Filler style={{ background: colorPicker(variant), width: width }} />
+      <Filler
+        style={{
+          background: colorPicker(variant),
+          width: width,
+          boxShadow: '0 0 7px ' + colorPicker(variant),
+        }}
+      />
       <div className="graduation" style={{ left: '25%' }}></div>
       <div className="graduation" style={{ left: '50%' }}></div>
       <div className="graduation" style={{ left: '75%' }}></div>
@@ -66,15 +72,14 @@ const MainContainer = styled.div`
   height: 17px;
   position: relative;
   border: 0.5px solid rgba(0, 0, 0, 0.1);
-  overflow-x: hidden;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   margin-left: 20px;
   .graduation {
     position: absolute;
     top: 0;
     width: 1px;
-    height: 100%;
+    height: 111%;
     z-index: 4;
     background: rgba(0, 0, 0, 0.3);
   }
@@ -83,8 +88,8 @@ const MainContainer = styled.div`
 const Filler = styled.div`
   width: 0;
   position: absolute;
-  height: 17px;
-  border-radius: 0 30px 30px 0;
+  height: 16px;
+  border-radius: 15px 30px 30px 15px;
   top: 0;
   left: 0;
   transition: 1s ease;

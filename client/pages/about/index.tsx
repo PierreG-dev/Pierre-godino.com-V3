@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Link from 'next/link';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const Index: NextPage = () => {
   return (
