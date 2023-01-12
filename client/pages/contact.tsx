@@ -32,7 +32,7 @@ const Contact: NextPage = () => {
 
     setTimeout(() => {
       setButtonAnimationActive('finished');
-    }, 3000);
+    }, 1200);
   }, []);
 
   //Générateur d'étoiles
@@ -115,7 +115,7 @@ const Contact: NextPage = () => {
                 ? 'finished'
                 : buttonAnimationActive === 'idle' && ''
             }>
-            <span className="submit">Submit</span>
+            <span className="submit">Soumettre</span>
             <span className="loading">
               <CachedIcon />
             </span>
@@ -451,15 +451,6 @@ const MainContainer = styled.div`
     outline: none;
   }
 
-  html {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 16px;
-    font-smooth: auto;
-    font-weight: 300;
-    line-height: 1.5;
-    color: #444;
-  }
-
   body {
     position: relative;
     display: flex;
@@ -488,6 +479,9 @@ const MainContainer = styled.div`
     border: none;
     border-radius: 0.3125rem;
     box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
 
     //box-shadow:
     //	0 -1.25rem 1rem -1.5rem rgba(black, 0.4),
@@ -536,11 +530,11 @@ const MainContainer = styled.div`
   }
 
   .active {
-    background-color: #2ecc71;
+    background-color: #3498db;
 
     &:before {
       width: 100%;
-      transition: width 3s linear;
+      transition: width 1s cubic-bezier(1, -0.04, 0.87, 0.82);
     }
 
     span {
