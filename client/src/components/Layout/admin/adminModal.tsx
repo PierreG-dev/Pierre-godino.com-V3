@@ -8,6 +8,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
 import CloseIcon from '@mui/icons-material/Close';
+import KeyIcon from '@mui/icons-material/Key';
 
 export type Props = {
   isOpened: boolean;
@@ -37,6 +38,9 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
         console.log(data);
         setIsConnected(data.connected);
         console.info(data.msg);
+      })
+      .then(() => {
+        setPasswordInput('');
       })
       .catch((error) => console.error(error));
   }, []);
@@ -162,12 +166,20 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <input
-              type="password"
-              value={passwordInput}
-              onChange={(e) => setPasswordInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-            />
+            <h2 id="auth_title">Authentification</h2>
+            <header>
+              <input
+                type="password"
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              <KeyIcon
+                onClick={() => {
+                  tryAuth(passwordInput);
+                }}
+              />
+            </header>
           </React.Fragment>
         )}
       </AdminModalContent>
@@ -191,14 +203,47 @@ const AdminModalContent = styled.div`
   display: flex;
   flex-direction: column;
 
-  input {
-    width: 200px;
-    border-radius: 50px;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    padding: 3px 15px;
-    font-size: 0.8rem;
-    color: rgba(0,0,0,0.7);
+
+  &>h2#auth_title {
+    font-size: 2.5rem !important;
+    color: rgba(0,0,0,0.6);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: -10px;
   }
+
+  &>header {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    gap: 15px;
+
+    svg {
+      transition: 0.1s;
+      font-size: 2rem;
+      color: gold;
+      opacity: 0.7;
+      filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.3));
+
+      &:hover {
+        cursor: pointer;
+        opacity: 1;
+      }
+    }
+  
+    input {
+      width: 200px;
+      background: rgba(0,0,0,0.6);
+      color: rgba(255,255,255,0.6) !important;
+      border-radius: 50px;
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      padding: 3px 15px;
+      font-size: 0.8rem;
+      color: rgba(0,0,0,0.7);
+      outline: none;
+    }
+  }
+
+  
   
 
   @keyframes appearing {

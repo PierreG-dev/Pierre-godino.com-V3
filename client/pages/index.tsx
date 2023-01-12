@@ -137,7 +137,6 @@ const MainContainer = styled.div`
 
       h1 {
         margin-top: -20vh;
-        font-family: 'Righteous', cursive;
         font-family: 'Space Mono', monospace;
         font-size: 2.5rem;
         text-shadow: 1px 1px 5px rgba(250, 250, 250, 0.7);
