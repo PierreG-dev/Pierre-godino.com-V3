@@ -68,8 +68,16 @@ const Contact: NextPage = () => {
             <h2>Coordonnées</h2>
             <ul>
               <li>Pierre GODINO</li>
-              <li>+33 6 51 71 04 97</li>
-              <li>pierregodino.contact@yahoo.com</li>
+              <li>
+                <a id="phone_link" href="tel:+33 6 51 71 04 97">
+                  +33 6 51 71 04 97
+                </a>
+              </li>
+              <li>
+                <a id="mail_link" href="mailto:pierregodino.contact@yahoo.com">
+                  pierregodino.contact@yahoo.com
+                </a>
+              </li>
             </ul>
             <hr />
             <ul>
@@ -192,6 +200,10 @@ const MainContainer = styled.div`
     transition: 0.3s;
     color: rgba(255, 255, 255, 0.6);
 
+    @media (max-width: 450px) {
+      padding: 10px 25px;
+    }
+
     h2,
     h3 {
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
@@ -202,6 +214,32 @@ const MainContainer = styled.div`
       height: 40%;
       display: flex;
       justify-content: space-between;
+
+      #phone_link {
+        color: #fafafa;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 5px;
+        border-radius: 3px;
+        letter-spacing: 1px;
+        transition: 0.1s;
+
+        &:hover {
+          background: rgba(104, 168, 82, 0.87);
+        }
+      }
+
+      #mail_link {
+        color: #fafafa;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 5px;
+        border-radius: 3px;
+        letter-spacing: 1px;
+        transition: 0.1s;
+
+        &:hover {
+          background: rgba(0, 125, 255, 0.8);
+        }
+      }
 
       #text {
         @media (max-width: 650px) {
@@ -305,6 +343,7 @@ const MainContainer = styled.div`
 
       input,
       textarea {
+        min-width: 200px;
         width: 60%;
         border-radius: 0.3125rem;
         background: rgba(255, 255, 255, 0.6);
@@ -391,7 +430,7 @@ const MainContainer = styled.div`
 
     100% {
       top: -50%;
-      left: 40%;
+      left: 20%;
       transform: rotate(-180deg);
     }
   }
