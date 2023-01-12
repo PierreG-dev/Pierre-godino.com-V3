@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export type Props = {
   textArray: string[];
@@ -7,8 +7,10 @@ export type Props = {
 
 const TextSlider: React.FC<Props> = ({ textArray, delay }) => {
   const [displayedText, setDisplayedText] = useState(0);
+  const pageWidth = useRef<number>();
 
   useEffect(() => {
+    pageWidth.current = window.innerWidth;
     const interval = setInterval(() => {
       setDisplayedText((previousState) =>
         previousState === textArray.length - 1 ? 0 : previousState + 1
@@ -30,7 +32,7 @@ const TextSlider: React.FC<Props> = ({ textArray, delay }) => {
               transition: '2s',
               transitionDelay: displayedText === key ? '2s' : '0s',
               position: 'absolute',
-              width: '40vw',
+              width: pageWidth.current < 600 ? '70vw' : '40vw',
             }}
             key={key}>
             {text}

@@ -217,7 +217,7 @@ const MainContainer = styled.div`
     left: 40vw;
     color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    z-index: 2;
+    z-index: 1;
 
     svg {
       transition: 0.1s;
@@ -337,6 +337,7 @@ const MainContainer = styled.div`
         width: 100px;
         height: auto;
         margin: auto;
+      
       }
       
     }

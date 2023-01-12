@@ -59,7 +59,7 @@ const Contact: NextPage = () => {
 
   useEffect(() => {
     starsArray.current = starsGenerator();
-  }, []);
+  }, [starsGenerator]);
 
   return (
     <MainContainer>

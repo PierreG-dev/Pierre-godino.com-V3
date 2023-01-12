@@ -81,6 +81,10 @@ const MainContainer = styled.div`
     transition: 0.2s;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.4);
+
+    @media (max-width: 703px) {
+      width: 95%;
+    }
   }
   button h3 {
     z-index: 2;

@@ -64,7 +64,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           </li>
           <li>
             <Link href={'/'}>
-              <img src="/res/LOGO.png" className="HomeLogo" />
+              <img src="/res/LOGO.png" className="HomeLogo" alt="Logo" />
             </Link>
           </li>
           <li
@@ -136,6 +136,12 @@ const MainContainer = styled.div`
     z-index: 3;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
 
+    #custom_nav_dropdown svg {
+      @media (max-width: 1000px) {
+        display: none;
+      }
+    }
+
     #custom_nav_dropdown ul {
       position: absolute;
       max-height: 0;
@@ -150,6 +156,10 @@ const MainContainer = styled.div`
       gap: 5px;
       transition: 0.2s;
 
+      @media (max-width: 1000px) {
+        display: none;
+      }
+
       li {
         animation: 0.2s links_slide_down ease-out 1;
         transition: 0.1s;
@@ -157,13 +167,17 @@ const MainContainer = styled.div`
         max-width: 100% !important;
         position: relative !important;
 
-        a {
-          color: rgba(255, 255, 255, 0.5) !important;
-          transition: 0.2s;
-          font-family: 'Montserrat';
-          letter-spacing: 1px;
-          width: 100% !important;
-          display: block;
+        
+          
+
+          a {
+            color: rgba(255, 255, 255, 0.5) !important;
+            transition: 0.2s;
+            font-family: 'Montserrat';
+            letter-spacing: 1px;
+            width: 100% !important;
+            display: block;
+          }
         }
 
         a:hover {
@@ -197,6 +211,9 @@ const MainContainer = styled.div`
       justify-content: space-around;
       align-items: center;
       z-index: 5;
+      @media (max-width: 1000px) {
+        align-items: baseline;
+      }
 
       li {
         position: relative;
@@ -209,6 +226,14 @@ const MainContainer = styled.div`
         transition: 0.2s;
         font-size: 1.1rem;
 
+        @media (max-width: 1000px) {
+
+
+          sup {
+            display: none;
+          }
+        }
+
         a,
         sup,
         #custom_nav_dropdown {
@@ -216,6 +241,11 @@ const MainContainer = styled.div`
           transition: 0.2s;
           font-family: 'Montserrat';
           letter-spacing: 1px;
+          text-align: center;
+
+          @media (max-width: 1000px) {
+            font-size: 0.7rem;
+          }
         }
         sup {
           transform: translateY(8px);
@@ -228,6 +258,15 @@ const MainContainer = styled.div`
           width: 85px;
           cursor: pointer;
           transition: 0.2s;
+
+          @media (max-width: 800px) {
+            transform: translateY(30px) !important;
+            width: 70px !important;
+          }
+          @media (max-width: 1000px) {
+            transform: translateY(20px) !important;
+            width: 70px !important;
+          }
         }
         img:hover {
           filter: grayscale(0.1);

@@ -83,7 +83,10 @@ const Home: NextPage = () => {
         // Called on every animation frame.
         // `state` will be an empty object, return updated params.
         state.phi = phi;
-        phi += 0.001;
+        if (window.innerWidth > 1200) phi += 0.001;
+        else {
+          phi = 2;
+        }
       },
     });
 
@@ -141,6 +144,11 @@ const MainContainer = styled.div`
         font-size: 2.5rem;
         text-shadow: 1px 1px 5px rgba(250, 250, 250, 0.7);
         color: rgba(255, 255, 255, 0.8);
+
+        @media (max-width: 600px) {
+          margin-top: -50vh;
+          width: 90vw;
+        }
       }
 
       i {
@@ -148,6 +156,10 @@ const MainContainer = styled.div`
         text-shadow: 1px 1px 4px rgba(250, 250, 250, 0.4);
         font-size: 1.2rem;
         margin-left: 10px;
+      }
+
+      @media (max-width: 600px) {
+        width: 70vw;
       }
     }
 
@@ -166,7 +178,7 @@ const MainContainer = styled.div`
       }
       @media (max-width: 600px) {
         & {
-          left: -20vw;
+          left: 10vw;
         }
       }
     }
