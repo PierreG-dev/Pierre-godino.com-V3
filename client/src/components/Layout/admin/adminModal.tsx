@@ -35,9 +35,7 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setIsConnected(data.connected);
-        console.info(data.msg);
       })
       .then(() => {
         setPasswordInput('');
@@ -128,7 +126,7 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setMetricsData(data);
+        setMetricsData(data.reverse());
       });
   }, [isConnected]);
 

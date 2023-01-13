@@ -227,8 +227,6 @@ const MainContainer = styled.div`
         font-size: 1.1rem;
 
         @media (max-width: 1000px) {
-
-
           sup {
             display: none;
           }
