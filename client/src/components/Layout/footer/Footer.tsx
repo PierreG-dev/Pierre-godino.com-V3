@@ -187,7 +187,7 @@ const Footer: React.FC<Props> = ({
           <p>
             Pierre-godino.com <sup>V3</sup>
           </p>
-          <p>2019 - 2022</p>
+          <p>2019 - {new Date().getFullYear()}</p>
         </div>
       </footer>
     </MainContainer>
