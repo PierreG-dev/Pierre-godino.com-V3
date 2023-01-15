@@ -1,0 +1,666 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab');
+body {
+  z-index: -1;
+  margin: 0;
+  padding: 0;
+  background-color: #585858;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 62%;
+  left: 0;
+  top: 38%;
+  opacity: 0;
+  transition: 2s;
+  background-position: center;
+  background-size: cover;
+  animation: appearingtete 9s 1;
+
+}
+
+
+.tete {
+    background-color: #373737;
+    left: 0;
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 10%;
+    -webkit-box-shadow: 0px 0px 5px 0px #373737;
+    -moz-box-shadow: 0px 0px 5px 0px #373737;
+    box-shadow: 0px 0px 5px 0px #373737;
+}
+.tete a {
+  color: #f4f4f4;
+  text-decoration: none;
+  font-family: Tahoma;
+  font-size-adjust:auto;
+  font-size: 18px;
+  line-height: 25px;
+}
+.tete a:hover {
+  color: white;
+}
+.tete a:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 1px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+.tete a:hover:after {
+    width: 90%;
+    background: white;
+}
+.teteinvisible {
+    background-color: transparent;
+    left: 0;
+    visibility: visible;
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 10%;
+    z-index: 1;
+    animation: appearingtete 7s 1;
+    animation-fill-mode: backwards;
+}
+.teteinvisible a {
+  color: #f4f4f4;
+  text-decoration: none;
+  font-family: Tahoma;
+  font-size-adjust:auto;
+  font-size: 18px;
+  line-height: 25px;
+}
+.teteinvisible a:hover {
+  color: white;
+}
+.teteinvisible a:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 1px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+.teteinvisible a:hover:after {
+    width: 90%;
+    background: white;
+}
+
+
+/*En travaux*/
+.languagecontainer {
+  background-color: grey;
+  width: 125px;
+  height: 30px;
+  border-radius: 10px;
+  display: flex;
+  transition: 0.25s;
+  flex-direction: row;
+  align-items: baseline center;
+  border: 1px solid grey;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+  cursor: pointer;
+  font-family: Tahoma;
+}
+.languagecontainerinvisible {
+  background-color: grey;
+  opacity: 0.35;
+  width: 125px;
+  height: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline center;
+  border: 1px solid grey;
+  transition: 0.40s;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+  cursor: pointer;
+  font-family: Tahoma;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  color: #b5b4b6;
+}
+.languagecontainerinvisible:hover {
+  opacity: 0.60;
+  color: white;
+}
+.languagecontainerinvisible:active {
+  transition: 0.1s;
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.35);
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.35);
+  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.35);
+}
+
+
+
+
+/*partie animation & mise en page de la partie haute de la page*/
+.namecontainer {
+  /*background-image: url(../RES/space.jpg);*/
+  background-image: url(../RES/back.png);
+  position: absolute;
+  background-size: cover;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 38%;
+  -webkit-box-shadow: inset 0px 0px 10px 0px #373737;
+  -moz-box-shadow: inset 0px 0px 10px 0px #373737;
+  box-shadow: inset 0px 0px 10px 0px #373737;
+  color: white;
+  font-size: 50px;
+  animation: slideup 1s 1;
+  animation-delay: 0.3s;
+  animation-fill-mode: backwards;
+}
+.namecontainerbis {
+  margin-top: 19vh;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  top: 26vh;
+}
+/*partie nom prenom ecrit*/
+.name {
+  text-align: right;
+  width: 50vw;
+  background-color: transparent;
+  position: relative;
+  font-family: 'Roboto';
+  color: white;
+  font-size: 0.8em;
+  text-decoration: none;
+  animation: name 3s 1;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+}
+/*Partie developpement web ecrit*/
+.jobAnimation {
+  margin-top: 0.6em;
+  position: relative;
+  background-color: transparent;
+  font-family: 'Roboto';
+  color: white;
+  font-size: 0.4em;
+  text-decoration: none;
+  overflow: hidden;
+}
+.job {
+  position: relative;
+  animation: slidein 3s 1;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+}
+
+
+
+
+/*informations ecrites sur la premiere page*/
+.infoContainer {
+  z-index: 4;
+  position: absolute;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 11%;
+  width: 90%;
+  height: 85%;
+  margin-left: 5%;
+  background-color: #373737;
+  border-radius: 30px;
+  transition: transform 500ms;
+  -webkit-box-shadow: 0px 0px 5px 0px #373737;
+  -moz-box-shadow: 0px 0px 5px 0px #373737;
+  box-shadow: 0px 0px 5px 0px #373737;
+}
+.infos {
+  padding-left: 10%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  animation: appearinginfo 7s 1;
+}
+.Firstpage p{
+font-family: "Roboto";
+font-size: 40px;
+color: white;
+}
+@media screen and (max-width: 680px) {
+  .Firstpage p{
+  font-family: "Roboto";
+  font-size: 20px;
+  color: white;
+  }
+  .profil {
+    border-radius: 30%;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    animation: appearinginfo 7s 1;
+  }
+}
+@media screen and (min-width: 680px) {
+  .Firstpage p{
+  font-family: "Roboto";
+  font-size: 30px;
+  color: white;
+  }
+  .profil {
+    border-radius: 30%;
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    animation: appearinginfo 7s 1;
+  }
+}
+
+
+
+
+/*premier volet*/
+.Firstpage {
+  left: 0;
+  animation: appearingcontainer 3s 1;
+  animation-fill-mode: backwards;
+  animation-delay: 3s;
+}
+/*deuxieme volet*/
+.Secondpage {
+  background-image: url(../RES/code.png);
+  background-size: cover;
+  background-position: bottom;
+  left: 100%;
+  align-items: center;
+}
+/*troisième volet*/
+.Thirdpage {
+  background-image: url(../RES/Jeux.svg);
+  background-size: cover;
+  background-position: bottom;
+  left: 200%;
+}
+
+
+
+
+
+
+/* chevrons pour les containers*/
+.chevron {
+  background-color: grey;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 1%;
+  opacity: 0.20;
+  font-size: 2.5Rem;
+  width: 4Rem;
+  height: 4Rem;
+  border-radius: 50%;
+  transition: 0.5s;
+  cursor: pointer;
+  animation: appearingchevron 8s 1;
+}
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
+.chevron:hover {
+  opacity: 0.80;
+}
+
+
+
+
+/*Petites boites pour présenter les languages*/
+.skillcontainer {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.skillbox {
+  position: relative;
+  border-radius: 15px;
+  background-color: #373737;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: grey;
+  width: 13vw;
+  height: 15vw;
+  -webkit-box-shadow: 0px 0px 5px 0px #373737;
+  -moz-box-shadow: 0px 0px 5px 0px #373737;
+  box-shadow: 0px 0px 5px 0px #373737;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  font-size: 10vw;
+  z-index: 1;
+  transition: 0.5s;
+}
+.html5:hover {
+  color: orangered;
+  transform: scale3d(1.2,1.2,1);
+}
+.css3:hover {
+  color: dodgerblue;
+  transform: scale3d(1.2,1.2,1);
+}
+.js:hover {
+  color: yellow;
+  transform:scale3d(1.2,1.2,1);
+}
+.algo:hover {
+  color: #39008F;
+  transform: scale3d(1.2,1.2,1);
+}
+@media screen and (min-width: 1280px) {
+  .html5:hover {
+    color: orangered;
+    transform: scale3d(1.2,1.2,1);
+
+  }
+  .css3:hover {
+    color: dodgerblue;
+    transform: scale3d(1.2,1.2,1);
+
+  }
+  .js:hover {
+    color: yellow;
+    transform: scale3d(1.2,1.2,1);
+
+  }
+  .algo:hover {
+    color: #39008F;
+    transform: scale3d(1.2,1.2,1);
+
+  }
+  .skillbox {
+    position: relative;
+    border-radius: 15px;
+    background-color: #373737;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: grey;
+    width: 11vw;
+    height: 13vw;
+    -webkit-box-shadow: 0px 0px 5px 0px #373737;
+    -moz-box-shadow: 0px 0px 5px 0px #373737;
+    box-shadow: 0px 0px 5px 0px #373737;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    font-size: 7vw;
+    z-index: 1;
+    transition: 0.5s;
+    max-height: 240px;
+    max-width: 220px;
+  }
+}
+.skillbox:hover p {
+  font-size: 2.4vw;
+  color: white;
+  visibility: visible;
+}
+.skillbox p {
+  font-family: 'Baloo Bhai', cursive;
+  font-size: 0.3vw;
+  color: transparent;
+  margin-top: -5%;
+  margin-bottom: -2%;
+  transition: 0.4s;
+  visibility: hidden;
+}
+
+
+.hobbycontainer {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.hobbybox {
+  position: relative;
+  background-color: #373737;
+  color: grey;
+  width: 33%;
+  height: 100%;
+  -webkit-box-shadow: 0px 0px 5px 0px #373737;
+  -moz-box-shadow: 0px 0px 5px 0px #373737;
+  box-shadow: 0px 0px 5px 0px #373737;
+  font-size: 10vw;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url(../RES/Space.png);
+  background-position: left;
+  background-size: cover;
+  color: grey;
+  transition: 0.5s;
+  text-align: center;
+  vertical-align: middle;
+}
+.game:hover {
+  background-color: transparent;
+  color: grey;
+  background-image: url(../RES/xwing.gif);
+  background-size: cover;
+  background-position: center;
+  transition: 0.5s;
+  width: 80%;
+  height: 100%;
+}
+.game:hover i {
+  opacity: 0.2;
+  transition: 0.6s;
+}
+
+
+.sport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../RES/fondSport.png);
+  background-position: left;
+  background-size: cover;
+  color: grey;
+  transition: 0.5s;
+}
+.sport:hover {
+  background-color: transparent;
+  color: grey;
+  transition: 0.5s;
+  width: 80%;
+}
+.sport:hover .americanfootball {
+  margin-top: 9vw;
+  animation-delay: 0.2s;
+}
+.sport:hover .swimming {
+  margin-top: -9vw;
+  margin-left: -9vw;
+  animation-delay: 0.4s;
+}
+.sport:hover .workout {
+  margin-top: -9vw;
+  margin-left: 9vw;
+  animation-delay: 0.6s;
+}
+.sport i{
+  transition: 0.6s;
+  z-index: 1;
+}
+.sport:hover i {
+  opacity: 0.1;
+}
+.sport img {
+  position: absolute;
+  opacity: 0;
+  width: 10vw;
+  height: 10vw;
+  transition: 0.6s;
+}
+.sport:hover img {
+  animation: float 3s ease-in-out infinite;
+  opacity: 1;
+}
+
+.movie {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../RES/movie.png);
+  background-position: left;
+  background-size: cover;
+  color: grey;
+  transition: 0.5s;
+}
+.movie:hover {
+  background-color: transparent;
+  background-image: url(../RES/pulp.gif);
+  background-position: center;
+  color: grey;
+  transition: 0.5s;
+  width: 80%;
+}
+.movie i {
+  transition: 0.6s;
+}
+.movie:hover i {
+  opacity: 0.1;
+}
+.movie img {
+  opacity: 0;
+}
+.movie:hover img {
+  opacity: 1;
+}
+
+
+
+
+/* KeyFrames */
+@keyframes float {
+	0% {transform: translate3d(0,0%,0);}
+	50% {transform: translate3d(0,-20%,0);}
+	100% {transform: translate3d(0,0%,0);}
+}
+
+@keyframes name {
+  0% {margin-left: 20%;opacity: 0;}
+  50% {opacity: 1;}
+  75% {margin-left: 20%;}
+  100% {margin-left: 0;}
+}
+
+@keyframes appearingtete {
+  0% {opacity: 0;}
+  85% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes appearingchevron {
+  0% {opacity: 0;}
+  85% {opacity: 0;}
+  100% {opacity: 0.20;}
+}
+
+@keyframes appearinginfo {
+  0% {opacity: 0}
+  90% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@keyframes slideup {
+  0% {transform: scale3d(1,4.28,1);}
+  100% {transform: scale3d(1,1,1);}
+}
+
+@keyframes slidein {
+  0% {left: -200%;opacity: 0;}
+  70% {left: -200%;opacity: 1;}
+  100% {left: 0;}
+}
+
+@keyframes appearingcontainer {
+  0% {margin-top: 50%; margin-left: 50%; height: 0; width: 0;}
+  49% {margin-top: 50%; margin-left: 50%; height: 0; width: 0;}
+  50% {height: 0.2%; width: 0.2%;}
+  60% {height: 85%;margin-top: 0;}
+  70% {margin-left: 50%;width: 0.2%;}
+  100% {margin-left: 5%;}
+}
+
+.wrapper {
+  overflow: hidden;
+  position: absolute;
+  background-color: transparent;
+  top: 33%;
+  height: 67%;
+  width: 100%;
+  left: 0;
+}
+
+.dotContainer {
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: -3%;
+  left: 43%;
+  width: 14%;
+  height: 10%;
+  transition: 0.5s;
+  text-align: center;
+  color: #575757;
+  animation: appearinginfo 8s 1;
+  font-size: 0.5em;
+}

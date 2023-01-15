@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Bienvenue sur mon site ! -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="developpeur, developpeur web, developpement web, pierre godino, freelance, full-stack, " />
+    <meta name="description" content="Développeur WEB freelance et créateur de sites internet. Création de sites internet, refontes, intégration, référencement... etc.">
+    <meta name="author" content="Pierre GODINO">
+    <title>Pierre Godino, Developpement Web & Création de sites Internet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap" rel="stylesheet">
+    <link rel="icon" href="res/favicon.ico"/>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+    </head>
+<body>
+
+
+
+
+    <!--            FONCTIONNALITES            -->
+    <!-- COOKIES -->
+    <div class="cookieAlert container" id="cookieAlert">
+        <div class="row">
+            <p class="col-12" id="cookieAlertMsg"></p>
+            <div class="btn btn-success col-6" id="cookieAlertClose"></div>
+            <a href="https://fr.wikipedia.org/wiki/Cookie_(informatique)" target="_blank" rel="noopener">
+                <div class="btn btn-info col-6" id="cookieAlertInfo"></div>
+            </a>
+        </div>
+    </div>
+    <!-- ECRAN DE CHARGEMENT -->
+    <div class="loadingScreen">
+        <img src="res/LOGO.svg" alt="Logo pierre godino">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- PARALLAX -->
+    <div class="parallax-bg bg-para-1"></div>
+    <!-- FORMULAIRE DE CONTACT -->
+    <form class="formContact" id="formulaire">
+        
+    </form>
+
+    <!--            NAVBAR            -->
+
+    <div class="navBurger"><i class="fa fa-bars" aria-hidden="true"></i></div>
+    <section     class="navbar">
+        <div class="navbar_language">
+            <div class="flags">
+                <div class="flagImg"><img src="res/fr_flag.svg" alt="Drapeau francais"></div>
+                <div class="flagImg"><img src="res/gb_flag.svg" alt="Drapeau anglais"></div>
+            </div>
+        </div>
+        <div class="navbar_left">
+            <a href="https://www.linkedin.com/in/pierre-godino-50b503186" target="_blank" rel="noopener"><img src="res/ln.png" alt="lien vers profil LINKEDIN"></a>
+            <a href="https://www.malt.fr/profile/pierregodino" target="_blank" rel="noopener"><img src="res/maltLogo.png" alt="lien vers profil MALT"></a>
+            <a href="https://github.com/AniTecK" target="_blank" rel="noopener"><img src="res/githubLogo.png" alt="lien vers profil GITHUB" style="width:25px;height:25px;"></a>
+        </div>
+        <hr style="width: 80%;align-self: center;">
+        <div class="navbar_right">
+            <ul id="navbar_list"></ul>
+        </div>
+    </section>
+
+
+
+
+    <!--            HEADER            -->
+
+    <header id="accueil">
+        <div class="blackScreen"></div>
+        <div class="blackScreen" id="formBS"></div>
+        <div class="container">
+
+            <div class="aboveContainer">
+                <a href="tel:+33651710497"><i class="fa fa-phone" aria-hidden="true" style="font-size: 1.7rem; margin-right: 7px;"></i>+33 6 51 71 04 97</a>
+                <a href="mailto:pierregodino.contact@yahoo.com"><i class="fa fa-envelope" aria-hidden="true" style="font-size: 1.7rem; margin-right: 7px;"></i>Pierregodino.contact@yahoo.com</a>
+            </div>
+            <div class="mainContainer">
+            </div>
+        </div>
+    </header>
+
+    
+    
+    <!--            COMPETENCES            -->
+    
+    <section class="competences" id="competences">
+        <h2><span><i class="fa fa-cogs" aria-hidden="true"></i></span> Competences</h2>
+        <hr>
+
+        <section class="design">
+            <h3><span><i class="fa fa-paint-brush" aria-hidden="true"></i></span> Design</h3>
+            <hr>
+            <figure>
+                <!--design-->
+                <div class="textBox">
+                </div>
+                <div class="imgContainer">
+                    <img src="res/designPhoto.jpg" alt="deux crayons de couleurs">
+                </div>
+            </figure>
+        </section>
+        
+        <section class="responsive">
+            <h3><span><i class="fa fa-desktop" aria-hidden="true"></i></span> Responsive</h3>
+            <hr>
+            <figure>
+                <!--responsive-->
+                <div class="textBox">
+                </div>
+                <div class="imgContainer">
+                    <img src="res/responsivePhoto.jpg" alt="trois appareils connectés avec une taille d'écran différente">
+                </div>
+            </figure>
+        </section>
+        
+        <section class="informatique" style="width: 100%;">
+            <h3><span><i class="fa fa-terminal" aria-hidden="true"></i></span> Informatique</h3>
+            <hr>
+            <div class="container">
+                <!--informatique & programmation-->
+                <div class="skillColumn"style="animation-delay: 1.5s;">
+                    <div class="skillCategory">Front-End</div>
+                    <div class="skillDetail" style="animation-delay: 0.3s;"></div>
+                    <div class="skillCategory skillUnder" style="animation-delay: 0.3s;"></div>
+                </div>
+                <div class="skillColumn"style="animation-delay: 2s;">
+                    <div class="skillCategory">Back-End</div>
+                    <div class="skillDetail" style="animation-delay: 0.6s;"></div>
+                    <div class="skillCategory skillUnder" style="animation-delay: 0.6s;"></div>
+                </div>
+                <div class="skillColumn"style="animation-delay: 2.5s;">
+                    <div class="skillCategory">Dev-Ops</div>
+                    <div class="skillDetail" style="animation-delay: 0.9s;"></div>
+                    <div class="skillCategory skillUnder" style="animation-delay: 0.9s;"></div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!--            PARALLAX             -->
+
+    <div class="parallax">
+        <img class="thumbnail" src="res/paraBg1.jpg" alt="image en parallax">
+    </div>
+
+    <!--            PORTFOLIO            -->
+
+    <section class="portfolio" id="portfolio">
+            <h2>Portfolio</h2>
+            <hr>
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </section>
+    
+    <!--            A PROPOS            -->
+    
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="left_txt"></div>
+            <div class="right_pic"></div>
+        </div>
+    </section>
+
+
+    <!--            CONTACT            -->
+
+
+    <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <hr>
+        <div class="container">
+            <div class="leftContainer">
+                <div class="mapBox">
+                    
+                </div>
+
+                <div class="contactButton"></div>
+            </div>
+            <div class="infoBox">
+            </div>
+        </div>
+    </section>
+
+
+    <!--            FOOTER            -->
+
+
+    <footer>
+        
+        <div class="upperPart">
+            <article class="contactFooter">
+                <h4>Contact</h4>
+                <div class="links">
+                    <a href="tel:+33651710497" class="footerElement"><i class="fa fa-phone" aria-hidden="true"></i> +33 6 51 71 04 97</a>
+                    <a href="mailto:pierregodino.contact@yahoo.com" class="footerElement"><i class="fa fa-envelope"
+                            aria-hidden="true"></i> Pierregodino.contact@yahoo.com</a>
+                    <a href="https://www.pierre-godino.com" class="footerElement"><i class="fa fa-link"
+                            aria-hidden="true"></i> www.pierre-godino.com</a>
+                    <p class="footerElement"><i class="fa fa-map-marker" aria-hidden="true"></i> Toulouse</p>
+                </div>
+                <hr style="margin: 0;">
+                <div class="networks">
+                    <a href="https://www.linkedin.com/in/pierre-godino-50b503186" target="_blank" rel="noopener"><img src="res/ln.png"
+                            alt="lien vers profil LINKEDIN"></a>
+                    <a href="https://www.malt.fr/profile/pierregodino" target="_blank" rel="noopener"><img src="res/maltLogo.png"
+                            alt="lien vers profil MALT"></a>
+                    <a href="https://github.com/AniTecK" target="_blank" rel="noopener"><img src="res/githubLogo.png" alt="lien vers profil GITHUB"
+                            style="width:25px;height:25px;"></a>
+                </div>
+            </article>
+
+            <article class="logo">
+                <h1><img src="res/LOGO.svg" alt="pierre godino, developpement web"></h1>
+            </article>
+
+            <article class="footnav">
+                <h4>Menu</h4>
+                <ul></ul>
+                
+            </article>
+
+        </div>
+
+        <div class="lowerPart">
+            <a href="res/Mentions_Legales.pdf" target="_blank" rel="noopener"><p class="footerElement legal"></p></a>
+            <p class="footerElement">
+                <a href="https://www.pierre-godino.com" class="footerElement link">Pierre-Godino.com V2.5</a><span>  2019-2020</span></p>
+        </div>
+    </footer>
+
+
+
+    
+
+
+
+    <!--            JavaScript            -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.0.2/dist/simpleParallax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
