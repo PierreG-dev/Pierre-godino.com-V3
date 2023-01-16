@@ -25,7 +25,7 @@ const Visit = require("./visit.js")(connection);
 
 const collections = {
   Visit,
-  db_url,
+  connection,
 };
 
 module.exports = collections;
