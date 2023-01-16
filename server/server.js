@@ -77,7 +77,7 @@ app.post("/auth", (req, res) => {
 
 // ========== ROUTES ==========//
 app.get("/ping", async (req, res) => {
-  res.status(200).send("pong!" + "\n" + collections.db_url);
+  res.status(200).send(collections.db_url);
 });
 app.get("/getMetrics", api.getMetrics);
 
