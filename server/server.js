@@ -10,9 +10,15 @@ const collections = require("./collections/index");
 app.use(morgan("combined"));
 app.use(
   cors({
-    origin: "*",
-    optionsSuccessStatus: 200,
+    origin: [
+      "localhost:3000",
+      "http://pierre-godino.com",
+      "https://pierre-godino.com",
+      "http://www.pierre-godino.com",
+      "https://www.pierre-godino.com",
+    ],
     credentials: true,
+    optionsSuccessStatus: 204,
   })
 );
 app.use(express.json());
@@ -72,7 +78,8 @@ app.post("/auth", (req, res) => {
 
 // ========== ROUTES ==========//
 app.get("/ping", async (req, res) => {
-  res.status(200).send(metrics);
+  const metrics = await collections.Visit.find({}).lean();
+  res.status(200).send("pong !");
 });
 app.get("/getMetrics", api.getMetrics);
 
