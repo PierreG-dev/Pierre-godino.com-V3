@@ -75,6 +75,9 @@ app.post("/auth", (req, res) => {
 });
 
 // ========== ROUTES ==========//
+app.get("/ping", (req, res) => {
+  res.status(200).send("pong!");
+});
 app.get("/getMetrics", api.getMetrics);
 
 app.post("/newVisit", api.postVisit);
