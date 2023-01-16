@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const session = require("express-session");
 require("dotenv").config();
+const collections = require("./collections/index");
 
 app.use(morgan("combined"));
 app.use(
