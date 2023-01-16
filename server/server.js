@@ -16,11 +16,7 @@ app.use(
       "http://www.pierre-godino.com",
       "https://www.pierre-godino.com",
     ],
-    preflightContinue: false,
-    methods: "GET, PUT, POST",
-    optionsSuccessStatus: 204,
     credentials: true,
-    origin: true,
   })
 );
 app.use(express.json());
