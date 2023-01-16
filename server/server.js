@@ -10,13 +10,8 @@ const collections = require("./collections/index");
 app.use(morgan("combined"));
 app.use(
   cors({
-    origin: [
-      "localhost:3000",
-      "http://pierre-godino.com",
-      "https://pierre-godino.com",
-      "http://www.pierre-godino.com",
-      "https://www.pierre-godino.com",
-    ],
+    origin: "*",
+    optionsSuccessStatus: 200,
     credentials: true,
   })
 );

@@ -53,7 +53,7 @@ const data: Realisation[] = [
   {
     name: 'LEARN',
     sup: 'v1',
-    icon: '/icons/learn.png',
+    icon: '/icons/LEARN.png',
     background:
       'radial-gradient(circle, rgba(126,67,32,1) 0%, rgba(225,117,53,1) 100%)',
     auraColor: '#dc7133',
