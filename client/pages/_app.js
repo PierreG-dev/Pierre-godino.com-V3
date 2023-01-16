@@ -68,13 +68,13 @@ function MyApp({ Component, pageProps }) {
 
   const initiateMetrics = useCallback(() => {
     //visit init
-    fetch('http://localhost:8001/newVisit', { method: 'POST' }).catch((error) =>
-      console.error(error)
+    fetch('https://api.pierre-godino.com/newVisit', { method: 'POST' }).catch(
+      (error) => console.error(error)
     );
 
     //visit update
     visitUpdateInterval.current = setInterval(() => {
-      fetch('http://localhost:8001/updateVisitTime', {
+      fetch('https://api.pierre-godino.com/updateVisitTime', {
         method: 'PUT',
       }).catch((error) => console.error(error));
     }, 30000);
@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }) {
 
   const updateJourney = useCallback((pageName) => {
     //visit journey update
-    fetch('http://localhost:8001/updateVisitJourney', {
+    fetch('https://api.pierre-godino.com/updateVisitJourney', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
