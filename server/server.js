@@ -9,7 +9,7 @@ require("dotenv").config();
 app.use(morgan("combined"));
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://pierre-godino.com"],
+    origin: ["*"],
     optionSuccessStatus: 200,
 
     credentials: true,
