@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
   }
 
   let location;
-  await fetch(`http://ip-api.com/json/${ip}`)
+  await fetch(`https://ip-api.com/json/${ip}`)
     .then((response) => response.json())
     .then((data) => (location = data))
     .catch((error) =>
