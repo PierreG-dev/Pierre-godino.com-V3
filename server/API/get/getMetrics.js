@@ -1,13 +1,13 @@
 const collections = require("../../collections");
 
 module.exports = async (req, res) => {
-  if (!req.session.isConnected) {
-    res.status(401).send({
-      connected: req.session.isConnected,
-      msg: "Access denied",
-    });
-    return;
-  }
+  // if (!req.session.isConnected) {
+  //   res.status(401).send({
+  //     connected: req.session.isConnected,
+  //     msg: "Access denied",
+  //   });
+  //   return;
+  // }
   const metrics = await collections.Visit.find({}).lean();
 
   if (!metrics) {
