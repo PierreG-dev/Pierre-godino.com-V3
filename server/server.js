@@ -16,6 +16,8 @@ app.use(
       "http://www.pierre-godino.com",
       "https://www.pierre-godino.com",
     ],
+    methods: "GET, PUT, POST",
+    optionsSuccessStatus: 204,
     credentials: true,
     origin: true,
   })
