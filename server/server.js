@@ -9,7 +9,15 @@ require("dotenv").config();
 app.use(morgan("combined"));
 app.use(
   cors({
+    origin: [
+      "localhost:3000",
+      "http://pierre-godino.com",
+      "https://pierre-godino.com",
+      "http://www.pierre-godino.com",
+      "https://www.pierre-godino.com",
+    ],
     credentials: true,
+    origin: true,
   })
 );
 app.use(express.json());
