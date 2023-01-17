@@ -31,7 +31,6 @@ function MyApp({ Component, pageProps }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [onMaintenance, setOnMaintenance] = useState(false);
   const visitUpdateInterval = useRef();
-  const actualPage = useRef();
   const firstLoad = useRef(true);
 
   const metaElementsPicker = useCallback((pathname) => {
@@ -152,7 +151,7 @@ function MyApp({ Component, pageProps }) {
 
   const firstLoadFinished = useCallback(() => {
     setTimeout(() => {
-      updateJourney(actualPage.current);
+      updateJourney(metaElements.title);
       firstLoad.current = false;
     }, 5000);
   }, [updateJourney]);
@@ -165,8 +164,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     setMetaElements(metaElementsPicker(window.location.pathname));
-    document.title = 'Pierre | ' + actualPage.current;
-    if (!firstLoad.current) updateJourney(actualPage.current);
+    if (!firstLoad.current) updateJourney(metaElements.title);
   }, [pageProps, updateJourney]);
 
   useEffect(() => {
