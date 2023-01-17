@@ -33,76 +33,78 @@ function MyApp({ Component, pageProps }) {
   const visitUpdateInterval = useRef();
   const firstLoad = useRef(true);
 
-  const metaElementsPicker = useCallback((pathname) => {
-    switch (pathname.toLowerCase().trim()) {
-      case '/':
-        return {
-          title: 'Accueil',
-          description:
-            'Créateur de sites Internet, développeur WEB freelance et formateur',
-          ogUrl: 'https://pierre-godino.com',
-        };
-      case '/realisations':
-        return {
-          title: 'Réalisations',
-          description:
-            'Créateur de sites Internet, développeur WEB freelance et formateur | Mes réalisations',
-          ogUrl: 'https://pierre-godino.com/realisations',
-        };
-      case '/simulator':
-        return {
-          title: 'Simulation',
-          description:
-            'Créateur de sites Internet, développeur WEB freelance et formateur | Devis en ligne',
-          ogUrl: 'https://pierre-godino.com/simulator',
-        };
-      case '/contact':
-        return {
-          title: 'Contact',
-          description:
-            'Créateur de sites Internet, développeur WEB freelance et formateur | Mes coordonnées',
-          ogUrl: 'https://pierre-godino.com/contact',
-        };
-      case '/about':
-        return {
-          title: 'A propos',
-          description:
-            'Créateur de sites Internet, développeur WEB freelance et formateur | A propos de moi',
-          ogUrl: 'https://pierre-godino.com/about',
-        };
-      case '/about/curiculum':
-        return {
-          title: 'CV',
-          description:
-            'Créateur de sites Internet, développeur WEB freelance et formateur | Mon CV traditionnel',
-          ogUrl: 'https://pierre-godino.com/curiculum',
-        };
-      case '/about/skills':
-        return {
-          title: 'Technologies',
-          description:
-            'Créateur de sites Internet, développeur WEB freelance et formateur | Mes technologies',
-          ogUrl: 'https://pierre-godino.com/skills',
-        };
-      case '/about/experiences':
-        return {
-          title: 'Parcours',
-          description:
-            'Créateur de sites Internet, développeur WEB freelance et formateur | Mon parcours',
-          ogUrl: 'https://pierre-godino.com/experiences',
-        };
-      default:
-        return {
-          title: '404',
-          description:
-            'Créateur de sites Internet, développeur WEB freelance et formateur',
-          ogUrl: 'https://pierre-godino.com/',
-        };
-    }
-  }, []);
+  const metaElementsPicker = useCallback(
+    (pathname) => {
+      switch (pathname.toLowerCase().trim()) {
+        case '/':
+          return {
+            title: 'Accueil',
+            description:
+              'Créateur de sites Internet, développeur WEB freelance et formateur',
+            ogUrl: 'https://pierre-godino.com',
+          };
+        case '/realisations':
+          return {
+            title: 'Réalisations',
+            description:
+              'Créateur de sites Internet, développeur WEB freelance et formateur | Mes réalisations',
+            ogUrl: 'https://pierre-godino.com/realisations',
+          };
+        case '/simulator':
+          return {
+            title: 'Simulation',
+            description:
+              'Créateur de sites Internet, développeur WEB freelance et formateur | Devis en ligne',
+            ogUrl: 'https://pierre-godino.com/simulator',
+          };
+        case '/contact':
+          return {
+            title: 'Contact',
+            description:
+              'Créateur de sites Internet, développeur WEB freelance et formateur | Mes coordonnées',
+            ogUrl: 'https://pierre-godino.com/contact',
+          };
+        case '/about':
+          return {
+            title: 'A propos',
+            description:
+              'Créateur de sites Internet, développeur WEB freelance et formateur | A propos de moi',
+            ogUrl: 'https://pierre-godino.com/about',
+          };
+        case '/about/curiculum':
+          return {
+            title: 'CV',
+            description:
+              'Créateur de sites Internet, développeur WEB freelance et formateur | Mon CV traditionnel',
+            ogUrl: 'https://pierre-godino.com/curiculum',
+          };
+        case '/about/skills':
+          return {
+            title: 'Technologies',
+            description:
+              'Créateur de sites Internet, développeur WEB freelance et formateur | Mes technologies',
+            ogUrl: 'https://pierre-godino.com/skills',
+          };
+        case '/about/experiences':
+          return {
+            title: 'Parcours',
+            description:
+              'Créateur de sites Internet, développeur WEB freelance et formateur | Mon parcours',
+            ogUrl: 'https://pierre-godino.com/experiences',
+          };
+        default:
+          return {
+            title: '404',
+            description:
+              'Créateur de sites Internet, développeur WEB freelance et formateur',
+            ogUrl: 'https://pierre-godino.com/',
+          };
+      }
+    },
+    [metaElements]
+  );
 
   const handleLoad = useCallback(() => {
-    console.log('loaded !');
     setTimeout(() => {
       setIsLoaded(true);
     }, 1000);
@@ -163,7 +165,7 @@ function MyApp({ Component, pageProps }) {
   }, [firstLoadFinished, handleLoad, initiateMetrics]);
 
   useEffect(() => {
-    setMetaElements(metaElementsPicker(window.location.pathname));
+    setMetaElements(metaElementsPicker(router.pathname));
     if (!firstLoad.current) updateJourney(metaElements.title);
   }, [pageProps, updateJourney]);
 
