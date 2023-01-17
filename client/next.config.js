@@ -1,5 +1,6 @@
 module.exports = {
   env: {},
+  trailingSlash: true,
 };
 
 // next.config.js
@@ -8,7 +9,7 @@ module.exports = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:8001/:path*',
+        destination: 'https://pierre-godino.com/:path*',
       },
     ];
   },
