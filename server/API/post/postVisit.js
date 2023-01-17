@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
   }
 
   let location;
-  await fetch(`https://ip-api.com/json/${ip}`)
+  await fetch(`http://ip-api.com/json/${ip}`)
     .then((response) => response.json())
     .then((data) => (location = data))
     .catch((error) =>
@@ -36,6 +36,7 @@ module.exports = async (req, res) => {
     },
     timeSpent: 0,
     journey: [],
+    device: req.body.device || "N/A",
     date: now.toLocaleDateString("fr"),
     time: `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`,
   })

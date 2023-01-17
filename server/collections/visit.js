@@ -9,6 +9,7 @@ let schema = new Schema({
   time: String,
   timeSpent: Number,
   journey: Array,
+  device: String,
 });
 
 schema.statics.create = (packet) => {
