@@ -260,14 +260,17 @@ const MainContainer = styled.div`
           cursor: pointer;
           transition: 0.2s;
 
-          @media (max-width: 800px) {
-            transform: translateY(30px) !important;
-            width: 70px !important;
-          }
+
           @media (max-width: 1000px) {
             transform: translateY(20px) !important;
             width: 70px !important;
           }
+          
+          @media (max-width: 800px) {
+            transform: translateY(30px) !important;
+            width: 70px !important;
+          }
+          
         }
         img:hover {
           filter: grayscale(0.1);

@@ -16,6 +16,8 @@ app.use(
       "https://pierre-godino.com",
       "http://www.pierre-godino.com",
       "https://www.pierre-godino.com",
+      "176.128.76.57:3000",
+      "176.128.76.57:*",
     ],
     credentials: true,
     optionsSuccessStatus: 204,
