@@ -1,7 +1,7 @@
 const collections = require("../../collections");
 
 module.exports = async (req, res) => {
-  const requests = await collections.Visit.find({}).lean();
+  const requests = await collections.Request.find({}).lean();
 
   if (!requests) {
     res.status(404).send({
