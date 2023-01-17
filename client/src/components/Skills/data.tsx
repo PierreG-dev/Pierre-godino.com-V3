@@ -94,18 +94,19 @@ const skills: Skill[] = [
     id: 10,
     name: 'Next.js',
     icon: '/icons/next.png',
-    xp: 3,
+    xp: 4,
     mastery: 3,
     affinity: 4,
   },
   {
     id: 11,
-    name: 'Firebase',
-    icon: '/icons/firebase.png',
+    name: 'Express.js',
+    icon: '/icons/express.svg',
     xp: 3,
     mastery: 3,
-    affinity: 3,
+    affinity: 4,
   },
+
   {
     id: 12,
     name: 'Symfony',
@@ -247,8 +248,16 @@ const skills: Skill[] = [
     name: 'Webstorm',
     icon: '/icons/webstorm.png',
     xp: 3,
-    mastery: 3,
+    mastery: 2,
     affinity: 4,
+  },
+  {
+    id: 30,
+    name: 'Firebase',
+    icon: '/icons/firebase.png',
+    xp: 3,
+    mastery: 3,
+    affinity: 3,
   },
 ];
 

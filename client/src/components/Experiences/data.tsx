@@ -26,7 +26,8 @@ export type Technology =
   | 'prestashop'
   | 'tailwind'
   | 'express'
-  | 'pug';
+  | 'pug'
+  | 'express';
 
 export type Environment =
   | 'trello'
@@ -429,9 +430,11 @@ const data: Xp[] = [
       'nodejs',
       'typescript',
       'tailwind',
+      'express',
       'jsx',
       'next',
       'react',
+      'nosql',
     ],
     environnements: ['webstorm', 'trello', 'git', 'adobexd', 'bash', 'yarn'],
     link: 'https://github.com/PierreG-dev/Pierre-godino.com-V3',
