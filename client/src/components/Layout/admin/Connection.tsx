@@ -25,6 +25,7 @@ interface Dataset {
   journey: string[];
   date: string;
   time: string;
+  device: string;
 }
 
 export type Props = {
@@ -59,6 +60,7 @@ const Connection: React.FC<Props> = ({ connexionData }) => {
               </ul>
 
               <ul>
+                <li>Appareil: {connexionData.device}</li>
                 <li>Durée session: {connexionData.timeSpent / 60} Minutes</li>
                 <li>Heure de connexion: {connexionData.time}</li>
               </ul>

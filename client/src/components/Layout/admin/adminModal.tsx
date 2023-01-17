@@ -188,7 +188,7 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
 const AdminModalContent = styled.div`
   position: absolute;
   width: 75vw;
-  height: 75vh;
+  max-height: 75vh;
   top: 12.5vh;
   left: 12.5vw;
   outline: none;
@@ -207,6 +207,11 @@ const AdminModalContent = styled.div`
     color: rgba(0,0,0,0.6);
     font-family: 'Space Mono', monospace;
     margin-bottom: -10px;
+    font-weight: bold;
+
+    @media(max-width: 700px) {
+      font-size: 1.5rem!important;
+    }
   }
 
   &>header {

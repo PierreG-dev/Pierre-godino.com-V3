@@ -124,11 +124,27 @@ function MyApp({ Component, pageProps }) {
     }, 700);
   }, [handleLoad]);
 
+  const devicePicker = useCallback(() => {
+    const width = window.innerWidth;
+    if (!width) return;
+
+    if (width <= 480) return 'Mobile';
+    else if (width <= 768) return 'Tablette';
+    else if (width <= 1024) return 'Ordinateur portable | SM';
+    else return 'Ordinateur de bureau | LG';
+  }, []);
+
   const initiateMetrics = useCallback(() => {
     //visit init
-    fetch('https://api.pierre-godino.com/newVisit', { method: 'POST' }).catch(
-      (error) => console.error(error)
-    );
+    fetch('https://api.pierre-godino.com/newVisit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        device: devicePicker(),
+      }),
+    }).catch((error) => console.error(error));
 
     //visit update
     visitUpdateInterval.current = setInterval(() => {
