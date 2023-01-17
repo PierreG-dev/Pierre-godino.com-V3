@@ -460,9 +460,6 @@ const CenterIcon = styled.div`
       
     }
   }
-
-
-
 `;
 
 export default Footer;
