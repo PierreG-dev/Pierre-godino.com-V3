@@ -7,14 +7,26 @@ import { useRouter } from 'next/router';
 // eslint-disable-next-line no-use-before-define
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import NProgress from 'nprogress';
-import { ThemeContext } from '../src/contexts';
+import { Contexts } from '../src/contexts/Contexts';
 import Layout from '../src/components/Layout';
 import Maintenance from '../src/components/Maintenance/Maintenance';
+import Head from 'next/head';
 
 NProgress.configure({ showSpinner: true });
+let handleStart;
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
+  const [metaElements, setMetaElements] = useState({
+    title: 'Accueil',
+    description:
+      'Créateur de sites Internet, développeur WEB freelance et formateur depuis 2019. Développement web, création ou refonte de site internet, intégration, référencement, etc.',
+    ogTitle: 'Développement WEB, création de sites internet & formations',
+    ogDescription:
+      'Créateur de sites Internet, développeur WEB freelance et formateur depuis 2019. Développement web, création ou refonte de site internet, intégration, référencement, etc.',
+    ogUrl: 'https://pierre-godino.com',
+  });
+
   const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
   const [onMaintenance, setOnMaintenance] = useState(false);
@@ -22,26 +34,71 @@ function MyApp({ Component, pageProps }) {
   const actualPage = useRef();
   const firstLoad = useRef(true);
 
-  const titlePicker = useCallback((pathname) => {
+  const metaElementsPicker = useCallback((pathname) => {
     switch (pathname.toLowerCase().trim()) {
       case '/':
-        return 'Accueil';
+        return {
+          title: 'Accueil',
+          description:
+            'Créateur de sites Internet, développeur WEB freelance et formateur',
+          ogUrl: 'https://pierre-godino.com',
+        };
       case '/realisations':
-        return 'Réalisations';
+        return {
+          title: 'Réalisations',
+          description:
+            'Créateur de sites Internet, développeur WEB freelance et formateur | Mes réalisations',
+          ogUrl: 'https://pierre-godino.com/realisations',
+        };
       case '/simulator':
-        return 'Simulation';
+        return {
+          title: 'Simulation',
+          description:
+            'Créateur de sites Internet, développeur WEB freelance et formateur | Devis en ligne',
+          ogUrl: 'https://pierre-godino.com/simulator',
+        };
       case '/contact':
-        return 'Contact';
+        return {
+          title: 'Contact',
+          description:
+            'Créateur de sites Internet, développeur WEB freelance et formateur | Mes coordonnées',
+          ogUrl: 'https://pierre-godino.com/contact',
+        };
       case '/about':
-        return 'A propos';
+        return {
+          title: 'A propos',
+          description:
+            'Créateur de sites Internet, développeur WEB freelance et formateur | A propos de moi',
+          ogUrl: 'https://pierre-godino.com/about',
+        };
       case '/about/curiculum':
-        return 'CV';
+        return {
+          title: 'CV',
+          description:
+            'Créateur de sites Internet, développeur WEB freelance et formateur | Mon CV traditionnel',
+          ogUrl: 'https://pierre-godino.com/curiculum',
+        };
       case '/about/skills':
-        return 'Technologies';
+        return {
+          title: 'Technologies',
+          description:
+            'Créateur de sites Internet, développeur WEB freelance et formateur | Mes technologies',
+          ogUrl: 'https://pierre-godino.com/skills',
+        };
       case '/about/experiences':
-        return 'Experiences';
+        return {
+          title: 'Parcours',
+          description:
+            'Créateur de sites Internet, développeur WEB freelance et formateur | Mon parcours',
+          ogUrl: 'https://pierre-godino.com/experiences',
+        };
       default:
-        return '404';
+        return {
+          title: '404',
+          description:
+            'Créateur de sites Internet, développeur WEB freelance et formateur',
+          ogUrl: 'https://pierre-godino.com/',
+        };
     }
   }, []);
 
@@ -53,7 +110,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleStart = useCallback(() => {
+  handleStart = useCallback(() => {
     NProgress.start();
     setIsLoaded(false);
   }, []);
@@ -64,7 +121,7 @@ function MyApp({ Component, pageProps }) {
       NProgress.done();
       handleLoad();
     }, 700);
-  }, []);
+  }, [handleLoad]);
 
   const initiateMetrics = useCallback(() => {
     //visit init
@@ -91,42 +148,52 @@ function MyApp({ Component, pageProps }) {
         newPage: pageName,
       }),
     }).catch((error) => console.error(error));
-  });
+  }, []);
 
   const firstLoadFinished = useCallback(() => {
     setTimeout(() => {
       updateJourney(actualPage.current);
       firstLoad.current = false;
     }, 5000);
-  }, []);
+  }, [updateJourney]);
 
   useEffect(() => {
     handleLoad();
     initiateMetrics();
     firstLoadFinished();
-  }, []);
+  }, [firstLoadFinished, handleLoad, initiateMetrics]);
 
   useEffect(() => {
-    console.log('page changed');
-    actualPage.current = titlePicker(window.location.pathname);
+    setMetaElements(metaElementsPicker(window.location.pathname));
     document.title = 'Pierre | ' + actualPage.current;
     if (!firstLoad.current) updateJourney(actualPage.current);
-  }, [pageProps]);
+  }, [pageProps, updateJourney]);
 
   useEffect(() => {
-    router.events.on('routeChangeStart', handleStart);
+    // router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleComplete);
     router.events.on('routeChangeError', handleComplete);
 
     return () => {
-      router.events.off('routeChangeStart', handleStart);
+      // router.events.off('routeChangeStart', handleStart);
       router.events.off('routeChangeComplete', handleComplete);
       router.events.off('routeChangeError', handleComplete);
     };
-  }, [handleComplete, handleStart, router.events]);
+  }, [handleComplete, router.events]);
 
   return (
-    <ThemeContext.Provider>
+    <Contexts>
+      <Head>
+        <title>{'Pierre | ' + metaElements.title}</title>
+        <meta name="description" content={metaElements.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaElements.title}
+        />
+        <meta property="og:url" content={metaElements.ogUrl} />
+        <meta property="og:image" content="/res/OG-image.png" />
+        <meta property="og:description" content={metaElements.description} />
+      </Head>
       <Layout handleLoad={handleLoad} isLoaded={isLoaded} variant="classic">
         {onMaintenance ? (
           <Maintenance />
@@ -134,8 +201,9 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps}></Component>
         )}
       </Layout>
-    </ThemeContext.Provider>
+    </Contexts>
   );
 }
 
 export default MyApp;
+export { handleStart };

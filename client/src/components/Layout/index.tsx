@@ -53,12 +53,12 @@ const Index: React.FC<Props> = ({ children, variant, isLoaded }) => {
         background: isLoaded ? 'transparent' : '#373737',
         zIndex: isLoaded ? 0 : 10,
       }}>
-      <div
+      {/* <div
         id="load_screen"
         style={{
           opacity: isLoaded ? 0 : 1,
           zIndex: isLoaded ? -1 : 5,
-        }}></div>
+        }}></div> */}
 
       <AdminModal
         isOpened={isAdminModalOpened}

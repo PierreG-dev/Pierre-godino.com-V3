@@ -1,51 +1,79 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
-import Link from 'next/link';
+import CustomLink from '../../src/components/Layout/routing/CustomLink';
 
 const Index: NextPage = () => {
+  const starsArray = useRef<JSX.Element[]>();
+
+  //Générateur d'étoiles
+  const starsGenerator = useCallback(() => {
+    const myStars: Array<JSX.Element> = [];
+    for (let i = 0; i < 200; ++i) {
+      const size = Math.ceil(Math.random() * 3) + 'px';
+
+      myStars.push(
+        <div
+          className="star"
+          key={i}
+          style={{
+            width: size,
+            height: size,
+            top: Math.floor(Math.random() * 100) + '%',
+            left: Math.floor(Math.random() * 100) + '%',
+            animationDelay: Math.floor(Math.random() * 500) + 's',
+          }}></div>
+      );
+    }
+    return myStars;
+  }, []);
+
+  useEffect(() => {
+    starsArray.current = starsGenerator();
+  }, [starsGenerator]);
   return (
     <MainContainer>
+      {starsArray.current}
       <section className="flex flex-col buttons-container">
         <div style={{ maxWidth: '100vw' }}>
-          <Link href={'/about/skills'}>
-            <button style={{ animationDelay: '0s' }}>
-              <video loop autoPlay muted>
-                <source src={'/video/skills-preview.mp4'} type={'video/mp4'} />
-              </video>
-              <h3>Mes technologies</h3>
-            </button>
-          </Link>
-          <Link href={'/about/experiences'}>
-            <button style={{ animationDelay: '0.5s' }}>
-              <video loop autoPlay muted>
-                <source src={'/video/exp-preview.mp4'} type={'video/mp4'} />
-              </video>
-              <h3>Mon parcours</h3>
-            </button>
-          </Link>
-        </div>
-        <Link href={'/about/curiculum'}>
-          <button style={{ animationDelay: '1s' }}>
+          <CustomLink
+            notALink={true}
+            button={true}
+            style={{ animationDelay: '0s' }}
+            href={'/about/skills'}>
             <video loop autoPlay muted>
-              <source src={'/video/cv-preview.mp4'} type={'video/mp4'} />
+              <source src={'/video/skills-preview.mp4'} type={'video/mp4'} />
             </video>
-            <h3>Mon CV</h3>
-          </button>
-        </Link>
+            <h3>Mes technologies</h3>
+          </CustomLink>
+          <CustomLink
+            notALink={true}
+            button={true}
+            style={{ animationDelay: '0.5s' }}
+            href={'/about/experiences'}>
+            <video loop autoPlay muted>
+              <source src={'/video/exp-preview.mp4'} type={'video/mp4'} />
+            </video>
+            <h3>Mon parcours</h3>
+          </CustomLink>
+        </div>
+        <CustomLink
+          notALink={true}
+          button={true}
+          style={{ animationDelay: '1s' }}
+          href={'/about/curiculum'}>
+          <video loop autoPlay muted>
+            <source src={'/video/cv-preview.mp4'} type={'video/mp4'} />
+          </video>
+          <h3>Mon CV</h3>
+        </CustomLink>
       </section>
     </MainContainer>
   );
 };
 const MainContainer = styled.div`
-  background: rgb(38, 41, 74);
-  background: linear-gradient(
-    165deg,
-    rgba(38, 41, 74, 1) 0%,
-    rgba(38, 41, 74, 1) 28%,
-    rgba(151, 80, 86, 1) 100%
-  );
   width: 100vw;
+  background: #040e1d;
   min-height: 100vh;
   position: relative;
   display: flex;
@@ -53,6 +81,26 @@ const MainContainer = styled.div`
   justify-content: center;
   gap: 5vh;
   align-items: center;
+
+  .star {
+    background: #fafafa;
+    z-index: 0;
+    position: absolute;
+    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
+    animation: 6s star_glow infinite linear;
+  }
+
+  @keyframes star_glow {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    50% {
+      transform: scale3d(2, 2, 1);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
 
   video {
     position: absolute;

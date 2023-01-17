@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import Link from 'next/link';
+import CustomLink from '../routing/CustomLink';
 
 export type displayType = 'full' | 'displayed';
 
@@ -54,33 +54,33 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <Link href={'/realisations'}>Mes réalisations</Link>
+            <CustomLink href={'/realisations'}>Mes réalisations</CustomLink>
           </li>
           <li
             className="effect-underline small-hidden"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <Link href={'/simulator'}>Devis en ligne</Link>
+            <CustomLink href={'/simulator'}>Devis en ligne</CustomLink>
             <sup>beta</sup>
           </li>
           <li>
-            <Link href={'/'}>
+            <CustomLink href={'/'}>
               <img src="/res/LOGO.png" className="HomeLogo" alt="Logo" />
-            </Link>
+            </CustomLink>
           </li>
           <li
             className="effect-underline"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <Link href={'/contact'}>Contact</Link>
+            <CustomLink href={'/contact'}>Contact</CustomLink>
           </li>
           <li
-            className="effect-underline small-hidden"
+            className="small-hidden"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <Link href={'/about'}>
+            <div>
               <div
                 id="custom_nav_dropdown"
                 onMouseEnter={() => setDropdownDisplay(true)}
                 onMouseLeave={() => setDropdownDisplay(false)}>
-                A propos de moi{' '}
+                <CustomLink href="/about">A propos de moi</CustomLink>
                 <KeyboardArrowDownIcon
                   style={{
                     transform: dropdownDisplay
@@ -98,17 +98,19 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                       : 'none',
                   }}>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
-                    <Link href={'/about/skills'}>Technologies</Link>
+                    <CustomLink href={'/about/skills'}>Technologies</CustomLink>
                   </li>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
-                    <Link href={'/about/experiences'}>Expériences</Link>
+                    <CustomLink href={'/about/experiences'}>
+                      Expériences
+                    </CustomLink>
                   </li>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
-                    <Link href={'/about/curiculum'}>CV</Link>
+                    <CustomLink href={'/about/curiculum'}>CV</CustomLink>
                   </li>
                 </ul>
               </div>
-            </Link>
+            </div>
           </li>
         </ul>
       </nav>
@@ -243,6 +245,7 @@ const MainContainer = styled.div`
 
           @media (max-width: 1000px) {
             font-size: 0.7rem;
+            transform: translateY(-10px);
           }
         }
         sup {

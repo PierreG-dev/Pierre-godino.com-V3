@@ -45,13 +45,14 @@ const MainContainer = styled.div`
   flex-direction: column;
 
   h1 {
+    text-align: center;
     font-size: 2.5rem;
     font-family: 'Space Mono', monospace;
     color: rgba(255, 255, 255, 0.8);
   }
 
   span {
-    font-size: 15rem;
+    font-size: 20vw;
   }
 
   .star {

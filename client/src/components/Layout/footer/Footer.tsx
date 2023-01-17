@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import MenuIcon from '@mui/icons-material/Menu';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
-import Link from 'next/link';
+import CustomLink from '../routing/CustomLink';
 
 export type displayType = 'full' | 'displayed' | 'hidden';
 
@@ -90,16 +90,18 @@ const Footer: React.FC<Props> = ({
               <h5>Navigation</h5>
               <ul>
                 <li>
-                  <Link href={'/'}>Accueil</Link>
+                  <CustomLink href={'/'}>Accueil</CustomLink>
                 </li>
                 <li>
-                  <Link href={'/realisations'}>Mes réalisations</Link>
+                  <CustomLink href={'/realisations'}>
+                    Mes réalisations
+                  </CustomLink>
                 </li>
                 <li>
-                  <Link href={'/contact'}>Contact</Link>
+                  <CustomLink href={'/contact'}>Contact</CustomLink>
                 </li>
                 <li>
-                  <Link href={'/about'}>A propos de moi</Link>
+                  <CustomLink href={'/about'}>A propos de moi</CustomLink>
                 </li>
               </ul>
             </div>

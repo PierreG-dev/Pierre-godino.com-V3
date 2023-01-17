@@ -131,7 +131,7 @@ const Contact: NextPage = () => {
           <h2>Réseaux</h2>
           {networks.map((elem, key) => {
             return (
-              <a href={elem.link} target="_blank" rel="noreferrer">
+              <a key={key} href={elem.link} target="_blank" rel="noreferrer">
                 <div className="network-card">
                   <h3>{elem.name}</h3>
                   <img
@@ -188,7 +188,7 @@ const MainContainer = styled.div`
     padding: 20px;
     gap: 25px;
 
-    @media (max-width: 1180px) {
+    @media (max-width: 1552px) {
       width: 100%;
       padding-top: 0px !important;
     }
@@ -240,6 +240,7 @@ const MainContainer = styled.div`
         border-radius: 3px;
         letter-spacing: 1px;
         transition: 0.1s;
+        font-size: 0.9rem;
 
         &:hover {
           background: rgba(0, 125, 255, 0.8);

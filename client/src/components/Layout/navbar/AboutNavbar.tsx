@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompass } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import HomeIcon from '@mui/icons-material/Home';
-import Link from 'next/link';
+import CustomLink from '../routing/CustomLink';
 
+//deprecated
 const AboutNavbar: React.FC = () => {
   const [displayNav, setDisplayNav] = useState(false);
 
@@ -27,30 +28,30 @@ const AboutNavbar: React.FC = () => {
         <ul
           className={
             'flex justify-center items-center ' +
-            (displayNav ? 'visible-links' : 'invisible-links')
+            (displayNav ? 'visible-CustomLinks' : 'invisible-CustomLinks')
           }>
           {displayNav && (
             <React.Fragment>
               <li className="effect-underline">
                 <div style={{ zIndex: 1 }}>
-                  <Link href="/about">
+                  <CustomLink href="/about">
                     <HomeIcon />
-                  </Link>
+                  </CustomLink>
                 </div>
               </li>
               <li className="effect-underline">
                 <div style={{ zIndex: 1 }}>
-                  <Link href="/about/curiculum">CV</Link>
+                  <CustomLink href="/about/curiculum">CV</CustomLink>
                 </div>
               </li>
               <li className="effect-underline">
                 <div style={{ zIndex: 1 }}>
-                  <Link href="/about/experiences">Expériences</Link>
+                  <CustomLink href="/about/experiences">Expériences</CustomLink>
                 </div>
               </li>
               <li className="effect-underline">
                 <div style={{ zIndex: 1 }}>
-                  <Link href="/about/skills">Technologies</Link>
+                  <CustomLink href="/about/skills">Technologies</CustomLink>
                 </div>
               </li>
               <li className="w-1">
@@ -124,11 +125,11 @@ const MainContainer = styled.div`
       list-style: none;
       font-size: 1.7rem;
     }
-    .invisible-links {
+    .invisible-CustomLinks {
       opacity: 0;
       transition: 0.8s;
     }
-    .visible-links {
+    .visible-CustomLinks {
       opacity: 1;
       gap: 15px;
       transition: 0.8s 1.5s;
