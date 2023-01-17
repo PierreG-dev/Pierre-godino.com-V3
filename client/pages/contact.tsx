@@ -25,15 +25,43 @@ const networks = [
 
 const Contact: NextPage = () => {
   const [buttonAnimationActive, setButtonAnimationActive] = useState('idle');
+  const [nameInput, setNameInput] = useState('');
+  const [messageInput, setMessageInput] = useState('');
   const starsArray = useRef<JSX.Element[]>();
 
+  const handleNameInputChange = useCallback((e) => {
+    setNameInput(e.target.value);
+  }, []);
+  const handleMessageInputChange = useCallback((e) => {
+    setMessageInput(e.target.value);
+  }, []);
+  const clearInputs = useCallback(() => {
+    setNameInput('');
+    setMessageInput('');
+  }, []);
   const handleButtonAnimation = useCallback(() => {
     setButtonAnimationActive('active');
 
+    fetch('https://api.pierre-godino.com/newRequest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: nameInput,
+        message: messageInput,
+      }),
+    })
+      .then(() => {
+        console.log('Request successfully sent');
+      })
+      .catch((err) => console.error(err));
+
     setTimeout(() => {
+      clearInputs();
       setButtonAnimationActive('finished');
     }, 1200);
-  }, []);
+  }, [messageInput, nameInput]);
 
   //Générateur d'étoiles
   const starsGenerator = useCallback(() => {
@@ -99,13 +127,22 @@ const Contact: NextPage = () => {
 
         <section id="message">
           <h2>Me contacter</h2>
-          <input type="text" name="" id="" placeholder="Nom" />
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Nom"
+            value={nameInput}
+            onChange={handleNameInputChange}
+          />
           <textarea
             name=""
             id=""
             cols={30}
             rows={5}
-            placeholder="Requête"></textarea>
+            placeholder="Requête"
+            value={messageInput}
+            onChange={handleMessageInputChange}></textarea>
           <button
             onClick={handleButtonAnimation}
             className={
