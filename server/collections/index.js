@@ -22,9 +22,11 @@ function tryConnect() {
 tryConnect();
 
 const Visit = require("./visit.js")(connection);
+const Request = require("./request.js")(connection);
 
 const collections = {
   Visit,
+  Request,
 };
 
 module.exports = collections;

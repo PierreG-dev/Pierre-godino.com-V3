@@ -1,4 +1,3 @@
-const { response } = require("express");
 const collections = require("../../collections");
 const fetch = require("node-fetch");
 

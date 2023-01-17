@@ -84,8 +84,10 @@ app.get("/ping", async (req, res) => {
   res.status(200).send("pong !");
 });
 app.get("/getMetrics", api.getMetrics);
+app.get("/getRequests", api.getRequests);
 
 app.post("/newVisit", api.postVisit);
+app.post("/newRequest", api.postRequest);
 
 app.put("/updateVisitJourney", api.putVisitJourney);
 app.put("/updateVisitTime", api.putVisitTime);
