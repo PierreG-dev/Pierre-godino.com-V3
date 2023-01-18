@@ -24,11 +24,11 @@ const Home: NextPage = () => {
   ]);
   const sentencesArray = useRef<string[]>([
     "Les logiciels et les cathédrales, c'est un peu la même chose: d'abord on les construit, ensuite on prie.",
-    "N'importe quel idiot peut écrire du code qu'un ordinateur peut comprendre. Les bons programmeurs écrivent du code que les humains peuvent comprendre.",
+    "Tout le monde peut écrire du code qu'un ordinateur peut comprendre. Les bons programmeurs écrivent du code que les humains peuvent comprendre.",
     'Toute technologie suffisamment avancée est indiscernable de la magie.',
     "L'enseignement devrait être tel que ce qui est offert soit perçu comme un cadeau précieux et non comme une tâche difficile.",
     'Software and cathedrals are a bit the same thing: first we build them, then we pray.',
-    'Any idiot can write code that a computer can understand. Good programmers write code that humans can understand.',
+    'Everyone can write code that a computer can understand. Good programmers write code that humans can understand.',
     'Any sufficiently advanced technology is indistinguishable from magic.',
     'Teaching should be such that what is offered is perceived as a precious gift and not as a difficult task.',
   ]);
@@ -102,11 +102,11 @@ const Home: NextPage = () => {
         <canvas ref={canvasRef} id="globe" />
         <div id="content">
           <h1>
-            <GlitchHandler sentences={prefixArray.current} delay={14000} />
-            <GlitchHandler sentences={titleArray.current} delay={7000} />
+            <GlitchHandler sentences={prefixArray.current} delay={17000} />
+            <GlitchHandler sentences={titleArray.current} delay={8500} />
           </h1>
           <i>
-            <TextSlider textArray={sentencesArray.current} delay={7000} />
+            <TextSlider textArray={sentencesArray.current} delay={8500} />
           </i>
         </div>
       </section>
