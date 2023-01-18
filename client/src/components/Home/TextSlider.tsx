@@ -15,7 +15,7 @@ const TextSlider: React.FC<Props> = ({ textArray, delay }) => {
       setDisplayedText((previousState) =>
         previousState === textArray.length - 1 ? 0 : previousState + 1
       );
-    }, 7000);
+    }, delay);
 
     return () => {
       clearInterval(interval);
