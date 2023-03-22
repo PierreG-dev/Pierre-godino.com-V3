@@ -183,7 +183,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     setMetaElements(metaElementsPicker(router.pathname));
     if (!firstLoad.current) updateJourney(metaElements.title);
-  }, [pageProps, updateJourney]);
+  }, [router.pathname, pageProps, updateJourney]);
 
   useEffect(() => {
     // router.events.on('routeChangeStart', handleStart);
