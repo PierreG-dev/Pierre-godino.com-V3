@@ -1,6 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const Simulator: NextPage = () => {
   //Générateur d'étoiles
@@ -25,8 +27,34 @@ const Simulator: NextPage = () => {
     return myStars;
   }, []);
 
+  const router = useRouter();
+  const metaContentGenerator = useMemo(() => {
+    const metaData = {
+      title: 'Simulation',
+      description:
+        'Créateur de sites Internet, développeur WEB freelance et formateur | Devis en ligne',
+      ogUrl: 'https://pierre-godino.com/simulator',
+    };
+
+    return (
+      <Head>
+        <title>
+          {'Pierre | ' + metaData.title} {router.pathname}
+        </title>
+        <meta name="description" content={metaData.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaData.title}
+        />
+        <meta property="og:url" content={metaData.ogUrl} />
+        <meta property="og:description" content={metaData.description} />
+      </Head>
+    );
+  }, [router.pathname]);
+
   return (
     <MainContainer>
+      {metaContentGenerator}
       {starsGenerator()}
       <h1>En cours de développement</h1>
       <span>🚧</span>

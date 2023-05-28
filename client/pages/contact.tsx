@@ -1,8 +1,16 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import CachedIcon from '@mui/icons-material/Cached';
 import DoneIcon from '@mui/icons-material/Done';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const networks = [
   {
@@ -89,8 +97,34 @@ const Contact: NextPage = () => {
     starsArray.current = starsGenerator();
   }, [starsGenerator]);
 
+  const router = useRouter();
+  const metaContentGenerator = useMemo(() => {
+    const metaData = {
+      title: 'Contact',
+      description:
+        'Créateur de sites Internet, développeur WEB freelance et formateur | Mes coordonnées',
+      ogUrl: 'https://pierre-godino.com/contact',
+    };
+
+    return (
+      <Head>
+        <title>
+          {'Pierre | ' + metaData.title} {router.pathname}
+        </title>
+        <meta name="description" content={metaData.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaData.title}
+        />
+        <meta property="og:url" content={metaData.ogUrl} />
+        <meta property="og:description" content={metaData.description} />
+      </Head>
+    );
+  }, [router.pathname]);
+
   return (
     <MainContainer>
+      {metaContentGenerator}
       {starsArray.current}
       <div id="satelite_container">
         <img src="/res/satelite.png" alt="Satellite" className="satelite" />

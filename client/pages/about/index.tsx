@@ -1,7 +1,15 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const Index: NextPage = () => {
   const starsArray = useRef<JSX.Element[]>();
@@ -31,8 +39,34 @@ const Index: NextPage = () => {
   useEffect(() => {
     starsArray.current = starsGenerator();
   }, [starsGenerator]);
+
+  const router = useRouter();
+  const metaContentGenerator = useMemo(() => {
+    const metaData = {
+      title: 'A propos',
+      description:
+        'Créateur de sites Internet, développeur WEB freelance et formateur | A propos de moi',
+      ogUrl: 'https://pierre-godino.com/about',
+    };
+
+    return (
+      <Head>
+        <title>
+          {'Pierre | ' + metaData.title} {router.pathname}
+        </title>
+        <meta name="description" content={metaData.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaData.title}
+        />
+        <meta property="og:url" content={metaData.ogUrl} />
+        <meta property="og:description" content={metaData.description} />
+      </Head>
+    );
+  }, [router.pathname]);
   return (
     <MainContainer>
+      {metaContentGenerator}
       {starsArray.current}
       <section className="flex flex-col buttons-container">
         <div style={{ maxWidth: '100vw' }}>

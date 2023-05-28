@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Select from '@mui/material/Select';
@@ -12,6 +18,8 @@ import TimelapseIcon from '@mui/icons-material/Timelapse';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const Skills: NextPage = () => {
   const [displayedSkillId, setDisplayedSkillId] = useState(0);
@@ -84,8 +92,34 @@ const Skills: NextPage = () => {
     starsArray.current = starsGenerator();
   }, []);
 
+  const router = useRouter();
+  const metaContentGenerator = useMemo(() => {
+    const metaData = {
+      title: 'Technologies',
+      description:
+        'Créateur de sites Internet, développeur WEB freelance et formateur | Mes technologies',
+      ogUrl: 'https://pierre-godino.com/skills',
+    };
+
+    return (
+      <Head>
+        <title>
+          {'Pierre | ' + metaData.title} {router.pathname}
+        </title>
+        <meta name="description" content={metaData.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaData.title}
+        />
+        <meta property="og:url" content={metaData.ogUrl} />
+        <meta property="og:description" content={metaData.description} />
+      </Head>
+    );
+  }, [router.pathname]);
+
   return (
     <MainContainer>
+      {metaContentGenerator}
       {starsArray.current}
       <AnimationContainer>
         <img

@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { AiOutlineDownload } from 'react-icons/ai';
 import styled from 'styled-components';
 import { NextPage } from 'next';
 import Experience from '../../src/components/Curiculum/Experience';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const Curiculum: NextPage = () => {
+  const router = useRouter();
+  const metaContentGenerator = useMemo(() => {
+    const metaData = {
+      title: 'CV',
+      description:
+        'Créateur de sites Internet, développeur WEB freelance et formateur | Mon CV traditionnel',
+      ogUrl: 'https://pierre-godino.com/curiculum',
+    };
+
+    return (
+      <Head>
+        <title>
+          {'Pierre | ' + metaData.title} {router.pathname}
+        </title>
+        <meta name="description" content={metaData.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaData.title}
+        />
+        <meta property="og:url" content={metaData.ogUrl} />
+        <meta property="og:description" content={metaData.description} />
+      </Head>
+    );
+  }, [router.pathname]);
   return (
     <MainContainer>
+      {metaContentGenerator}
       <img
         className={'background'}
         src="/res/curiculum-background.jpg"

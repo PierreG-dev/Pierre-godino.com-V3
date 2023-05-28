@@ -1,7 +1,15 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react';
+import React, {
+  useCallback,
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+} from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import LinkIcon from '@mui/icons-material/Link';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 export type Realisation = {
   name?: string;
@@ -398,8 +406,34 @@ const Realisations: NextPage = () => {
     };
   }, []);
 
+  const router = useRouter();
+  const metaContentGenerator = useMemo(() => {
+    const metaData = {
+      title: 'Réalisations',
+      description:
+        'Créateur de sites Internet, développeur WEB freelance et formateur | Mes réalisations',
+      ogUrl: 'https://pierre-godino.com/realisations',
+    };
+
+    return (
+      <Head>
+        <title>
+          {'Pierre | ' + metaData.title} {router.pathname}
+        </title>
+        <meta name="description" content={metaData.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaData.title}
+        />
+        <meta property="og:url" content={metaData.ogUrl} />
+        <meta property="og:description" content={metaData.description} />
+      </Head>
+    );
+  }, [router.pathname]);
+
   return (
     <MainContainer>
+      {metaContentGenerator}
       <div
         id="info_block"
         style={{ display: windowSize < 1250 ? 'block' : 'none' }}>
@@ -423,13 +457,13 @@ const MainContainer = styled.div`
   font-family: 'Space Mono', monospace;
   text-shadow: 1px 1px 2px #08666abb;
   letter-spacing: -1px;
-  
+
   #info_block {
     position: absolute;
     top: 5vh;
     right: 15px;
     color: #08666a;
-    
+
     text-align: center;
     width: 100%;
   }
@@ -492,7 +526,7 @@ const MainContainer = styled.div`
         position: absolute;
         top: 35px;
         right: 35px;
-        text-shadow: 0px 0px 6px rgba(0,0,0,0.8);
+        text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.8);
         filter: contrast(120%);
       }
 
@@ -513,7 +547,7 @@ const MainContainer = styled.div`
         z-index: 0;
       }
 
-      @media (max-width: 1250px){
+      @media (max-width: 1250px) {
         width: 170px;
         height: 170px;
 
@@ -527,7 +561,7 @@ const MainContainer = styled.div`
         }
       }
 
-      @media (max-width: 800px){
+      @media (max-width: 800px) {
         width: 140px;
         height: 140px;
 
@@ -541,7 +575,7 @@ const MainContainer = styled.div`
         }
       }
 
-      @media (max-width: 660px){
+      @media (max-width: 660px) {
         width: 100px;
         height: 100px;
 
@@ -564,7 +598,7 @@ const MainContainer = styled.div`
       box-shadow: inset 0px 0px 50px #08666a, 0px 0px 10px #08666a;
       border: 2px solid #08666a;
       color: #08666a;
-      z-index: 2
+      z-index: 2;
       backdrop-filter: blur(5px);
       animation-timing-function: ease;
       animation-duration: 0.6s;
@@ -592,12 +626,12 @@ const MainContainer = styled.div`
 
         &:hover {
           cursor: pointer;
-          z-index: 2
+          z-index: 2;
         }
 
         &:hover svg {
           filter: drop-shadow(0px 0px 5px #fafafa55);
-          transform: scale3d(1.1,1.1,1)
+          transform: scale3d(1.1, 1.1, 1);
         }
       }
 
@@ -608,27 +642,26 @@ const MainContainer = styled.div`
         flex-direction: column;
         gap: 5%;
         position: absolute;
-        width: 100%;;
-        height: 100%;;
+        width: 100%;
+        height: 100%;
         top: 0;
-        left: 0
+        left: 0;
         animation-timing-function: ease;
         animation-duration: 0.3s;
         animation-iteration-count: 1;
         animation-fill-mode: both;
       }
 
-      @media (max-width: 1250px){
-
+      @media (max-width: 1250px) {
         h3 {
-        font-size: 1.5rem;
-       }
+          font-size: 1.5rem;
+        }
 
-       p {}
+        p {
+        }
       }
 
-      @media (max-width: 800px){
-
+      @media (max-width: 800px) {
         h3 {
           font-size: 1.1rem;
         }
@@ -637,52 +670,155 @@ const MainContainer = styled.div`
           font-size: 0.9rem;
         }
       }
-
     }
 
     @keyframes info_screen_content_appear {
-      0% {opacity: 0}
-      100% {opacity: 1}
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
     @keyframes info_screen_content_disappear {
-      0% {opacity: 1}
-      100% {opacity: 0}
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
 
     @keyframes info_screen_active_lg {
-      0% {width: 0;height: 0;left:0;top:0;border-width: 2px;}
-      50% {width: 0px;height: 200px;left:0;top:-100%;}
-      100%{width: 300px;height: 200px;left:-150%; top:-100%;}
+      0% {
+        width: 0;
+        height: 0;
+        left: 0;
+        top: 0;
+        border-width: 2px;
+      }
+      50% {
+        width: 0px;
+        height: 200px;
+        left: 0;
+        top: -100%;
+      }
+      100% {
+        width: 300px;
+        height: 200px;
+        left: -150%;
+        top: -100%;
+      }
     }
 
     @keyframes info_screen_idle_lg {
-      0% {width: 300px;height: 200px;top:-100%; left:-150%;}
-      50% {width: 0;height: 200px;top:-100%; left:0;}
-      100%{width: 0;height: 0;top:0; left:0; border-width: 0px;}
+      0% {
+        width: 300px;
+        height: 200px;
+        top: -100%;
+        left: -150%;
+      }
+      50% {
+        width: 0;
+        height: 200px;
+        top: -100%;
+        left: 0;
+      }
+      100% {
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+        border-width: 0px;
+      }
     }
 
     @keyframes info_screen_active_md {
-      0% {width: 0;height: 0;left:0;top:0;border-width: 2px;}
-      50% {width: 0px;height: 160px;left:0;top:-90%;}
-      100%{width: 250px;height: 160px;left:-140%; top:-90%;}
+      0% {
+        width: 0;
+        height: 0;
+        left: 0;
+        top: 0;
+        border-width: 2px;
+      }
+      50% {
+        width: 0px;
+        height: 160px;
+        left: 0;
+        top: -90%;
+      }
+      100% {
+        width: 250px;
+        height: 160px;
+        left: -140%;
+        top: -90%;
+      }
     }
 
     @keyframes info_screen_idle_md {
-      0% {width: 250px;height: 160px;top:-90%; left:-140%;}
-      50% {width: 0;height: 160px;top:-90%; left:0;}
-      100%{width: 0;height: 0;top:0; left:0; border-width: 0px;}
+      0% {
+        width: 250px;
+        height: 160px;
+        top: -90%;
+        left: -140%;
+      }
+      50% {
+        width: 0;
+        height: 160px;
+        top: -90%;
+        left: 0;
+      }
+      100% {
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+        border-width: 0px;
+      }
     }
 
     @keyframes info_screen_active_sm {
-      0% {width: 0;height: 0;left:0;top:0;border-width: 2px;}
-      50% {width: 0px;height: 125px;left:0;top:-120%;}
-      100%{width: 200px;height: 125px;left:-190%; top:-120%;}
+      0% {
+        width: 0;
+        height: 0;
+        left: 0;
+        top: 0;
+        border-width: 2px;
+      }
+      50% {
+        width: 0px;
+        height: 125px;
+        left: 0;
+        top: -120%;
+      }
+      100% {
+        width: 200px;
+        height: 125px;
+        left: -190%;
+        top: -120%;
+      }
     }
 
     @keyframes info_screen_idle_sm {
-      0% {width: 200px;height: 125px;top:-120%; left:-190%;}
-      50% {width: 0;height: 125px;top:-120%; left:0;}
-      100%{width: 0;height: 0;top:0; left:0; border-width: 0px;}
+      0% {
+        width: 200px;
+        height: 125px;
+        top: -120%;
+        left: -190%;
+      }
+      50% {
+        width: 0;
+        height: 125px;
+        top: -120%;
+        left: 0;
+      }
+      100% {
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+        border-width: 0px;
+      }
     }
   }
 

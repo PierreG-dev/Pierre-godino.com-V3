@@ -1,9 +1,17 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 import createGlobe from 'cobe';
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import GlitchHandler from '../src/components/Home/GlitchHandler';
 import TextSlider from '../src/components/Home/TextSlider';
+import Head from 'next/head';
 
 const Home: NextPage = () => {
   const prefixArray = useRef<string[]>([
@@ -34,6 +42,31 @@ const Home: NextPage = () => {
   ]);
   const canvasRef = useRef();
   const starsArray: any = useRef();
+
+  const router = useRouter();
+  const metaContentGenerator = useMemo(() => {
+    const metaData = {
+      title: 'Accueil',
+      description:
+        'Créateur de sites Internet, développeur WEB freelance et formateur',
+      ogUrl: 'https://pierre-godino.com',
+    };
+
+    return (
+      <Head>
+        <title>
+          {'Pierre | ' + metaData.title} {router.pathname}
+        </title>
+        <meta name="description" content={metaData.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaData.title}
+        />
+        <meta property="og:url" content={metaData.ogUrl} />
+        <meta property="og:description" content={metaData.description} />
+      </Head>
+    );
+  }, [router.pathname]);
 
   //Générateur d'étoiles
   const starsGenerator = useCallback(() => {
@@ -97,6 +130,7 @@ const Home: NextPage = () => {
 
   return (
     <MainContainer>
+      {metaContentGenerator}
       <section id="landing">
         {starsArray.current}
         <canvas ref={canvasRef} id="globe" />

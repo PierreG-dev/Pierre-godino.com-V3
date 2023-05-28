@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import Experience from '../../src/components/Experiences/Experience';
 import data from '../../src/components/Experiences/data';
@@ -7,6 +7,8 @@ import { NextPage } from 'next';
 import Timeline from '@mui/lab/Timeline';
 import Clock from 'react-clock';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const clockOptions = {
   className: 'clock',
@@ -69,8 +71,34 @@ const Experiences: NextPage = () => {
       });
   }, [screenSize, expandedXp]);
 
+  const router = useRouter();
+  const metaContentGenerator = useMemo(() => {
+    const metaData = {
+      title: 'Parcours',
+      description:
+        'Créateur de sites Internet, développeur WEB freelance et formateur | Mon parcours',
+      ogUrl: 'https://pierre-godino.com/experiences',
+    };
+
+    return (
+      <Head>
+        <title>
+          {'Pierre | ' + metaData.title} {router.pathname}
+        </title>
+        <meta name="description" content={metaData.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaData.title}
+        />
+        <meta property="og:url" content={metaData.ogUrl} />
+        <meta property="og:description" content={metaData.description} />
+      </Head>
+    );
+  }, [router.pathname]);
+
   return (
     <MainContainer>
+      {metaContentGenerator}
       <BackgroundContainer className={'bcg-star'}>
         <div className="bcg-star">
           <div id="stars"></div>

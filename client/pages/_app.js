@@ -200,15 +200,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Contexts>
       <Head>
-        <title>{'Pierre | ' + metaElements.title}</title>
-        <meta name="description" content={metaElements.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaElements.title}
-        />
-        <meta property="og:url" content={metaElements.ogUrl} />
         <meta property="og:image" content="/res/OG-image.png" />
-        <meta property="og:description" content={metaElements.description} />
       </Head>
       <Layout handleLoad={handleLoad} isLoaded={isLoaded} variant="classic">
         {onMaintenance ? (
