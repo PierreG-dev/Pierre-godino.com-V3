@@ -25,7 +25,7 @@ export type Realisation = {
 const data: Realisation[] = [
   {
     name: 'Portfolio',
-    sup: 'v3',
+    sup: 'V3',
     icon: '/res/LOGO.svg',
     background:
       'radial-gradient(circle, rgba(38,2,0,1) 0%, rgba(96,15,0,1) 100%, rgba(96,15,0,1) 100%)',
@@ -36,7 +36,7 @@ const data: Realisation[] = [
   },
   {
     name: 'Portfolio',
-    sup: 'v2',
+    sup: 'V2',
     icon: '/res/LOGO.svg',
     background:
       'radial-gradient(circle, rgba(38,2,0,1) 0%, rgba(96,15,0,1) 100%, rgba(96,15,0,1) 100%)',
@@ -47,7 +47,7 @@ const data: Realisation[] = [
   },
   {
     name: 'Portfolio',
-    sup: 'v1',
+    sup: 'V1',
     icon: '/res/LOGO.svg',
     background:
       'radial-gradient(circle, rgba(38,2,0,1) 0%, rgba(96,15,0,1) 100%, rgba(96,15,0,1) 100%)',
@@ -60,7 +60,7 @@ const data: Realisation[] = [
 
   {
     name: 'LEARN',
-    sup: 'v1',
+    sup: 'V1',
     icon: '/icons/LEARN.png',
     background:
       'radial-gradient(circle, rgba(126,67,32,1) 0%, rgba(225,117,53,1) 100%)',
@@ -99,9 +99,12 @@ const Realisations: NextPage = () => {
 
   const starsArray = useRef<JSX.Element[]>();
 
-  //Générateur d'étoiles
+  // Générateur d'étoiles
   const starsGenerator = useCallback(() => {
-    const myStars: Array<JSX.Element> = [];
+    // --- Création du tableau d'étoiles
+    const myStars: JSX.Element[] = [];
+
+    // --- Boucle qui génère les étoiles et qui les push dans le tableau
     for (let i = 0; i < 200; ++i) {
       const size = Math.ceil(Math.random() * 3) + 'px';
 
@@ -118,221 +121,189 @@ const Realisations: NextPage = () => {
           }}></div>
       );
     }
+
     return myStars;
   }, []);
 
-  //gère la position de la planète en fonction de son ordre (max 8)
+  // Gère la position de la planète en fonction de son ordre (max 8)
   const positionPicker = useCallback(
     (key) => {
-      const delayRatio = -1.25;
       switch (key) {
         case 0:
           return {
             top:
               -500 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
+                ? 2
+                : 2.5),
             left:
               -500 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
-            animationName: 'invert-' + (key + 1),
+                ? 2
+                : 2.5),
+            animationName: 'invert',
           };
         case 1:
           return {
             top:
               -653.56 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
+                ? 2
+                : 2.5),
             left:
               -100 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
-            animationName: 'invert-' + (key + 1),
+                ? 2
+                : 2.5),
+            animationName: 'invert',
           };
         case 2:
           return {
             top:
               -500 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
+                ? 2
+                : 2.5),
             left:
               300 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
-            animationName: 'invert-' + (key + 1),
+                ? 2
+                : 2.5),
+            animationName: 'invert',
           };
         case 3:
           return {
             top:
               -100 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
+                ? 2
+                : 2.5),
             left:
               453.56 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
-            animationName: 'invert-' + (key + 1),
+                ? 2
+                : 2.5),
+            animationName: 'invert',
           };
         case 4:
           return {
             top:
               300 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
+                ? 2
+                : 2.5),
             left:
               300 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
-            animationName: 'invert-' + (key + 1),
+                ? 2
+                : 2.5),
+            animationName: 'invert',
           };
         case 5:
           return {
             top:
               453.56 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
+                ? 2
+                : 2.5),
             left:
               -100 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
-            animationName: 'invert-' + (key + 1),
+                ? 2
+                : 2.5),
+            animationName: 'invert',
           };
         case 6:
           return {
             top:
               300 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
+                ? 2
+                : 2.5),
             left:
               -500 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
-            animationName: 'invert-' + (key + 1),
+                ? 2
+                : 2.5),
+            animationName: 'invert',
           };
         case 7:
           return {
             top:
               -100 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
+                ? 2
+                : 2.5),
             left:
               -653.56 /
-              (windowSize > 1250
-                ? 1.2
-                : windowSize > 800
-                ? 2
+              (windowSize > 1350
+                ? 1
+                : windowSize > 1025
+                ? 1.7
                 : windowSize > 660
-                ? 2.4
-                : windowSize > 500
-                ? 3.3
-                : 4.5),
-            animationName: 'invert-' + (key + 1),
+                ? 2
+                : 2.5),
+            animationName: 'invert',
           };
         default:
           console.error('Probleme de position');
@@ -341,16 +312,28 @@ const Realisations: NextPage = () => {
     [windowSize]
   );
 
+  // Sélection de planètes
   const selectPlanet = useCallback((e) => {
-    const key = parseInt(
-      e.target[Object.keys(e.target).find((k) => k.startsWith('__reactFiber$'))]
-        .key
-    );
+    // --- Vérification de l'endroit du clic
+    if (
+      e.target.localName !== 'img' &&
+      e.target.localName !== 'span' &&
+      e.target.localName === 'div' &&
+      e.target.className !== 'planet'
+    ) {
+      // --- Le clic est en dehors d'une planete => on déselectionne
+      setSelectedPlanet(-1);
+      return;
+    }
+
+    // --- Si la planete est déjà selectionnée alors on déselectionne, sinon on sélectionne
+    const key = parseInt(e.target.dataset.key);
     setSelectedPlanet((previousState) => (previousState === key ? -1 : key));
   }, []);
 
-  //générateur de planètes
+  // Générateur de planètes
   const planetsGenerator = useCallback(() => {
+    // -- Parcours la base de données de planètes et les génère puis retourne le tout
     return data.map((elem, key) => {
       if (!elem.name) return [];
       return (
@@ -364,14 +347,16 @@ const Realisations: NextPage = () => {
               className="planet"
               onClick={selectPlanet}
               key={key}
+              data-key={key}
               style={{
                 background: elem.background,
                 color: elem.auraColor,
                 borderColor: elem.auraColor,
               }}>
-              {elem.sup && <span>{elem.sup}</span>}
+              {elem.sup && <span data-key={key}>{elem.sup}</span>}
               <img
                 key={key}
+                data-key={key}
                 src={elem.icon}
                 alt={elem.name}
                 style={{
@@ -384,14 +369,14 @@ const Realisations: NextPage = () => {
               style={{
                 animationName:
                   selectedPlanet === key
-                    ? windowSize < 660
+                    ? windowSize < 920
                       ? 'info_screen_active_sm'
-                      : windowSize < 1250
+                      : windowSize < 1350
                       ? 'info_screen_active_md'
                       : 'info_screen_active_lg'
-                    : windowSize < 660
+                    : windowSize < 920
                     ? 'info_screen_idle_sm'
-                    : windowSize < 1250
+                    : windowSize < 1350
                     ? 'info_screen_idle_md'
                     : 'info_screen_idle_lg',
               }}>
@@ -431,14 +416,19 @@ const Realisations: NextPage = () => {
       setWindowSize(window.innerWidth);
     });
 
+    window.addEventListener('click', selectPlanet);
+
     return () => {
       window.removeEventListener('resize', () => {
         setWindowSize(window.innerWidth);
       });
+      window.removeEventListener('click', selectPlanet);
     };
   }, []);
 
   const router = useRouter();
+
+  // Génère les meta éléments
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'Réalisations',
@@ -487,6 +477,9 @@ const MainContainer = styled.div`
   font-family: 'Space Mono', monospace;
   text-shadow: 1px 1px 2px #08666abb;
   letter-spacing: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   #info_block {
     position: absolute;
@@ -501,12 +494,106 @@ const MainContainer = styled.div`
   #planets_container {
     transform: rotateX(75deg);
     transform-style: preserve-3d;
-    position: absolute;
     width: 0;
     height: 0;
-    top: 50%;
-    left: 50%;
+    top: 50vh;
+    left: 50vw;
     z-index: 0;
+
+    @keyframes invert {
+      0% {
+        transform: rotateX(-90deg) rotateY(360deg) rotateZ(0deg);
+      }
+
+      100% {
+        transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+      }
+    }
+
+    @media (max-width: 1350px) {
+      transform: rotateX(75deg) rotateY(35deg);
+
+      .planet {
+        width: 170px;
+        height: 170px;
+
+        img {
+          width: 70px;
+        }
+
+        span {
+          top: 25px;
+          right: 25px;
+        }
+      }
+
+      @keyframes invert {
+        0% {
+          transform: rotateX(-90deg) rotateY(360deg) rotateZ(-35deg);
+        }
+
+        100% {
+          transform: rotateX(-90deg) rotateY(0deg) rotateZ(-35deg);
+        }
+      }
+    }
+
+    @media (max-width: 1025px) {
+      transform: rotateX(75deg) rotateY(45deg);
+
+      .planet {
+        width: 140px;
+        height: 140px;
+
+        img {
+          width: 60px;
+        }
+
+        span {
+          top: 15px;
+          right: 15px;
+        }
+      }
+
+      @keyframes invert {
+        0% {
+          transform: rotateX(-90deg) rotateY(360deg) rotateZ(-45deg);
+        }
+
+        100% {
+          transform: rotateX(-90deg) rotateY(0deg) rotateZ(-45deg);
+        }
+      }
+    }
+
+    @media (max-width: 660px) {
+      transform: rotateX(75deg) rotateY(60deg);
+
+      .planet {
+        width: 100px;
+        height: 100px;
+
+        img {
+          width: 50px;
+        }
+
+        span {
+          top: 10px;
+          right: 10px;
+          font-size: 1.4rem;
+        }
+      }
+
+      @keyframes invert {
+        0% {
+          transform: rotateX(-90deg) rotateY(360deg) rotateZ(-60deg);
+        }
+
+        100% {
+          transform: rotateX(-90deg) rotateY(0deg) rotateZ(-60deg);
+        }
+      }
+    }
   }
 
   #gravity_center {
@@ -554,6 +641,7 @@ const MainContainer = styled.div`
 
       span {
         position: absolute;
+        user-select: none;
         top: 35px;
         right: 35px;
         text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.8);
@@ -577,64 +665,31 @@ const MainContainer = styled.div`
         z-index: 0;
       }
 
-      @media (max-width: 1250px) {
-        width: 170px;
-        height: 170px;
-
-        img {
-          width: 70px;
-        }
-
-        span {
-          top: 25px;
-          right: 25px;
-        }
+      @media (max-width: 1350px) {
       }
 
       @media (max-width: 800px) {
-        width: 140px;
-        height: 140px;
-
-        img {
-          width: 60px;
-        }
-
-        span {
-          top: 15px;
-          right: 15px;
-        }
       }
 
       @media (max-width: 660px) {
-        width: 100px;
-        height: 100px;
-
-        img {
-          width: 50px;
-        }
-
-        span {
-          top: 10px;
-          right: 10px;
-          font-size: 1.4rem;
-        }
       }
     }
 
     .infos-screen {
       position: absolute;
       overflow: hidden;
+      cursor: help;
+      user-select: none;
       background: transparent;
       box-shadow: inset 0px 0px 50px #08666a, 0px 0px 10px #08666a;
       border: 2px solid #08666a;
       color: #08666a;
-      z-index: 2;
+      z-index: 25;
       backdrop-filter: blur(5px);
       animation-timing-function: ease;
       animation-duration: 0.6s;
       animation-iteration-count: 1;
       animation-fill-mode: both;
-      transition-origin: bottom right;
 
       h3 {
         font-size: 2rem;
@@ -682,7 +737,7 @@ const MainContainer = styled.div`
         animation-fill-mode: both;
       }
 
-      @media (max-width: 1250px) {
+      @media (max-width: 1350px) {
         h3 {
           font-size: 1.5rem;
         }
@@ -824,7 +879,7 @@ const MainContainer = styled.div`
       100% {
         width: 200px;
         height: 125px;
-        left: -190%;
+        left: -60%;
         top: -120%;
       }
     }
@@ -834,7 +889,7 @@ const MainContainer = styled.div`
         width: 200px;
         height: 125px;
         top: -120%;
-        left: -190%;
+        left: -60%;
       }
       50% {
         width: 0;
@@ -861,19 +916,10 @@ const MainContainer = styled.div`
       transform: rotateZ(-360deg);
     }
   }
-  @keyframes invert {
-    0% {
-      transform: rotateX(-90deg) rotateY(360deg) rotateZ(0deg);
-    }
-
-    100% {
-      transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
-    }
-  }
 
   @keyframes invert-1 {
     0% {
-      transform: rotateX(-90deg) rotateY(360deg) rotateZ(0deg);
+      transform: rotateX(-90deg) rotateY(360deg) rotateZ(50deg);
     }
 
     100% {
