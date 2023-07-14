@@ -315,6 +315,7 @@ const Realisations: NextPage = () => {
   // Sélection de planètes
   const selectPlanet = useCallback((e) => {
     // --- Vérification de l'endroit du clic
+    console.log(e.target);
     if (
       e.target.localName !== 'img' &&
       e.target.localName !== 'span' &&
@@ -345,7 +346,6 @@ const Realisations: NextPage = () => {
             }}>
             <div
               className="planet"
-              onClick={selectPlanet}
               key={key}
               data-key={key}
               style={{
