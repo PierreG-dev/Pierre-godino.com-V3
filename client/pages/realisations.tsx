@@ -131,21 +131,25 @@ const Realisations: NextPage = () => {
             top:
               -500 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             left:
               -500 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             animationName: 'invert-' + (key + 1),
           };
         case 1:
@@ -153,21 +157,25 @@ const Realisations: NextPage = () => {
             top:
               -653.56 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             left:
               -100 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             animationName: 'invert-' + (key + 1),
           };
         case 2:
@@ -175,21 +183,25 @@ const Realisations: NextPage = () => {
             top:
               -500 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             left:
               300 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             animationName: 'invert-' + (key + 1),
           };
         case 3:
@@ -197,21 +209,25 @@ const Realisations: NextPage = () => {
             top:
               -100 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             left:
               453.56 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             animationName: 'invert-' + (key + 1),
           };
         case 4:
@@ -219,21 +235,25 @@ const Realisations: NextPage = () => {
             top:
               300 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             left:
               300 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             animationName: 'invert-' + (key + 1),
           };
         case 5:
@@ -241,21 +261,25 @@ const Realisations: NextPage = () => {
             top:
               453.56 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             left:
               -100 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             animationName: 'invert-' + (key + 1),
           };
         case 6:
@@ -263,21 +287,25 @@ const Realisations: NextPage = () => {
             top:
               300 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             left:
               -500 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             animationName: 'invert-' + (key + 1),
           };
         case 7:
@@ -285,21 +313,25 @@ const Realisations: NextPage = () => {
             top:
               -100 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             left:
               -653.56 /
               (windowSize > 1250
-                ? 1
+                ? 1.2
                 : windowSize > 800
-                ? 1.5
-                : windowSize > 660
                 ? 2
-                : 3),
+                : windowSize > 660
+                ? 2.4
+                : windowSize > 500
+                ? 3.3
+                : 4.5),
             animationName: 'invert-' + (key + 1),
           };
         default:
@@ -417,9 +449,7 @@ const Realisations: NextPage = () => {
 
     return (
       <Head>
-        <title>
-          {'Pierre | ' + metaData.title} {router.pathname}
-        </title>
+        <title>{'Pierre | ' + metaData.title}</title>
         <meta name="description" content={metaData.description} />
         <meta
           property="og:title"

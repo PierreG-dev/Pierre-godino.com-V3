@@ -103,9 +103,7 @@ const Skills: NextPage = () => {
 
     return (
       <Head>
-        <title>
-          {'Pierre | ' + metaData.title} {router.pathname}
-        </title>
+        <title>{'Pierre | ' + metaData.title}</title>
         <meta name="description" content={metaData.description} />
         <meta
           property="og:title"
