@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>SIGNATURE</title>
     <style>
-      #text #phone_link:hover {
-        background: rgba(104, 168, 82, 0.87);
+      #phone_link:hover {
+        background: rgba(104, 168, 82, 0.87) !important;
       }
-      #text #mail_link:hover {
-        background: rgba(0, 125, 255, 0.8);
+      #mail_link:hover {
+        background: rgba(0, 125, 255, 0.8) !important;
+      }
+      #website_link:hover {
+        background: rgba(255, 199, 77, 0.8) !important;
       }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body
     style="
@@ -32,7 +41,14 @@
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td align="center">
-            <table width="700" border="0" cellspacing="0" cellpadding="20">
+            <table
+              width="700"
+              border="0"
+              align="right"
+              cellspacing="0"
+              cellpadding="20"
+              style="max-width: 100vw"
+            >
               <tr>
                 <td style="border-radius: 16px; padding: 20px">
                   <table
@@ -40,9 +56,18 @@
                     border="0"
                     cellspacing="0"
                     cellpadding="0"
+                    align="right"
                   >
                     <tr>
-                      <td width="50%" align="center" valign="middle">
+                      <td
+                        align="center"
+                        valign="middle"
+                        style="
+                          width: calc(100vw - 680px);
+                          overflow: hidden;
+                          max-width: calc(100vw - 680px);
+                        "
+                      >
                         <img
                           src="https://pierre-godino.com/res/LOGO.png"
                           alt="Logo"
@@ -51,7 +76,7 @@
                         />
                       </td>
                       <td
-                        width="50%"
+                        width="60%"
                         valign="top"
                         style="
                           background: url('https://pierre-godino.com/mail/transparent-background.png');
@@ -66,20 +91,17 @@
                       >
                         <h2
                           style="
-                            font-family: 'Arial', sans-serif;
+                            font-family: 'Space Mono', monospace;
                             color: #fafafa;
                             margin: 0 0 10px;
                           "
                         >
-                          Coordonnées
+                          Pierre GODINO
                         </h2>
                         <ul
                           style="list-style-type: none; padding: 0; margin: 0"
                         >
-                          <li style="color: #fafafa; margin-bottom: 5px">
-                            Pierre GODINO
-                          </li>
-                          <li style="margin-bottom: 5px">
+                          <li style="margin-bottom: 8px">
                             <a
                               href="tel:+33767249980"
                               id="phone_link"
@@ -96,7 +118,7 @@
                               >+33 7 67 24 99 80</a
                             >
                           </li>
-                          <li style="margin-bottom: 5px">
+                          <li style="margin-bottom: 8px">
                             <a
                               href="mailto:contact@pierre-godino.com"
                               id="mail_link"
@@ -114,6 +136,24 @@
                               >contact@pierre-godino.com</a
                             >
                           </li>
+                          <li style="margin-bottom: 5px">
+                            <a
+                              href="https://pierre-godino.com"
+                              id="website_link"
+                              target="_blank"
+                              style="
+                                text-decoration: none;
+                                font-family: 'Space Mono', monospace;
+                                color: #fafafa;
+                                background: rgba(255, 255, 255, 0.1);
+                                padding: 2px 5px;
+                                border-radius: 3px;
+                                letter-spacing: 1px;
+                                transition: 0.1s;
+                              "
+                              >https://www.pierre-godino.com</a
+                            >
+                          </li>
                         </ul>
                         <hr
                           style="
@@ -127,8 +167,22 @@
                         <ul
                           style="list-style-type: none; padding: 0; margin: 0"
                         >
-                          <li style="color: #fafafa">Toulouse, Agen,</li>
-                          <li style="color: #fafafa">France</li>
+                          <li
+                            style="
+                              color: #fafafa;
+                              font-family: 'Montserrat', sans-serif;
+                            "
+                          >
+                            Toulouse, Agen,
+                          </li>
+                          <li
+                            style="
+                              color: #fafafa;
+                              font-family: 'Montserrat', sans-serif;
+                            "
+                          >
+                            France
+                          </li>
                         </ul>
                       </td>
                     </tr>
