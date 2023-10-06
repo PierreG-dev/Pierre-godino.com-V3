@@ -83,6 +83,9 @@ app.get("/ping", async (req, res) => {
   const metrics = await collections.Visit.find({}).lean();
   res.status(200).send("pong !");
 });
+
+app.get("/getCalendar", api.getCalendar);
+
 app.get("/getMetrics", api.getMetrics);
 app.get("/getRequests", api.getRequests);
 

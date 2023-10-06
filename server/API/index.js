@@ -1,3 +1,5 @@
+const getCalendar = require("./calendar/getCalendar");
+
 const getMetrics = require("./get/getMetrics");
 const getRequests = require("./get/getRequests");
 
@@ -8,6 +10,7 @@ const putVisitJourney = require("./put/putVisitJourney");
 const putVisitTime = require("./put/putVisitTime");
 
 module.exports = {
+  getCalendar,
   getMetrics,
   getRequests,
   postVisit,
