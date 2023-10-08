@@ -136,7 +136,7 @@ function MyApp({ Component, pageProps }) {
 
   const initiateMetrics = useCallback(() => {
     //visit init
-    fetch('https://api.pierre-godino.com/newVisit', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/newVisit`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -145,10 +145,10 @@ function MyApp({ Component, pageProps }) {
         device: devicePicker(),
       }),
     }).catch((error) => console.error(error));
-
+    console.log(process.env.NEXT_PUBLIC_API_URL);
     //visit update
     visitUpdateInterval.current = setInterval(() => {
-      fetch('https://api.pierre-godino.com/updateVisitTime', {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/updateVisitTime`, {
         method: 'PUT',
       }).catch((error) => console.error(error));
     }, 30000);
@@ -156,7 +156,7 @@ function MyApp({ Component, pageProps }) {
 
   const updateJourney = useCallback((pageName) => {
     //visit journey update
-    fetch('https://api.pierre-godino.com/updateVisitJourney', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/updateVisitJourney`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

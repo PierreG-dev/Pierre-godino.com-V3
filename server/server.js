@@ -11,7 +11,8 @@ app.use(morgan("combined"));
 app.use(
   cors({
     origin: [
-      "localhost:3000",
+      "http://localhost:3000",
+      "https://localhost:3000",
       "http://pierre-godino.com",
       "https://pierre-godino.com",
       "http://www.pierre-godino.com",
@@ -84,7 +85,7 @@ app.get("/ping", async (req, res) => {
   res.status(200).send("pong !");
 });
 
-app.get("/getCalendar", api.getCalendar);
+app.post("/getCalendar", api.fetchCalendar);
 
 app.get("/getMetrics", api.getMetrics);
 app.get("/getRequests", api.getRequests);

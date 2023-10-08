@@ -50,7 +50,7 @@ const Contact: NextPage = () => {
   const handleButtonAnimation = useCallback(() => {
     setButtonAnimationActive('active');
 
-    fetch('https://api.pierre-godino.com/newRequest', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/newRequest`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

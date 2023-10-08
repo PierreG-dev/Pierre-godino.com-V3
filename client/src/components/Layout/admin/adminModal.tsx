@@ -23,7 +23,7 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
 
   //fonction qui lance la tentative de connexion
   const tryAuth = useCallback((password) => {
-    fetch('https://api.pierre-godino.com/auth', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
   //récupère les données
   useEffect(() => {
     if (!isConnected) return;
-    fetch('https://api.pierre-godino.com/getMetrics', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/getMetrics`, {
       method: 'GET',
       credentials: 'include',
     })
@@ -131,7 +131,7 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
   }, [isConnected]);
 
   useEffect(() => {
-    fetch('https://api.pierre-godino.com/isConnected', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/isConnected`, {
       method: 'GET',
       credentials: 'include',
     })
