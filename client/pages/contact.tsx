@@ -218,16 +218,16 @@ const Contact: NextPage = () => {
 };
 
 const MainContainer = styled.div`
-  margin-top: 7vh;
+  padding-top: 10vh;
   background: #040e1d;
-  min-height: 93vh;
+  min-height: 100vh;
+  box-sizing: border-box;
   min-width: 100vw;
   scrollbar-color: #373737 transparent;
   scrollbar-width: thin;
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  padding: 10vh 5vw;
+  align-items: center;
   font-family: 'Montserrat';
   transition: 0.1s;
   position: relative;
@@ -239,27 +239,29 @@ const MainContainer = styled.div`
 
   #left {
     width: 60%;
-    height: 100%;
+    min-height: 70vh;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     gap: 25px;
 
-    @media (max-width: 1180px) {
+    @media (max-width: 1552px) {
       width: 100%;
     }
   }
 
   #right {
     width: 40%;
-    height: 100%;
+    min-height: 70vh;
     padding: 20px;
     gap: 25px;
+    box-sizing: border-box;
+    display: flex;
 
     @media (max-width: 1552px) {
       width: 100%;
-      padding-top: 0px !important;
+      padding-top: 0;
     }
   }
 
@@ -285,7 +287,7 @@ const MainContainer = styled.div`
 
     &#contact {
       width: 100%;
-      height: 40%;
+      height: fit-content;
       display: flex;
       justify-content: space-between;
 
@@ -359,10 +361,10 @@ const MainContainer = styled.div`
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
       gap: 15px;
-      padding-bottom: 18.25%;
 
-      @media (max-width: 1180px) {
+      @media (max-width: 1552px) {
         padding-bottom: 30px;
       }
 
@@ -411,7 +413,7 @@ const MainContainer = styled.div`
 
     &#message {
       width: 100%;
-      height: 40%;
+      height: fit-content;
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -543,7 +545,7 @@ const MainContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 12.5rem;
-    magrin: 0;
+    margin: 0;
     padding: 1.5rem 3.125rem;
     background-color: #3498db;
     border: none;
@@ -552,15 +554,9 @@ const MainContainer = styled.div`
     font-family: 'Space Mono', monospace;
     letter-spacing: 2px;
     font-size: 1.1rem;
-
-    //box-shadow:
-    //	0 -1.25rem 1rem -1.5rem rgba(black, 0.4),
-    //	0 0.5rem 1.75rem -0.25rem rgba(black, 0.3),
-    //	0 1.25rem 2.5rem rgba(black, 0.2);
     color: white;
     font-weight: 300;
     text-transform: uppercase;
-    //transition: 500ms ease;
     overflow: hidden;
 
     &:before {
