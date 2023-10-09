@@ -6,18 +6,19 @@ import { NextPage } from 'next';
 
 import Timeline from '@mui/lab/Timeline';
 import Clock from 'react-clock';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 const clockOptions = {
   className: 'clock',
 };
-
-const TITLE = "8 ans dans l'informatique.";
+const dateObj = new Date();
+const now = dateObj.getFullYear();
+dateObj.setFullYear(2016);
+const then = dateObj.getFullYear();
+const TITLE = `${now - then + 1} ans dans l'informatique.`;
 
 const Experiences: NextPage = () => {
-  const [scroll, setScroll] = useState(0);
   const [screenSize, setScreenSize] = useState(0);
   const [expandedXp, setExpandedXp] = useState('');
   const [time, setTime] = useState(new Date());
@@ -30,18 +31,20 @@ const Experiences: NextPage = () => {
 
     const interval = setInterval(() => setTime(new Date()), 1000);
 
-    return () => clearInterval(interval);
-    // eslint-disable-next-line no-restricted-globals
-    removeEventListener('resize', () => setScreenSize(window.innerWidth));
+    return () => {
+      clearInterval(interval);
+      // eslint-disable-next-line no-restricted-globals
+      removeEventListener('resize', () => setScreenSize(window.innerWidth));
+    };
   }, []);
-  useEffect(() => {
-    //console.log(scroll);
-  }, [scroll]);
 
-  const setExpanded = (title) => {
-    console.log(expandedXp + ' / ' + title);
-    setExpandedXp((prevState) => (prevState === title ? '' : title));
-  };
+  const setExpanded = useCallback(
+    (title) => {
+      console.log(expandedXp + ' / ' + title);
+      setExpandedXp((prevState) => (prevState === title ? '' : title));
+    },
+    [expandedXp]
+  );
 
   const displayExperiences = useCallback(() => {
     return data
@@ -69,7 +72,7 @@ const Experiences: NextPage = () => {
           </React.Fragment>
         );
       });
-  }, [screenSize, expandedXp]);
+  }, [setExpanded, expandedXp, screenSize]);
 
   const router = useRouter();
   const metaContentGenerator = useMemo(() => {
@@ -92,6 +95,7 @@ const Experiences: NextPage = () => {
         <meta property="og:description" content={metaData.description} />
       </Head>
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname]);
 
   return (

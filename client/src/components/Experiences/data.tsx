@@ -504,7 +504,7 @@ const data: Xp[] = [
       'YARN',
       'Github',
     ]),
-    link: '',
+    link: 'https://spoom.net/',
   },
   {
     period: 'Freelance',
@@ -536,7 +536,7 @@ const data: Xp[] = [
       'VSCode',
       'YARN',
     ]),
-    link: '',
+    link: 'https://www.philiance.com/',
     actual: true,
   },
   {
@@ -595,7 +595,7 @@ const data: Xp[] = [
       'VSCode',
       'YARN',
     ]),
-    link: '',
+    link: 'https://www.apformation.com/',
     actual: true,
   },
   {
@@ -642,6 +642,7 @@ const data: Xp[] = [
     ]),
     actual: false,
     collaboratorsAmount: 1,
+    link: 'https://learn.pierre-godino.com',
   },
   {
     period: 'Freelance',
@@ -682,8 +683,9 @@ const data: Xp[] = [
       'Bash',
       'NPM',
     ]),
-    link: 'https://Github.com/PierreG-dev/LEARN',
+    link: 'https://learn.pierre-godino.com',
     actual: true,
+    collaboratorsAmount: 1,
   },
   {
     period: 'Freelance',
@@ -717,7 +719,7 @@ const data: Xp[] = [
       'VSCode',
       'YARN',
     ]),
-    link: 'https://www.apformation.com/',
+    link: 'https://oclock.io/',
     actual: true,
   },
   {

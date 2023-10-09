@@ -298,20 +298,20 @@ const MainContainer = styled.div`
     box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
     animation: 6s star_glow infinite linear;
   }
-}
 
-@keyframes star_glow {
-  0% {
-    transform: scale3d(1, 1, 1);
+  @keyframes star_glow {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    50% {
+      transform: scale3d(2, 2, 1);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
   }
-  50% {
-    transform: scale3d(2, 2, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-}
 `;
+
 const IconContainer = styled.div`
   width: 100vw;
   height: auto;
