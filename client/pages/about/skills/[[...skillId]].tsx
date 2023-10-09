@@ -8,11 +8,11 @@ import React, {
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Select from '@mui/material/Select';
-import data from '../../src/components/Skills/data';
+import data from '../../../src/components/Skills/data';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { MenuItem } from '@mui/material';
-import Bar from '../../src/components/Skills/bar';
+import Bar from '../../../src/components/Skills/bar';
 
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -22,8 +22,17 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 const Skills: NextPage = () => {
+  const router = useRouter();
+  const { skillId } = router.query;
+
   const [displayedSkillId, setDisplayedSkillId] = useState(0);
   const starsArray: any = useRef();
+
+  // --- Mise à jour du state en fonction de l'url (post mount)
+  useEffect(() => {
+    if (skillId && skillId.length !== 0)
+      setDisplayedSkillId(parseInt(skillId[0]));
+  }, [skillId]);
 
   //Générateur d'étoiles
   const starsGenerator = useCallback(() => {
@@ -92,7 +101,6 @@ const Skills: NextPage = () => {
     starsArray.current = starsGenerator();
   }, []);
 
-  const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'Technologies',

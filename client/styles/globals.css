@@ -234,7 +234,7 @@ body {
   margin: -20px 0 0 -20px;
 }
 .pin:after {
-  content: "";
+  content: '';
   width: 14px;
   height: 14px;
   margin: 8px 0 0 8px;
@@ -262,7 +262,7 @@ body {
   z-index: -2;
 }
 .pulse:after {
-  content: "";
+  content: '';
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -312,4 +312,26 @@ body {
 }
 
 /* ------------------ MAP PINS END ------------------ */
+/* ------------------ EXP ACCORDION START ------------------ */
 
+.experience-accordion {
+  transition: 0.2s;
+  backdrop-filter: blur(1px);
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.experience-accordion:hover:not(.expanded) {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+.experience-accordion.actual {
+  box-shadow: rgba(155, 253, 113, 0.2) 0px 0px 7px,
+    inset rgba(155, 253, 113, 0.2) 0px 0px 7px;
+  border: 1px solid rgba(155, 253, 113, 0.5);
+}
+
+.experience-accordion.actual:hover:not(.expanded) {
+  background: rgba(155, 253, 113, 0.7) !important;
+}
+/* ------------------ EXP ACCORDION END ------------------ */

@@ -123,95 +123,99 @@ const Contact: NextPage = () => {
   return (
     <MainContainer>
       {metaContentGenerator}
-      {starsArray.current}
+      <div id="stars-container">{starsArray.current}</div>
       <div id="satelite_container">
         <img src="/res/satelite.png" alt="Satellite" className="satelite" />
       </div>
-      <div id="left">
-        <section id="contact">
-          <div id="text">
-            <h2>Coordonnées</h2>
-            <ul>
-              <li>Pierre GODINO</li>
-              <li>
-                <a id="phone_link" href="tel:+33 6 51 71 04 97">
-                  +33 6 51 71 04 97
-                </a>
-              </li>
-              <li>
-                <a id="mail_link" href="mailto:pierregodino.contact@yahoo.com">
-                  pierregodino.contact@yahoo.com
-                </a>
-              </li>
-            </ul>
-            <hr />
-            <ul>
-              <li>Toulouse, Agen, </li>
-              <li>France</li>
-            </ul>
-          </div>
-          <div id="map">
-            <img src="/res/france-map.png" alt="france vue depuis l'espace" />
-            <div className="pin bounce"></div>
-            <div className="pulse"></div>
-          </div>
-        </section>
+      <div id="content-container">
+        <div id="left">
+          <section id="contact">
+            <div id="text">
+              <h2>Coordonnées</h2>
+              <ul>
+                <li>Pierre GODINO</li>
+                <li>
+                  <a id="phone_link" href="tel:+33 6 51 71 04 97">
+                    +33 6 51 71 04 97
+                  </a>
+                </li>
+                <li>
+                  <a
+                    id="mail_link"
+                    href="mailto:pierregodino.contact@yahoo.com">
+                    pierregodino.contact@yahoo.com
+                  </a>
+                </li>
+              </ul>
+              <hr />
+              <ul>
+                <li>Toulouse, Agen, </li>
+                <li>France</li>
+              </ul>
+            </div>
+            <div id="map">
+              <img src="/res/france-map.png" alt="france vue depuis l'espace" />
+              <div className="pin bounce"></div>
+              <div className="pulse"></div>
+            </div>
+          </section>
 
-        <section id="message">
-          <h2>Me contacter</h2>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="Nom"
-            value={nameInput}
-            onChange={handleNameInputChange}
-          />
-          <textarea
-            name=""
-            id=""
-            cols={30}
-            rows={5}
-            placeholder="Requête"
-            value={messageInput}
-            onChange={handleMessageInputChange}></textarea>
-          <button
-            onClick={handleButtonAnimation}
-            className={
-              buttonAnimationActive === 'active'
-                ? 'active'
-                : buttonAnimationActive === 'finished'
-                ? 'finished'
-                : buttonAnimationActive === 'idle' && ''
-            }>
-            <span className="submit">Soumettre</span>
-            <span className="loading">
-              <CachedIcon />
-            </span>
-            <span className="check">
-              <DoneIcon />
-            </span>
-          </button>
-        </section>
-      </div>
+          <section id="message">
+            <h2>Me contacter</h2>
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Nom"
+              value={nameInput}
+              onChange={handleNameInputChange}
+            />
+            <textarea
+              name=""
+              id=""
+              cols={30}
+              rows={5}
+              placeholder="Requête"
+              value={messageInput}
+              onChange={handleMessageInputChange}></textarea>
+            <button
+              onClick={handleButtonAnimation}
+              className={
+                buttonAnimationActive === 'active'
+                  ? 'active'
+                  : buttonAnimationActive === 'finished'
+                  ? 'finished'
+                  : buttonAnimationActive === 'idle' && ''
+              }>
+              <span className="submit">Soumettre</span>
+              <span className="loading">
+                <CachedIcon />
+              </span>
+              <span className="check">
+                <DoneIcon />
+              </span>
+            </button>
+          </section>
+        </div>
 
-      <div id="right">
-        <section id="networks">
-          <h2>Réseaux</h2>
-          {networks.map((elem, key) => {
-            return (
-              <a key={key} href={elem.link} target="_blank" rel="noreferrer">
-                <div className="network-card">
-                  <h3>{elem.name}</h3>
-                  <img
-                    src={`/res/${elem.name.toUpperCase()}_LOGO.png`}
-                    alt={`Logo de la plateforme ${elem.name}`}
-                  />
-                </div>
-              </a>
-            );
-          })}
-        </section>
+        <div id="right">
+          <section id="networks">
+            <h2>Réseaux</h2>
+            {networks.map((elem, key) => {
+              return (
+                <a key={key} href={elem.link} target="_blank" rel="noreferrer">
+                  <div className="network-card">
+                    <h3>{elem.name}</h3>
+                    <img
+                      src={`/res/${elem.name.toUpperCase()}_LOGO.png`}
+                      alt={`Logo de la plateforme ${elem.name}`}
+                    />
+                  </div>
+                </a>
+              );
+            })}
+          </section>
+        </div>
       </div>
     </MainContainer>
   );
@@ -222,46 +226,61 @@ const MainContainer = styled.div`
   background: #040e1d;
   min-height: 100vh;
   box-sizing: border-box;
-  min-width: 100vw;
+  width: 100vw;
   scrollbar-color: #373737 transparent;
   scrollbar-width: thin;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   font-family: 'Montserrat';
   transition: 0.1s;
   position: relative;
+  padding-bottom: 40px;
 
   h2 {
     font-family: 'Space Mono', monospace;
     font-size: 1.7rem;
   }
 
-  #left {
-    width: 60%;
-    min-height: 70vh;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 25px;
-
-    @media (max-width: 1552px) {
-      width: 100%;
-    }
+  #stars-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
-  #right {
-    width: 40%;
-    min-height: 70vh;
-    padding: 20px;
-    gap: 25px;
-    box-sizing: border-box;
+  #content-container {
     display: flex;
+    height: fit-content;
+    flex-wrap: wrap;
+    width: 100%;
 
-    @media (max-width: 1552px) {
-      width: 100%;
-      padding-top: 0;
+    #left {
+      width: 60%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 25px;
+
+      @media (max-width: 1552px) {
+        width: 100%;
+      }
+    }
+
+    #right {
+      flex-grow: 1;
+      flex-basis: 0;
+      width: 40%;
+      padding: 20px;
+      gap: 25px;
+      box-sizing: border-box;
+      display: flex;
+
+      @media (max-width: 1552px) {
+        width: 100%;
+      }
     }
   }
 

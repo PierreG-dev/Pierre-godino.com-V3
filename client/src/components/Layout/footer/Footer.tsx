@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MenuIcon from '@mui/icons-material/Menu';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import CustomLink from '../routing/CustomLink';
+import { version } from '../../../../package.json';
 
 export type displayType = 'full' | 'displayed' | 'hidden';
 
@@ -187,7 +188,7 @@ const Footer: React.FC<Props> = ({
         </div>
         <div id="sub-footer" className="w-full h-10">
           <p>
-            Pierre-godino.com <sup>V3</sup>
+            Pierre-godino.com <sup>V{version}</sup>
           </p>
           <p>2019 - {new Date().getFullYear()}</p>
         </div>
@@ -289,7 +290,7 @@ const MainContainer = styled.div`
     z-index: 6;
     width: 100vw;
     height: 26vh;
-    transition:1s;
+    transition: 1s;
 
     #main-footer {
       height: 13vh;
@@ -339,9 +340,7 @@ const MainContainer = styled.div`
         width: 100px;
         height: auto;
         margin: auto;
-      
       }
-      
     }
 
     #right-side {
@@ -421,7 +420,6 @@ const MainContainer = styled.div`
       }
     }
   }
-}
 `;
 
 const CenterIcon = styled.div`
@@ -435,7 +433,7 @@ const CenterIcon = styled.div`
   transition: 0.3s;
 
   img {
-    height: 10px; !important;
+    height: 10px !important;
     width: auto !important;
     background: transparent;
     transition: 0.5s !important;
@@ -446,9 +444,7 @@ const CenterIcon = styled.div`
     transition-delay: 0s !important;
   }
 
-
-
-  [data-testid="VpnKeyIcon"] {
+  [data-testid='VpnKeyIcon'] {
     color: gold;
     position: absolute;
     top: 33px;
@@ -457,7 +453,6 @@ const CenterIcon = styled.div`
 
     &:hover {
       cursor: pointer;
-      
     }
   }
 `;

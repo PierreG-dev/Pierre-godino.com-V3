@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LinkIcon from '@mui/icons-material/Link';
 import LinkOffIcon from '@mui/icons-material/LinkOff';
-import { Environment, Technology } from './data';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineDot from '@mui/lab/TimelineDot';
@@ -16,7 +15,8 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineItem from '@mui/lab/TimelineItem';
 import styled from 'styled-components';
 import confetti from 'canvas-confetti';
-import { useInView } from 'react-intersection-observer';
+import { Skill } from '../Skills/data';
+import CustomLink from '../Layout/routing/CustomLink';
 
 export type Props = {
   period: 'University' | 'DC' | 'Freelance';
@@ -24,8 +24,8 @@ export type Props = {
   description: JSX.Element | string;
   collaboratorsAmount: number;
   date: string;
-  environnements: Environment[];
-  technologies: Technology[];
+  environnements: Skill[];
+  technologies: Skill[];
   link: string;
   icon: string;
   setExpanded: (name: string) => void;
@@ -54,23 +54,33 @@ const displayCollaborators = (collaboratorsAmount: number) => {
   return finalElement;
 };
 
-const displayEnvironnements = (environnements: Environment[]) => {
+const displayEnvironnements = (environnements: Skill[]) => {
   if (!environnements) return null;
 
   return environnements.map((elem, key) => (
-    <div className={'mini-card'} title={elem} key={key}>
-      <img key={key} src={'/icons/' + elem + '.png'} alt={elem} />
-    </div>
+    <CustomLink href={`/about/skills/${elem.id}`}>
+      <div
+        className={'mini-card cursor-pointer'}
+        title={elem.name}
+        key={elem.id}>
+        <img key={elem.id} src={elem.icon} alt={elem.name} />
+      </div>
+    </CustomLink>
   ));
 };
 
-const displayTechnology = (technology: Technology[]) => {
+const displayTechnology = (technology: Skill[]) => {
   if (!technology) return null;
 
   return technology.map((elem, key) => (
-    <div className={'mini-card'} title={elem} key={key}>
-      <img key={key} src={'/icons/' + elem + '.png'} alt={elem} />
-    </div>
+    <CustomLink href={`/about/skills/${elem.id}`}>
+      <div
+        className={'mini-card cursor-pointer'}
+        title={elem.name}
+        key={elem.id}>
+        <img key={elem.id} src={elem.icon} alt={elem.name} />
+      </div>
+    </CustomLink>
   ));
 };
 
@@ -84,21 +94,21 @@ const periodPicker = (period) => {
           <MenuBookIcon />
         </div>
       );
-      break;
+
     case 'DC':
       return (
         <div title={'Digital-Campus'} style={{ cursor: 'help' }}>
           <MenuBookIcon />
         </div>
       );
-      break;
+
     case 'Freelance':
       return (
         <div title={'Indépendant'} style={{ cursor: 'help' }}>
           <CodeIcon />
         </div>
       );
-      break;
+
     default:
       return null;
   }
@@ -150,7 +160,7 @@ const Experience: React.FC<Props> = ({
       })();
       setConfettisDisplayed(true);
     }
-  }, [confettisDisplayed]);
+  }, [confettisDisplayed, success]);
 
   return (
     <React.Fragment>
@@ -176,28 +186,37 @@ const Experience: React.FC<Props> = ({
 
         <TimelineContent style={{ position: 'relative', width: '60%' }}>
           <Accordion
+            className={
+              'experience-accordion' +
+              (actual ? ' actual' : '') +
+              (expandedXp === title ? ' expanded' : '')
+            }
             expanded={expandedXp === title}
-            onClick={() => {
-              setExpanded(title);
-              displayConfettis();
-            }}
             style={{
               width: '100%',
               background: actual
-                ? 'rgba(155,253,113,0.63)'
-                : 'rgba(250,250,250,0.79)',
+                ? 'rgba(155,253,113,0.5)'
+                : 'rgba(255,255,255,0.5)',
               color: actual ? '#fafafa' : '#373737',
             }}>
             <AccordionSummary
+              onClick={(e) => {
+                setExpanded(title);
+                displayConfettis();
+              }}
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header">
               <img
                 src={icon}
                 alt=""
-                className={'w-8 h-7 mx-3 object-contain'}
+                className={'w-8 h-7 mx-3 object-contain rounded-md'}
               />
-              <h2 style={{ fontSize: phone ? '1rem' : '1.3rem' }}>{title}</h2>
+              <h2
+                className="accordion-title"
+                style={{ fontSize: phone ? '1rem' : '1.3rem' }}>
+                {title}
+              </h2>
             </AccordionSummary>
             <AccordionDetails className={'flex flex-col'}>
               {description}
