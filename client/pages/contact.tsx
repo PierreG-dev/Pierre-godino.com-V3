@@ -135,15 +135,13 @@ const Contact: NextPage = () => {
               <ul>
                 <li>Pierre GODINO</li>
                 <li>
-                  <a id="phone_link" href="tel:+33 6 51 71 04 97">
-                    +33 6 51 71 04 97
+                  <a id="phone_link" href="tel:+33767249980">
+                    +33 7 67 24 99 80
                   </a>
                 </li>
                 <li>
-                  <a
-                    id="mail_link"
-                    href="mailto:pierregodino.contact@yahoo.com">
-                    pierregodino.contact@yahoo.com
+                  <a id="mail_link" href="mailto:contact@pierre-godino.com">
+                    contact@pierre-godino.com
                   </a>
                 </li>
               </ul>
@@ -288,10 +286,11 @@ const MainContainer = styled.div`
     padding: 20px 50px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
+      inset 0 0px 7px rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(1px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     transition: 0.3s;
     color: rgba(255, 255, 255, 0.6);
 

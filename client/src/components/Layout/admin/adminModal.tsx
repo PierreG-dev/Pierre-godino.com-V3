@@ -189,10 +189,14 @@ const AdminModalContent = styled.div`
   position: absolute;
   width: 75vw;
   max-height: 75vh;
-  top: 12.5vh;
+  top: 25vh;
   left: 12.5vw;
   outline: none;
-  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(1px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: rgba(255, 255, 255, 0.7) 0 0 7px,
+    inset rgba(255, 255, 255, 0.7) 0 0 7px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 15px;
   padding: 60px;
   animation: appearing 1s ease 1;
@@ -201,20 +205,19 @@ const AdminModalContent = styled.div`
   display: flex;
   flex-direction: column;
 
-
-  &>h2#auth_title {
+  & > h2#auth_title {
     font-size: 2.5rem !important;
-    color: rgba(0,0,0,0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-family: 'Space Mono', monospace;
     margin-bottom: -10px;
     font-weight: bold;
 
-    @media(max-width: 700px) {
-      font-size: 1.5rem!important;
+    @media (max-width: 700px) {
+      font-size: 1.5rem !important;
     }
   }
 
-  &>header {
+  & > header {
     display: flex;
     align-items: center;
     margin-top: 30px;
@@ -225,29 +228,26 @@ const AdminModalContent = styled.div`
       font-size: 2rem;
       color: gold;
       opacity: 0.7;
-      filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.3));
+      filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.3));
 
       &:hover {
         cursor: pointer;
         opacity: 1;
       }
     }
-  
+
     input {
       width: 200px;
-      background: rgba(0,0,0,0.6);
-      color: rgba(255,255,255,0.6) !important;
+      background: rgba(0, 0, 0, 0.6);
+      color: rgba(255, 255, 255, 0.6) !important;
       border-radius: 50px;
-      box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
       padding: 3px 15px;
       font-size: 0.8rem;
-      color: rgba(0,0,0,0.7);
+      color: rgba(0, 0, 0, 0.7);
       outline: none;
     }
   }
-
-  
-  
 
   @keyframes appearing {
     0% {
@@ -265,8 +265,7 @@ const AdminModalContent = styled.div`
     padding-top: 10px;
   }
 
-
-  &>ul {
+  & > ul {
     margin-top: 5px;
     overflow-y: scroll;
     scrollbar-color: #373737 transparent;
@@ -279,7 +278,7 @@ const AdminModalContent = styled.div`
     top: 15px;
     right: 15px;
     opacity: 0.7;
-    transition 0.1s;
+    transition: 0.1s;
   }
 
   [data-testid='CloseIcon']:hover {
@@ -287,19 +286,18 @@ const AdminModalContent = styled.div`
     opacity: 0.9;
   }
 
-  &>ul::-webkit-scrollbar {
+  & > ul::-webkit-scrollbar {
     background: transparent;
     width: 7px;
   }
 
-  &>ul::-webkit-scrollbar-track-piece  {
-      width: 10px;
+  & > ul::-webkit-scrollbar-track-piece {
+    width: 10px;
   }
 
-  &>ul::-webkit-scrollbar-thumb:vertical {
-     background: #373737;
-     border-radius: 50px;
-     
+  & > ul::-webkit-scrollbar-thumb:vertical {
+    background: #373737;
+    border-radius: 50px;
   }
 `;
 

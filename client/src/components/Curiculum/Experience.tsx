@@ -26,7 +26,7 @@ const Experience: React.FC<Props> = ({
         className={'font-bold w-1/4 text-base leading-3 text-center'}
         style={{
           transform: actual ? 'translateY(3px)' : 'none',
-          color: actual ? '#2980b9' : 'inherit',
+          color: actual ? '#68a852' : 'inherit',
         }}>
         {date}
         {actual ? (
@@ -41,7 +41,7 @@ const Experience: React.FC<Props> = ({
         <h4
           className={'font-semibold text-base'}
           style={{
-            color: titleColor ? titleColor : actual ? '#2980b9' : 'inherit',
+            color: titleColor ? titleColor : actual ? '#68a852' : 'inherit',
           }}>
           {title}
         </h4>

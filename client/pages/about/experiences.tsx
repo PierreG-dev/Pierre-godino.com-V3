@@ -12,6 +12,8 @@ import Head from 'next/head';
 const clockOptions = {
   className: 'clock',
 };
+
+// --- Titre dynamique (calcul automatique du montant d'années)
 const dateObj = new Date();
 const now = dateObj.getFullYear();
 dateObj.setFullYear(2016);

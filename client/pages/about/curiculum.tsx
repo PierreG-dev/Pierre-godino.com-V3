@@ -29,6 +29,7 @@ const Curiculum: NextPage = () => {
       </Head>
     );
   }, [router.pathname]);
+
   return (
     <MainContainer>
       {metaContentGenerator}
@@ -68,19 +69,21 @@ const Curiculum: NextPage = () => {
                 <ul className={'text-sm'}>
                   <li>JavaScript 🚀</li>
                   <li>ReactJs | NextJs 🚀</li>
+                  <li>Node | MongoDB 🚀</li>
                   <li>HTML5 | CSS3</li>
                   <li>Algorithmie</li>
-                  <li>GIT</li>
                 </ul>
               </div>
 
               <div>
                 <h3 className={'text-center w-full'}>Langues</h3>
                 <ul>
-                  <li>Français natif</li>
+                  <li>Français natif </li>
                   <li>
                     Anglais professionnel <br />
-                    (77/100 EF SET)
+                    <span style={{ color: '#37373799', fontSize: '0.9rem' }}>
+                      (77/100 EF SET)
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -92,8 +95,8 @@ const Curiculum: NextPage = () => {
 
             <Experience
               date={'Jui. 2021'}
-              title={'Formateur'}
-              subtitle={'Formawave | Axe Academy | AP Formations'}
+              title={'Mentor | Formateur'}
+              subtitle={"O'Clock | CEF | AP Formations ..."}
               actual={true}
             />
 
@@ -175,11 +178,11 @@ const Curiculum: NextPage = () => {
 
               <p className={'text-sm md:text-base'}>
                 Pierre GODINO <br />
-                <a href="tel:+33651710497">+33 6 51 71 04 97</a> <br />
+                <a href="tel:+33767249980">+33 7 67 24 99 80</a> <br />
                 <a
                   href={'mailto:pierregodino.contact@yahoo.com'}
                   className={'text-xs md:text-base'}>
-                  pierregodino.contact@yahoo.com
+                  contact@pierre-godino.com
                 </a>
               </p>
 
@@ -191,7 +194,7 @@ const Curiculum: NextPage = () => {
               </p>
 
               <a
-                href={'www.pierre-godino.com'}
+                href={'https://www.pierre-godino.com'}
                 className={'text-sm md:text-base'}>
                 www.pierre-godino.com
               </a>
@@ -204,7 +207,8 @@ const Curiculum: NextPage = () => {
                 <h3>Github</h3>
                 <a
                   href={'https://www.github.com/pierreG-dev'}
-                  target={'_blank'}>
+                  target={'_blank'}
+                  rel="noreferrer">
                   www.github.com/pierreG-dev
                 </a>
               </div>
@@ -213,7 +217,8 @@ const Curiculum: NextPage = () => {
                 <h3>Malt</h3>
                 <a
                   href={'https://www.malt.fr/profile/pierregodino'}
-                  target={'_blank'}>
+                  target={'_blank'}
+                  rel="noreferrer">
                   www.malt.fr/profile/pierregodino
                 </a>
               </div>
@@ -222,7 +227,8 @@ const Curiculum: NextPage = () => {
                 <h3>LinkedIn</h3>
                 <a
                   href={'https://www.linkedin.com/in/pierre-godino-50b503186'}
-                  target={'_blank'}>
+                  target={'_blank'}
+                  rel="noreferrer">
                   www.linkedin.com/in/pierre-godino-50b503186
                 </a>
               </div>

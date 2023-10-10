@@ -433,7 +433,6 @@ const CenterIcon = styled.div`
   transition: 0.3s;
 
   img {
-    height: 10px !important;
     width: auto !important;
     background: transparent;
     transition: 0.5s !important;

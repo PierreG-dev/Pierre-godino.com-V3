@@ -35,7 +35,7 @@ export type Props = {
 const Connection: React.FC<Props> = ({ connexionData }) => {
   return (
     <li style={{ marginTop: 10 }}>
-      <Accordion style={{ background: 'rgba(255,255,255,0.3)' }}>
+      <Accordion style={{ background: 'rgba(255,255,255,1)' }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"

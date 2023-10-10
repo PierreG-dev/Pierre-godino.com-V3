@@ -394,10 +394,11 @@ const InfosContainer = styled.section`
     height: 60%;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
+      inset 0 0px 7px rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(1.8px);
     -webkit-backdrop-filter: blur(1.8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     z-index: 3;
     padding: 3vh 3vw;
     border-radius: 15px;
