@@ -245,9 +245,9 @@ const MainContainer = styled.div`
   position: relative;
   background: #040e1d;
   width: 100vw;
-  height: 93vh;
+  height: 100vh;
   overflow-x: hidden;
-  margin-top: 7vh;
+  padding-top: 7vh;
 
   #filter-selector {
     background: rgba(37, 37, 37, 0.6);

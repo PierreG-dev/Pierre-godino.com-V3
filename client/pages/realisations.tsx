@@ -469,9 +469,9 @@ const Realisations: NextPage = () => {
 };
 
 const MainContainer = styled.div`
-  margin-top: 7vh;
+  padding-top: 7vh;
   background: #040e1d;
-  height: 93vh;
+  height: 100vh;
   width: 100vw;
   overflow: hidden;
   font-family: 'Space Mono', monospace;

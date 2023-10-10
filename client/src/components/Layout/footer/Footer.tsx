@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MenuIcon from '@mui/icons-material/Menu';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import CustomLink from '../routing/CustomLink';
-import { version } from '../../../../package.json';
 
 export type displayType = 'full' | 'displayed' | 'hidden';
 
@@ -188,7 +187,12 @@ const Footer: React.FC<Props> = ({
         </div>
         <div id="sub-footer" className="w-full h-10">
           <p>
-            Pierre-godino.com <sup>V{version}</sup>
+            Pierre-godino.com <sup>V{process.env.NEXT_PUBLIC_APP_VERSION}</sup>
+          </p>
+          <p>
+            <CustomLink href="/legal/cgu">CGU</CustomLink>
+
+            <CustomLink href="/legal/cgv">CGV</CustomLink>
           </p>
           <p>2019 - {new Date().getFullYear()}</p>
         </div>
@@ -307,8 +311,13 @@ const MainContainer = styled.div`
         color: rgba(255, 255, 255, 0.6);
         margin-left: 4px;
 
+        li {
+          transition: 0.1s;
+        }
+
         li:hover {
           color: rgba(255, 255, 255, 0.7);
+          text-shadow: 0 0 7px rgba(255, 255, 255, 0.4);
           cursor: pointer;
         }
       }
@@ -360,6 +369,20 @@ const MainContainer = styled.div`
       color: rgba(255, 255, 255, 0.6);
       font-size: 0.9rem;
       font-family: BebasNeue;
+      p {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+          margin: 0 7px;
+          transition: 0.1s;
+          cursor: pointer;
+          &:hover {
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+          }
+        }
+      }
     }
   }
 

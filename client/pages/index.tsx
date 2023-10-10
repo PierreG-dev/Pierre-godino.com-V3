@@ -149,10 +149,10 @@ const Home: NextPage = () => {
 const MainContainer = styled.div`
   background: #040e1d;
   width: 100vw;
-  height: 93vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  margin-top: 7vh;
+  padding-top: 7vh;
 
   section#landing {
     display: flex;

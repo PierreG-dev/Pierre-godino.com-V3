@@ -188,8 +188,8 @@ const Calendar: NextPage = () => {
 };
 
 const MainContainer = styled.div`
-  margin-top: 7vh;
-  min-height: 93vh;
+  padding-top: 7vh;
+  min-height: 100vh;
   padding-bottom: 10vh;
   color: #fafafa;
   background: #040e1d;
@@ -211,6 +211,15 @@ const MainContainer = styled.div`
     font-family: 'Montserrat';
     text-align: center;
     font-size: 1.5rem;
+    text-overflow: clip;
+
+    @media (max-width: 1500px) {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 920px) {
+      writing-mode: vertical-lr;
+    }
   }
   th {
     background: transparent !important;

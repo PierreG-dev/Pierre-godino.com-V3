@@ -173,6 +173,7 @@ const MainContainer = styled.div`
   padding: 0;
   margin: 0;
   width: 100%;
+  min-height: 100vh;
   transition: 1s;
   padding-bottom: 5vh;
 
@@ -193,7 +194,7 @@ const MainContainer = styled.div`
   }
 
   h1 {
-    margin-top: 10vh;
+    margin-top: 17vh;
     font-family: Montserrat;
     font-size: 3rem;
     color: #dadada;
