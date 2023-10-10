@@ -68,19 +68,19 @@ const Cgu: NextPage = () => {
         <i>
           Les présentes CGU ont pour objet de définir les modalités et
           conditions d'utilisation du site internet de Pierre Godino (ci-après
-          désigné le "Site").
+          désigné le "site").
         </i>
 
         <h2>Accès et Navigation</h2>
         <p>
-          En accédant et en naviguant sur le Site, vous acceptez sans réserve
+          En accédant et en naviguant sur le site, vous acceptez sans réserve
           les présentes CGU. <br /> Si vous n'acceptez pas ces conditions,
-          veuillez ne pas accéder ni utiliser le Site.
+          veuillez ne pas accéder ni utiliser le site.
         </p>
 
         <h2>Données personnelles</h2>
         <p>
-          Les informations personnelles collectées sur le Site sont utilisées
+          Les informations personnelles collectées sur le site sont utilisées
           uniquement à des fins de gestion et ne seront en aucun cas divulguées
           à des tiers sans votre consentement explicite. <br /> Ces informations
           sont traitées conformément à la réglementation en vigueur.
@@ -88,15 +88,15 @@ const Cgu: NextPage = () => {
 
         <h2>Cookies</h2>
         <p>
-          Le Site utilise des cookies pour améliorer l'expérience utilisateur,
+          Le site utilise des cookies pour améliorer l'expérience utilisateur,
           collecter des statistiques de navigation et mémoriser vos préférences.
-          En continuant à naviguer sur ce Site, vous acceptez l'utilisation des
+          En continuant à naviguer sur ce site, vous acceptez l'utilisation des
           cookies.
         </p>
 
         <h2>Propriété intellectuelle</h2>
         <p>
-          Tous les contenus présents sur le Site, incluant mais non limité à,
+          Tous les contenus présents sur le site, incluant mais non limité à,
           textes, images, graphiques, logos, sont la propriété exclusive du
           propriétaire. <br />
           Toute reproduction, modification, distribution ou représentation de

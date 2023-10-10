@@ -5,6 +5,7 @@ import AboutNavbar from './navbar/AboutNavbar';
 import Navbar from './navbar/Navbar';
 import Footer from './footer/Footer';
 import AdminModal from './admin/adminModal';
+import Dock from './dock/dock';
 
 export type Props = {
   variant: 'classic' | 'about';
@@ -64,6 +65,7 @@ const Index: React.FC<Props> = ({ children, variant, isLoaded }) => {
         isOpened={isAdminModalOpened}
         handleClose={HandleAdminModalClose}
       />
+      <Dock />
 
       {noLayoutMode && (
         <NoLayoutWarning>|LayoutLess mode activated|</NoLayoutWarning>

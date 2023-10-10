@@ -68,19 +68,19 @@ const Cgu: NextPage = () => {
         <p>
           Les présentes CGV ont pour objet de définir les conditions
           commerciales entre Pierre Godino et ses clients pour les services
-          offerts sur le Site.
+          offerts sur le site.
         </p>
 
         <h2>Services</h2>
         <p>
-          Le Site propose une série de services liés au développement, à la
+          Le site propose une série de services liés au développement, à la
           formation et au mentorat. <br /> Les détails, spécifications et prix
-          de ces services sont précisés sur le Site.
+          de ces services sont précisés sur le site.
         </p>
 
         <h2>Simulateur de devis</h2>
         <p>
-          Le simulateur de devis disponible sur le Site est fourni à titre
+          Le simulateur de devis disponible sur le site est fourni à titre
           indicatif. <br /> Le devis final pourrait varier en fonction des
           besoins spécifiques du client et d'autres facteurs non pris en compte
           par le simulateur.
@@ -95,16 +95,16 @@ const Cgu: NextPage = () => {
 
         <h2>Paiement</h2>
         <p>
-          Les services commandés sur le Site doivent être payés intégralement au
+          Les services commandés sur le site doivent être payés intégralement au
           moment de la commande, sauf indication contraire. Les moyens de
-          paiement acceptés sont détaillés sur le Site.
+          paiement acceptés sont détaillés sur le site.
         </p>
 
         <h2>Réclamations</h2>
         <p>
           En cas d'insatisfaction ou de problème avec un service commandé,
           veuillez contacter Pierre Godino via les moyens de contact indiqués
-          sur le Site.
+          sur le site.
         </p>
 
         <h2>Responsabilité</h2>

@@ -45,10 +45,12 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
       default:
         return 'displayed';
     }
-  }, [displayed, noLayoutMode]);
+  }, [displayed]);
 
   return (
-    <MainContainer className={translationPicker()}>
+    <MainContainer
+      className={translationPicker()}
+      style={{ display: noLayoutMode ? 'none' : 'block' }}>
       <nav>
         <div className="flex column justify-center">
           <div className="flex items-end justify-between">
