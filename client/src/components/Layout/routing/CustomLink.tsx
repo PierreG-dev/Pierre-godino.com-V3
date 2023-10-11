@@ -7,6 +7,7 @@ export type Props = {
   notALink?: boolean;
   button?: boolean;
   style?: any;
+  disabled?: boolean;
 };
 
 const CustomLink: React.FC<Props> = ({
@@ -15,13 +16,18 @@ const CustomLink: React.FC<Props> = ({
   notALink = false,
   button = false,
   style,
+  disabled,
 }) => {
-  const handlePageChange = useCallback(() => {
-    handleStart();
-    setTimeout(() => {
-      Router.push(href);
-    }, 500);
-  }, [href]);
+  const handlePageChange = useCallback(
+    (e) => {
+      e.preventDefault();
+      handleStart();
+      setTimeout(() => {
+        Router.push(href);
+      }, 500);
+    },
+    [href]
+  );
   return (
     <Fragment>
       {notALink ? (
@@ -34,8 +40,21 @@ const CustomLink: React.FC<Props> = ({
             {children}
           </div>
         )
+      ) : disabled ? (
+        <a
+          title="Arrive bientôt"
+          style={{
+            ...style,
+            color: 'rgba(100,100,100,0.8)',
+            textShadow: 'none',
+            cursor: 'help',
+          }}
+          href={href}
+          onClick={(e) => e.preventDefault()}>
+          {children}
+        </a>
       ) : (
-        <a style={style} onClick={handlePageChange}>
+        <a style={style} href={href} onClick={handlePageChange}>
           {children}
         </a>
       )}

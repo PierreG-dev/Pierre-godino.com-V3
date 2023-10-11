@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { NextPage } from 'next';
 import { useMemo, useEffect, useCallback, useRef } from 'react';
 import styled from 'styled-components';

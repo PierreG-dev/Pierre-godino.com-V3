@@ -46,7 +46,7 @@ const Dock: NextPage = () => {
     return () => {
       window.removeEventListener('click', clickDetector);
     };
-  }, []);
+  }, [clickDetector]);
 
   return (
     <MainContainer>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /**
  * Sauvegarde une donnée dans le localStorage.
  *

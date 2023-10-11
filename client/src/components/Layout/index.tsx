@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { NextPage } from 'next';
 import styled from 'styled-components';
-import AboutNavbar from './navbar/AboutNavbar';
 import Navbar from './navbar/Navbar';
 import Footer from './footer/Footer';
 import AdminModal from './admin/adminModal';
@@ -32,8 +30,6 @@ const Index: React.FC<Props> = ({ children, variant, isLoaded }) => {
     switch (variant) {
       case 'classic':
         return <Navbar loaded={isLoaded} noLayoutMode={noLayoutMode} />;
-      case 'about':
-        return <AboutNavbar />;
       default:
         console.error('unknown navbar type');
         break;
