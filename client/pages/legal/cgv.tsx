@@ -35,10 +35,10 @@ const Cgu: NextPage = () => {
   const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
-      title: 'CGU',
+      title: 'CGV',
       description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | CGU',
-      ogUrl: 'https://pierre-godino.com/CGU',
+        'Créateur de sites Internet, développeur WEB freelance et formateur | CGV',
+      ogUrl: 'https://pierre-godino.com/CGV',
     };
 
     return (

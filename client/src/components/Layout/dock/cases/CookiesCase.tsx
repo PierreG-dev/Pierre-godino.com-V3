@@ -33,7 +33,6 @@ const MainContainer = styled.div`
 
     &:hover {
       color: #feb200ff;
-
       text-shadow: #feb200 0 0 2px;
     }
   }

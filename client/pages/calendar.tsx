@@ -1,12 +1,5 @@
 import { NextPage } from 'next';
-import {
-  useRef,
-  useCallback,
-  useEffect,
-  useState,
-  useMemo,
-  FormEvent,
-} from 'react';
+import { useCallback, useState, useMemo, FormEvent, useEffect } from 'react';
 import styled from 'styled-components';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -14,6 +7,12 @@ import frLocale from '@fullcalendar/core/locales/fr';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotate } from '@fortawesome/free-solid-svg-icons';
 import seedrandom from 'seedrandom';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from '../src/utilities/localStorage';
 const Calendar: NextPage = () => {
   const [events, setEvents] = useState([]);
   const [initialSet, setInitialSet] = useState(true);
@@ -24,6 +23,29 @@ const Calendar: NextPage = () => {
   });
   const [isFetching, setIsfetching] = useState<boolean>(false);
   const [isFetched, setIsFetched] = useState<boolean>(false);
+
+  const router = useRouter();
+  const metaContentGenerator = useMemo(() => {
+    const metaData = {
+      title: 'Disponibilités',
+      description:
+        'Créateur de sites Internet, développeur WEB freelance et formateur | Disponibilités',
+      ogUrl: 'https://pierre-godino.com/calendar',
+    };
+
+    return (
+      <Head>
+        <title>{'Pierre | ' + metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+        <meta
+          property="og:title"
+          content={'Pierre GODINO | ' + metaData.title}
+        />
+        <meta property="og:url" content={metaData.ogUrl} />
+        <meta property="og:description" content={metaData.description} />
+      </Head>
+    );
+  }, [router.pathname]);
 
   const submitToken = useCallback(
     (e: FormEvent) => {
@@ -39,10 +61,12 @@ const Calendar: NextPage = () => {
         .then((response) => response.json())
         .then((data) => {
           if (!data.code) {
+            // token accepté
+            saveToLocalStorage('calendar', { token: password });
             setEvents(data);
-
             setIsFetched(true);
           } else {
+            // token erroné
             setPassword('');
             setIsfetching(false);
             setError({
@@ -101,8 +125,15 @@ const Calendar: NextPage = () => {
     return starsGenerator();
   }, []);
 
+  useEffect(() => {
+    const localCalendar = getFromLocalStorage('calendar');
+    console.log(localCalendar);
+    if (localCalendar?.token) setPassword(localCalendar.token);
+  }, []);
+
   return (
     <MainContainer>
+      {metaContentGenerator}
       <div className="stars-container">{starsArray}</div>
       <ConnexionModal open className={!isFetched ? 'visible' : ''}>
         <form onSubmit={submitToken}>

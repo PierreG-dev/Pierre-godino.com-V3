@@ -121,14 +121,14 @@ const MainContainer = styled.nav`
     transition: 0.2s;
 
     &.hidden {
-      transform: translateX(100%);
+      transform: translateX(calc(100% + 5px));
     }
   }
 `;
 
 const DockElement = styled.li`
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding-right: 15px;
   box-sizing: unset;
@@ -136,7 +136,7 @@ const DockElement = styled.li`
   width: fit-content;
   height: 50px;
   transition: 0.2s;
-  /* transform: translateX(calc(100% - 50px)); */
+  transform: translateX(-5px);
   border-radius: 5px 0 0 5px;
   display: flex;
 
@@ -148,6 +148,7 @@ const DockElement = styled.li`
     transform: translateX(calc(-100% + 50px));
     transition: 0.2s, transform 0.2s ease-out;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
 
     img {
       opacity: 1;
@@ -157,7 +158,7 @@ const DockElement = styled.li`
   &:hover:not(.selected) {
     background: rgba(255, 255, 255, 0.2);
     cursor: pointer;
-    /* transform: translateX(calc(100% - 70px)); */
+    transform: translateX(-20px);
 
     img {
       opacity: 1;
