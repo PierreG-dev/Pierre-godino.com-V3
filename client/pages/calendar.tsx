@@ -218,7 +218,7 @@ const Calendar: NextPage = () => {
 };
 
 const MainContainer = styled.div`
-  padding-top: 7vh;
+  padding-top: 100px;
   min-height: 100vh;
   padding-bottom: 10vh;
   color: #fafafa;
@@ -253,6 +253,10 @@ const MainContainer = styled.div`
   }
   th {
     background: transparent !important;
+
+    @media (max-width: 500px) {
+      font-size: 0.9rem !important;
+    }
   }
 
   .fc-media-screen {

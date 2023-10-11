@@ -2,7 +2,6 @@ const { google } = require("googleapis");
 
 // --- Découpe les evenements qui durent plusieurs jours en plusieurs events
 const splitMultiDayEvents = (event) => {
-  console.log(event);
   const events = [];
   const isFullDay = event.start.date && event.end.date ? true : false;
   const start = isFullDay
@@ -21,7 +20,6 @@ const splitMultiDayEvents = (event) => {
 
     // --- Journée entière
     if (isFullDay) {
-      console.log(current.toLocaleDateString("fr"));
       let start = new Date(current.toISOString());
       start.setHours(0);
       start.setMinutes(0);
