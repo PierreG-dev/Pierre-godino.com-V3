@@ -315,7 +315,6 @@ const Realisations: NextPage = () => {
   // Sélection de planètes
   const selectPlanet = useCallback((e) => {
     // --- Vérification de l'endroit du clic
-    console.log(e.target);
     if (
       e.target.localName !== 'img' &&
       e.target.localName !== 'span' &&

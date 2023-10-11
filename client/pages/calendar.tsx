@@ -100,7 +100,6 @@ const Calendar: NextPage = () => {
 
   //Générateur d'étoiles
   const starsGenerator = useCallback(() => {
-    console.log('etoiles générées');
     const myStars: Array<JSX.Element> = [];
     const rng = seedrandom("Vers l'infini et au dela!");
     for (let i = 0; i < 200; ++i) {
@@ -128,7 +127,6 @@ const Calendar: NextPage = () => {
 
   useEffect(() => {
     const localCalendar = getFromLocalStorage('calendar');
-    console.log(localCalendar);
     if (localCalendar?.token) setPassword(localCalendar.token);
   }, []);
 
