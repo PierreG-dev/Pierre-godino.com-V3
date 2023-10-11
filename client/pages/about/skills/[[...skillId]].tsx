@@ -170,7 +170,7 @@ const Skills: NextPage = () => {
         onClick={previousSkill}
         style={{
           position: 'absolute',
-          top: '20%',
+          top: '28vh',
           left: '5%',
           zIndex: 2,
         }}>
@@ -183,7 +183,7 @@ const Skills: NextPage = () => {
         onClick={nextSkill}
         style={{
           position: 'absolute',
-          top: '20%',
+          top: '28vh',
           right: '5%',
           zIndex: 2,
         }}>
@@ -247,12 +247,19 @@ const MainContainer = styled.div`
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
-  padding-top: 7vh;
+  padding-top: 10vh;
 
   #filter-selector {
     background: rgba(37, 37, 37, 0.6);
     transition: 0.1s;
     z-index: 5;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border: none;
     p {
@@ -260,8 +267,10 @@ const MainContainer = styled.div`
     }
   }
 
-  #filter-selector:hover {
-    background: rgba(37, 37, 37, 0.9);
+  #filter-selector {
+    &:hover {
+      background: rgba(37, 37, 37, 0.9);
+    }
   }
 
   .Mui-focused {

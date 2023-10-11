@@ -227,8 +227,9 @@ const MainContainer = styled.div`
     justify-content: space-around;
     align-items: center;
     z-index: 5;
-    @media (max-width: 1000px) {
+    @media (max-width: 550px) {
       align-items: baseline;
+      transform: translateY(-20px);
     }
 
     li {
@@ -259,7 +260,7 @@ const MainContainer = styled.div`
 
         @media (max-width: 1000px) {
           font-size: 0.7rem;
-          transform: translateY(-10px);
+          /* transform: translateY(-10px); */
         }
       }
       sup {

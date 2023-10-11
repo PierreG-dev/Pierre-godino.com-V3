@@ -1,14 +1,43 @@
 import styled from 'styled-components';
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
+import CustomLink from '../../routing/CustomLink';
 
 const AgendaCase: FC = () => {
   return (
     <MainContainer>
       <img src="/icons/agenda_icon.png" alt="" />
+      <p>
+        Consultez mes disponibilités{' '}
+        <CustomLink href="/calendar">ICI</CustomLink>
+      </p>
     </MainContainer>
   );
 };
 
-const MainContainer = styled.div``;
+const MainContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fafafa99;
+
+  a {
+    color: #fafafa66;
+    position: relative;
+    z-index: 8;
+    text-shadow: #2ab2ea 0 0 2px;
+    cursor: pointer;
+
+    &:hover {
+      color: #fafafa99;
+    }
+  }
+
+  img {
+    filter: drop-shadow(#2ab2ea 0 0 3px);
+  }
+`;
 
 export default AgendaCase;

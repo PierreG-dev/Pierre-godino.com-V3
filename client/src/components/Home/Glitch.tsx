@@ -7,47 +7,55 @@ export type Props = {
 
 const Glitch: React.FC<Props> = ({ letter, isGlitching }) => {
   const [displayedLetter, setDisplayedLetter] = useState(letter);
-  const intervalCode: any = useRef();
-  const delay: any = useRef();
+  const intervalCode = useRef<number | null>(null);
+  const timeoutCode = useRef<number | null>(null);
+  const isMounted = useRef<boolean>(true);
+  const delay = useRef<number>(Math.floor(Math.random() * 1500));
 
-  //Fonction qui génère un caractère aléatoire [a-z|A-Z|0-9|symboles]
+  // Fonction qui génère un caractère aléatoire [a-z|A-Z|0-9|symboles]
   const charGenerator = useCallback(() => {
+    if (!isMounted.current) return;
     setDisplayedLetter(
       String.fromCharCode(Math.floor(Math.random() * 42) + 48)
     );
   }, []);
 
-  //fonction pour démarrer le glitch (avec délai)
+  // Fonction pour démarrer le glitch (avec délai)
   const delayedGlitchStart = useCallback(() => {
-    setTimeout(() => {
-      intervalCode.current = setInterval(charGenerator, 150);
+    // Stocke le code d'identité du setTimeout pour le nettoyage ultérieur
+    timeoutCode.current = window.setTimeout(() => {
+      // Avant de démarrer un nouvel interval, assurez-vous de nettoyer l'ancien
+      if (intervalCode.current) clearInterval(intervalCode.current);
+      intervalCode.current = window.setInterval(charGenerator, 150);
     }, delay.current);
-  }, [intervalCode, charGenerator]);
+  }, [charGenerator]);
 
-  //fonction pour arréter le glitch (avec délai)
+  // Fonction pour arrêter le glitch (avec délai)
   const delayedGlitchStop = useCallback(() => {
-    setTimeout(() => {
-      intervalCode.current = clearInterval(intervalCode.current);
+    timeoutCode.current = window.setTimeout(() => {
+      if (intervalCode.current) clearInterval(intervalCode.current);
       setDisplayedLetter(letter);
     }, delay.current);
-  }, [intervalCode, letter]);
+  }, [letter]);
 
-  //Effet pour coordonner les différentes actions
+  // Effet pour coordonner les différentes actions
   useEffect(() => {
     if (isGlitching) delayedGlitchStart();
     else delayedGlitchStop();
 
+    // Cleanup: nettoie l'intervalle et le timeout à chaque changement ou au démontage
     return () => {
       delayedGlitchStop();
+      if (timeoutCode.current) clearTimeout(timeoutCode.current);
     };
   }, [isGlitching, delayedGlitchStart, delayedGlitchStop, letter]);
 
   // Effet de gestion de vie du composant
   useEffect(() => {
-    delay.current = Math.floor(Math.random() * 1500);
-
     return () => {
-      clearInterval(intervalCode.current);
+      isMounted.current = false;
+      if (intervalCode.current) clearInterval(intervalCode.current);
+      if (timeoutCode.current) clearTimeout(timeoutCode.current);
     };
   }, []);
 
