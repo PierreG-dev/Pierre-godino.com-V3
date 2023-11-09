@@ -104,8 +104,8 @@ module.exports = async (req, res, next) => {
   response.data.items.forEach((event) => {
     if (
       event.start.date ||
-      new Date(event.start.dateTime).getDate() !==
-        new Date(event.end.dateTime).getDate()
+      new Date(event.start.dateTime).getTime() !==
+        new Date(event.end.dateTime).getTime()
     ) {
       formattedResponse.push(...splitMultiDayEvents(event));
     } else {
