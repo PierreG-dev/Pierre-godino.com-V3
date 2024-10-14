@@ -262,6 +262,7 @@ const MainContainer = styled.div`
       a,
       sup,
       #custom_nav_dropdown {
+        font-weight: 600;
         color: rgba(255, 255, 255, 0.5);
         transition: 0.2s;
         font-family: 'Montserrat';

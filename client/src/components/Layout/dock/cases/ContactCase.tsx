@@ -20,7 +20,7 @@ const MainContainer = styled.div`
   font-weight: 600;
 
   img {
-    filter: drop-shadow(#68a852 0 0 1px);
+    filter: drop-shadow(#68a852 0 0 1 px);
   }
 
   a {
