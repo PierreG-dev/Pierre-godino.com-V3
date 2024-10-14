@@ -34,6 +34,7 @@ const data: Realisation[] = [
     link: 'https://www.pierre-godino.com',
     description: 'Troisième version de mon portfolio | Vitrine',
   },
+  {},
   {
     name: 'Portfolio',
     sup: 'V2',
@@ -45,19 +46,7 @@ const data: Realisation[] = [
     link: 'https://pierre-godino.com/V2/index.html',
     description: 'Deuxième version de mon portfolio',
   },
-  {
-    name: 'Portfolio',
-    sup: 'V1',
-    icon: '/res/LOGO.svg',
-    background:
-      'radial-gradient(circle, rgba(38,2,0,1) 0%, rgba(96,15,0,1) 100%, rgba(96,15,0,1) 100%)',
-    auraColor: '#600f00',
-    filter: 'drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
-    link: 'https://pierre-godino.com/V1/index.html',
-    description: 'Première version de mon portfolio',
-  },
   {},
-
   {
     name: 'LEARN',
     sup: 'V1',
@@ -66,31 +55,22 @@ const data: Realisation[] = [
       'radial-gradient(circle, rgba(126,67,32,1) 0%, rgba(225,117,53,1) 100%)',
     auraColor: '#dc7133',
     filter: 'drop-shadow(1px 1px 3px rgba(0,0,0,0.7))',
+    link: 'https://learn.pierre-godino.com/legacy/v1',
+    description: "Plateforme d'apprentissage",
+  },
+
+  {},
+  {
+    name: 'LEARN',
+    sup: 'V2',
+    icon: '/icons/LEARN.png',
+    background:
+      'radial-gradient(circle, rgba(126,67,32,1) 0%, rgba(225,117,53,1) 100%)',
+    auraColor: '#dc7133',
+    filter: 'drop-shadow(1px 1px 3px rgba(0,0,0,0.7))',
     link: 'https://learn.pierre-godino.com',
     description: "Plateforme d'apprentissage",
   },
-  {
-    name: 'AB Nature',
-    icon: '/icons/abnature.svg',
-    background:
-      'radial-gradient(circle, rgba(31,68,8,1) 0%, rgba(73,160,16,1) 100%)',
-    auraColor: '#49a010',
-    filter: 'drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
-    link: 'https://abnature.fr',
-    description: 'Site E-commerce',
-  },
-  {
-    name: 'SARL Garage BRINCAT',
-    icon: '/icons/garagebrincat.webp',
-    background:
-      'radial-gradient(circle, rgba(14,46,103,1) 0%, rgba(29,85,182,1) 100%)',
-    auraColor: '#1d55b6',
-    filter:
-      'invert(30%) sepia(85%) saturate(1334%) hue-rotate(199deg) brightness(90%) contrast(96%) drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
-    link: 'https://www.sarlgaragebrincat.fr',
-    description: 'Site vitrine de concession automobile',
-  },
-  {},
 ];
 
 const Realisations: NextPage = () => {
@@ -391,16 +371,18 @@ const Realisations: NextPage = () => {
                 }}>
                 <h3>{elem.name}</h3>
                 <p>{elem.description}</p>
-                <a href={elem.link} target="_blank" rel="noreferrer">
-                  <LinkIcon />
-                </a>
+                {elem.link && (
+                  <a href={elem.link} target="_blank" rel="noreferrer">
+                    <LinkIcon />
+                  </a>
+                )}
               </div>
             </div>
           </div>
         </div>
       );
     });
-  }, [selectedPlanet, positionPicker, selectPlanet]);
+  }, [positionPicker, selectedPlanet, windowSize]);
 
   useEffect(() => {
     starsArray.current = starsGenerator();
@@ -1272,3 +1254,40 @@ const MainContainer = styled.div`
 `;
 
 export default Realisations;
+
+// ---------- LEGACY DATA ---------- //
+/*
+{
+name: 'Portfolio',
+    sup: 'V1',
+    icon: '/res/LOGO.svg',
+    background:
+      'radial-gradient(circle, rgba(38,2,0,1) 0%, rgba(96,15,0,1) 100%, rgba(96,15,0,1) 100%)',
+    auraColor: '#600f00',
+    filter: 'drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
+    link: 'https://pierre-godino.com/V1/index.html',
+    description: 'Première version de mon portfolio',
+},
+{
+    name: 'AB Nature',
+    icon: '/icons/abnature.svg',
+    background:
+      'radial-gradient(circle, rgba(31,68,8,1) 0%, rgba(73,160,16,1) 100%)',
+    auraColor: '#49a010',
+    filter: 'drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
+    link: 'https://abnature.fr',
+    description: 'Site E-commerce',
+  },
+  {
+    name: 'SARL Garage BRINCAT',
+    icon: '/icons/garagebrincat.webp',
+    background:
+      'radial-gradient(circle, rgba(14,46,103,1) 0%, rgba(29,85,182,1) 100%)',
+    auraColor: '#1d55b6',
+    filter:
+      'invert(30%) sepia(85%) saturate(1334%) hue-rotate(199deg) brightness(90%) contrast(96%) drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
+    link: 'https://www.sarlgaragebrincat.fr',
+    description: 'Site vitrine de concession automobile',
+  },
+    
+*/
