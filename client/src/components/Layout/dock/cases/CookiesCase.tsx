@@ -22,19 +22,19 @@ const MainContainer = styled.div`
   color: #fafafa99;
 
   img {
-    filter: drop-shadow(#feb200 0 0 3px);
+    filter: drop-shadow(#feb200 0 0 1px);
   }
   a {
     color: #feb20099;
     position: relative;
     z-index: 8;
-    text-shadow: #feb20099 0 0 2px;
+    text-shadow: #feb20099 0 0 1px;
     cursor: pointer;
 
     &:hover {
       color: #feb200ff;
 
-      text-shadow: #feb200 0 0 2px;
+      text-shadow: #feb200 0 0 1px;
     }
   }
 `;

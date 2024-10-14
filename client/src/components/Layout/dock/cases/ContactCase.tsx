@@ -20,13 +20,13 @@ const MainContainer = styled.div`
   font-weight: 600;
 
   img {
-    filter: drop-shadow(#68a852 0 0 3px);
+    filter: drop-shadow(#68a852 0 0 1px);
   }
 
   a {
     color: #68a85266;
     z-index: 8;
-    text-shadow: #68a852 0 0 2px;
+    text-shadow: #68a852 0 0 1px;
 
     &:hover {
       color: #68a852ff;

@@ -29,7 +29,7 @@ const MainContainer = styled.div`
       color: #798af566;
       position: relative;
       z-index: 8;
-      text-shadow: #798af5aa 0 0 2px;
+      text-shadow: #798af5aa 0 0 1px;
       cursor: pointer;
 
       &:hover {
@@ -39,7 +39,7 @@ const MainContainer = styled.div`
   }
 
   img {
-    filter: drop-shadow(#798af5aa 0 0 3px);
+    filter: drop-shadow(#798af5aa 0 0 1px);
   }
 `;
 
