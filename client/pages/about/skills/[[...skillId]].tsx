@@ -210,31 +210,34 @@ const Skills: NextPage = () => {
           {displayDots()}
         </div>
         <div id={'infos'}>
-          <div className="flex items-center" title={'Expérience'}>
+          <div className="flex items-center gap-3" title={'Expérience'}>
             <TimelapseIcon
               style={{
                 color: 'green',
                 filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.3))',
               }}
             />
+            <h4>Expérience</h4>
             <Bar variant={'experience'} level={data[displayedSkillId].xp} />
           </div>
-          <div className="flex items-center" title={'Maîtrise'}>
+          <div className="flex items-center gap-3" title={'Maîtrise'}>
             <FitnessCenterIcon
               style={{
                 color: 'royalblue',
                 filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.3))',
               }}
             />
+            <h4>Maîtrise</h4>
             <Bar variant={'mastery'} level={data[displayedSkillId].mastery} />
           </div>
-          <div className="flex items-center" title={'Affinité'}>
+          <div className="flex items-center gap-3" title={'Affinité'}>
             <FavoriteIcon
               style={{
                 color: 'orangered',
                 filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.3))',
               }}
-            />
+            />{' '}
+            <h4>Affinité</h4>
             <Bar variant={'affinity'} level={data[displayedSkillId].affinity} />
           </div>
         </div>
@@ -247,11 +250,11 @@ const MainContainer = styled.div`
   background: #040e1d;
   width: 100vw;
   height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
   padding-top: 10vh;
 
   #filter-selector {
-    background: rgba(37, 37, 37, 0.6);
+    background: rgba(37, 37, 37, 0.4) !important;
     transition: 0.1s;
     z-index: 5;
     position: absolute;
@@ -270,7 +273,7 @@ const MainContainer = styled.div`
 
   #filter-selector {
     &:hover {
-      background: rgba(37, 37, 37, 0.9);
+      background: rgba(37, 37, 37, 0.9) !important;
     }
   }
 
@@ -415,14 +418,26 @@ const InfosContainer = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-  }
-  svg {
-    transition: 0.5s;
-    transform: scale3d(1.4, 1.4, 1);
-  }
-  svg:hover {
-    transform: scale3d(1.7, 1.7, 1);
-    cursor: help;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      font-size: 1.5rem;
+      transition: 0.5s;
+      transform: scale3d(1.4, 1.4, 1);
+    }
+
+    h4 {
+      color: #fafafa;
+      opacity: 0.7;
+      font-weight: bold;
+      letter-spacing: 1px;
+      width: 80px;
+    }
+    svg:hover {
+      transform: scale3d(1.7, 1.7, 1);
+      cursor: help;
+    }
   }
 `;
 

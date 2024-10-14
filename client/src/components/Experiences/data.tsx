@@ -319,13 +319,12 @@ const data: Xp[] = [
   {
     period: 'Freelance',
     date: '08/2020',
-    title: 'Site vitrine pour le garage BRINCAT 👓',
+    title: 'Site vitrine pour le garage BRINCAT',
     icon: '/icons/garagebrincat.webp',
     description: (
       <p>
         Création d'un CMS en Symfony pour le compte d'un garage basé sur
         Castelsarrasin. <br /> <br />
-        Le design a été produit sur Adobe XD. <br /> <br />
         Le site possède un back office pour gérer les voitures en vente dans la
         concession, <br />
         ainsi que les messages laissés par les clients. <br /> <br />
@@ -353,7 +352,7 @@ const data: Xp[] = [
       'Bash',
       'LAMP',
     ]),
-    link: 'https://www.sarlgaragebrincat.fr',
+    link: '',
   },
   {
     period: 'Freelance',
@@ -537,7 +536,6 @@ const data: Xp[] = [
       'YARN',
     ]),
     link: 'https://www.philiance.com/',
-    actual: true,
   },
   {
     period: 'Freelance',
@@ -596,7 +594,6 @@ const data: Xp[] = [
       'YARN',
     ]),
     link: 'https://www.apformation.com/',
-    actual: true,
   },
   {
     period: 'Freelance',
@@ -765,6 +762,42 @@ const data: Xp[] = [
       'VSCode',
     ]),
     link: 'https://www.centre-europeen-formation.fr/',
+  },
+  {
+    period: 'Freelance',
+    date: '04/2024',
+    title: 'Formateur GEMA',
+    icon: '/icons/GEMA.jpg',
+    description: (
+      <p>
+        Formateur sur les modules portant sur le développement WEB au sein du
+        groupe GEMA
+      </p>
+    ),
+    technologies: selectSkillsByName([
+      'HTML 5',
+      'CSS 3',
+      'JavaScript',
+      'Algorithmie',
+      'NoSQL',
+      'PHP',
+      'Python',
+      'NodeJs',
+      'React.js',
+      'JSX',
+      'SQL',
+      'Express.js',
+    ]),
+    environnements: selectSkillsByName([
+      'Bash',
+      'Git',
+      'Github',
+      'NPM',
+      'VSCode',
+      'YARN',
+      'VSCode',
+    ]),
+    link: 'https://www.groupe-gema.com/',
     actual: true,
   },
 ];

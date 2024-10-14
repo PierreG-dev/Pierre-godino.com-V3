@@ -114,16 +114,15 @@ const Experiences: NextPage = () => {
       <h1>Mes Experiences</h1>
 
       <section id={'clock-section'}>
-        <Clock
+        {/* <Clock
           value={time}
           {...clockOptions}
           size={screenSize <= 768 ? 150 : 300}
-        />
-        <div className="typewriter mt-8">
+        /> */}
+        <div className="typewriter mt-0">
           <h4
             style={{
-              fontSize: screenSize <= 768 ? '1.2rem' : '3rem',
-              margin: screenSize <= 768 ? '30px 0px 75px 0px' : 0,
+              fontSize: screenSize <= 768 ? '1.2rem' : '2rem',
             }}>
             {TITLE}
           </h4>
@@ -194,6 +193,7 @@ const MainContainer = styled.div`
   }
 
   h1 {
+    font-weight: bold;
     margin-top: 17vh;
     font-family: Montserrat;
     font-size: 3rem;
@@ -207,7 +207,8 @@ const MainContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5%;
+    padding: 40px 5%;
+    padding-top: 0;
 
     h4 {
       color: #cacaca;

@@ -81,7 +81,7 @@ const Index: NextPage = () => {
           <CustomLink
             notALink={true}
             button={true}
-            style={{ animationDelay: '0.5s' }}
+            style={{ animationDelay: '0.1s' }}
             href={'/about/experiences'}>
             <video loop autoPlay muted>
               <source src={'/video/exp-preview.mp4'} type={'video/mp4'} />
@@ -92,7 +92,7 @@ const Index: NextPage = () => {
         <CustomLink
           notALink={true}
           button={true}
-          style={{ animationDelay: '1s' }}
+          style={{ animationDelay: '0.2s' }}
           href={'/about/curiculum'}>
           <video loop autoPlay muted>
             <source src={'/video/cv-preview.mp4'} type={'video/mp4'} />
