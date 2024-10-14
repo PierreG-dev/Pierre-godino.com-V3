@@ -66,10 +66,8 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline small-hidden"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/simulator'} disabled>
-              Devis en ligne
-            </CustomLink>
-            <sup
+            <CustomLink href={'/pricing'}>Prestations</CustomLink>
+            {/* <sup
               title="Arrive bientôt"
               style={{
                 color: 'rgba(100,100,100,0.8)',
@@ -77,7 +75,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 cursor: 'help',
               }}>
               beta
-            </sup>
+            </sup> */}
           </li>
           <li>
             <CustomLink href={'/'}>
