@@ -18,13 +18,14 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InsightsIcon from '@mui/icons-material/Insights';
 import AppShortcutIcon from '@mui/icons-material/AppShortcut';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import UpdateIcon from '@mui/icons-material/Update';
-import SupportIcon from '@mui/icons-material/Support';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import DevicesOtherIcon from '@mui/icons-material/DevicesOther';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import BuildIcon from '@mui/icons-material/Build';
+import CallIcon from '@mui/icons-material/Call';
+import EmailIcon from '@mui/icons-material/Email';
+import LanguageIcon from '@mui/icons-material/Language';
 
 const Simulator: NextPage = () => {
   //Générateur d'étoiles
@@ -253,6 +254,16 @@ const Simulator: NextPage = () => {
             </li>
             <hr />
             <li>
+              <BuildIcon
+                style={{
+                  color: '#27ae60',
+                  filter: 'drop-shadow(0px 0px 3px rgba(green, 0.2))',
+                }}
+              />{' '}
+              Maintenabilité
+            </li>
+            <hr />
+            <li>
               <HandshakeIcon
                 style={{
                   color: '#27ae60',
@@ -453,11 +464,37 @@ const Simulator: NextPage = () => {
           </div>
         </Caroussel>
       </section>
+
+      <section id="call_to_action">
+        <h3>
+          <LanguageIcon />
+          Intéressé par une stratégie en ligne ?
+        </h3>
+        <p>
+          Estimations, informations, précisions... <br />
+          <span>Faisons le point ensemble ☕</span>
+        </p>
+        <div className="btn-group">
+          {' '}
+          <a href="tel:+767249980">
+            <button id="tel_btn">
+              <CallIcon />
+              07 67 24 99 80
+            </button>
+          </a>
+          <a href="mailto:contact@pierre-godino.com">
+            <button id="email_btn">
+              <EmailIcon />
+              contact@pierre-godino.com
+            </button>
+          </a>
+        </div>
+      </section>
     </MainContainer>
   );
 };
 
-const MainContainer = styled.div`
+const MainContainer = styled.main`
   padding: 13vh 0;
   background: #040e1d;
   min-height: 100vh;
@@ -712,6 +749,7 @@ const MainContainer = styled.div`
   }
 
   section#clients {
+    padding-top: 100px;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -741,6 +779,128 @@ const MainContainer = styled.div`
 
         svg {
           font-size: 1.5rem;
+        }
+      }
+    }
+  }
+
+  section#call_to_action {
+    width: 100%;
+    padding-top: 100px;
+
+    h3 {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 5px;
+      margin: 25px;
+      text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
+      max-width: 100%;
+
+      svg {
+        font-size: 3rem;
+        color: #27ae60;
+        filter: drop-shadow(0px 0px 3px rgba(green, 0.2));
+      }
+
+      @media (max-width: 700px) {
+        letter-spacing: 4px;
+        font-size: 1.5rem;
+
+        svg {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    p {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
+      font-weight: 500;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      margin-top: -15px;
+
+      span {
+        font-weight: bold;
+      }
+
+      @media (max-width: 700px) {
+        font-size: 1.1rem;
+      }
+    }
+
+    div.btn-group {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      margin-top: 80px;
+
+      @media (max-width: 900px) {
+        flex-direction: column;
+      }
+
+      a {
+        button {
+          width: 400px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          padding: 25px;
+          background: rgba(255, 255, 255, 0.25);
+          box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
+            inset 0 0px 7px rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(1px);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          border-radius: 3px;
+          font-weight: bold;
+          font-size: 1.3rem;
+          height: 100px;
+          transition: 0.1s;
+          color: rgba(255, 255, 255, 0.7);
+          letter-spacing: 1px;
+          text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
+
+          svg {
+            font-size: 2rem;
+          }
+
+          &#tel_btn {
+            /* text-shadow: 0px 0px 7px rgba(46, 204, 113, 0.3); */
+            &:hover {
+              background: rgba(46, 204, 113, 0.3);
+              border: 1px solid rgb(46, 204, 113);
+              box-shadow: 0px 0px 7px 1px rgb(46, 204, 113);
+            }
+
+            svg {
+              color: rgb(46, 204, 113);
+              filter: drop-shadow(0px 0px 5px rgba(46, 204, 113, 0.4));
+            }
+          }
+
+          &#email_btn {
+            /* text-shadow: 0px 0px 7px rgba(52, 152, 219, 0.3); */
+            &:hover {
+              background: rgba(52, 152, 219, 0.3);
+              border: 1px solid rgb(52, 152, 219);
+              box-shadow: 0px 0px 7px 1px rgb(52, 152, 219);
+            }
+
+            svg {
+              color: rgb(52, 152, 219);
+              filter: drop-shadow(0px 0px 5px rgba(52, 152, 219, 0.4));
+            }
+          }
         }
       }
     }
@@ -783,7 +943,7 @@ const Caroussel = styled.div`
     display: flex;
     gap: 100px;
     width: fit-content;
-    animation: 25s caroussel infinite linear;
+    animation: 60s caroussel infinite linear;
 
     img.logo-element {
       border-radius: 15px;
