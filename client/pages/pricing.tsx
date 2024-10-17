@@ -27,7 +27,7 @@ import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import LanguageIcon from '@mui/icons-material/Language';
 
-const Simulator: NextPage = () => {
+const Pricing: NextPage = () => {
   //Générateur d'étoiles
   const starsGenerator = useCallback(() => {
     const myStars: Array<JSX.Element> = [];
@@ -965,4 +965,4 @@ const Caroussel = styled.div`
   }
 `;
 
-export default Simulator;
+export default Pricing;

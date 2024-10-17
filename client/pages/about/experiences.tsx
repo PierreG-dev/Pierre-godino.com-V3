@@ -281,6 +281,8 @@ const MainContainer = styled.div`
 const BackgroundContainer = styled.div`
   width: 100vw;
   height: 100%;
+  left: 0;
+  top: 0;
   position: absolute;
   z-index: -6;
 `;
