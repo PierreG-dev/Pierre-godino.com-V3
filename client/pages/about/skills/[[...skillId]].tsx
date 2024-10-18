@@ -14,13 +14,13 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { MenuItem } from '@mui/material';
 import Bar from '../../../src/components/Skills/bar';
-
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import SkillSelector from '../../../src/components/Skills/SkillSelector';
 
 const Skills: NextPage = () => {
   const router = useRouter();
@@ -137,35 +137,6 @@ const Skills: NextPage = () => {
         <img id="astronaut" src="/res/astronaut.png" alt="astronaute" />
         <div id="welding_object"></div>
       </AnimationContainer>
-      <FilterContainer>
-        <Select
-          id={'filter-selector'}
-          variant={'outlined'}
-          value={data[displayedSkillId].name}
-          onChange={(event: any): void => {
-            setDisplayedSkillId(event.target.value);
-          }}
-          label="Age">
-          <MenuItem value={data[displayedSkillId].name}>
-            <p style={{ color: '#575757' }}>{data[displayedSkillId].name}</p>
-          </MenuItem>
-          {data.map((skill, key) => {
-            return (
-              <MenuItem
-                value={skill.id}
-                key={key}
-                sx={{
-                  color:
-                    displayedSkillId === key
-                      ? 'rgba(255, 255, 255, 1)'
-                      : 'rgba(255, 255, 255, 0.4)',
-                }}>
-                {skill.name}
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FilterContainer>
 
       <button
         onClick={previousSkill}
@@ -200,7 +171,10 @@ const Skills: NextPage = () => {
         }}>
         {displaySkills()}
       </SkillsContainer>
-
+      <SkillSelector
+        displayedSkillId={displayedSkillId}
+        setDisplayedSkillId={setDisplayedSkillId}
+      />
       <InfosContainer>
         <div
           className={
@@ -382,6 +356,7 @@ const FilterContainer = styled.div`
 const InfosContainer = styled.section`
   position: relative;
   height: 60vh;
+  max-height: 500px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -405,13 +380,13 @@ const InfosContainer = styled.section`
     width: 80%;
     max-width: 1000px;
     height: 60%;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 16px;
-    box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
-      inset 0 0px 7px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0px 7px rgba(255, 255, 255, 0.2),
+      inset 0 0px 7px rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(1.8px);
     -webkit-backdrop-filter: blur(1.8px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     z-index: 3;
     padding: 3vh 3vw;
     border-radius: 15px;

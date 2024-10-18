@@ -75,6 +75,7 @@ const MainContainer = styled.div`
   border-radius: 15px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   margin-left: 20px;
+
   .graduation {
     position: absolute;
     top: 0;
