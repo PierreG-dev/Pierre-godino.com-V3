@@ -53,10 +53,10 @@ const Pricing: NextPage = () => {
   const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
-      title: 'Prestations',
+      title: 'Tarifs',
       description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | Détail de mes prestations',
-      ogUrl: 'https://pierre-godino.com/simulator',
+        'Créateur de sites Internet, développeur WEB freelance et formateur | Tarifs',
+      ogUrl: 'https://pierre-godino.com/pricing',
     };
 
     return (
@@ -863,12 +863,13 @@ const MainContainer = styled.main`
           border: 1px solid rgba(255, 255, 255, 0.25);
           border-radius: 3px;
           font-weight: bold;
-          font-size: 1.3rem;
+          font-size: 1.1rem;
           height: 100px;
           transition: 0.1s;
           color: rgba(255, 255, 255, 0.7);
           letter-spacing: 1px;
           text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
+          font-family: 'Montserrat';
 
           svg {
             font-size: 2rem;

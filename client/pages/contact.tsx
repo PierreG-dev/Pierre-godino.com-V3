@@ -11,22 +11,33 @@ import CachedIcon from '@mui/icons-material/Cached';
 import DoneIcon from '@mui/icons-material/Done';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import CallIcon from '@mui/icons-material/Call';
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PersonIcon from '@mui/icons-material/Person';
+import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import ShareIcon from '@mui/icons-material/Share';
 
 const networks = [
   {
     name: 'GitHub',
+    className: 'github',
     link: 'https://www.github.com/pierreG-dev',
   },
   {
     name: 'Malt',
+    className: 'malt',
     link: 'https://www.malt.fr/profile/pierregodino',
   },
   {
     name: 'LinkedIn',
+    className: 'linkedin',
     link: 'https://www.linkedin.com/in/pierre-godino-50b503186',
   },
   {
     name: 'CV',
+    className: 'cv',
     link: 'https://www.pierre-godino.com/about/curiculum',
   },
 ];
@@ -131,25 +142,34 @@ const Contact: NextPage = () => {
         <div id="left">
           <section id="contact">
             <div id="text">
-              <h2>Coordonnées</h2>
+              <h2>
+                <ContactPhoneIcon />
+                Coordonnées
+              </h2>
               <ul>
-                <li>Pierre GODINO</li>
-                <li>
-                  <a id="phone_link" href="tel:+33767249980">
-                    +33 7 67 24 99 80
-                  </a>
+                <li id="name">
+                  <PersonIcon />
+                  Pierre GODINO
                 </li>
-                <li>
-                  <a id="mail_link" href="mailto:contact@pierre-godino.com">
+                <li id="phone_link">
+                  <CallIcon />
+                  <a href="tel:+33767249980">+33 7 67 24 99 80</a>
+                </li>
+                <li id="mail_link">
+                  <EmailIcon />
+                  <a href="mailto:contact@pierre-godino.com">
                     contact@pierre-godino.com
                   </a>
                 </li>
               </ul>
               <hr />
-              <ul>
-                <li>Toulouse, Agen, </li>
-                <li>France</li>
-              </ul>
+              <div className="flex" id="location">
+                <LocationOnIcon />
+                <ul>
+                  <li>Toulouse, Agen </li>
+                  <li>France</li>
+                </ul>
+              </div>
             </div>
             <div id="map">
               <img src="/res/france-map.png" alt="france vue depuis l'espace" />
@@ -159,7 +179,10 @@ const Contact: NextPage = () => {
           </section>
 
           <section id="message">
-            <h2>Me contacter</h2>
+            <h2>
+              <SpeakerNotesIcon />
+              Me contacter
+            </h2>
             <input
               type="text"
               name=""
@@ -198,20 +221,31 @@ const Contact: NextPage = () => {
 
         <div id="right">
           <section id="networks">
-            <h2>Réseaux</h2>
-            {networks.map((elem, key) => {
-              return (
-                <a key={key} href={elem.link} target="_blank" rel="noreferrer">
-                  <div className="network-card">
-                    <h3>{elem.name}</h3>
-                    <img
-                      src={`/res/${elem.name.toUpperCase()}_LOGO.png`}
-                      alt={`Logo de la plateforme ${elem.name}`}
-                    />
-                  </div>
-                </a>
-              );
-            })}
+            <h2>
+              <ShareIcon />
+              Réseaux
+            </h2>
+            <ul id="networks_list">
+              {networks.map((elem, key) => {
+                return (
+                  <li className={`network-card ${elem.className}`}>
+                    <a
+                      key={key}
+                      href={elem.link}
+                      target="_blank"
+                      rel="noreferrer">
+                      <div>
+                        <h3>{elem.name}</h3>
+                        <img
+                          src={`/res/${elem.name.toUpperCase()}_LOGO.png`}
+                          alt={`Logo de la plateforme ${elem.name}`}
+                        />
+                      </div>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
           </section>
         </div>
       </div>
@@ -253,10 +287,11 @@ const MainContainer = styled.div`
     height: fit-content;
     flex-wrap: wrap;
     width: 100%;
+    gap: 25px;
+    padding: 50px;
 
     #left {
       width: 60%;
-      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -271,7 +306,6 @@ const MainContainer = styled.div`
       flex-grow: 1;
       flex-basis: 0;
       width: 40%;
-      padding: 20px;
       gap: 25px;
       box-sizing: border-box;
       display: flex;
@@ -285,14 +319,18 @@ const MainContainer = styled.div`
   section {
     padding: 20px 50px;
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
+    border-radius: 5px;
     box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
       inset 0 0px 7px rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(1px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     transition: 0.3s;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.9);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
 
     @media (max-width: 450px) {
       padding: 10px 25px;
@@ -300,7 +338,18 @@ const MainContainer = styled.div`
 
     h2,
     h3 {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+
+      svg {
+        color: rgb(46, 204, 113);
+      }
     }
 
     &#contact {
@@ -309,40 +358,75 @@ const MainContainer = styled.div`
       display: flex;
       justify-content: space-between;
 
-      #phone_link {
-        color: #fafafa;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 2px 5px;
-        border-radius: 3px;
-        letter-spacing: 1px;
-        transition: 0.1s;
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
 
-        &:hover {
-          background: rgba(104, 168, 82, 0.87);
+        li {
+          display: flex;
+          gap: 10px;
+
+          &#name {
+            svg {
+              color: rgb(142, 68, 173);
+            }
+          }
+
+          &#phone_link {
+            a {
+              color: #fafafa;
+              background: rgba(255, 255, 255, 0.1);
+              padding: 2px 5px;
+              border-radius: 3px;
+              letter-spacing: 1px;
+              transition: 0.1s;
+
+              &:hover {
+                background: rgba(46, 204, 113, 0.4);
+              }
+            }
+
+            svg {
+              color: rgb(46, 204, 113);
+            }
+          }
+
+          &#mail_link {
+            a {
+              color: #fafafa;
+              background: rgba(255, 255, 255, 0.1);
+              padding: 2px 5px;
+              border-radius: 3px;
+              letter-spacing: 1px;
+              transition: 0.1s;
+              font-size: 0.9rem;
+
+              &:hover {
+                background: rgba(0, 125, 255, 0.8);
+              }
+            }
+
+            svg {
+              color: rgb(52, 152, 219);
+            }
+          }
+
+          #text {
+            @media (max-width: 650px) {
+              width: 100%;
+            }
+
+            ul {
+              margin-left: 10px;
+            }
+          }
         }
       }
 
-      #mail_link {
-        color: #fafafa;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 2px 5px;
-        border-radius: 3px;
-        letter-spacing: 1px;
-        transition: 0.1s;
-        font-size: 0.9rem;
-
-        &:hover {
-          background: rgba(0, 125, 255, 0.8);
-        }
-      }
-
-      #text {
-        @media (max-width: 650px) {
-          width: 100%;
-        }
-
-        ul {
-          margin-left: 10px;
+      #location {
+        svg {
+          color: rgb(231, 76, 60) !important;
         }
       }
 
@@ -377,53 +461,93 @@ const MainContainer = styled.div`
     &#networks {
       width: 100%;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
+      flex-direction: column;
 
-      @media (max-width: 1552px) {
+      @media (min-width: 1552px) {
+        justify-content: center;
         padding-bottom: 30px;
+
+        h2 {
+          position: absolute;
+          top: 20px;
+        }
       }
 
       h2 {
         width: 100%;
       }
 
-      .network-card {
-        border-radius: 15px;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        background: rgba(255, 255, 255, 0.2);
-        padding: 30px;
-        width: 200px;
-        height: 200px;
+      ul#networks_list {
         display: flex;
         justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 15px;
-        transition: 0.3s;
 
-        h3 {
-          font-family: 'Space Mono', monospace;
-          font-size: 1.5rem;
-        }
+        li.network-card {
+          div {
+            border-radius: 15px;
+            padding: 30px;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0px 0px 7px 1px rgba(255, 255, 255, 0.1);
 
-        img {
-          width: 100px;
-          height: 100px;
-          object-fit: cover;
-          filter: grayscale(0.3);
-          transition: 0.3s;
-        }
+            h3 {
+              font-family: 'Space Mono', monospace;
+              font-size: 1.5rem;
+            }
 
-        &:hover {
-          transform: translate3d(0, -5px, 0);
-          background: rgba(255, 255, 255, 0.25);
-          box-shadow: 2px 7px 4px rgba(0, 0, 0, 0.3);
+            img {
+              flex-shrink: 0;
+              width: 100px !important;
+              height: 100px !important;
+              object-fit: cover;
+              filter: grayscale(0.3);
+              transition: 0.3s;
+            }
 
-          img {
-            filter: grayscale(0);
+            img {
+              /* filter: grayscale(0); */
+            }
+          }
+
+          &.github div {
+            &:hover {
+              background: rgba(155, 89, 182, 0.3);
+              border: 1px solid rgb(155, 89, 182);
+              box-shadow: 0px 0px 7px 1px rgb(155, 89, 182);
+            }
+          }
+
+          &.malt div {
+            &:hover {
+              background: rgba(213, 85, 105, 0.3);
+              border: 1px solid rgb(213, 85, 105);
+              box-shadow: 0px 0px 7px 1px rgb(213, 85, 105);
+            }
+          }
+
+          &.linkedin div {
+            &:hover {
+              background: rgba(29, 113, 156, 0.3);
+              border: 1px solid rgb(29, 113, 156);
+              box-shadow: 0px 0px 7px 1px rgb(29, 113, 156);
+            }
+          }
+
+          &.cv div {
+            &:hover {
+              background: rgba(135, 36, 30, 0.3);
+              border: 1px solid rgb(135, 36, 30);
+              box-shadow: 0px 0px 7px 1px rgb(135, 36, 30);
+            }
           }
         }
       }
@@ -467,11 +591,6 @@ const MainContainer = styled.div`
         align-self: flex-start;
         margin-left: 10px;
       }
-    }
-
-    &:hover {
-      transform: translate3d(0, -5px, 0);
-      color: rgba(255, 255, 255, 0.9);
     }
 
     hr {
@@ -565,14 +684,15 @@ const MainContainer = styled.div`
     width: 12.5rem;
     margin: 0;
     padding: 1.5rem 3.125rem;
-    background-color: #3498db;
     border: none;
     border-radius: 0.3125rem;
-    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
     font-family: 'Space Mono', monospace;
     letter-spacing: 2px;
     font-size: 1.1rem;
     color: white;
+    border: 2px solid rgba(41, 128, 185, 0.6);
+    background-color: rgba(41, 128, 185, 0.4);
+    box-shadow: 0px 0px 5px 7px rgba(41, 128, 185, 0.1);
     font-weight: 300;
     text-transform: uppercase;
     overflow: hidden;
@@ -614,7 +734,9 @@ const MainContainer = styled.div`
   }
 
   .active {
-    background-color: #3498db;
+    border: 2px solid rgba(41, 128, 185, 0.6);
+    background-color: rgba(41, 128, 185, 0.4);
+    box-shadow: 0px 0px 5px 7px rgba(41, 128, 185, 0.1);
 
     &:before {
       width: 100%;
@@ -643,7 +765,9 @@ const MainContainer = styled.div`
   }
 
   .finished {
-    background-color: #2ecc71;
+    border: 2px solid rgba(39, 174, 96, 0.6);
+    background-color: rgba(39, 174, 96, 0.4);
+    box-shadow: 0px 0px 5px 7px rgba(39, 174, 96, 0.1);
 
     .submit {
       display: none;
@@ -666,26 +790,29 @@ const MainContainer = styled.div`
   }
 
   @keyframes loading {
+    0% {
+      transform: rotate3d(0, 0, 1, 0deg);
+    }
     100% {
-      transform: rotate(360deg);
+      transform: rotate3d(0, 0, 1, -180deg);
     }
   }
 
   @keyframes scale {
     0% {
-      transform: scale(10);
+      transform: scale3d(10, 10, 1);
     }
     50% {
-      transform: scale(0.2);
+      transform: scale3d(0.2, 0.2, 1);
     }
     70% {
-      transform: scale(1.2);
+      transform: scale3d(1.2, 1.2, 1);
     }
     90% {
-      transform: scale(0.7);
+      transform: scale3d(0.7, 0.7, 1);
     }
     100% {
-      transform: scale(1);
+      transform: scale3d(1, 1, 1);
     }
   }
 `;

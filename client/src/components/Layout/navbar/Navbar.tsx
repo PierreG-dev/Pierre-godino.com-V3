@@ -66,7 +66,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline small-hidden classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/pricing'}>Prestations</CustomLink>
+            <CustomLink href={'/pricing'}>Tarifs & services</CustomLink>
             {/* <sup
               title="Arrive bientôt"
               style={{

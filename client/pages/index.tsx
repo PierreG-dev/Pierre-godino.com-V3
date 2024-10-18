@@ -12,6 +12,8 @@ import { useRouter } from 'next/router';
 import GlitchHandler from '../src/components/Home/GlitchHandler';
 import TextSlider from '../src/components/Home/TextSlider';
 import Head from 'next/head';
+import CustomLink from '../src/components/Layout/routing/CustomLink';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 const Home: NextPage = () => {
   const prefixArray = useRef<string[]>([
@@ -32,13 +34,13 @@ const Home: NextPage = () => {
   ]);
   const sentencesArray = useRef<string[]>([
     "Les logiciels et les cathédrales, c'est un peu la même chose: d'abord on les construit, ensuite on prie.",
-    "Tout le monde peut écrire du code qu'un ordinateur peut comprendre. Les bons programmeurs écrivent du code que les humains peuvent comprendre.",
+    'Il y a 10 types de personnes dans le monde : ceux qui comprennent le binaire et ceux qui ne le comprennent pas.',
     'Toute technologie suffisamment avancée est indiscernable de la magie.',
-    "L'enseignement devrait être tel que ce qui est offert soit perçu comme un cadeau précieux et non comme une tâche difficile.",
+    "Enseigner l'informatique, c'est comme apprendre à quelqu'un à nager... dans une piscine pleine de requins appelés 'bugs'.",
     'Software and cathedrals are a bit the same thing: first we build them, then we pray.',
-    'Everyone can write code that a computer can understand. Good programmers write code that humans can understand.',
+    "There are 10 types of people in the world: those who understand binary and those who don't.",
     'Any sufficiently advanced technology is indistinguishable from magic.',
-    'Teaching should be such that what is offered is perceived as a precious gift and not as a difficult task.',
+    "Teaching computer science is like teaching someone to swim... in a pool full of sharks called 'bugs'.",
   ]);
   const canvasRef = useRef();
   const starsArray: any = useRef();
@@ -141,6 +143,20 @@ const Home: NextPage = () => {
             <TextSlider textArray={sentencesArray.current} delay={8500} />
           </i>
         </div>
+
+        <div id="links">
+          <CustomLink href="/pricing">
+            <button id="pricing_btn">
+              <FormatListBulletedIcon />
+              Prestations
+            </button>
+          </CustomLink>
+          <CustomLink href="/about">
+            <button id="about_btn">
+              <span>{'{ '}</span>Compétences techniques<span>{' }'}</span>
+            </button>
+          </CustomLink>
+        </div>
       </section>
     </MainContainer>
   );
@@ -156,6 +172,8 @@ const MainContainer = styled.div`
 
   section#landing {
     display: flex;
+    flex-direction: column;
+    padding-top: 20vh;
     position: relative;
     height: 100vh;
     width: 100vw;
@@ -169,16 +187,18 @@ const MainContainer = styled.div`
       width: 50vw;
       justify-content: center;
       gap: 10px;
+      z-index: 5;
 
       h1 {
-        margin-top: -20vh;
+        height: 100px;
+        /* margin-top: -20vh; */
         font-family: 'Space Mono', monospace;
         font-size: 2.5rem;
         text-shadow: 1px 1px 5px rgba(250, 250, 250, 0.7);
         color: rgba(255, 255, 255, 0.8);
 
         @media (max-width: 600px) {
-          margin-top: -50vh;
+          /* margin-top: -50vh; */
           width: 90vw;
         }
       }
@@ -192,6 +212,102 @@ const MainContainer = styled.div`
 
       @media (max-width: 600px) {
         width: 70vw;
+      }
+    }
+
+    #links {
+      display: flex;
+      padding-left: 5vw;
+      gap: 25px;
+      width: 50vw;
+      min-width: fit-content;
+      z-index: 5;
+      padding-top: 25px;
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
+          inset 0 0px 7px rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(1px);
+        border-radius: 3px;
+        font-family: 'Montserrat';
+        width: 380px;
+        height: 100px;
+        transition: 0.1s;
+
+        button {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: bold;
+          letter-spacing: 2px;
+
+          span {
+            font-family: 'Montserrat';
+            font-size: 2.8rem;
+            font-weight: 500;
+            transform: translateY(-5px);
+            color: rgb(231, 76, 60);
+          }
+
+          svg {
+            color: rgb(46, 204, 113);
+            font-size: 2.4rem;
+          }
+        }
+
+        &:has(#about_btn):hover {
+          &:hover {
+            background: rgba(231, 76, 60, 0.3);
+            border: 1px solid rgb(231, 76, 60);
+            box-shadow: 0px 0px 7px 1px rgb(231, 76, 60);
+          }
+
+          span {
+            color: rgb(231, 76, 60);
+            filter: drop-shadow(0px 0px 5px rgba(231, 76, 60, 0.4));
+          }
+        }
+
+        &:has(#pricing_btn):hover {
+          &:hover {
+            background: rgba(46, 204, 113, 0.3);
+            border: 1px solid rgb(46, 204, 113);
+            box-shadow: 0px 0px 7px 1px rgb(46, 204, 113);
+          }
+
+          svg {
+            filter: drop-shadow(0px 0px 5px rgba(46, 204, 113, 0.4));
+          }
+        }
+      }
+
+      @media (max-width: 1300px) {
+        padding-top: 50px;
+
+        a {
+          font-size: 1rem;
+          width: 300px;
+
+          button {
+            gap: 5px;
+            span {
+              font-size: 1.9rem;
+              transform: translateY(-1px);
+            }
+          }
+        }
+      }
+
+      @media (max-width: 920px) {
+        display: none;
       }
     }
 

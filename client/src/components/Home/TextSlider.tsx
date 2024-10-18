@@ -30,6 +30,7 @@ const TextSlider: React.FC<Props> = ({ textArray, delay }) => {
             style={{
               opacity: displayedText === key ? 1 : 0,
               transition: '2s',
+              transitionProperty: 'opacity',
               transitionDelay: displayedText === key ? '2s' : '0s',
               position: 'absolute',
               width: pageWidth.current < 600 ? '70vw' : '40vw',
