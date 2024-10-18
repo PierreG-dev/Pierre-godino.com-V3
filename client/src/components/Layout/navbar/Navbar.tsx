@@ -160,9 +160,13 @@ const MainContainer = styled.div`
     z-index: 3;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
 
-    #custom_nav_dropdown svg {
-      @media (max-width: 1000px) {
-        display: none;
+    #custom_nav_dropdown {
+      position: relative;
+      svg {
+        cursor: pointer;
+        @media (max-width: 1000px) {
+          display: none;
+        }
       }
     }
 
@@ -246,9 +250,8 @@ const MainContainer = styled.div`
 
     li {
       position: relative;
-      max-width: 20%;
-      width: fit-content;
       min-width: 10%;
+      width: 20%;
       display: flex;
       justify-content: center;
       transition-delay: 4s;
@@ -311,7 +314,7 @@ const MainContainer = styled.div`
       color: rgba(255, 255, 255, 0.8);
     }
 
-    li:hover #custom_nav_dropdown a {
+    li #custom_nav_dropdown:hover a {
       color: rgba(255, 255, 255, 0.8);
     }
     li:hover sup {

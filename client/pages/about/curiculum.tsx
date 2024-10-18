@@ -45,6 +45,8 @@ const Curiculum: NextPage = () => {
           width: '100%',
           position: 'absolute',
           opacity: 0.3,
+          top: 0,
+          left: 0,
           zIndex: -1,
         }}></div>
       <div
@@ -241,7 +243,7 @@ const Curiculum: NextPage = () => {
 };
 
 const MainContainer = styled.div`
-  margin-top: 6vh;
+  padding-top: 6vh;
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -288,6 +290,8 @@ const MainContainer = styled.div`
   }
   .background {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
