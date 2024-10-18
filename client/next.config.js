@@ -10,4 +10,10 @@ module.exports = {
   },
   env: {},
   trailingSlash: true,
+
+  // Ajout de la configuration Webpack
+  webpack: (config) => {
+    config.resolve.alias['./main.css'] = false; // Désactivation de l'importation de main.css
+    return config; // Retourne la configuration modifiée
+  },
 };

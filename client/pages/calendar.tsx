@@ -2,7 +2,7 @@
 import { NextPage } from 'next';
 import { useCallback, useState, useMemo, FormEvent, useEffect } from 'react';
 import styled from 'styled-components';
-import FullCalendar from '@fullcalendar/react';
+import FullCalendar, { LocaleSingularArg } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import frLocale from '@fullcalendar/core/locales/fr';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -156,7 +156,7 @@ const Calendar: NextPage = () => {
       </ConnexionModal>
       {isFetched && (
         <FullCalendar
-          locale={frLocale}
+          locale={frLocale as unknown as LocaleSingularArg}
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
           height="auto"
