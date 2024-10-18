@@ -71,7 +71,7 @@ const Index: NextPage = () => {
           <CustomLink
             notALink={true}
             button={true}
-            style={{ animationDelay: '0s' }}
+            style={{ animationDelay: '0.1s' }}
             href={'/about/skills'}>
             <video loop autoPlay muted>
               <source src={'/video/skills-preview.mp4'} type={'video/mp4'} />
@@ -81,7 +81,7 @@ const Index: NextPage = () => {
           <CustomLink
             notALink={true}
             button={true}
-            style={{ animationDelay: '0.1s' }}
+            style={{ animationDelay: '0.3s' }}
             href={'/about/experiences'}>
             <video loop autoPlay muted>
               <source src={'/video/exp-preview.mp4'} type={'video/mp4'} />
@@ -92,7 +92,7 @@ const Index: NextPage = () => {
         <CustomLink
           notALink={true}
           button={true}
-          style={{ animationDelay: '0.2s' }}
+          style={{ animationDelay: '0.6s' }}
           href={'/about/curiculum'}>
           <video loop autoPlay muted>
             <source src={'/video/cv-preview.mp4'} type={'video/mp4'} />
@@ -141,6 +141,7 @@ const MainContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
     opacity: 0;
     transition: 0.5s;
     transform: scale(1.02);
@@ -153,6 +154,7 @@ const MainContainer = styled.div`
     margin: 10px;
     padding: 60px;
     background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
     font-size: 2.5rem;
     color: rgba(255, 255, 255, 0.7);
     animation: 3s appearing;

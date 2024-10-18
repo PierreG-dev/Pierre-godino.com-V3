@@ -59,12 +59,12 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
         </div>
         <ul id="links_list">
           <li
-            className="effect-underline"
+            className="effect-underline classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
             <CustomLink href={'/realisations'}>Mes réalisations</CustomLink>
           </li>
           <li
-            className="effect-underline small-hidden"
+            className="effect-underline small-hidden classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
             <CustomLink href={'/pricing'}>Prestations</CustomLink>
             {/* <sup
@@ -83,7 +83,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
             </CustomLink>
           </li>
           <li
-            className="effect-underline"
+            className="effect-underline classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
             <CustomLink href={'/contact'}>Contact</CustomLink>
           </li>
@@ -99,15 +99,14 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 <KeyboardArrowDownIcon
                   style={{
                     transform: dropdownDisplay
-                      ? 'rotate(0deg)'
-                      : 'rotate(180deg)',
+                      ? 'rotate(180deg)'
+                      : 'rotate(0deg)',
                     transition: '0.2s',
                   }}
                 />
                 <ul
                   style={{
                     maxHeight: dropdownDisplay ? 1000 : 0,
-                    padding: dropdownDisplay ? 5 : 0,
                     boxShadow: dropdownDisplay
                       ? '0 1px 5px 1px rgba(0, 0, 0, 0.3)'
                       : 'none',
@@ -169,16 +168,17 @@ const MainContainer = styled.div`
 
     #custom_nav_dropdown ul {
       position: absolute;
+      right: 0;
       max-height: 0;
       min-width: 150px;
+      width: 180px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 0;
+      padding: 0 !important;
       border-radius: 5px;
       background: #2d3436aa;
       color: white;
-      gap: 5px;
       transition: 0.2s;
 
       @media (max-width: 1000px) {
@@ -186,6 +186,8 @@ const MainContainer = styled.div`
       }
 
       li {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
         animation: 0.2s links_slide_down ease-out 1;
         transition: 0.1s;
         width: 100% !important;
@@ -193,6 +195,7 @@ const MainContainer = styled.div`
         position: relative !important;
 
         a {
+          border-radius: 0 !important;
           color: rgba(255, 255, 255, 0.5) !important;
           transition: 0.2s;
           font-family: 'Montserrat';
@@ -205,7 +208,8 @@ const MainContainer = styled.div`
       a:hover {
         color: rgba(255, 255, 255, 0.8) !important;
         cursor: pointer;
-        text-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.02);
+        /* text-shadow: 0 0 7px rgba(255, 255, 255, 0.3); */
       }
 
       a::after {
@@ -243,7 +247,7 @@ const MainContainer = styled.div`
     li {
       position: relative;
       max-width: 20%;
-      width: 20%;
+      width: fit-content;
       min-width: 10%;
       display: flex;
       justify-content: center;
@@ -262,6 +266,8 @@ const MainContainer = styled.div`
       #custom_nav_dropdown {
         font-weight: 600;
         color: rgba(255, 255, 255, 0.5);
+        padding: 5px 12px;
+        border-radius: 5px;
         transition: 0.2s;
         font-family: 'Montserrat';
         letter-spacing: 1px;
@@ -299,11 +305,14 @@ const MainContainer = styled.div`
         transform: scale3d(1.1, 1.1, 1) translateY(0.8vw);
       }
     }
-    li:hover a,
-    li:hover #custom_nav_dropdown {
-      color: rgba(255, 255, 255, 0.8);
+    li.classic-link a:hover {
+      background: rgba(255, 255, 255, 0.02);
       cursor: pointer;
-      text-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    li:hover #custom_nav_dropdown a {
+      color: rgba(255, 255, 255, 0.8);
     }
     li:hover sup {
       color: rgba(255, 255, 255, 0.8);
