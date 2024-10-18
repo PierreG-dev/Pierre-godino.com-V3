@@ -43,7 +43,7 @@ const data: Realisation[] = [
       'radial-gradient(circle, rgba(38,2,0,1) 0%, rgba(96,15,0,1) 100%, rgba(96,15,0,1) 100%)',
     auraColor: '#600f00',
     filter: 'drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
-    link: 'https://pierre-godino.com/V2/index.html',
+    link: '/V2/index.html',
     description: 'Deuxième version de mon portfolio',
   },
   {},
@@ -55,8 +55,8 @@ const data: Realisation[] = [
       'radial-gradient(circle, rgba(126,67,32,1) 0%, rgba(225,117,53,1) 100%)',
     auraColor: '#dc7133',
     filter: 'drop-shadow(1px 1px 3px rgba(0,0,0,0.7))',
-    link: 'https://learn.pierre-godino.com/legacy/v1',
-    description: "Plateforme d'apprentissage",
+    link: '/LEARN_V1/index.html',
+    description: "1ère version de ma plateforme d'apprentissage",
   },
 
   {},
@@ -69,7 +69,7 @@ const data: Realisation[] = [
     auraColor: '#dc7133',
     filter: 'drop-shadow(1px 1px 3px rgba(0,0,0,0.7))',
     link: 'https://learn.pierre-godino.com',
-    description: "Plateforme d'apprentissage",
+    description: "2ème version de ma plateforme d'apprentissage",
   },
 ];
 
