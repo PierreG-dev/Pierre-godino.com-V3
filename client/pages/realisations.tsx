@@ -7,11 +7,16 @@ import React, {
 } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
-import LinkIcon from '@mui/icons-material/Link';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import ListIcon from '@mui/icons-material/List';
+import EngineeringIcon from '@mui/icons-material/Engineering';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkIcon from '@mui/icons-material/Link';
+import LinkOffIcon from '@mui/icons-material/LinkOff';
+import LockIcon from '@mui/icons-material/Lock';
 
-export type Realisation = {
+export type IPersonnalProjectData = {
   name?: string;
   sup?: string;
   icon?: string;
@@ -22,7 +27,20 @@ export type Realisation = {
   description?: string;
 };
 
-const data: Realisation[] = [
+export type IProjectdata = {
+  thumbnailUrl: string;
+  iconUrl: string;
+  fontName: string;
+  tilted?: boolean;
+  title: string;
+  description: string;
+  link: string;
+  repoLink: string;
+  online: boolean;
+  nature: 'Contribution' | 'Réalisation';
+};
+
+const personnalProjectsData: IPersonnalProjectData[] = [
   {
     name: 'Portfolio',
     sup: 'V3',
@@ -73,9 +91,90 @@ const data: Realisation[] = [
   },
 ];
 
+const projectsData: IProjectdata[] = [
+  {
+    thumbnailUrl: '/thumbnails/cabinet_misino_thumbnail.png',
+    iconUrl: '/icons/misino_icon_alt.png',
+    fontName: '"Poppins", sans-serif',
+    title: 'Cabinet Misino',
+    tilted: true,
+    description:
+      'Site vitrine pour le cabinet de stomatologie & orthodontie du Dr. Jérôme Misino',
+    link: 'https://cabinet-misino.fr',
+    repoLink: '',
+    online: true,
+    nature: 'Réalisation',
+  },
+  {
+    thumbnailUrl: '/thumbnails/checkyoursmile_thumbnail.png',
+    iconUrl: '/icons/checkyoursmile.png',
+    fontName: '"Courgette", cursive',
+    title: 'CheckYourSmile',
+    tilted: true,
+    description:
+      "Plateforme d'apprentissage de vocabulaire technique dans diverses langues étrangères",
+    link: 'https://www.checkyoursmile.fr',
+    repoLink: '',
+    online: true,
+    nature: 'Contribution',
+  },
+  {
+    thumbnailUrl: '/thumbnails/sarl_garage_brincat_thumbnail.png',
+    iconUrl: '/icons/sarlgaragebrincat.png',
+    fontName: '"Roboto", sans-serif',
+    title: 'SARL Garage Brincat',
+    description:
+      'Site vitrine & Portail de gestion de contenu pour le concessionnaire automobile sus nommé situé à castelsarrasin (82)',
+    link: 'https://sarlgaragebrincat.fr',
+    repoLink: '',
+    online: true,
+    nature: 'Réalisation',
+  },
+  {
+    thumbnailUrl: '/thumbnails/abnature_thumbnail.png',
+    iconUrl: '/icons/abnature.svg',
+    fontName: '"Mynerve", cursive',
+    title: 'AB Nature',
+    description:
+      'Boutique en ligne sur le thème des cosmétiques bio pour la société AB Nature, basée à Graulhet (81)',
+    link: '',
+    repoLink: '',
+    online: false,
+    nature: 'Réalisation',
+  },
+
+  {
+    thumbnailUrl: '/thumbnails/eoleedit_thumbnail.png',
+    iconUrl: '/icons/videomenthe_alpha.png',
+    fontName: '"Raleway", sans-serif',
+    title: 'EoleEdit',
+    tilted: true,
+    description:
+      'Logiciel de montage vidéo 100% en ligne (distribué par la société Videomenthe)',
+    link: 'https://www.videomenthe.fr/montage-en-ligne',
+    repoLink: '',
+    online: true,
+    nature: 'Contribution',
+  },
+
+  {
+    thumbnailUrl: '/thumbnails/learn_thumbnail.png',
+    iconUrl: '/icons/learn_icon.svg',
+    fontName: '"Montserrat", sans-serif',
+    title: 'LEARN',
+    description:
+      "Plateforme d'apprentissage de savoirs liés à l'informatique, avec gestion de classes virtuelles et fonctionnalités communautaires.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    link: 'https://learn.pierre-godino.com',
+    repoLink: '',
+    online: true,
+    nature: 'Réalisation',
+  },
+];
+
 const Realisations: NextPage = () => {
   const [selectedPlanet, setSelectedPlanet] = useState<number>(-1);
   const [windowSize, setWindowSize] = useState(999);
+  const [selectedTab, setSelectedTab] = useState<0 | 1>(0);
 
   const starsArray = useRef<JSX.Element[]>();
 
@@ -314,7 +413,7 @@ const Realisations: NextPage = () => {
   // Générateur de planètes
   const planetsGenerator = useCallback(() => {
     // -- Parcours la base de données de planètes et les génère puis retourne le tout
-    return data.map((elem, key) => {
+    return personnalProjectsData.map((elem, key) => {
       if (!elem.name) return [];
       return (
         <div className="pos" style={positionPicker(key)} key={key}>
@@ -324,58 +423,64 @@ const Realisations: NextPage = () => {
               animationName: 'scale-' + key,
             }}>
             <div
-              className="planet"
-              key={key}
-              data-key={key}
               style={{
-                background: elem.background,
-                color: elem.auraColor,
-                borderColor: elem.auraColor,
-              }}>
-              {elem.sup && <span data-key={key}>{elem.sup}</span>}
-              <img
-                key={key}
-                data-key={key}
-                src={elem.icon}
-                alt={elem.name}
-                style={{
-                  filter: elem.filter,
-                }}
-              />
-            </div>
-            <div
-              className="infos-screen"
-              style={{
-                animationName:
-                  selectedPlanet === key
-                    ? windowSize < 920
-                      ? 'info_screen_active_sm'
-                      : windowSize < 1350
-                      ? 'info_screen_active_md'
-                      : 'info_screen_active_lg'
-                    : windowSize < 920
-                    ? 'info_screen_idle_sm'
-                    : windowSize < 1350
-                    ? 'info_screen_idle_md'
-                    : 'info_screen_idle_lg',
+                animation: 'planetAppear 0.4s ease backwards',
+                animationDelay: `${0.4 + key * 0.1}s`,
               }}>
               <div
-                className="info-screen-content"
+                className="planet"
+                key={key}
+                data-key={key}
+                style={{
+                  background: elem.background,
+                  color: elem.auraColor,
+                  borderColor: elem.auraColor,
+                }}>
+                {elem.sup && <span data-key={key}>{elem.sup}</span>}
+                <img
+                  key={key}
+                  data-key={key}
+                  src={elem.icon}
+                  alt={elem.name}
+                  style={{
+                    filter: elem.filter,
+                  }}
+                />
+              </div>
+              <div
+                className="infos-screen"
                 style={{
                   animationName:
                     selectedPlanet === key
-                      ? 'info_screen_content_appear'
-                      : 'info_screen_content_disappear',
-                  animationDelay: selectedPlanet === key ? '0.7s' : '0s',
-                  animationDuration: selectedPlanet === key ? '0.5s' : '0.1s',
+                      ? windowSize < 920
+                        ? 'info_screen_active_sm'
+                        : windowSize < 1350
+                        ? 'info_screen_active_md'
+                        : 'info_screen_active_lg'
+                      : windowSize < 920
+                      ? 'info_screen_idle_sm'
+                      : windowSize < 1350
+                      ? 'info_screen_idle_md'
+                      : 'info_screen_idle_lg',
                 }}>
-                <h3>{elem.name}</h3>
-                <p>{elem.description}</p>
-                {elem.link && (
-                  <a href={elem.link} target="_blank" rel="noreferrer">
-                    <LinkIcon />
-                  </a>
-                )}
+                <div
+                  className="info-screen-content"
+                  style={{
+                    animationName:
+                      selectedPlanet === key
+                        ? 'info_screen_content_appear'
+                        : 'info_screen_content_disappear',
+                    animationDelay: selectedPlanet === key ? '0.7s' : '0s',
+                    animationDuration: selectedPlanet === key ? '0.5s' : '0.1s',
+                  }}>
+                  <h3>{elem.name}</h3>
+                  <p>{elem.description}</p>
+                  {elem.link && (
+                    <a href={elem.link} target="_blank" rel="noreferrer">
+                      <LinkIcon />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -441,41 +546,443 @@ const Realisations: NextPage = () => {
         Meilleure expérience sur écrans larges
       </div>
       {starsArray.current}
+      <div id="tabs">
+        <ul className={`${selectedTab === 1 ? 'translate-bar' : ''}`}>
+          <li className={`${selectedTab === 0 ? 'selected' : ''}`}>
+            <ListIcon
+              onClick={() => setSelectedTab(0)}
+              style={{
+                color: 'rgb(39, 174, 96)',
+                filter:
+                  selectedTab === 0
+                    ? 'drop-shadow(0px 0px 5px rgba(39, 174, 96,0.3))'
+                    : '',
+              }}
+            />
+            <span onClick={() => setSelectedTab(0)}>Realisations</span>
+          </li>
+          <li className={`${selectedTab === 1 ? 'selected' : ''}`}>
+            <EngineeringIcon
+              onClick={() => setSelectedTab(1)}
+              style={{
+                color: '#e74c3c',
+                filter:
+                  selectedTab === 1
+                    ? 'drop-shadow(0px 0px 5px rgba(231,76,60,0.3))'
+                    : '',
+              }}
+            />
+            <span onClick={() => setSelectedTab(1)}>Projets personnels</span>
+          </li>
+        </ul>
+      </div>
 
-      <div id="planets_container">
-        <div id="gravity_center">{planetsGenerator()}</div>
+      <div
+        id="slider_wrapper"
+        className={`${selectedTab === 1 ? 'translated' : ''}`}>
+        <div id="realisations_container">
+          <ul id="realisations_list">
+            {projectsData.map((projectItem: IProjectdata, key: number) => (
+              <li className="realisation" key={`realisation_no_${key}`}>
+                <img
+                  src={projectItem.thumbnailUrl}
+                  alt={'Aperçu du projet intitulé ' + projectItem.title}
+                  className="realisation-thumbnail"
+                />
+                <div className="realisation-text-wrapper">
+                  <section>
+                    <h5 className={`realisation-nature ${projectItem.nature}`}>
+                      {projectItem.nature}
+                    </h5>
+                    <h3
+                      className="realisation-title"
+                      style={{
+                        fontFamily: projectItem.fontName || 'inherit',
+                        fontStyle: projectItem.tilted ? 'italic' : 'inherit',
+                      }}>
+                      <img src={projectItem.iconUrl} alt={projectItem.title} />
+                      {projectItem.title}
+                    </h3>
+                    <p
+                      className="realisation-description"
+                      title={projectItem.description}>
+                      {projectItem.description}
+                    </p>
+                  </section>
+                  <section>
+                    {projectItem.online ? (
+                      <h4 className="realisation-online-status online">
+                        En ligne
+                      </h4>
+                    ) : (
+                      <h4 className="realisation-online-status offline">
+                        Hors ligne
+                      </h4>
+                    )}
+                    <ul className="realisation-links-list">
+                      <li className="realisation-link">
+                        {projectItem.link ? (
+                          <a
+                            href={projectItem.link || '#'}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="online">
+                            <LinkIcon />
+                          </a>
+                        ) : (
+                          <a
+                            href={projectItem.link || '#'}
+                            rel="noreferrer"
+                            className="offline">
+                            <LinkOffIcon />
+                          </a>
+                        )}
+                      </li>
+                      <li className="realisation-link">
+                        <a
+                          href={projectItem.repoLink || '#'}
+                          target={projectItem.repoLink ? '_blank' : ''}
+                          rel="noreferrer">
+                          <GitHubIcon />{' '}
+                          {!projectItem.repoLink && (
+                            <LockIcon className="lock-icon" />
+                          )}
+                        </a>
+                      </li>
+                    </ul>
+                  </section>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div id="fancy_container">
+          {selectedTab === 1 && (
+            <div id="planets_container">
+              <div id="gravity_center">{planetsGenerator()}</div>
+            </div>
+          )}
+        </div>
       </div>
     </MainContainer>
   );
 };
 
 const MainContainer = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mynerve&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
   padding-top: 7vh;
   background: #040e1d;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: 'Space Mono', monospace;
-  text-shadow: 1px 1px 2px #08666abb;
   letter-spacing: -1px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   #info_block {
     position: absolute;
     top: 5vh;
     right: 15px;
     color: #08666a;
-
+    text-shadow: 1px 1px 2px #08666abb;
     text-align: center;
     width: 100%;
+  }
+
+  #tabs {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 120px;
+    left: 0;
+    width: 100vw;
+    z-index: 2;
+
+    ul {
+      position: relative;
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+
+      &::after {
+        position: absolute;
+        bottom: 1px;
+        left: 65px;
+        content: '';
+        width: 175px;
+        height: 2.5px;
+        transition: 0.2s;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      &.translate-bar::after {
+        left: 276px;
+        width: 229px;
+      }
+
+      li {
+        color: rgba(255, 255, 255, 0.7);
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 240px;
+        user-select: none;
+
+        span,
+        svg {
+          padding: 0 10px;
+          display: flex;
+          align-items: center;
+          height: 50px;
+          cursor: pointer;
+          transition: 0.3s;
+          border-radius: 0 5px 0 0;
+        }
+
+        &:active {
+          span,
+          svg {
+            background: rgba(255, 255, 255, 0.1);
+          }
+        }
+
+        svg {
+          border-radius: 5px 0 0 0;
+          width: 50px;
+          font-size: 1.8rem;
+        }
+
+        &.selected,
+        &:hover {
+          opacity: 1;
+          text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+  }
+
+  #slider_wrapper {
+    position: relative;
+    width: 200%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    transition: 0.5s;
+    transform: translateX(0vw);
+
+    &.translated {
+      transform: translateX(-100vw);
+    }
+  }
+
+  #realisations_container {
+    width: 100vw;
+    height: calc(100% - 125px);
+    overflow: auto;
+    width: 1500px;
+    max-width: 90vw;
+    margin: auto;
+    margin-top: 125px;
+
+    ul#realisations_list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      padding: 0 10px;
+      padding-bottom: 150px;
+
+      li.realisation {
+        box-sizing: content-box;
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        max-width: 600px;
+        height: 215px;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(2px);
+
+        h3,
+        p,
+        a {
+          color: rgba(255, 255, 255, 0.7);
+          text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+
+          svg {
+            filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.1));
+          }
+        }
+
+        img.realisation-thumbnail {
+          width: 250px;
+          max-height: 150px;
+          object-fit: cover;
+          align-self: center;
+          border-radius: 5px;
+
+          @media (max-width: 750px) {
+            display: none;
+          }
+        }
+
+        .realisation-text-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: calc(100% - 265px);
+          gap: 15px;
+
+          @media (max-width: 750px) {
+            width: 100%;
+          }
+
+          h5.realisation-nature {
+            color: #fafafa;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            align-self: end;
+            background: rgba(255, 255, 255, 0.1);
+            width: fit-content;
+            padding: 0 7px;
+            border-radius: 5px;
+
+            &.Réalisation {
+              text-shadow: 0 0 5px rgba(52, 152, 219, 0.8);
+              color: rgba(52, 152, 219, 1);
+            }
+            &.Contribution {
+              text-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+              color: rgba(231, 76, 60, 1);
+            }
+          }
+
+          h3.realisation-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            overflow-wrap: break-word;
+
+            img {
+              margin-right: 10px;
+              width: 40px;
+              height: 40px;
+              object-fit: contain;
+              display: inline;
+            }
+
+            @media (max-width: 750px) {
+              font-size: 1.2rem;
+
+              img {
+                width: 25px;
+                height: 25px;
+              }
+            }
+          }
+          section {
+            display: flex;
+            flex-direction: column;
+            &:nth-child(1) {
+              flex: 1;
+            }
+          }
+
+          p.realisation-description {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: break-spaces;
+            overflow-wrap: break-word;
+            font-style: italic;
+            flex: 1;
+
+            @media (max-width: 480px) {
+              -webkit-line-clamp: 3;
+            }
+          }
+
+          h4.realisation-online-status {
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+            &.online {
+              color: rgba(46, 204, 113, 1);
+              text-shadow: 0 0 5px rgba(46, 204, 113, 0.3);
+            }
+
+            &.offline {
+              color: rgba(192, 57, 43, 1);
+              text-shadow: 0 0 5px rgba(192, 57, 43, 0.3);
+            }
+          }
+
+          ul.realisation-links-list {
+            padding-top: 5px;
+            display: flex;
+            justify-content: start;
+            gap: 15px;
+
+            li.realisation-link {
+              opacity: 0.7;
+              &:hover {
+                opacity: 1;
+                transform: scale3d(1.1, 1.1, 1);
+              }
+              a {
+                position: relative;
+                filter: none;
+
+                &.offline {
+                  color: rgba(192, 57, 43, 1);
+                }
+
+                svg.lock-icon {
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  font-size: 0.8rem;
+                  color: rgba(192, 57, 43, 1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #fancy_container {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   #planets_container {
     transform: rotateX(75deg);
     transform-style: preserve-3d;
-    width: 0;
+    width: 100%;
     height: 0;
     top: 50vh;
     left: 50vw;
@@ -1249,6 +1756,15 @@ const MainContainer = styled.div`
     }
     100% {
       transform: scale3d(1, 1, 1);
+    }
+  }
+
+  @keyframes planetAppear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 `;
