@@ -58,7 +58,9 @@ const displayEnvironnements = (environnements: Skill[]) => {
   if (!environnements) return null;
 
   return environnements.map((elem, key) => (
-    <CustomLink href={`/about/skills/${elem.id}`}>
+    <CustomLink
+      href={`/about/skills?skillId=${elem.id}`}
+      key={`environment_${elem.id}`}>
       <div
         className={'mini-card cursor-pointer'}
         title={elem.name}
@@ -73,7 +75,9 @@ const displayTechnology = (technology: Skill[]) => {
   if (!technology) return null;
 
   return technology.map((elem, key) => (
-    <CustomLink href={`/about/skills/${elem.id}`}>
+    <CustomLink
+      href={`/about/skills?skillId=${elem.id}`}
+      key={`technology_${elem.id}`}>
       <div
         className={'mini-card cursor-pointer'}
         title={elem.name}
@@ -250,7 +254,10 @@ const Experience: React.FC<Props> = ({
               ) : null}
               <div className="flex justify-between items-end">
                 <p className={'date-container'}>{date}</p>
-                <Link href={link || '#'} target={link && '_blank'}>
+                <Link
+                  href={link || '#'}
+                  target={link && '_blank'}
+                  style={{ cursor: link ? 'cursor' : 'auto' }}>
                   {link ? <LinkIcon /> : <LinkOffIcon />}
                 </Link>
                 <div className={'flex collaborators-container'}>

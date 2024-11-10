@@ -8,31 +8,28 @@ import React, {
 } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
-import Select from '@mui/material/Select';
-import data from '../../../src/components/Skills/data';
+import data from '../../src/components/Skills/data';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { MenuItem } from '@mui/material';
-import Bar from '../../../src/components/Skills/bar';
+import Bar from '../../src/components/Skills/bar';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import SkillSelector from '../../../src/components/Skills/SkillSelector';
+import SkillSelector from '../../src/components/Skills/SkillSelector';
 
 const Skills: NextPage = () => {
   const router = useRouter();
   const { skillId } = router.query;
-
   const [displayedSkillId, setDisplayedSkillId] = useState(0);
   const starsArray: any = useRef();
 
   // --- Mise à jour du state en fonction de l'url (post mount)
   useEffect(() => {
     if (skillId && skillId.length !== 0)
-      setDisplayedSkillId(parseInt(skillId[0]));
+      setDisplayedSkillId(parseInt(skillId as string));
   }, [skillId]);
 
   //Générateur d'étoiles

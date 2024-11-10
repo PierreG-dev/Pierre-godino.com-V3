@@ -40,13 +40,10 @@ const Experiences: NextPage = () => {
     };
   }, []);
 
-  const setExpanded = useCallback(
-    (title) => {
-      console.log(expandedXp + ' / ' + title);
-      setExpandedXp((prevState) => (prevState === title ? '' : title));
-    },
-    [expandedXp]
-  );
+  const setExpanded = useCallback((title) => {
+    // console.log(expandedXp + ' / ' + title);
+    setExpandedXp((prevState) => (prevState === title ? '' : title));
+  }, []);
 
   const displayExperiences = useCallback(() => {
     return data
