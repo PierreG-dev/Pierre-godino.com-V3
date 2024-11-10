@@ -24,7 +24,12 @@ module.exports = async (req, res) => {
     );
 
   // --- Vérification qu'il ne s'agit pas d'un robot américain
-  if (location.countryCode == "US") return res.status(200).send("ok");
+  if (
+    location.countryCode == "US" ||
+    location.country == "United States" ||
+    location.org == "Google LLC"
+  )
+    return res.status(200).send("ok");
 
   collections.Visit.create({
     ip: ip,
