@@ -646,7 +646,7 @@ const data: Xp[] = [
     period: 'Freelance',
     date: '07/2023',
     title: 'Plateforme LEARN V2',
-    icon: '/icons/LEARN.png',
+    icon: '/icons/learn_icon.svg',
     description: (
       <p>
         Plateforme permettant à mes apprenants d'avoir à disposition les
