@@ -87,7 +87,7 @@ const Pricing: NextPage = () => {
           </p>
           <div className="service-price">
             <h3 className="price">
-              A partir de <span>600 €</span>
+              A partir de <span>850 €</span>
             </h3>
           </div>
           <ul className="service-details-list">
@@ -142,7 +142,7 @@ const Pricing: NextPage = () => {
             </li>
           </ul>
           <p className="service-support">
-            Maintenance partir de <span>30 € / mois</span>
+            Maintenance à partir de <span>30 € / mois</span> *
           </p>
         </li>
         <li className="service-item e-commerce">
@@ -153,7 +153,7 @@ const Pricing: NextPage = () => {
           </p>
           <div className="service-price">
             <h3 className="price">
-              A partir de <span>2000 €</span>
+              A partir de <span>2300 €</span>
             </h3>
           </div>
           <ul className="service-details-list">
@@ -208,7 +208,7 @@ const Pricing: NextPage = () => {
             </li>
           </ul>
           <p className="service-support">
-            Maintenance A partir de <span>70 € / mois</span>
+            Maintenance à partir de <span>70 € / mois</span> *
           </p>
         </li>
 
@@ -218,9 +218,7 @@ const Pricing: NextPage = () => {
             Passez à l'étape supérieure en proposant votre propre plateforme
           </p>
           <div className="service-price">
-            <h3 className="price">
-              A partir de <span>5000 €</span>
-            </h3>
+            <h3 className="price">Tarif ajusté selon les besoins</h3>
           </div>
           <ul className="service-details-list">
             <li>
@@ -273,11 +271,15 @@ const Pricing: NextPage = () => {
               Collaboration continue
             </li>
           </ul>
-          <p className="service-support">
-            Maintenance à partir de <span>100 € / mois</span>
-          </p>
+          <p className="service-support">Maintenance sur devis</p>
         </li>
       </ul>
+
+      <h5 id="maintenance_infos">
+        * Modifications post-livraison incluses, garantie sans incident,
+        sécurité renforcée et optimisation SEO**. <br />
+        ** Référencement amélioré du site
+      </h5>
 
       <h3 id="on_budget_title">
         <SavingsIcon />
@@ -292,7 +294,7 @@ const Pricing: NextPage = () => {
         </p>
         <div className="service-price">
           <h3 className="price">
-            Tarif unique <span>150 €</span>
+            Tarif unique <span>200 €</span>
           </h3>
         </div>
         <ul className="service-details-list">
@@ -406,7 +408,7 @@ const Pricing: NextPage = () => {
             />
             <img
               className="logo-element"
-              src="/icons/misino_alpha.png"
+              src="/icons/misino_icon_alt.png"
               alt="Dr. Misino"
             />
             {/* DEBUT SENTINEL */}
@@ -458,7 +460,7 @@ const Pricing: NextPage = () => {
             />
             <img
               className="logo-element"
-              src="/icons/misino_alpha.png"
+              src="/icons/misino_icon_alt.png"
               alt="Dr. Misino"
             />
           </div>
@@ -682,6 +684,19 @@ const MainContainer = styled.main`
     span {
       color: rgba(255, 255, 255, 0.8);
       font-size: 1.3rem;
+    }
+  }
+
+  h5#maintenance_infos {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+    margin-top: 15px;
+    width: 400px;
+
+    @media (min-width: 1550px) {
+      width: 100%;
+      max-width: 1500px;
     }
   }
 
