@@ -99,7 +99,7 @@ const projectsData: IProjectdata[] = [
     title: 'Cabinet Misino',
     tilted: true,
     description:
-      'Site vitrine pour le cabinet de stomatologie & orthodontie du Dr. Jérôme Misino',
+      'Site vitrine pour le cabinet de stomatologie & orthodontie du Dr. Jérôme Misino basé à Agen (47).',
     link: 'https://cabinet-misino.fr',
     repoLink: '',
     online: true,
@@ -112,7 +112,7 @@ const projectsData: IProjectdata[] = [
     title: 'CheckYourSmile',
     tilted: true,
     description:
-      "Plateforme d'apprentissage de vocabulaire technique dans diverses langues étrangères",
+      "Plateforme d'apprentissage de vocabulaire technique dans diverses langues étrangères.",
     link: 'https://www.checkyoursmile.fr',
     repoLink: '',
     online: true,
@@ -124,7 +124,7 @@ const projectsData: IProjectdata[] = [
     fontName: '"Roboto", sans-serif',
     title: 'SARL Garage Brincat',
     description:
-      'Site vitrine & Portail de gestion de contenu pour le concessionnaire automobile sus nommé situé à castelsarrasin (82)',
+      'Site vitrine & Portail de gestion de contenu pour le concessionnaire automobile sus nommé situé à castelsarrasin (82).',
     link: 'https://sarlgaragebrincat.fr',
     repoLink: '',
     online: true,
@@ -136,7 +136,7 @@ const projectsData: IProjectdata[] = [
     fontName: '"Mynerve", cursive',
     title: 'AB Nature',
     description:
-      'Boutique en ligne sur le thème des cosmétiques bio pour la société AB Nature, basée à Graulhet (81)',
+      'Boutique en ligne sur le thème des cosmétiques bio pour la société AB Nature, basée à Graulhet (81).',
     link: '',
     repoLink: '',
     online: false,
@@ -150,7 +150,7 @@ const projectsData: IProjectdata[] = [
     title: 'EoleEdit',
     tilted: true,
     description:
-      'Logiciel de montage vidéo 100% en ligne (distribué par la société Videomenthe)',
+      'Logiciel de montage vidéo 100% en ligne (distribué par la société Videomenthe).',
     link: 'https://www.videomenthe.fr/montage-en-ligne',
     repoLink: '',
     online: true,
@@ -163,7 +163,7 @@ const projectsData: IProjectdata[] = [
     fontName: '"Montserrat", sans-serif',
     title: 'LEARN',
     description:
-      "Plateforme d'apprentissage de savoirs liés à l'informatique, avec gestion de classes virtuelles et fonctionnalités communautaires.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "Plateforme d'apprentissage de savoirs liés à l'informatique, avec gestion de classes virtuelles et fonctionnalités communautaires.",
     link: 'https://learn.pierre-godino.com',
     repoLink: '',
     online: true,
