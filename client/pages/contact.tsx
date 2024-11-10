@@ -22,19 +22,19 @@ import ShareIcon from '@mui/icons-material/Share';
 const networks = [
   {
     name: 'GitHub',
-    imgUrl: '/res/github_LOGO.png',
+    imgUrl: '/res/GITHUB_LOGO.png',
     className: 'github',
     link: 'https://www.github.com/pierreG-dev',
   },
   {
     name: 'Malt',
-    imgUrl: '/res/malt_LOGO.png',
+    imgUrl: '/res/MALT_LOGO.png',
     className: 'malt',
     link: 'https://www.malt.fr/profile/pierregodino',
   },
   {
     name: 'LinkedIn',
-    imgUrl: '/res/linkedin_LOGO.png',
+    imgUrl: '/res/LINKEDIN_LOGO.png',
     className: 'linkedin',
     link: 'https://www.linkedin.com/in/pierre-godino-50b503186',
   },
