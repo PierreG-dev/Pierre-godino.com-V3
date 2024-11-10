@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CellTowerIcon from '@mui/icons-material/CellTower';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 interface Location {
   country: string;
@@ -35,7 +34,7 @@ export type Props = {
 const Connection: React.FC<Props> = ({ connexionData }) => {
   return (
     <li style={{ marginTop: 10 }}>
-      <Accordion style={{ background: 'rgba(255,255,255,1)' }}>
+      <Accordion style={{ background: '#f7f1e3cc' }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -54,15 +53,28 @@ const Connection: React.FC<Props> = ({ connexionData }) => {
           <AccordionContent>
             <div>
               <ul>
-                <li>Ville: {connexionData.location.city}</li>
-                <li>Région: {connexionData.location.region}</li>
-                <li>Code postal: {connexionData.location.zip}</li>
+                <li>
+                  <b>Ville:</b> <span>{connexionData.location.city}</span>
+                </li>
+                <li>
+                  <b>Région:</b> <span>{connexionData.location.region}</span>
+                </li>
+                <li>
+                  <b>Code postal:</b> <span>{connexionData.location.zip}</span>
+                </li>
               </ul>
 
               <ul>
-                <li>Appareil: {connexionData.device}</li>
-                <li>Durée session: {connexionData.timeSpent / 60} Minutes</li>
-                <li>Heure de connexion: {connexionData.time}</li>
+                <li>
+                  <b>Appareil:</b> <span>{connexionData.device}</span>
+                </li>
+                <li>
+                  <b>Durée session:</b>{' '}
+                  <span>{connexionData.timeSpent / 60} Minutes</span>
+                </li>
+                <li>
+                  <b>Heure de connexion:</b> <span>{connexionData.time}</span>
+                </li>
               </ul>
             </div>
             <hr />
@@ -71,8 +83,16 @@ const Connection: React.FC<Props> = ({ connexionData }) => {
                 <span key={key}>
                   {page}{' '}
                   {key !== connexionData.journey.length - 1 ? (
-                    <SkipNextIcon />
-                  ) : null}
+                    <ArrowForwardIosIcon
+                      style={{
+                        opacity: 0.8,
+                        fontSize: '1rem',
+                        margin: '0 8px',
+                      }}
+                    />
+                  ) : (
+                    ''
+                  )}
                 </span>
               ))}
             </footer>
@@ -103,6 +123,16 @@ const AccordionContent = styled.div`
     border-color: rgba(0, 0, 0, 0.2);
   }
 
+  ul {
+    li {
+      span {
+        letter-spacing: 1px;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
   div {
     display: flex;
     gap: 30vw;
@@ -111,6 +141,11 @@ const AccordionContent = styled.div`
   footer {
     display: flex;
     flex-wrap: wrap;
+
+    span {
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
   }
 `;
 

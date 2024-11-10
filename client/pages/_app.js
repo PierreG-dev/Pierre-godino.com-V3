@@ -169,7 +169,7 @@ function MyApp({ Component, pageProps }) {
 
   const firstLoadFinished = useCallback(() => {
     setTimeout(() => {
-      updateJourney(metaElements.title);
+      updateJourney(document.title.split('|')[1].trim());
       firstLoad.current = false;
     }, 5000);
   }, [updateJourney]);
@@ -182,7 +182,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     setMetaElements(metaElementsPicker(router.pathname));
-    if (!firstLoad.current) updateJourney(metaElements.title);
+    if (!firstLoad.current) updateJourney(document.title.split('|')[1].trim());
   }, [router.pathname, pageProps, updateJourney]);
 
   useEffect(() => {

@@ -23,6 +23,9 @@ module.exports = async (req, res) => {
       console.error("ERROR while searching ip's location\n" + error)
     );
 
+  // --- Vérification qu'il ne s'agit pas d'un robot américain
+  if (location.countryCode == "US") return res.status(200).send("ok");
+
   collections.Visit.create({
     ip: ip,
     location: {

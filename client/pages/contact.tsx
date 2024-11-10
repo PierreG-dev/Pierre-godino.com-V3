@@ -22,21 +22,25 @@ import ShareIcon from '@mui/icons-material/Share';
 const networks = [
   {
     name: 'GitHub',
+    imgUrl: '/res/github_LOGO.png',
     className: 'github',
     link: 'https://www.github.com/pierreG-dev',
   },
   {
     name: 'Malt',
+    imgUrl: '/res/malt_LOGO.png',
     className: 'malt',
     link: 'https://www.malt.fr/profile/pierregodino',
   },
   {
     name: 'LinkedIn',
+    imgUrl: '/res/linkedin_LOGO.png',
     className: 'linkedin',
     link: 'https://www.linkedin.com/in/pierre-godino-50b503186',
   },
   {
-    name: 'CV',
+    name: 'Synthèse',
+    imgUrl: '/res/CV_LOGO.png',
     className: 'cv',
     link: 'https://www.pierre-godino.com/about/curiculum',
   },
@@ -237,7 +241,7 @@ const Contact: NextPage = () => {
                       <div>
                         <h3>{elem.name}</h3>
                         <img
-                          src={`/res/${elem.name.toUpperCase()}_LOGO.png`}
+                          src={`${elem.imgUrl}`}
                           alt={`Logo de la plateforme ${elem.name}`}
                         />
                       </div>
@@ -369,7 +373,7 @@ const MainContainer = styled.div`
 
           &#name {
             svg {
-              color: rgb(142, 68, 173);
+              color: rgb(231, 76, 60);
             }
           }
 

@@ -149,13 +149,19 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
           <React.Fragment>
             <div>
               <Tabs value={selectedTab} aria-label="basic tabs example">
-                <Tab label="Aujourd'hui" onClick={() => handleTabChange(0)} />
+                <Tab
+                  label="Aujourd'hui"
+                  style={{ color: '#fff' }}
+                  onClick={() => handleTabChange(0)}
+                />
                 <Tab
                   label="Durant le mois"
+                  style={{ color: '#fff' }}
                   onClick={() => handleTabChange(1)}
                 />
                 <Tab
                   label="Depuis le début"
+                  style={{ color: '#fff' }}
                   onClick={() => handleTabChange(2)}
                 />
               </Tabs>
@@ -188,26 +194,26 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
 const AdminModalContent = styled.div`
   position: absolute;
   width: 75vw;
-  max-height: 75vh;
-  top: 25vh;
+  height: 75vh;
+  top: 12.5vh;
   left: 12.5vw;
   outline: none;
-  backdrop-filter: blur(1px);
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: rgba(255, 255, 255, 0.7) 0 0 7px,
+  backdrop-filter: blur(7px);
+  background: rgba(255, 255, 255, 0.2);
+  /* box-shadow: rgba(255, 255, 255, 0.7) 0 0 7px, */
     inset rgba(255, 255, 255, 0.7) 0 0 7px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   padding: 60px;
   animation: appearing 1s ease 1;
   transition: 0.5s;
-  color: #373737;
+  color: #fff;
   display: flex;
   flex-direction: column;
 
   & > h2#auth_title {
     font-size: 2.5rem !important;
-    color: rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-family: 'Space Mono', monospace;
     margin-bottom: -10px;
     font-weight: bold;

@@ -126,7 +126,7 @@ const data: Xp[] = [
   {
     period: 'University',
     date: '03/2019',
-    title: "Jeu ludique pour apprendre l'anglais 📚",
+    title: "Plateforme d'apprentissage de vocabulaire technique 📕",
     icon: '/icons/checkyoursmile.png',
     description: (
       <p>
@@ -320,7 +320,7 @@ const data: Xp[] = [
     period: 'Freelance',
     date: '08/2020',
     title: 'Site vitrine pour le garage BRINCAT',
-    icon: '/icons/garagebrincat.webp',
+    icon: '/icons/sarlgaragebrincat.png',
     description: (
       <p>
         Création d'un CMS en Symfony pour le compte d'un garage basé sur
@@ -353,6 +353,7 @@ const data: Xp[] = [
       'LAMP',
     ]),
     link: '',
+    actual: true,
   },
   {
     period: 'Freelance',
@@ -798,6 +799,27 @@ const data: Xp[] = [
       'VSCode',
     ]),
     link: 'https://www.groupe-gema.com/',
+    actual: true,
+  },
+  {
+    period: 'Freelance',
+    date: '10/2024',
+    title: 'Site vitrine cabinet Misino',
+    icon: '/icons/misino_icon_alt.png',
+    description: (
+      <p>
+        Conception d'un site vitrine pour le cabinet de stomatologie &
+        orthodontie du Dr. Jérôme Misino
+      </p>
+    ),
+    technologies: selectSkillsByName([
+      'HTML 5',
+      'CSS 3',
+      'JavaScript',
+      'Algorithmie',
+    ]),
+    environnements: selectSkillsByName(['Bash', 'Git', 'Github', 'VSCode']),
+    link: 'https://cabinet-misino./',
     actual: true,
   },
 ];
