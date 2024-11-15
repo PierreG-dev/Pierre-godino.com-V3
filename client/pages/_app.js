@@ -107,7 +107,7 @@ function MyApp({ Component, pageProps }) {
   const handleLoad = useCallback(() => {
     setTimeout(() => {
       setIsLoaded(true);
-    }, 1000);
+    }, 200);
   }, []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -20,7 +20,7 @@
 // }
 //
 // export default MyDocument;
-import Document from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -48,5 +48,34 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
+  }
+
+  render() {
+    return (
+      <Html lang="fr">
+        <Head>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=AW-16765589576"></script>
+          <script>
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-16765589576');
+            `}
+          </script>
+          <meta
+            name="description"
+            content="Mon site Next.js avec styled-components"
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
 }

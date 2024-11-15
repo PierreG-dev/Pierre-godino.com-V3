@@ -9,7 +9,7 @@ module.exports = {
     ];
   },
   env: {},
-  // trailingSlash: true,
+  trailingSlash: true,
 
   // Ajout de la configuration Webpack
   webpack: (config) => {
