@@ -2,14 +2,14 @@
 module.exports = {
   async rewrites() {
     return [
-      {
-        source: '/api/:path*',
-        destination: 'https://pierre-godino.com/:path*',
-      },
+      // {
+      //   source: '/api/:path*',
+      //   destination: 'https://pierre-godino.com/:path*',
+      // },
     ];
   },
   env: {},
-  trailingSlash: true,
+  // trailingSlash: true,
 
   // Ajout de la configuration Webpack
   webpack: (config) => {
