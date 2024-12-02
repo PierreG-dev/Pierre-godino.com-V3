@@ -1,5 +1,6 @@
 import React, {
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -18,6 +19,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import ShareIcon from '@mui/icons-material/Share';
+import { BackgroundContext } from '../src/contexts/Contexts';
 
 const networks = [
   {
@@ -47,10 +49,12 @@ const networks = [
 ];
 
 const Contact: NextPage = () => {
+  // --- Background
+  const { background } = useContext(BackgroundContext);
+
   const [buttonAnimationActive, setButtonAnimationActive] = useState('idle');
   const [nameInput, setNameInput] = useState('');
   const [messageInput, setMessageInput] = useState('');
-  const starsArray = useRef<JSX.Element[]>();
 
   const handleNameInputChange = useCallback((e) => {
     setNameInput(e.target.value);
@@ -86,32 +90,6 @@ const Contact: NextPage = () => {
     }, 1200);
   }, [messageInput, nameInput]);
 
-  //Générateur d'étoiles
-  const starsGenerator = useCallback(() => {
-    const myStars: Array<JSX.Element> = [];
-    for (let i = 0; i < 200; ++i) {
-      const size = Math.ceil(Math.random() * 3) + 'px';
-
-      myStars.push(
-        <div
-          className="star"
-          key={i}
-          style={{
-            width: size,
-            height: size,
-            top: Math.floor(Math.random() * 100) + '%',
-            left: Math.floor(Math.random() * 100) + '%',
-            animationDelay: Math.floor(Math.random() * 500) + 's',
-          }}></div>
-      );
-    }
-    return myStars;
-  }, []);
-
-  useEffect(() => {
-    starsArray.current = starsGenerator();
-  }, [starsGenerator]);
-
   const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
@@ -138,7 +116,7 @@ const Contact: NextPage = () => {
   return (
     <MainContainer>
       {metaContentGenerator}
-      <div id="stars-container">{starsArray.current}</div>
+      {background}
       <div id="satelite_container">
         <img src="/res/satelite.png" alt="Satellite" className="satelite" />
       </div>
@@ -276,14 +254,6 @@ const MainContainer = styled.div`
   h2 {
     font-family: 'Space Mono', monospace;
     font-size: 1.7rem;
-  }
-
-  #stars-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
 
   #content-container {
@@ -600,26 +570,6 @@ const MainContainer = styled.div`
     hr {
       border-color: rgba(255, 255, 255, 0.4);
       margin: 15px 0px;
-    }
-  }
-
-  .star {
-    background: #fafafa;
-    z-index: 0;
-    position: absolute;
-    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
-    animation: 6s star_glow infinite linear;
-  }
-
-  @keyframes star_glow {
-    0% {
-      transform: scale3d(1, 1, 1);
-    }
-    50% {
-      transform: scale3d(2, 2, 1);
-    }
-    100% {
-      transform: scale3d(1, 1, 1);
     }
   }
 

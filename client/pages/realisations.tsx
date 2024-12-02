@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useRef,
   useMemo,
+  useContext,
 } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
@@ -15,6 +16,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkIcon from '@mui/icons-material/Link';
 import LinkOffIcon from '@mui/icons-material/LinkOff';
 import LockIcon from '@mui/icons-material/Lock';
+import { BackgroundContext } from '../src/contexts/Contexts';
 
 export type IPersonnalProjectData = {
   name?: string;
@@ -172,6 +174,9 @@ const projectsData: IProjectdata[] = [
 ];
 
 const Realisations: NextPage = () => {
+  // --- Background
+  const { background } = useContext(BackgroundContext);
+
   const [selectedPlanet, setSelectedPlanet] = useState<number>(-1);
   const [windowSize, setWindowSize] = useState(999);
   const [selectedTab, setSelectedTab] = useState<0 | 1>(0);
@@ -545,7 +550,7 @@ const Realisations: NextPage = () => {
         style={{ display: windowSize < 1250 ? 'block' : 'none' }}>
         Meilleure expérience sur écrans larges
       </div>
-      {starsArray.current}
+      {background}
       <div id="tabs">
         <ul className={`${selectedTab === 1 ? 'translate-bar' : ''}`}>
           <li className={`${selectedTab === 0 ? 'selected' : ''}`}>

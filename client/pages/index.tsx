@@ -1,5 +1,6 @@
 import React, {
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -14,8 +15,12 @@ import TextSlider from '../src/components/Home/TextSlider';
 import Head from 'next/head';
 import CustomLink from '../src/components/Layout/routing/CustomLink';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import StarsBackground from '../src/components/Layout/background/StarsBackground';
+import { BackgroundContext } from '../src/contexts/Contexts';
 
 const Home: NextPage = () => {
+  // --- Background
+  const { background } = useContext(BackgroundContext);
   const prefixArray = useRef<string[]>([
     'Je suis',
     'Je forge',
@@ -43,7 +48,6 @@ const Home: NextPage = () => {
     "Teaching computer science is like teaching someone to swim... in a pool full of sharks called 'bugs'.",
   ]);
   const canvasRef = useRef();
-  const starsArray: any = useRef();
 
   const router = useRouter();
   const metaContentGenerator = useMemo(() => {
@@ -68,31 +72,8 @@ const Home: NextPage = () => {
     );
   }, [router.pathname]);
 
-  //Générateur d'étoiles
-  const starsGenerator = useCallback(() => {
-    const myStars: Array<JSX.Element> = [];
-    for (let i = 0; i < 200; ++i) {
-      const size = Math.ceil(Math.random() * 3) + 'px';
-
-      myStars.push(
-        <div
-          className="star"
-          key={i}
-          style={{
-            width: size,
-            height: size,
-            top: Math.floor(Math.random() * 100) + 'vh',
-            left: Math.floor(Math.random() * 100) + 'vw',
-            animationDelay: Math.floor(Math.random() * 500) + 's',
-          }}></div>
-      );
-    }
-    return myStars;
-  }, []);
-
   //Génère la Terre et les étoiles
   useEffect(() => {
-    starsArray.current = starsGenerator();
     let phi = 0;
 
     const globe = createGlobe(canvasRef.current, {
@@ -132,7 +113,7 @@ const Home: NextPage = () => {
     <MainContainer>
       {metaContentGenerator}
       <section id="landing">
-        {starsArray.current}
+        {background}
         <canvas ref={canvasRef} id="globe" />
         <div id="content">
           <h1>
@@ -329,26 +310,6 @@ const MainContainer = styled.div`
           left: 10vw;
         }
       }
-    }
-
-    .star {
-      background: #fafafa;
-      z-index: 1;
-      position: absolute;
-      box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
-      animation: 6s star_glow infinite linear;
-    }
-  }
-
-  @keyframes star_glow {
-    0% {
-      transform: scale3d(1, 1, 1);
-    }
-    50% {
-      transform: scale3d(2, 2, 1);
-    }
-    100% {
-      transform: scale3d(1, 1, 1);
     }
   }
 `;

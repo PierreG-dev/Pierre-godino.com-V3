@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useCallback,
   useMemo,
+  useContext,
 } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
@@ -19,8 +20,12 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import SkillSelector from '../../src/components/Skills/SkillSelector';
+import { BackgroundContext } from '../../src/contexts/Contexts';
 
 const Skills: NextPage = () => {
+  // --- Background
+  const { background } = useContext(BackgroundContext);
+
   const router = useRouter();
   const { skillId } = router.query;
   const [displayedSkillId, setDisplayedSkillId] = useState(0);
@@ -31,28 +36,6 @@ const Skills: NextPage = () => {
     if (skillId && skillId.length !== 0)
       setDisplayedSkillId(parseInt(skillId as string));
   }, [skillId]);
-
-  //Générateur d'étoiles
-  const starsGenerator = useCallback(() => {
-    const myStars: Array<JSX.Element> = [];
-    for (let i = 0; i < 200; ++i) {
-      const size = Math.ceil(Math.random() * 3) + 'px';
-
-      myStars.push(
-        <div
-          className="star"
-          key={i}
-          style={{
-            width: size,
-            height: size,
-            top: Math.floor(Math.random() * 100) + '%',
-            left: Math.floor(Math.random() * 100) + '%',
-            animationDelay: Math.floor(Math.random() * 500) + 's',
-          }}></div>
-      );
-    }
-    return myStars;
-  }, []);
 
   const displaySkills = () => {
     return data.map((skill, key) => (
@@ -95,10 +78,6 @@ const Skills: NextPage = () => {
     });
   };
 
-  useEffect(() => {
-    starsArray.current = starsGenerator();
-  }, []);
-
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'Technologies',
@@ -124,7 +103,7 @@ const Skills: NextPage = () => {
   return (
     <MainContainer>
       {metaContentGenerator}
-      {starsArray.current}
+      {background}
       <AnimationContainer>
         <img
           id="space_station"

@@ -1,6 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { NextPage } from 'next';
-import { useCallback, useState, useMemo, FormEvent, useEffect } from 'react';
+import {
+  useCallback,
+  useState,
+  useMemo,
+  FormEvent,
+  useEffect,
+  useContext,
+} from 'react';
 import styled from 'styled-components';
 import FullCalendar, { LocaleSingularArg } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -14,7 +21,11 @@ import {
   getFromLocalStorage,
   saveToLocalStorage,
 } from '../src/utilities/localStorage';
+import { BackgroundContext } from '../src/contexts/Contexts';
 const Calendar: NextPage = () => {
+  // --- Background
+  const { background } = useContext(BackgroundContext);
+
   const [events, setEvents] = useState([]);
   const [initialSet, setInitialSet] = useState(true);
   const [password, setPassword] = useState<string>('');
@@ -98,33 +109,6 @@ const Calendar: NextPage = () => {
     return map;
   }, [events]);
 
-  //Générateur d'étoiles
-  const starsGenerator = useCallback(() => {
-    const myStars: Array<JSX.Element> = [];
-    const rng = seedrandom("Vers l'infini et au dela!");
-    for (let i = 0; i < 200; ++i) {
-      const size = Math.ceil(rng() * 3) + 'px';
-
-      myStars.push(
-        <div
-          className="star"
-          key={i}
-          style={{
-            width: size,
-            height: size,
-            top: Math.floor(rng() * 100) + '%',
-            left: Math.floor(rng() * 100) + '%',
-            animationDelay: Math.floor(rng() * 500) + 's',
-          }}></div>
-      );
-    }
-    return myStars;
-  }, []);
-
-  const starsArray = useMemo<JSX.Element[]>(() => {
-    return starsGenerator();
-  }, []);
-
   useEffect(() => {
     const localCalendar = getFromLocalStorage('calendar');
     if (localCalendar?.token) setPassword(localCalendar.token);
@@ -133,7 +117,7 @@ const Calendar: NextPage = () => {
   return (
     <MainContainer>
       {metaContentGenerator}
-      <div className="stars-container">{starsArray}</div>
+      {background}
       <ConnexionModal open className={!isFetched ? 'visible' : ''}>
         <form onSubmit={submitToken}>
           <div>
@@ -385,34 +369,6 @@ const MainContainer = styled.div`
           opacity: 0.5;
         }
       }
-    }
-  }
-  // --- Stars
-  .stars-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    .star {
-      background: #fafafa;
-      z-index: 0;
-      position: absolute;
-      box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
-      animation: 6s star_glow infinite linear;
-      transition: 1s;
-    }
-  }
-
-  @keyframes star_glow {
-    0% {
-      transform: scale3d(1, 1, 1);
-    }
-    50% {
-      transform: scale3d(2, 2, 1);
-    }
-    100% {
-      transform: scale3d(1, 1, 1);
     }
   }
 `;

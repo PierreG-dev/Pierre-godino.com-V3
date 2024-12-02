@@ -65,10 +65,6 @@ export default class MyDocument extends Document {
               gtag('config', 'AW-16765589576');
             `}
           </script>
-          <meta
-            name="description"
-            content="Mon site Next.js avec styled-components"
-          />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>

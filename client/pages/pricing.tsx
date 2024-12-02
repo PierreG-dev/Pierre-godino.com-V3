@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Head from 'next/head';
@@ -26,29 +26,11 @@ import BuildIcon from '@mui/icons-material/Build';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import LanguageIcon from '@mui/icons-material/Language';
+import { BackgroundContext } from '../src/contexts/Contexts';
 
 const Pricing: NextPage = () => {
-  //Générateur d'étoiles
-  const starsGenerator = useCallback(() => {
-    const myStars: Array<JSX.Element> = [];
-    for (let i = 0; i < 200; ++i) {
-      const size = Math.ceil(Math.random() * 3) + 'px';
-
-      myStars.push(
-        <div
-          className="star"
-          key={i}
-          style={{
-            width: size,
-            height: size,
-            top: Math.floor(Math.random() * 100) + '%',
-            left: Math.floor(Math.random() * 100) + '%',
-            animationDelay: Math.floor(Math.random() * 500) + 's',
-          }}></div>
-      );
-    }
-    return myStars;
-  }, []);
+  // --- Background
+  const { background } = useContext(BackgroundContext);
 
   const router = useRouter();
   const metaContentGenerator = useMemo(() => {
@@ -76,7 +58,7 @@ const Pricing: NextPage = () => {
   return (
     <MainContainer>
       {metaContentGenerator}
-      {starsGenerator()}
+      {background}
       <h1>Prestations</h1>
       <ul id="services_list">
         <li className="service-item vitrine">
@@ -919,26 +901,6 @@ const MainContainer = styled.main`
           }
         }
       }
-    }
-  }
-
-  .star {
-    background: #fafafa;
-    z-index: 1;
-    position: absolute;
-    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
-    animation: 6s star_glow infinite linear;
-  }
-
-  @keyframes star_glow {
-    0% {
-      transform: scale3d(1, 1, 1);
-    }
-    50% {
-      transform: scale3d(2, 2, 1);
-    }
-    100% {
-      transform: scale3d(1, 1, 1);
     }
   }
 `;

@@ -1,5 +1,6 @@
 import React, {
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -10,35 +11,11 @@ import styled from 'styled-components';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { BackgroundContext } from '../../src/contexts/Contexts';
 
 const Index: NextPage = () => {
-  const starsArray = useRef<JSX.Element[]>();
-
-  //Générateur d'étoiles
-  const starsGenerator = useCallback(() => {
-    const myStars: Array<JSX.Element> = [];
-    for (let i = 0; i < 200; ++i) {
-      const size = Math.ceil(Math.random() * 3) + 'px';
-
-      myStars.push(
-        <div
-          className="star"
-          key={i}
-          style={{
-            width: size,
-            height: size,
-            top: Math.floor(Math.random() * 100) + '%',
-            left: Math.floor(Math.random() * 100) + '%',
-            animationDelay: Math.floor(Math.random() * 500) + 's',
-          }}></div>
-      );
-    }
-    return myStars;
-  }, []);
-
-  useEffect(() => {
-    starsArray.current = starsGenerator();
-  }, [starsGenerator]);
+  // --- Background
+  const { background } = useContext(BackgroundContext);
 
   const router = useRouter();
   const metaContentGenerator = useMemo(() => {
@@ -62,10 +39,11 @@ const Index: NextPage = () => {
       </Head>
     );
   }, [router.pathname]);
+
   return (
     <MainContainer>
       {metaContentGenerator}
-      {starsArray.current}
+      {background}
       <section className="flex flex-col buttons-container">
         <div style={{ maxWidth: '100vw' }}>
           <CustomLink
