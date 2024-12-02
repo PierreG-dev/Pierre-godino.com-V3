@@ -92,26 +92,6 @@ const MainContainer = styled.div`
   gap: 5vh;
   align-items: center;
 
-  .star {
-    background: #fafafa;
-    z-index: 0;
-    position: absolute;
-    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
-    animation: 6s star_glow infinite linear;
-  }
-
-  @keyframes star_glow {
-    0% {
-      transform: scale3d(1, 1, 1);
-    }
-    50% {
-      transform: scale3d(2, 2, 1);
-    }
-    100% {
-      transform: scale3d(1, 1, 1);
-    }
-  }
-
   video {
     position: absolute;
     top: 0;

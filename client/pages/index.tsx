@@ -15,7 +15,6 @@ import TextSlider from '../src/components/Home/TextSlider';
 import Head from 'next/head';
 import CustomLink from '../src/components/Layout/routing/CustomLink';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import StarsBackground from '../src/components/Layout/background/StarsBackground';
 import { BackgroundContext } from '../src/contexts/Contexts';
 
 const Home: NextPage = () => {
@@ -31,11 +30,11 @@ const Home: NextPage = () => {
     'développeur',
     'formateur',
     'le net',
-    'des esprits',
+    'des développeurs',
     'a developer',
     'a trainer',
     'the internet',
-    'minds',
+    'developers',
   ]);
   const sentencesArray = useRef<string[]>([
     "Les logiciels et les cathédrales, c'est un peu la même chose: d'abord on les construit, ensuite on prie.",

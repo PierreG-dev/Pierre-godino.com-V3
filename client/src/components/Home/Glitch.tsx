@@ -1,23 +1,30 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import seedrandom from 'seedrandom';
 
 export type Props = {
   letter: string;
   isGlitching: boolean;
 };
 
+const rng = seedrandom('TOTOOOO');
+
 const Glitch: React.FC<Props> = ({ letter, isGlitching }) => {
   const [displayedLetter, setDisplayedLetter] = useState(letter);
   const intervalCode = useRef<number | null>(null);
   const timeoutCode = useRef<number | null>(null);
   const isMounted = useRef<boolean>(true);
-  const delay = useRef<number>(Math.floor(Math.random() * 1500));
+  const delay = useRef<number>(Math.floor(rng() * 1500));
+  const charPool = useRef(
+    Array.from({ length: 42 }, (_, i) => String.fromCharCode(48 + i))
+  );
+  const indexRef = useRef(0);
 
   // Fonction qui génère un caractère aléatoire [a-z|A-Z|0-9|symboles]
   const charGenerator = useCallback(() => {
     if (!isMounted.current) return;
-    setDisplayedLetter(
-      String.fromCharCode(Math.floor(Math.random() * 42) + 48)
-    );
+    const nextChar = charPool.current[indexRef.current];
+    indexRef.current = (indexRef.current + 1) % charPool.current.length;
+    setDisplayedLetter(nextChar);
   }, []);
 
   // Fonction pour démarrer le glitch (avec délai)
