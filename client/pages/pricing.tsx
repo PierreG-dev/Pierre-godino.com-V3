@@ -1,8 +1,7 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import BrushIcon from '@mui/icons-material/Brush';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import SearchIcon from '@mui/icons-material/Search';
@@ -31,8 +30,6 @@ import { BackgroundContext } from '../src/contexts/Contexts';
 const Pricing: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
-
-  const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'Tarifs',

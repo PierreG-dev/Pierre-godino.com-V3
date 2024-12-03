@@ -1,17 +1,9 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import CachedIcon from '@mui/icons-material/Cached';
 import DoneIcon from '@mui/icons-material/Done';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -89,9 +81,8 @@ const Contact: NextPage = () => {
       clearInputs();
       setButtonAnimationActive('finished');
     }, 1200);
-  }, [messageInput, nameInput]);
+  }, [clearInputs, messageInput, nameInput]);
 
-  const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'Contact',

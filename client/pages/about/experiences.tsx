@@ -5,13 +5,7 @@ import data from '../../src/components/Experiences/data';
 import { NextPage } from 'next';
 
 import Timeline from '@mui/lab/Timeline';
-import Clock from 'react-clock';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
-
-const clockOptions = {
-  className: 'clock',
-};
 
 // --- Titre dynamique (calcul automatique du montant d'années)
 const dateObj = new Date();
@@ -23,7 +17,6 @@ const TITLE = `${now - then + 1} ans dans l'informatique.`;
 const Experiences: NextPage = () => {
   const [screenSize, setScreenSize] = useState(0);
   const [expandedXp, setExpandedXp] = useState('');
-  const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     // eslint-disable-next-line no-restricted-globals
@@ -31,10 +24,7 @@ const Experiences: NextPage = () => {
     // eslint-disable-next-line no-restricted-globals
     addEventListener('resize', () => setScreenSize(window.innerWidth));
 
-    const interval = setInterval(() => setTime(new Date()), 1000);
-
     return () => {
-      clearInterval(interval);
       // eslint-disable-next-line no-restricted-globals
       removeEventListener('resize', () => setScreenSize(window.innerWidth));
     };
@@ -72,7 +62,6 @@ const Experiences: NextPage = () => {
       });
   }, [setExpanded, expandedXp, screenSize]);
 
-  const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'Parcours',

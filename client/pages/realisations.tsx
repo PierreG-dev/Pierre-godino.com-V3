@@ -8,7 +8,6 @@ import React, {
 } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 import ListIcon from '@mui/icons-material/List';
 import EngineeringIcon from '@mui/icons-material/Engineering';
@@ -515,9 +514,7 @@ const Realisations: NextPage = () => {
       });
       window.removeEventListener('click', selectPlanet);
     };
-  }, []);
-
-  const router = useRouter();
+  }, [selectPlanet]);
 
   // Génère les meta éléments
   const metaContentGenerator = useMemo(() => {

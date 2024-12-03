@@ -9,7 +9,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import NProgress from 'nprogress';
 import { Contexts } from '../src/contexts/Contexts';
 import Layout from '../src/components/Layout';
-import Maintenance from '../src/components/Maintenance/Maintenance';
 import Head from 'next/head';
 
 NProgress.configure({ showSpinner: true });

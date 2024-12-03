@@ -1,15 +1,7 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useContext, useEffect, useMemo, useRef } from 'react';
 import styled from 'styled-components';
 import createGlobe from 'cobe';
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import GlitchHandler from '../src/components/Home/GlitchHandler';
 import TextSlider from '../src/components/Home/TextSlider';
 import Head from 'next/head';
@@ -48,7 +40,6 @@ const Home: NextPage = () => {
   ]);
   const canvasRef = useRef();
 
-  const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'Accueil',
