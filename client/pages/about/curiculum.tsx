@@ -357,31 +357,6 @@ const MainContainer = styled.div`
   // background-attachment: fixed;
   backface-visibility: hidden;
 
-  /* Chrome, Edge, Safari */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #373737;
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #555555;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #373737 transparent;
-  }
-
   button.more-infos {
     color: #fffff9;
     background: #545454;
