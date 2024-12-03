@@ -540,7 +540,7 @@ const Realisations: NextPage = () => {
         <meta property="og:description" content={metaData.description} />
       </Head>
     );
-  }, [router.pathname]);
+  }, []);
 
   return (
     <MainContainer>
@@ -593,6 +593,7 @@ const Realisations: NextPage = () => {
                   src={projectItem.thumbnailUrl}
                   alt={'Aperçu du projet intitulé ' + projectItem.title}
                   className="realisation-thumbnail"
+                  loading="lazy"
                 />
                 <div className="realisation-text-wrapper">
                   <section>
@@ -605,7 +606,11 @@ const Realisations: NextPage = () => {
                         fontFamily: projectItem.fontName || 'inherit',
                         fontStyle: projectItem.tilted ? 'italic' : 'inherit',
                       }}>
-                      <img src={projectItem.iconUrl} alt={projectItem.title} />
+                      <img
+                        src={projectItem.iconUrl}
+                        alt={projectItem.title}
+                        loading="lazy"
+                      />
                       {projectItem.title}
                     </h3>
                     <p
@@ -676,6 +681,31 @@ const Realisations: NextPage = () => {
 
 const MainContainer = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mynerve&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+  /* Chrome, Edge, Safari */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #373737;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555555;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #373737 transparent;
+  }
 
   padding-top: 7vh;
   background: #040e1d;
@@ -816,7 +846,7 @@ const MainContainer = styled.div`
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         background: rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(2px);
+        // backdrop-filter: blur(0.3px);
 
         h3,
         p,
@@ -835,6 +865,7 @@ const MainContainer = styled.div`
           object-fit: cover;
           align-self: center;
           border-radius: 5px;
+          backface-visibility: hidden;
 
           @media (max-width: 750px) {
             display: none;
@@ -1178,7 +1209,7 @@ const MainContainer = styled.div`
       border: 2px solid #08666a;
       color: #08666a;
       z-index: 25;
-      backdrop-filter: blur(5px);
+      // backdrop-filter: blur(5px);
       animation-timing-function: ease;
       animation-duration: 0.6s;
       animation-iteration-count: 1;

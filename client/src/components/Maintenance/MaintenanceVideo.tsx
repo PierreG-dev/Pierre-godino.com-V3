@@ -11,7 +11,7 @@ const Video: React.FC<Props> = ({ url, handleLoadingScreen }) => {
   useLayoutEffect(() => {
     // @ts-ignore
     videoRef.current.play();
-    console.log("i'm loading the video");
+    console.info("i'm loading the video");
     handleLoadingScreen();
   }, []);
 

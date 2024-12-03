@@ -3,11 +3,10 @@ import { AiOutlineDownload } from 'react-icons/ai';
 import styled from 'styled-components';
 import { NextPage } from 'next';
 import Experience from '../../src/components/Curiculum/Experience';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
+import CustomLink from '../../src/components/Layout/routing/CustomLink';
 
 const Curiculum: NextPage = () => {
-  const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'CV',
@@ -28,19 +27,17 @@ const Curiculum: NextPage = () => {
         <meta property="og:description" content={metaData.description} />
       </Head>
     );
-  }, [router.pathname]);
+  }, []);
 
   return (
     <MainContainer>
       {metaContentGenerator}
-      <img
-        className={'background'}
-        src="/res/curiculum-background.jpg"
-        alt=""
-      />
       <div
         style={{
           background: "url('/res/overlay.png')",
+          backfaceVisibility: 'hidden',
+          willChange: 'transform, opacity',
+          transform: 'translateZ(0)',
           height: '100%',
           width: '100%',
           position: 'absolute',
@@ -66,26 +63,84 @@ const Curiculum: NextPage = () => {
             <h2>Compétences</h2>
 
             <div className="flex justify-between">
-              <div>
+              <div id="skills">
                 <h3 className={'text-center w-full'}>Informatique</h3>
                 <ul className={'text-sm'}>
-                  <li>JavaScript 🚀</li>
-                  <li>ReactJs | NextJs 🚀</li>
-                  <li>Node | MongoDB 🚀</li>
-                  <li>HTML5 | CSS3</li>
-                  <li>Algorithmie</li>
+                  <li>
+                    <img
+                      src={'/icons/js.png'}
+                      alt="Javascript"
+                      loading="lazy"
+                    />
+                    JavaScript 🔥
+                  </li>
+                  <li>
+                    <img
+                      src={'/icons/react.png'}
+                      alt="Javascript"
+                      loading="lazy"
+                    />
+                    ReactJs | NextJs 🔥
+                  </li>
+                  <li>
+                    <img
+                      src={'/icons/nodejs.png'}
+                      alt="Javascript"
+                      loading="lazy"
+                    />
+                    Node | MongoDB
+                  </li>
+                  <li>
+                    <img
+                      src={'/icons/html.png'}
+                      alt="Javascript"
+                      loading="lazy"
+                    />
+                    Vanilla (HTML / CSS / JS)
+                  </li>
+                  <li>
+                    <img
+                      src={'/icons/google.png'}
+                      alt="Javascript"
+                      loading="lazy"
+                    />
+                    SEO
+                  </li>
+                  <CustomLink href="/about/skills">
+                    <button className="more-infos">En savoir plus</button>
+                  </CustomLink>
                 </ul>
               </div>
 
-              <div>
+              <div id="lang">
                 <h3 className={'text-center w-full'}>Langues</h3>
                 <ul>
-                  <li>Français natif </li>
                   <li>
-                    Anglais professionnel <br />
-                    <span style={{ color: '#37373799', fontSize: '0.9rem' }}>
+                    <img
+                      src="/icons/fr_flag.png"
+                      alt="Drapeau français"
+                      loading="lazy"
+                    />
+                    <strong>Français</strong> - natif{' '}
+                  </li>
+                  <li>
+                    <img
+                      src="/icons/en_flag.jpeg"
+                      alt="Drapeau français"
+                      loading="lazy"
+                    />
+                    <strong>Anglais</strong> - professionnel <br />
+                    {/* <span style={{ color: '#37373799', fontSize: '0.9rem' }}>
                       (77/100 EF SET)
-                    </span>
+                    </span> */}
+                  </li>
+                  <li>
+                    <img
+                      src="/icons/jp_flag.png"
+                      alt="Drapeau français"
+                      loading="lazy"
+                    />
+                    <strong>Japonais</strong> - moyen
                   </li>
                 </ul>
               </div>
@@ -96,25 +151,48 @@ const Curiculum: NextPage = () => {
             <h2>Experiences</h2>
 
             <Experience
-              date={'Jui. 2021'}
-              title={'Mentor | Formateur'}
-              subtitle={"O'Clock | CEF | AP Formations ..."}
-              actual={true}
+              date={'Oct. 2024'}
+              title={'Formateur | Assistant'}
+              subtitle={'Le Wagon'}
+              actual
+              img={'/icons/wagon.png'}
+            />
+
+            <Experience
+              date={'Sep. 2023'}
+              title={'Mentor'}
+              subtitle={'Centre Européen de Formation'}
+              img={'/icons/cenef.svg'}
+            />
+
+            <Experience
+              date={'Mai 2023'}
+              title={'Formateur'}
+              subtitle={"O'Clock"}
+              img={'/icons/oclock.png'}
+              actual
             />
 
             <Experience
               date={'Déc. 2020'}
               title={'Front-end React | Next'}
               subtitle={'Hackathon 60-Dozer'}
+              img={'/icons/dozer.png'}
               note={'(1ère place)'}
               noteColor={'#ffbd59'}
             />
 
             <Experience
-              date={'Mars 2020'}
-              title={'Full-stack Node | React'}
-              subtitle={'Startup SpeedyNanie'}
+              date={'Août 2019'}
+              title={'Développeur'}
+              subtitle={'Freelance'}
+              img={'/icons/web.webp'}
+              actual
             />
+
+            <CustomLink href="/about/experiences">
+              <button className="more-infos">En savoir plus</button>
+            </CustomLink>
           </section>
 
           <section title={'Mes diplômes'}>
@@ -122,9 +200,10 @@ const Curiculum: NextPage = () => {
 
             <Experience
               date={'2020'}
-              title={'Développeur WEB/Mobile'}
-              subtitle={'Digital Campus, Labège'}
+              title={'RNCP Niv.5 - Développeur WEB/Mobile'}
+              subtitle={'Digital Campus'}
               titleColor={'#8e44ad'}
+              img={'/icons/dc.png'}
             />
 
             <Experience
@@ -132,24 +211,26 @@ const Curiculum: NextPage = () => {
               title={'Licence Informatique'}
               subtitle={'Université Paul Sabatier, Toulouse'}
               titleColor={'#c0392b'}
+              img={'/icons/ups.jpg'}
             />
 
-            <Experience
+            {/* <Experience
               date={'2016'}
               title={'Baccalauréat Scientifique'}
               subtitle={'Lycée Jean de Prades, Castelsarrasin'}
               titleColor={'#f39c12'}
-            />
+            /> */}
           </section>
 
           <section title={'Mon profil'}>
             <h2>Profil</h2>
 
             <p className={'text-sm'}>
-              Ancien développeur tombé amoureux de la formation, j'interviens
-              dans diverses écoles pour des modules orientés autour de la
-              programmation, <br />
-              en présentiel comme en visioconférence.
+              Passionné par la <strong>programmation</strong> et la{' '}
+              <strong>formation</strong>, j'interviens dans divers organismes de
+              formation pour enseigner des modules de{' '}
+              <strong>développement WEB</strong>, en <strong>présentiel</strong>{' '}
+              et <strong>visioconférence</strong>.
             </p>
           </section>
         </InfosContainer>
@@ -206,7 +287,17 @@ const Curiculum: NextPage = () => {
               <h2 className={'mb-4'}>Réseaux</h2>
 
               <div className={'w-full break-words mb-3'}>
-                <h3>Github</h3>
+                <header>
+                  <img
+                    src="/res/GITHUB_LOGO.png"
+                    alt="github"
+                    loading="lazy"
+                    style={{
+                      filter: 'grayscale(1) brightness(2) invert(100%)',
+                    }}
+                  />
+                  <h3>Github</h3>
+                </header>
                 <a
                   href={'https://www.github.com/pierreG-dev'}
                   target={'_blank'}
@@ -216,7 +307,10 @@ const Curiculum: NextPage = () => {
               </div>
 
               <div className={'w-full break-words mb-3'}>
-                <h3>Malt</h3>
+                <header>
+                  <img src="/res/MALT_LOGO.png" alt="malt" loading="lazy" />
+                  <h3>Malt</h3>
+                </header>
                 <a
                   href={'https://www.malt.fr/profile/pierregodino'}
                   target={'_blank'}
@@ -226,7 +320,14 @@ const Curiculum: NextPage = () => {
               </div>
 
               <div className={'w-full break-words mb-3'}>
-                <h3>LinkedIn</h3>
+                <header>
+                  <img
+                    src="/res/LINKEDIN_LOGO.png"
+                    alt="linkedin"
+                    loading="lazy"
+                  />
+                  <h3>LinkedIn</h3>
+                </header>
                 <a
                   href={'https://www.linkedin.com/in/pierre-godino-50b503186'}
                   target={'_blank'}
@@ -243,12 +344,72 @@ const Curiculum: NextPage = () => {
 };
 
 const MainContainer = styled.div`
-  padding-top: 6vh;
+  padding-top: calc(6vh + 25px);
   position: relative;
   width: 100%;
   min-height: 100vh;
   z-index: 0;
   overflow-x: hidden;
+  background: url('/res/curiculum-background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  backface-visibility: hidden;
+
+  /* Chrome, Edge, Safari */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #373737;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555555;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #373737 transparent;
+  }
+
+  button.more-infos {
+    color: #fffff9;
+    background: #545454;
+    width: 100%;
+    height: fit-content;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    border: 1px solid #545454;
+    font-size: 0.8rem;
+    transition: 0.1s;
+
+    &:hover {
+      background: #fffff9;
+      color: #545454;
+    }
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
 
   h1 {
     font-family: BebasNeue;
@@ -272,7 +433,34 @@ const MainContainer = styled.div`
   }
 
   ul {
-    list-style: '- ';
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  #skills img {
+    width: 17px;
+    height: 17px;
+    border-radius: 5px;
+    object-fit: contain;
+    filter: none;
+    backface-visibility: hidden;
+  }
+  #lang img {
+    backface-visibility: hidden;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: none;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
   }
 
   h4,
@@ -288,15 +476,6 @@ const MainContainer = styled.div`
   p {
     letter-spacing: 1.5px;
   }
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-  }
 
   section {
     margin-bottom: 1.5rem;
@@ -309,7 +488,7 @@ const MainContainer = styled.div`
   }
   section:hover {
     transform: scale3d(1.02, 1.02, 1);
-    cursor: help;
+    cursor: auto;
   }
 
   img {
@@ -384,6 +563,36 @@ const ContactContainer = styled.div`
     width: 200px;
     height: auto;
     margin: 70px auto 70px auto;
+  }
+
+  header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 5px;
+
+    h3 {
+      transform: translateY(2px);
+    }
+
+    img {
+      object-fit: cover;
+      width: 19px;
+      height: 19px;
+      margin: 0;
+      filter: grayscale(1) brightness(2);
+    }
+  }
+
+  a {
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-weight: 200;
+    letter-spacing: 2px;
   }
 `;
 

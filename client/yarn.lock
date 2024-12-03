@@ -515,6 +515,18 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@lordicon/helpers@^1.10.1":
+  version "1.10.1"
+  resolved "https://registry.npmjs.org/@lordicon/helpers/-/helpers-1.10.1.tgz"
+  integrity sha512-GUOffYns36Y7j2c0oWWx0AJB80unvVnYrF1VCXJ7dAGuCyFhxuaR6NrzKgDPbY98Vn1q6b+7rRdfUEyXISiQgQ==
+
+"@lordicon/react@^1.10.1":
+  version "1.10.1"
+  resolved "https://registry.npmjs.org/@lordicon/react/-/react-1.10.1.tgz"
+  integrity sha512-Dv1Cwhpt0Ut/bIZVVSqkE2rCC+C8Yg/QDj+aM3brAahKgNl/Eivh/iZ8Ik4yUbjTutODTREPQV/BwWb08VjNFg==
+  dependencies:
+    "@lordicon/helpers" "^1.10.1"
+
 "@mui/base@5.0.0-alpha.74":
   version "5.0.0-alpha.74"
   resolved "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.74.tgz"

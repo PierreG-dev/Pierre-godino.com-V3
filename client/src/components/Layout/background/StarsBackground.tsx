@@ -1,6 +1,7 @@
 import React, { FC, useMemo } from 'react';
 import styled from 'styled-components';
 import seedrandom from 'seedrandom';
+import { createPortal } from 'react-dom';
 
 const StarsBackground: FC = React.memo(() => {
   const view = useMemo(() => {
@@ -16,8 +17,8 @@ const StarsBackground: FC = React.memo(() => {
           style={{
             width: size,
             height: size,
-            top: Math.floor(rng() * 100) + 'vh',
-            left: Math.floor(rng() * 100) + 'vw',
+            top: Math.floor(rng() * 100) + '%',
+            left: Math.floor(rng() * 100) + '%',
             animationDelay: Math.floor(rng() * 500) + 's',
           }}></div>
       );
@@ -29,10 +30,17 @@ const StarsBackground: FC = React.memo(() => {
 });
 
 const StarsContainer = styled.div`
+  height: 100%;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 0;
+  position: absolute;
+
   .star {
-    background: #fafafa;
-    z-index: 0;
     position: absolute;
+    background: #fafafa;
     box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
     animation: 6s star_glow infinite linear;
   }

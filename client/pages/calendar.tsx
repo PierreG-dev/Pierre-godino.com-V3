@@ -57,7 +57,7 @@ const Calendar: NextPage = () => {
         <meta property="og:description" content={metaData.description} />
       </Head>
     );
-  }, [router.pathname]);
+  }, []);
 
   const submitToken = useCallback(
     (e: FormEvent) => {
@@ -88,7 +88,7 @@ const Calendar: NextPage = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
           setIsfetching(false);
           setPassword('');
         });

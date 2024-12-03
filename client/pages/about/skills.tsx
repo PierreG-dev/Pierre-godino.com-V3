@@ -98,7 +98,7 @@ const Skills: NextPage = () => {
         <meta property="og:description" content={metaData.description} />
       </Head>
     );
-  }, [router.pathname]);
+  }, []);
 
   return (
     <MainContainer>

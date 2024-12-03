@@ -808,8 +808,8 @@ const data: Xp[] = [
     icon: '/icons/misino_icon_alt.png',
     description: (
       <p>
-        Conception d'un site vitrine pour le cabinet de stomatologie &
-        orthodontie du Dr. Jérôme Misino
+        Conception d'un <strong>site vitrine</strong> pour le cabinet de
+        stomatologie & orthodontie du <strong>Dr. Jérôme Misino</strong>
       </p>
     ),
     technologies: selectSkillsByName([
@@ -819,7 +819,23 @@ const data: Xp[] = [
       'Algorithmie',
     ]),
     environnements: selectSkillsByName(['Bash', 'Git', 'Github', 'VSCode']),
-    link: 'https://cabinet-misino./',
+    link: 'https://cabinet-misino.fr',
+    actual: true,
+  },
+  {
+    period: 'Freelance',
+    date: '10/2024',
+    title: 'Formateur Wagon',
+    icon: '/icons/wagon.png',
+    description: (
+      <p>
+        Intervention au sein du <strong>Wagon</strong> en qualité de{' '}
+        <strong>formateur</strong> ou <strong>assistant formateur</strong>
+      </p>
+    ),
+    technologies: selectSkillsByName(['HTML 5', 'CSS 3', 'JavaScript']),
+    environnements: selectSkillsByName(['Bash', 'Git', 'Github', 'VSCode']),
+    link: 'https://www.lewagon.com/fr',
     actual: true,
   },
 ];

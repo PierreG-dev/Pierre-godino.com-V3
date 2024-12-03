@@ -21,6 +21,7 @@
     "@fullcalendar/core": "5",
     "@fullcalendar/daygrid": "5",
     "@fullcalendar/react": "5",
+    "@lordicon/react": "^1.10.1",
     "@mui/core": "^5.0.0-alpha.54",
     "@mui/icons-material": "^5.3.0",
     "@mui/lab": "^5.0.0-alpha.65",

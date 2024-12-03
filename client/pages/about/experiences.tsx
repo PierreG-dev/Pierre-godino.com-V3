@@ -41,7 +41,6 @@ const Experiences: NextPage = () => {
   }, []);
 
   const setExpanded = useCallback((title) => {
-    // console.log(expandedXp + ' / ' + title);
     setExpandedXp((prevState) => (prevState === title ? '' : title));
   }, []);
 
@@ -95,7 +94,7 @@ const Experiences: NextPage = () => {
       </Head>
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.pathname]);
+  }, []);
 
   return (
     <MainContainer>
@@ -172,6 +171,11 @@ const MainContainer = styled.div`
   min-height: 100vh;
   transition: 1s;
   padding-bottom: 5vh;
+
+  // OPTIS
+  img {
+    backface-visibility: hidden;
+  }
 
   aside {
     display: flex;

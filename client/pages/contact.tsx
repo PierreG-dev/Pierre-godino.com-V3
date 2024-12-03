@@ -66,6 +66,7 @@ const Contact: NextPage = () => {
     setNameInput('');
     setMessageInput('');
   }, []);
+
   const handleButtonAnimation = useCallback(() => {
     setButtonAnimationActive('active');
 
@@ -80,7 +81,7 @@ const Contact: NextPage = () => {
       }),
     })
       .then(() => {
-        console.log('Request successfully sent');
+        console.info('Request successfully sent');
       })
       .catch((err) => console.error(err));
 
@@ -111,7 +112,7 @@ const Contact: NextPage = () => {
         <meta property="og:description" content={metaData.description} />
       </Head>
     );
-  }, [router.pathname]);
+  }, []);
 
   return (
     <MainContainer>
@@ -291,13 +292,14 @@ const MainContainer = styled.div`
   }
 
   section {
+    z-index: 1;
     padding: 20px 50px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
       inset 0 0px 7px rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
+    // backdrop-filter: blur(1px);
+    // -webkit-backdrop-filter: blur(1px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     transition: 0.3s;
     color: rgba(255, 255, 255, 0.9);

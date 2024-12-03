@@ -53,7 +53,7 @@ const Pricing: NextPage = () => {
         <meta property="og:description" content={metaData.description} />
       </Head>
     );
-  }, [router.pathname]);
+  }, []);
 
   return (
     <MainContainer>
@@ -516,7 +516,7 @@ const MainContainer = styled.main`
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
       inset 0 0px 7px rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(1px);
+    // backdrop-filter: blur(1px);
     width: 400px;
     flex: 1;
     padding: 25px 25px;

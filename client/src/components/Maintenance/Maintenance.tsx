@@ -13,7 +13,7 @@ const Maintenance: NextPage = () => {
     switch (event.key) {
       case 'g':
         setDevMode((prevState) => !prevState);
-        console.log('DEV MODE ACTIVATED');
+        console.info('DEV MODE ACTIVATED');
         break;
 
       default:
@@ -22,7 +22,7 @@ const Maintenance: NextPage = () => {
   }, []);
 
   const handleTouch = useCallback(() => {
-    console.log('DEV MODE ACTIVATED');
+    console.info('DEV MODE ACTIVATED');
     setTimeout(() => {
       setDevMode((prevState) => !prevState);
     }, 200);
@@ -38,7 +38,6 @@ const Maintenance: NextPage = () => {
     setTimeout(() => {
       setDisplayLoadingScreen(true);
     }, 1500);
-    console.log('loading screen out');
   }, []);
 
   useEffect(() => {

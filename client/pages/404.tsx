@@ -24,7 +24,7 @@ const Error404 = () => {
         <meta property="og:description" content={metaData.description} />
       </Head>
     );
-  }, [router.pathname]);
+  }, []);
   return (
     <MainContainer>
       {metaContentGenerator}

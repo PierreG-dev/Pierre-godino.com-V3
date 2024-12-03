@@ -17,92 +17,11 @@ let handleStart;
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
-  const [metaElements, setMetaElements] = useState({
-    title: 'Accueil',
-    description:
-      'Créateur de sites Internet, développeur WEB freelance et formateur depuis 2019. Développement web, création ou refonte de site internet, intégration, référencement, etc.',
-    ogTitle: 'Développement WEB, création de sites internet & formations',
-    ogDescription:
-      'Créateur de sites Internet, développeur WEB freelance et formateur depuis 2019. Développement web, création ou refonte de site internet, intégration, référencement, etc.',
-    ogUrl: 'https://pierre-godino.com',
-  });
-
   const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [onMaintenance, setOnMaintenance] = useState(false);
+  // const [onMaintenance, setOnMaintenance] = useState(false);
   const visitUpdateInterval = useRef();
   const firstLoad = useRef(true);
-
-  const metaElementsPicker = useCallback(
-    (pathname) => {
-      switch (pathname.toLowerCase().trim()) {
-        case '/':
-          return {
-            title: 'Accueil',
-            description:
-              'Créateur de sites Internet, développeur WEB freelance et formateur',
-            ogUrl: 'https://pierre-godino.com',
-          };
-        case '/realisations':
-          return {
-            title: 'Réalisations',
-            description:
-              'Créateur de sites Internet, développeur WEB freelance et formateur | Mes réalisations',
-            ogUrl: 'https://pierre-godino.com/realisations',
-          };
-        case '/simulator':
-          return {
-            title: 'Simulation',
-            description:
-              'Créateur de sites Internet, développeur WEB freelance et formateur | Devis en ligne',
-            ogUrl: 'https://pierre-godino.com/simulator',
-          };
-        case '/contact':
-          return {
-            title: 'Contact',
-            description:
-              'Créateur de sites Internet, développeur WEB freelance et formateur | Mes coordonnées',
-            ogUrl: 'https://pierre-godino.com/contact',
-          };
-        case '/about':
-          return {
-            title: 'A propos',
-            description:
-              'Créateur de sites Internet, développeur WEB freelance et formateur | A propos de moi',
-            ogUrl: 'https://pierre-godino.com/about',
-          };
-        case '/about/curiculum':
-          return {
-            title: 'CV',
-            description:
-              'Créateur de sites Internet, développeur WEB freelance et formateur | Mon CV traditionnel',
-            ogUrl: 'https://pierre-godino.com/curiculum',
-          };
-        case '/about/skills':
-          return {
-            title: 'Technologies',
-            description:
-              'Créateur de sites Internet, développeur WEB freelance et formateur | Mes technologies',
-            ogUrl: 'https://pierre-godino.com/skills',
-          };
-        case '/about/experiences':
-          return {
-            title: 'Parcours',
-            description:
-              'Créateur de sites Internet, développeur WEB freelance et formateur | Mon parcours',
-            ogUrl: 'https://pierre-godino.com/experiences',
-          };
-        default:
-          return {
-            title: '404',
-            description:
-              'Créateur de sites Internet, développeur WEB freelance et formateur',
-            ogUrl: 'https://pierre-godino.com/',
-          };
-      }
-    },
-    [metaElements]
-  );
 
   const handleLoad = useCallback(() => {
     setTimeout(() => {
@@ -135,6 +54,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   const initiateMetrics = useCallback(() => {
+    if (!process.env.NEXT_PUBLIC_API_URL) return;
     //visit init
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/newVisit`, {
       method: 'POST',
@@ -145,26 +65,32 @@ function MyApp({ Component, pageProps }) {
         device: devicePicker(),
       }),
     }).catch((error) => console.error(error));
-    console.log(process.env.NEXT_PUBLIC_API_URL);
+
     //visit update
     visitUpdateInterval.current = setInterval(() => {
+      if (!process.env.NEXT_PUBLIC_API_URL) return;
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/updateVisitTime`, {
         method: 'PUT',
       }).catch((error) => console.error(error));
     }, 30000);
-  }, []);
+  }, [devicePicker]);
 
   const updateJourney = useCallback((pageName) => {
+    if (!process.env.NEXT_PUBLIC_API_URL) return;
     //visit journey update
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/updateVisitJourney`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        newPage: pageName,
-      }),
-    }).catch((error) => console.error(error));
+    try {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/updateVisitJourney`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          newPage: pageName,
+        }),
+      }).catch((error) => console.error(error));
+    } catch (err) {
+      console.error(err);
+    }
   }, []);
 
   const firstLoadFinished = useCallback(() => {
@@ -181,9 +107,8 @@ function MyApp({ Component, pageProps }) {
   }, [firstLoadFinished, handleLoad, initiateMetrics]);
 
   useEffect(() => {
-    setMetaElements(metaElementsPicker(router.pathname));
     if (!firstLoad.current) updateJourney(document.title.split('|')[1].trim());
-  }, [router.pathname, pageProps, updateJourney]);
+  }, [pageProps, updateJourney]);
 
   useEffect(() => {
     // router.events.on('routeChangeStart', handleStart);
@@ -203,11 +128,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:image" content="/res/OG-image.png" />
       </Head>
       <Layout handleLoad={handleLoad} isLoaded={isLoaded} variant="classic">
-        {onMaintenance ? (
-          <Maintenance />
-        ) : (
-          <Component {...pageProps}></Component>
-        )}
+        <Component {...pageProps}></Component>
       </Layout>
     </Contexts>
   );

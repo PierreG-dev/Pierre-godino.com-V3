@@ -69,42 +69,43 @@ const Home: NextPage = () => {
         <meta property="og:description" content={metaData.description} />
       </Head>
     );
-  }, [router.pathname]);
+  }, []);
 
   //Génère la Terre et les étoiles
   useEffect(() => {
     let phi = 0;
-
-    const globe = createGlobe(canvasRef.current, {
-      devicePixelRatio: 1.4,
-      width: 2200,
-      height: 2200,
-      phi: 1,
-      theta: 0.01,
-      dark: 1,
-      diffuse: 1.2,
-      mapSamples: 16000,
-      mapBrightness: 6,
-      baseColor: [0.3, 0.3, 0.3],
-      markerColor: [0.1, 0.8, 1],
-      glowColor: [0.102, 0.357, 0.7395],
-      markers: [
-        // longitude latitude
-        { location: [43.6, 1.433333], size: 0.03 },
-      ],
-      onRender: (state) => {
-        // Called on every animation frame.
-        // `state` will be an empty object, return updated params.
-        state.phi = phi;
-        if (window.innerWidth > 1200) phi += 0.001;
-        else {
-          phi = 2;
-        }
-      },
-    });
-
+    let globe;
+    setTimeout(() => {
+      globe = createGlobe(canvasRef.current, {
+        devicePixelRatio: 1.4,
+        width: 2200,
+        height: 2200,
+        phi: 1,
+        theta: 0.01,
+        dark: 1,
+        diffuse: 1.2,
+        mapSamples: 16000,
+        mapBrightness: 6,
+        baseColor: [0.3, 0.3, 0.3],
+        markerColor: [0.1, 0.8, 1],
+        glowColor: [0.102, 0.357, 0.7395],
+        markers: [
+          // longitude latitude
+          { location: [43.6, 1.433333], size: 0.03 },
+        ],
+        onRender: (state) => {
+          // Called on every animation frame.
+          // `state` will be an empty object, return updated params.
+          state.phi = phi;
+          if (window.innerWidth > 1200) phi += 0.001;
+          else {
+            phi = 2;
+          }
+        },
+      });
+    }, 3000);
     return () => {
-      globe.destroy();
+      globe?.destroy && globe.destroy();
     };
   }, []);
 

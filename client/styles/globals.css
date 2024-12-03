@@ -39,6 +39,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  background: #040e1d;
+}
+
 /* ----------------- CLOCK ------------------ */
 
 .react-clock {
@@ -316,7 +320,7 @@ body {
 
 .experience-accordion {
   transition: 0.2s;
-  backdrop-filter: blur(1px);
+  /* backdrop-filter: blur(0px); */
   box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 7px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }

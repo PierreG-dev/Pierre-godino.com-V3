@@ -9,6 +9,7 @@ export type Props = {
   noteColor?: string;
   titleColor?: string;
   actual?: boolean;
+  img?: string;
 };
 
 const Experience: React.FC<Props> = ({
@@ -19,6 +20,7 @@ const Experience: React.FC<Props> = ({
   noteColor = '',
   titleColor = '',
   actual = false,
+  img = '',
 }) => {
   return (
     <MainContainer>
@@ -46,6 +48,7 @@ const Experience: React.FC<Props> = ({
           {title}
         </h4>
         <p className={'font-semibold text-xs'} style={{ color: '#545454' }}>
+          {img && <img src={img} alt={subtitle} loading="lazy" />}
           {subtitle + ' '}
           <span style={{ color: noteColor }}>{note}</span>
         </p>
@@ -57,6 +60,19 @@ const Experience: React.FC<Props> = ({
 const MainContainer = styled.div`
   display: flex;
   margin: 10px 0;
+
+  p {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    img {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      filter: none;
+      object-fit: contain;
+    }
+  }
 `;
 
 export default Experience;

@@ -11,10 +11,6 @@ const GlitchHandler: React.FC<Props> = ({ sentences, delay }) => {
   const [isGlitching, setIsGlitching] = useState<boolean>(false);
   const compt = useRef(sentences.length - 1);
 
-  useEffect(() => {
-    console.log(compt.current);
-  }, [compt]);
-
   //Choisit une phrase dans la liste
   const sentencePicker = useCallback((): string => {
     ++compt.current;
