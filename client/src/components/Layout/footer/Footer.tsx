@@ -287,6 +287,7 @@ const MainContainer = styled.div`
   }
 
   .side-bars {
+    backdrop-filter: blur(0.8px);
     transition: 0.5s ease;
     // filter: drop-shadow(0 -4px 3px rgba(0, 0, 0, 0.2));
     position: absolute;
@@ -297,6 +298,7 @@ const MainContainer = styled.div`
   }
 
   .middle-square {
+    backdrop-filter: blur(0.8px);
     transition: 0.5s ease;
     position: relative;
     display: flex;
@@ -310,6 +312,7 @@ const MainContainer = styled.div`
   }
 
   .middle-square div#border_left {
+    backdrop-filter: blur(0.8px);
     transition: 0.5s ease;
     position: absolute;
     top: -20px;
@@ -323,6 +326,7 @@ const MainContainer = styled.div`
   }
 
   .middle-square div#border_right {
+    backdrop-filter: blur(0.8px);
     transition: 0.5s ease;
     position: absolute;
     top: -20px;
