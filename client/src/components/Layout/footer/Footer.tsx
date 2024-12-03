@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import MenuIcon from '@mui/icons-material/Menu';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
@@ -17,8 +17,38 @@ const Footer: React.FC<Props> = ({
   noLayoutMode,
   handleAdminModalOpen,
 }) => {
+  const footerRef = useRef(null);
   const [displayed, setDisplayed] = useState<displayType>('full');
   const [displayLock, setDisplayLock] = useState<boolean>(false);
+
+  useEffect(() => {
+    const footerElement = footerRef.current;
+    document.addEventListener('click', (e: any) => {
+      if (
+        !footerElement.contains(e.target) &&
+        displayed === 'displayed' &&
+        e.target.tagName !== 'A' &&
+        e.target.className !== 'HomeLogo' &&
+        e.target.className !== 'more-infos'
+      ) {
+        setDisplayed('hidden');
+      }
+    });
+
+    return () => {
+      document.removeEventListener('click', (e: any) => {
+        if (
+          !footerElement.contains(e.target) &&
+          displayed === 'displayed' &&
+          e.target.tagName !== 'A' &&
+          e.target.className !== 'HomeLogo' &&
+          e.target.className !== 'more-infos'
+        ) {
+          setDisplayed('hidden');
+        }
+      });
+    };
+  }, [displayed]);
 
   const translationPicker = useCallback((): {
     transform: string | void;
@@ -37,7 +67,7 @@ const Footer: React.FC<Props> = ({
         };
       default:
         return {
-          transform: 'translate3d(0, 95%, 0)',
+          transform: 'translate3d(0, 93%, 0)',
           display: noLayoutMode ? 'none' : 'block',
         };
     }
@@ -64,7 +94,10 @@ const Footer: React.FC<Props> = ({
   }, [loaded]);
 
   return (
-    <MainContainer style={translationPicker()}>
+    <MainContainer
+      style={translationPicker()}
+      ref={footerRef}
+      className={`d-${displayed}`}>
       <div>
         <span
           className="burger-container"
@@ -76,7 +109,9 @@ const Footer: React.FC<Props> = ({
         </span>
         <div className="side-bars" />
         <div className="flex justify-center">
-          <div className="middle-square" />
+          <div className="middle-square">
+            <div id="border_left" /> <div id="border_right" />
+          </div>
         </div>
         <div className="side-bars" style={{ right: 0, top: 0 }} />
       </div>
@@ -211,34 +246,40 @@ const MainContainer = styled.div`
   transition: 0.5s ease;
   z-index: 6;
   overflow: hidden;
+  transition: 0.5s ease;
 
   .burger-container {
     position: absolute;
-    width: 20vw;
-    height: 4vh;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.2s;
     top: 1px;
-    left: 40vw;
+    left: calc(50vw - 105px);
     color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     z-index: 1;
+    border-radius: 0 0 20px 20px;
+    border-top: 20px solid rgba(255, 255, 255, 0.2);
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    width: 210px;
 
     svg {
+      position: absolute;
+      // width: 10px;
+      top: -20px;
       transition: 0.1s;
-      margin-top: -2vh;
       font-size: 20px;
     }
   }
 
   .burger-container:hover {
-    background: rgba(255, 255, 255, 0.1);
+    border-top: 20px solid rgba(255, 255, 255, 0.3);
   }
 
   .burger-container:active {
-    background: rgba(255, 255, 255, 0.05);
+    border-top: 20px solid rgba(255, 255, 255, 0.35);
 
     svg {
       transform: scale3d(0.9, 0.9, 1);
@@ -246,44 +287,52 @@ const MainContainer = styled.div`
   }
 
   .side-bars {
-    filter: drop-shadow(0 -4px 3px rgba(0, 0, 0, 0.2));
+    transition: 0.5s ease;
+    // filter: drop-shadow(0 -4px 3px rgba(0, 0, 0, 0.2));
     position: absolute;
-    width: 40vw;
+    width: calc(50vw - 105px);
     height: 50vh;
-    background: #2d3436;
+    background: #2d343655;
     z-index: 1;
   }
 
   .middle-square {
+    transition: 0.5s ease;
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    background: #2d3436;
-    width: 20vw;
+    background: #2d343655;
+    width: 210px;
     height: 50vh;
-    margin-top: 1.9vw;
     z-index: 2;
+    transform: translateY(20px);
   }
 
-  .middle-square::before {
-    filter: drop-shadow(3px -4px 3px rgba(0, 0, 0, 0.2));
+  .middle-square div#border_left {
+    transition: 0.5s ease;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    // filter: drop-shadow(3px -4px 3px rgba(0, 0, 0, 0.2));
     content: '';
     width: 1px;
-    border-left: 3vw solid #2d3436;
     border-right: 0 solid transparent;
-    border-top: 2vw solid transparent;
-    margin-top: -1.9vw;
+    border-left: 30px solid #2d343655;
+    border-top: 20px solid transparent;
   }
 
-  .middle-square::after {
+  .middle-square div#border_right {
+    transition: 0.5s ease;
+    position: absolute;
+    top: -20px;
+    right: 0;
     filter: drop-shadow(-3px -4px 3px rgba(0, 0, 0, 0.2));
     content: '';
     width: 1px;
     border-left: 0 solid transparent;
-    border-right: 3vw solid #2d3436;
-    border-top: 2vw solid transparent;
-    margin-top: -1.9vw;
+    border-right: 30px solid #2d343655;
+    border-top: 20px solid transparent;
   }
 
   /* ------ CONTENT ------ */
@@ -365,7 +414,7 @@ const MainContainer = styled.div`
       justify-content: space-around;
       align-items: center;
       height: 3vh;
-      background: #262626;
+      background: #26262699;
       color: rgba(255, 255, 255, 0.6);
       font-size: 0.9rem;
       font-family: BebasNeue;
@@ -386,50 +435,42 @@ const MainContainer = styled.div`
     }
   }
 
+  &.d-full {
+    .side-bars {
+      background: #121a25;
+    }
+    .middle-square {
+      background: #121a25;
+    }
+    .middle-square #border_left {
+      border-left: 30px solid #121a25;
+      border-top: 21px solid transparent;
+    }
+    .middle-square #border_right {
+      border-right: 30px solid #121a25;
+      border-top: 21px solid transparent;
+    }
+  }
+
+  &.d-displayed {
+    .side-bars {
+      background: #2d3436ee;
+    }
+    .middle-square {
+      background: #2d3436ee;
+    }
+    .middle-square #border_left {
+      border-left: 30px solid #2d3436ee;
+      border-top: 20.4px solid transparent;
+    }
+    .middle-square #border_right {
+      border-right: 30px solid #2d3436ee;
+      border-top: 20.4px solid transparent;
+    }
+  }
+
   /* --------------------- */
   @media (max-width: 800px) {
-    .side-bars {
-      position: absolute;
-      width: 35vw;
-      height: 50vh;
-      background: #2d3436;
-    }
-
-    .middle-square {
-      position: relative;
-      background: #2d3436;
-      width: 30vw;
-      height: 50vh;
-      margin-top: 4.8vw;
-    }
-
-    .middle-square::before {
-      width: 3vw;
-      margin-top: -4.8vw;
-      border-left: 4.5vw solid #2d3436;
-      border-right: 4.5vw solid transparent;
-      border-top: 5vw solid transparent;
-    }
-
-    .middle-square::after {
-      width: 3vw;
-      margin-top: -4.8vw;
-      border-left: 4.5vw solid transparent;
-      border-right: 4.5vw solid #2d3436;
-      border-top: 5vw solid transparent;
-    }
-
-    .burger-container {
-      left: 30vw;
-      width: 40vw;
-
-      svg {
-        transition: 0.1s;
-        margin-top: -4vw;
-        font-size: 20px;
-      }
-    }
-
     /* ---- CONTENT ---- */
     footer {
       #main-footer {

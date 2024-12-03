@@ -51,7 +51,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
     <MainContainer
       className={translationPicker()}
       style={{ display: noLayoutMode ? 'none' : 'block' }}>
-      <nav>
+      <nav className={`${displayed === 'full' ? 'd-full' : ''}`}>
         <div className="flex column justify-center">
           <div className="flex items-end justify-between">
             <div className="middle-square"></div>
@@ -137,7 +137,7 @@ const MainContainer = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 50vh;
+  height: calc(50%);
   z-index: 7;
   transition: 0.5s ease;
   transform: translate3d(0, -80%, 0);
@@ -156,9 +156,11 @@ const MainContainer = styled.div`
     justify-content: space-around;
     width: 100vw;
     height: 50vh;
-    background: #2d3436;
+    background: #2d343655;
     z-index: 3;
-    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(0.8px);
+    transition: 0.5s ease;
+    // box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
 
     #custom_nav_dropdown {
       position: relative;
@@ -181,7 +183,7 @@ const MainContainer = styled.div`
       flex-direction: column;
       padding: 0 !important;
       border-radius: 5px;
-      background: #2d3436aa;
+      background: #2d343655;
       color: white;
       transition: 0.2s;
 
@@ -329,20 +331,31 @@ const MainContainer = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    background: #2d3436;
-    width: 16.3vw;
+    background: transparent;
+    width: 210px;
     height: 50vh;
     z-index: 2;
   }
   .middle-square::before {
+    transition: 0.5s ease;
+    position: absolute;
+    bottom: -20px;
+    z-index: 10;
     content: '';
-    margin-bottom: -1.95vw;
-    width: 21vw;
+    width: 213px;
     border-radius: 0 0 20px 20px;
-    border-top: 2vw solid #2d3436;
-    border-left: 3vw solid transparent;
-    border-right: 3vw solid transparent;
-    filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
+    border-top: 20px solid #2d343655;
+    backdrop-filter: blur(0.8px);
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    // filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
+  }
+
+  nav.d-full {
+    background: #121a25;
+    .middle-square:before {
+      border-top: 20px solid #121a25;
+    }
   }
   @media (max-width: 800px) {
     nav li img {
@@ -357,27 +370,6 @@ const MainContainer = styled.div`
 
     .small-hidden {
       display: none;
-    }
-    .side-bars {
-      position: absolute;
-      width: 30vw;
-      height: 50vh;
-      background: #2d3436;
-    }
-    .middle-square {
-      position: relative;
-      background: #2d3436;
-      width: 41vw;
-      height: 50vh;
-    }
-    .middle-square::before {
-      content: '';
-      margin-bottom: -4.9vw;
-      width: 30vw;
-      border-radius: 0 0 20px 20px;
-      border-top: 5vw solid #2d3436;
-      border-left: 4.5vw solid transparent;
-      border-right: 4.5vw solid transparent;
     }
   }
 
