@@ -27,6 +27,7 @@
     "@mui/material": "^5.2.8",
     "@mui/styled-engine-sc": "^5.1.0",
     "@types/react-dom": "17",
+    "@types/react-lottie": "^1.2.10",
     "autoprefixer": "^10.2.1",
     "canvas-confetti": "^1.4.0",
     "cobe": "^0.6.3",

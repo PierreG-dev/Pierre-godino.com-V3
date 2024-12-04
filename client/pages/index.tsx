@@ -27,10 +27,10 @@ const Home: NextPage = () => {
   const { background } = useContext(BackgroundContext);
 
   // --- Lordicons
-  const ComputerIconRef = useRef<any>(null);
-  const ShopIconRef = useRef<any>(null);
-  const AppIconRef = useRef<any>(null);
-  const BookIconRef = useRef<HTMLDivElement>(null);
+  // const ComputerIconRef = useRef<any>(null);
+  // const ShopIconRef = useRef<any>(null);
+  // const AppIconRef = useRef<any>(null);
+  // const BookIconRef = useRef<HTMLDivElement>(null);
 
   // --- STATES
   const [displayedPrestations, setDisplayedPrestations] = useState<
@@ -116,7 +116,7 @@ const Home: NextPage = () => {
                   <Lottie
                     options={{ ...defaultOptions, animationData: COMPUTER }}
                     width={'100%'}
-                    ref={ComputerIconRef}
+                    // ref={ComputerIconRef}
                   />
                 )}
               </div>
@@ -128,7 +128,7 @@ const Home: NextPage = () => {
                   <Lottie
                     options={{ ...defaultOptions, animationData: SHOP }}
                     width={'100%'}
-                    ref={ShopIconRef}
+                    // ref={ShopIconRef}
                   />
                 )}
               </div>
@@ -140,7 +140,7 @@ const Home: NextPage = () => {
                   <Lottie
                     options={{ ...defaultOptions, animationData: APP }}
                     width={'100%'}
-                    ref={AppIconRef}
+                    // ref={AppIconRef}
                   />
                 )}
               </div>
@@ -152,7 +152,7 @@ const Home: NextPage = () => {
                   <Lottie
                     options={{ ...defaultOptions, animationData: BOOK }}
                     width={'100%'}
-                    ref={BookIconRef}
+                    // ref={BookIconRef}
                   />
                 )}
               </div>
