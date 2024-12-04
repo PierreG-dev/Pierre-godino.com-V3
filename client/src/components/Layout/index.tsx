@@ -57,10 +57,12 @@ const Index: React.FC<Props> = ({ children, variant, isLoaded }) => {
           zIndex: isLoaded ? -1 : 5,
         }}></div> */}
 
-      <AdminModal
-        isOpened={isAdminModalOpened}
-        handleClose={HandleAdminModalClose}
-      />
+      {isAdminModalOpened && (
+        <AdminModal
+          isOpened={isAdminModalOpened}
+          handleClose={HandleAdminModalClose}
+        />
+      )}
       <Dock />
 
       {noLayoutMode && (

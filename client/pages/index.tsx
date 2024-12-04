@@ -90,13 +90,6 @@ const Home: NextPage = () => {
             <strong>boutiques en ligne</strong> et <strong>applications</strong>
             .
           </h1>
-          {/* <h1>
-            <GlitchHandler sentences={prefixArray.current} delay={17000} />
-            <GlitchHandler sentences={titleArray.current} delay={8500} />
-          </h1>
-          <i>
-            <TextSlider textArray={sentencesArray.current} delay={8500} />
-          </i> */}
         </div>
 
         <div id="links">
@@ -122,8 +115,7 @@ const Home: NextPage = () => {
                 {displayedPrestations >= 1 && (
                   <Lottie
                     options={{ ...defaultOptions, animationData: COMPUTER }}
-                    height={100}
-                    width={100}
+                    width={'100%'}
                     ref={ComputerIconRef}
                   />
                 )}
@@ -135,8 +127,7 @@ const Home: NextPage = () => {
                 {displayedPrestations >= 2 && (
                   <Lottie
                     options={{ ...defaultOptions, animationData: SHOP }}
-                    height={100}
-                    width={100}
+                    width={'100%'}
                     ref={ShopIconRef}
                   />
                 )}
@@ -148,8 +139,7 @@ const Home: NextPage = () => {
                 {displayedPrestations >= 3 && (
                   <Lottie
                     options={{ ...defaultOptions, animationData: APP }}
-                    height={100}
-                    width={100}
+                    width={'100%'}
                     ref={AppIconRef}
                   />
                 )}
@@ -161,8 +151,7 @@ const Home: NextPage = () => {
                 {displayedPrestations >= 4 && (
                   <Lottie
                     options={{ ...defaultOptions, animationData: BOOK }}
-                    height={100}
-                    width={100}
+                    width={'100%'}
                     ref={BookIconRef}
                   />
                 )}
@@ -178,9 +167,10 @@ const Home: NextPage = () => {
 
 const MainContainer = styled.div`
   background: #040e1d;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   padding-top: 7vh;
 
@@ -189,13 +179,14 @@ const MainContainer = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     gap: 100px;
-    padding-top: 100px;
     position: relative;
     height: fit-content;
-    width: 50%;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 50px;
+    padding-top: 100px;
 
     #content {
-      padding: 5vw;
       padding-top: 0;
       display: flex;
       flex-direction: column;
@@ -205,17 +196,24 @@ const MainContainer = styled.div`
       gap: 10px;
       z-index: 5;
       height: fit-content;
+
       h1 {
-        /* height: 100px; */
         font-family: 'Space Mono', monospace;
         font-size: 1.7rem;
         font-weight: normal;
         text-shadow: 1px 1px 5px rgba(250, 250, 250, 0.5);
         color: rgba(255, 255, 255, 0.8);
 
+        strong {
+          color: rgb(222, 103, 90);
+
+          text-shadow: 0px 0px 5px rgba(231, 76, 60, 0.4);
+        }
+
         span {
           display: block;
           font-size: 2.5rem;
+          margin-bottom: 15px;
 
           strong {
             color: rgb(231, 76, 60);
@@ -235,11 +233,10 @@ const MainContainer = styled.div`
 
     #links {
       display: flex;
-      padding-left: 5vw;
-      gap: 25px;
+      gap: 15px;
       width: 100%;
       min-width: fit-content;
-      justify-content: center;
+      justify-content: space-between;
       flex-wrap: wrap;
       z-index: 5;
 
@@ -250,17 +247,17 @@ const MainContainer = styled.div`
         font-weight: bold;
         font-size: 1.2rem;
         color: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
-          inset 0 0px 7px rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0px 7px rgba(255, 255, 255, 0.1),
+          inset 0 0px 7px rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(1px);
         border-radius: 3px;
         font-family: 'Montserrat';
-        width: 100%;
-        max-width: 300px;
+        flex: 1;
+        min-width: 320px;
+        max-width: calc(100vw - 100px);
         height: 100px;
-        // transition: 0.1s;
 
         button {
           display: flex;
@@ -312,10 +309,11 @@ const MainContainer = styled.div`
   }
 
   section#prestations {
-    padding: 0;
     margin: 0;
-    width: 50vw;
-    height: 100vh;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 50px;
+    padding-top: 100px;
 
     ul {
       width: 100%;
@@ -323,34 +321,47 @@ const MainContainer = styled.div`
       list-style: none;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 40px;
 
       li {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        gap: 10px;
+        gap: 0px;
         font-family: 'BebasNeue';
         color: #fafafa;
-        width: 400px;
-        max-width: 90vw;
+        width: 600px;
+        max-width: calc(100vw - 100px);
         height: 100px;
         animation: appearFromLeft 0.5s 1 ease both;
 
         & > div {
           margin: 0 !important;
-          width: 100px;
+          width: 150px;
+          overflow: visible;
+
+          @media (max-width: 460px) {
+            width: 100px;
+          }
         }
 
         &.reverse {
+          gap: 0px;
           flex-direction: row-reverse;
           animation: appearFromRight 0.5s 1 ease both;
+          text-align: right;
         }
 
         h2 {
-          font-size: 2rem;
+          font-size: 2.5rem;
+          letter-spacing: 1px;
+          width: calc(100% - 150px);
+
+          @media (max-width: 460px) {
+            font-size: 1.5rem;
+            width: calc(100% - 100px);
+          }
         }
 
         @keyframes appearFromLeft {

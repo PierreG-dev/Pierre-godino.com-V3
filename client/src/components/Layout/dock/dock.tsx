@@ -98,8 +98,8 @@ const MainContainer = styled.nav`
     right: 0;
     border-radius: 5px 0 0 5px;
     color: #fafafa88;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #2d343655;
+    border: #2d343655;
     padding: 0;
     width: 40px;
     height: 20px;
@@ -107,11 +107,10 @@ const MainContainer = styled.nav`
     align-items: center;
     justify-content: center;
     font-size: 0.7rem;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
     transition: 0.1s;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: #2d3436ff;
     }
   }
 
@@ -127,9 +126,9 @@ const MainContainer = styled.nav`
 `;
 
 const DockElement = styled.li`
-  background: rgba(255, 255, 255, 0.1);
+  background: #2d343655;
   backdrop-filter: blur(2px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #2d343655;
   padding-right: 15px;
   box-sizing: unset;
   min-width: 250px;
@@ -144,11 +143,11 @@ const DockElement = styled.li`
     border-top: 0;
   }
   &.selected {
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 5px #2d343655;
     transform: translateX(calc(-100% + 50px));
-    transition: 0.2s, transform 0.2s ease-out;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.2);
+    transition: 0.1s, transform 0.2s ease-out;
+    border: 1px solid #2d343655;
+    background: #2d343655;
 
     img {
       opacity: 1;
@@ -156,9 +155,9 @@ const DockElement = styled.li`
   }
 
   &:hover:not(.selected) {
-    background: rgba(255, 255, 255, 0.2);
+    background: #2d3436aa;
     cursor: pointer;
-    transform: translateX(-20px);
+    transform: translateX(-10px);
 
     img {
       opacity: 1;

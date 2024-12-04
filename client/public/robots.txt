@@ -1,4 +1,4 @@
-User-agent: *
+User-agent: Googlebot-Image
 Disallow: /*.png$
 Disallow: /*.jpg$
 Disallow: /*.jpeg$
@@ -7,3 +7,8 @@ Disallow: /*.bmp$
 Disallow: /*.webp$
 Disallow: /*.svg$
 Disallow: /*.tiff$
+Allow: /res/LOGO.png
+Allow: /res/LOGO.svg
+
+User-agent: *
+Allow: /
