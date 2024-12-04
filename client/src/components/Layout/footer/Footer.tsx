@@ -331,7 +331,7 @@ const MainContainer = styled.div`
     position: absolute;
     top: -20px;
     right: 0;
-    filter: drop-shadow(-3px -4px 3px rgba(0, 0, 0, 0.2));
+    // filter: drop-shadow(-3px -4px 3px rgba(0, 0, 0, 0.2));
     content: '';
     width: 1px;
     border-left: 0 solid transparent;

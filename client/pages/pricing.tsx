@@ -32,9 +32,9 @@ const Pricing: NextPage = () => {
   const { background } = useContext(BackgroundContext);
   const metaContentGenerator = useMemo(() => {
     const metaData = {
-      title: 'Tarifs',
+      title: 'Création de sites internet sur Agen',
       description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | Tarifs',
+        'Détail de mes prestations de création de sites internet sur Agen et dans toute la France',
       ogUrl: 'https://pierre-godino.com/pricing',
     };
 
@@ -120,9 +120,9 @@ const Pricing: NextPage = () => {
               100% Codé à la main
             </li>
           </ul>
-          <p className="service-support">
+          {/* <p className="service-support">
             Maintenance à partir de <span>30 € / mois</span> *
-          </p>
+          </p> */}
         </li>
         <li className="service-item e-commerce">
           <h2 className="service-title">Boutique en ligne</h2>
@@ -186,9 +186,9 @@ const Pricing: NextPage = () => {
               Statistiques en temps réel
             </li>
           </ul>
-          <p className="service-support">
+          {/* <p className="service-support">
             Maintenance à partir de <span>70 € / mois</span> *
-          </p>
+          </p> */}
         </li>
 
         <li className="service-item application">
@@ -250,7 +250,7 @@ const Pricing: NextPage = () => {
               Collaboration continue
             </li>
           </ul>
-          <p className="service-support">Maintenance sur devis</p>
+          {/* <p className="service-support">Maintenance sur devis</p> */}
         </li>
       </ul>
 
@@ -327,7 +327,7 @@ const Pricing: NextPage = () => {
           <hr />
         </ul>
         <p className="service-support">
-          Maintenance <span>20 € / mois</span>
+          {/* Maintenance <span>20 € / mois</span> */}
         </p>
       </div>
 

@@ -1,7 +1,6 @@
 import { NextPage } from 'next';
-import { useMemo, useEffect, useCallback, useRef, useContext } from 'react';
+import { useMemo, useContext } from 'react';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { BackgroundContext } from '../../src/contexts/Contexts';
 
@@ -9,7 +8,6 @@ const Cgu: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
 
-  const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'CGU',
@@ -80,6 +78,9 @@ const Cgu: NextPage = () => {
           tout ou partie de ces éléments est strictement interdite sans
           l'autorisation explicite du webmaster.
         </p>
+
+        <h2>Mentions légales</h2>
+        <a href="https://lordicon.com/">Icons by Lordicon.com</a>
       </main>
     </MainContainer>
   );
