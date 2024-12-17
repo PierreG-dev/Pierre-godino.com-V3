@@ -227,10 +227,9 @@ const Curiculum: NextPage = () => {
 
             <p className={'text-sm'}>
               Passionné par la <strong>programmation</strong> et la{' '}
-              <strong>formation</strong>, j'interviens dans divers organismes de
-              formation pour enseigner des modules de{' '}
-              <strong>développement WEB</strong>, en <strong>présentiel</strong>{' '}
-              et <strong>visioconférence</strong>.
+              <strong>formation</strong>, j'interviens dans diverses écoles pour
+              enseigner des modules de <strong>développement WEB</strong>, en{' '}
+              <strong>présentiel</strong> et <strong>visioconférence</strong>.
             </p>
           </section>
         </InfosContainer>
@@ -420,22 +419,33 @@ const MainContainer = styled.div`
     gap: 5px;
   }
 
-  #skills img {
-    width: 17px;
-    height: 17px;
-    border-radius: 5px;
-    object-fit: contain;
-    filter: none;
-    backface-visibility: hidden;
-  }
-  #lang img {
-    backface-visibility: hidden;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    object-fit: cover;
-    filter: none;
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+  section > div:has(#skills, #lang) {
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+
+    #skills,
+    #lang {
+      width: 100%;
+    }
+
+    #skills img {
+      width: 17px;
+      height: 17px;
+      border-radius: 5px;
+      object-fit: contain;
+      filter: none;
+      backface-visibility: hidden;
+    }
+    #lang img {
+      backface-visibility: hidden;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: none;
+      box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+    }
   }
 
   h4,

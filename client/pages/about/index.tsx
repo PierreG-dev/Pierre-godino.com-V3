@@ -54,7 +54,7 @@ const Index: NextPage = () => {
             <video loop autoPlay muted>
               <source src={'/video/skills-preview.mp4'} type={'video/mp4'} />
             </video>
-            <h3>Mes technologies</h3>
+            <h3>Mes spécialités</h3>
           </CustomLink>
           <CustomLink
             notALink={true}
@@ -75,7 +75,7 @@ const Index: NextPage = () => {
           <video loop autoPlay muted>
             <source src={'/video/cv-preview.mp4'} type={'video/mp4'} />
           </video>
-          <h3>Mon CV</h3>
+          <h3>Synthèse</h3>
         </CustomLink>
       </section>
     </MainContainer>

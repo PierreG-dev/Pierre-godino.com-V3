@@ -6,11 +6,6 @@ import BrushIcon from '@mui/icons-material/Brush';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
-import ShortcutIcon from '@mui/icons-material/Shortcut';
-import BadgeIcon from '@mui/icons-material/Badge';
-import PublicIcon from '@mui/icons-material/Public';
-import SavingsIcon from '@mui/icons-material/Savings';
-import BeenhereIcon from '@mui/icons-material/Beenhere';
 import CodeIcon from '@mui/icons-material/Code';
 import SecurityIcon from '@mui/icons-material/Security';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -26,6 +21,7 @@ import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import LanguageIcon from '@mui/icons-material/Language';
 import { BackgroundContext } from '../src/contexts/Contexts';
+import CustomLink from '../src/components/Layout/routing/CustomLink';
 
 const Pricing: NextPage = () => {
   // --- Background
@@ -66,7 +62,8 @@ const Pricing: NextPage = () => {
           </p>
           <div className="service-price">
             <h3 className="price">
-              A partir de <span>850 €</span>
+              Devis en ligne disponible{' '}
+              <img src="/icons/check.png" alt="Disponible" />
             </h3>
           </div>
           <ul className="service-details-list">
@@ -120,6 +117,9 @@ const Pricing: NextPage = () => {
               100% Codé à la main
             </li>
           </ul>
+          <CustomLink href="/simulateur/site-vitrine">
+            Faire une simulation
+          </CustomLink>
           {/* <p className="service-support">
             Maintenance à partir de <span>30 € / mois</span> *
           </p> */}
@@ -132,7 +132,8 @@ const Pricing: NextPage = () => {
           </p>
           <div className="service-price">
             <h3 className="price">
-              A partir de <span>2300 €</span>
+              Devis en 24h{' '}
+              <img src="/icons/three-o-clock-clock.png" alt="horloge" />
             </h3>
           </div>
           <ul className="service-details-list">
@@ -186,6 +187,7 @@ const Pricing: NextPage = () => {
               Statistiques en temps réel
             </li>
           </ul>
+          <CustomLink href="/contact">En savoir plus</CustomLink>
           {/* <p className="service-support">
             Maintenance à partir de <span>70 € / mois</span> *
           </p> */}
@@ -197,7 +199,9 @@ const Pricing: NextPage = () => {
             Passez à l'étape supérieure en proposant votre propre plateforme
           </p>
           <div className="service-price">
-            <h3 className="price">Tarif ajusté selon les besoins</h3>
+            <h3 className="price">
+              Devis en 72h <img src="/icons/clock.png" alt="horloge" />
+            </h3>
           </div>
           <ul className="service-details-list">
             <li>
@@ -250,86 +254,10 @@ const Pricing: NextPage = () => {
               Collaboration continue
             </li>
           </ul>
+          <CustomLink href="/contact">En savoir plus</CustomLink>
           {/* <p className="service-support">Maintenance sur devis</p> */}
         </li>
       </ul>
-
-      <h5 id="maintenance_infos">
-        * Modifications post-livraison incluses, garantie sans incident,
-        sécurité renforcée et optimisation SEO**. <br />
-        ** Référencement amélioré du site
-      </h5>
-
-      <h3 id="on_budget_title">
-        <SavingsIcon />
-        Petit budget ?
-      </h3>
-
-      <div className="service-item" id="online_visit_card">
-        <h2 className="service-title">Carte de visite numérique</h2>
-        <p className="service-description">
-          Solution efficace pour une présence en ligne minimale, parfait pour
-          les petits budgets.
-        </p>
-        <div className="service-price">
-          <h3 className="price">
-            Tarif unique <span>200 €</span>
-          </h3>
-        </div>
-        <ul className="service-details-list">
-          <li>
-            <ShortcutIcon
-              style={{
-                color: '#27ae60',
-                filter: 'drop-shadow(0px 0px 3px rgba(green, 0.2))',
-              }}
-            />{' '}
-            Abordable
-          </li>
-          <li>
-            <BadgeIcon
-              style={{
-                color: '#27ae60',
-                filter: 'drop-shadow(0px 0px 3px rgba(green, 0.2))',
-              }}
-            />{' '}
-            Minimaliste
-          </li>
-          <li>
-            <PublicIcon
-              style={{
-                color: '#27ae60',
-                filter: 'drop-shadow(0px 0px 3px rgba(green, 0.2))',
-              }}
-            />{' '}
-            Présence en ligne
-          </li>
-          <hr />
-          <li>
-            <BeenhereIcon
-              style={{
-                color: '#27ae60',
-                filter: 'drop-shadow(0px 0px 3px rgba(green, 0.2))',
-              }}
-            />{' '}
-            Référence l'entreprise
-          </li>
-          <hr />
-          <li>
-            <CodeIcon
-              style={{
-                color: '#27ae60',
-                filter: 'drop-shadow(0px 0px 3px rgba(green, 0.2))',
-              }}
-            />{' '}
-            100% codé à la main
-          </li>
-          <hr />
-        </ul>
-        <p className="service-support">
-          {/* Maintenance <span>20 € / mois</span> */}
-        </p>
-      </div>
 
       <section id="clients">
         <h3>
@@ -340,104 +268,134 @@ const Pricing: NextPage = () => {
           <div className="wrapper">
             {' '}
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/oclock.png"
               alt="Ecoles O'Clock"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/philliance.png"
               alt="Philiance Formations"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/apformation.png"
               alt="AP Formations"
             />
-            <img className="logo-element" src="/icons/GEMA.jpg" alt="GEMA" />
             <img
+              loading="lazy"
+              className="logo-element"
+              src="/icons/GEMA.jpg"
+              alt="GEMA"
+            />
+            <img
+              loading="lazy"
               className="logo-element"
               src="/icons/axeacademy.png"
               alt="Axe academy"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/ab-nature_full.png"
               alt="AB Nature"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/checkyoursmile.png"
               alt="Check Your Smile"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/speedynanie_alpha.png"
               alt="Speedy Nanie"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/videomenthe_alpha.png"
               alt="Videomenthe"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/yoop_alpha.png"
               alt="Yoop Digital"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/misino_icon_alt.png"
               alt="Dr. Misino"
             />
             {/* DEBUT SENTINEL */}
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/oclock.png"
               alt="Ecoles O'Clock"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/philliance.png"
               alt="Philiance Formations"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/apformation.png"
               alt="AP Formations"
             />
-            <img className="logo-element" src="/icons/GEMA.jpg" alt="GEMA" />
             <img
+              loading="lazy"
+              className="logo-element"
+              src="/icons/GEMA.jpg"
+              alt="GEMA"
+            />
+            <img
+              loading="lazy"
               className="logo-element"
               src="/icons/axeacademy.png"
               alt="Axe academy"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/ab-nature_full.png"
               alt="AB Nature"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/checkyoursmile.png"
               alt="Check Your Smile"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/speedynanie_alpha.png"
               alt="Speedy Nanie"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/videomenthe_alpha.png"
               alt="Videomenthe"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/yoop_alpha.png"
               alt="Yoop Digital"
             />
             <img
+              loading="lazy"
               className="logo-element"
               src="/icons/misino_icon_alt.png"
               alt="Dr. Misino"
@@ -476,13 +434,17 @@ const Pricing: NextPage = () => {
 };
 
 const MainContainer = styled.main`
-  padding: 13vh 0;
+  padding: 13vh 10px;
   background: #040e1d;
   min-height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  section {
+    z-index: 1;
+  }
 
   h1 {
     letter-spacing: 5px;
@@ -510,11 +472,13 @@ const MainContainer = styled.main`
 
   li.service-item,
   div.service-item {
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
-      inset 0 0px 7px rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
+      inset 0 0px 7px rgba(255, 255, 255, 0.3); */
     // backdrop-filter: blur(1px);
     width: 400px;
+    max-width: 100%;
     flex: 1;
     padding: 25px 25px;
     color: rgba(#fafafa, 0.8);
@@ -524,10 +488,10 @@ const MainContainer = styled.main`
     gap: 10px;
     border-radius: 5px;
     transition: 0.1s;
-    padding-bottom: 60px;
+    /* padding-bottom: 60px; */
 
     &:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     &.vitrine {
@@ -564,6 +528,23 @@ const MainContainer = styled.main`
         &::after {
           border: 3px solid rgb(231, 76, 60);
         }
+      }
+    }
+
+    a {
+      display: flex;
+      justify-content: center;
+      color: #373737;
+      font-weight: bold;
+      border-radius: 5px;
+      padding: 15px;
+      background: #fafafa;
+      width: 100%;
+      opacity: 0.7;
+      transition: 0.1s;
+
+      &:hover {
+        opacity: 1;
       }
     }
   }
@@ -615,22 +596,30 @@ const MainContainer = styled.main`
 
   .service-price {
     h3.price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       color: rgba(255, 255, 255, 0.8);
       font-weight: bold;
       letter-spacing: 1px;
       font-size: 1.5rem;
 
-      span {
-        font-size: 2.5rem;
+      img {
+        width: 30px;
+        height: 30px;
+        filter: brightness(0) saturate(100%) invert(47%) sepia(89%)
+          saturate(356%) hue-rotate(93deg) brightness(98%) contrast(95%);
       }
     }
   }
 
   ul.service-details-list {
-    padding-top: 25px;
+    flex: 1;
+    padding: 25px 0;
     color: rgba(255, 255, 255, 0.7);
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     gap: 20px;
 
     hr {
@@ -643,7 +632,6 @@ const MainContainer = styled.main`
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* gap: 5px; */
       font-weight: bold;
       letter-spacing: 1px;
 
@@ -744,7 +732,7 @@ const MainContainer = styled.main`
 
   section#clients {
     padding-top: 100px;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -835,7 +823,7 @@ const MainContainer = styled.main`
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 50px;
+      gap: 20px;
       margin-top: 80px;
 
       @media (max-width: 900px) {
@@ -843,16 +831,19 @@ const MainContainer = styled.main`
       }
 
       a {
+        display: block;
+        width: 100%;
+        display: flex;
+        justify-content: center;
         button {
-          width: 400px;
+          width: 100%;
+          max-width: 400px;
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 10px;
           padding: 25px;
-          background: rgba(255, 255, 255, 0.25);
-          box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
-            inset 0 0px 7px rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.05);
           backdrop-filter: blur(1px);
           border: 1px solid rgba(255, 255, 255, 0.25);
           border-radius: 3px;
@@ -920,13 +911,25 @@ const Caroussel = styled.div`
     width: fit-content;
     animation: 60s caroussel infinite linear;
 
+    @media (max-width: 800px) {
+      width: 50px;
+    }
+
     img.logo-element {
       border-radius: 15px;
       width: 100px;
       height: 100px;
       object-fit: contain;
-
       filter: drop-shadow(0px 0px 0.5px rgba(255, 255, 255, 0.5));
+    }
+
+    @media (max-width: 800px) {
+      animation: 60s carousselSmallSize infinite linear;
+
+      img.logo-element {
+        width: 50px;
+        height: 50px;
+      }
     }
   }
 
@@ -936,6 +939,15 @@ const Caroussel = styled.div`
     }
     100% {
       transform: translate3d(-2200px, 0, 0);
+    }
+  }
+
+  @keyframes carousselSmallSize {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-1100px, 0, 0);
     }
   }
 `;

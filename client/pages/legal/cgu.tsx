@@ -81,6 +81,11 @@ const Cgu: NextPage = () => {
 
         <h2>Mentions légales</h2>
         <a href="https://lordicon.com/">Icons by Lordicon.com</a>
+        <a
+          href="https://www.flaticon.com/fr/icones-gratuites/google"
+          title="google icônes">
+          Google icônes créées par Freepik - Flaticon
+        </a>
       </main>
     </MainContainer>
   );

@@ -256,6 +256,10 @@ const MainContainer = styled.div`
     gap: 25px;
     padding: 50px;
 
+    @media (max-width: 380px) {
+      padding: 10px;
+    }
+
     #left {
       width: 60%;
       display: flex;
@@ -285,22 +289,18 @@ const MainContainer = styled.div`
   section {
     z-index: 1;
     padding: 20px 50px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 5px;
-    box-shadow: 0 0px 7px rgba(255, 255, 255, 0.3),
-      inset 0 0px 7px rgba(255, 255, 255, 0.3);
-    // backdrop-filter: blur(1px);
-    // -webkit-backdrop-filter: blur(1px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     transition: 0.3s;
     color: rgba(255, 255, 255, 0.9);
 
     &:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     @media (max-width: 450px) {
-      padding: 10px 25px;
+      padding: 10px 15px;
     }
 
     h2,
@@ -462,8 +462,8 @@ const MainContainer = styled.div`
             align-items: center;
             flex-direction: column;
             gap: 15px;
-            transition: 0.3s;
-            background: rgba(255, 255, 255, 0.15);
+            transition: 0.1s;
+            background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0px 0px 7px 1px rgba(255, 255, 255, 0.1);
 
@@ -488,7 +488,7 @@ const MainContainer = styled.div`
 
           &.github div {
             &:hover {
-              background: rgba(155, 89, 182, 0.3);
+              background: rgba(155, 89, 182, 0.15);
               border: 1px solid rgb(155, 89, 182);
               box-shadow: 0px 0px 7px 1px rgb(155, 89, 182);
             }
@@ -496,7 +496,7 @@ const MainContainer = styled.div`
 
           &.malt div {
             &:hover {
-              background: rgba(213, 85, 105, 0.3);
+              background: rgba(213, 85, 105, 0.15);
               border: 1px solid rgb(213, 85, 105);
               box-shadow: 0px 0px 7px 1px rgb(213, 85, 105);
             }
@@ -504,7 +504,7 @@ const MainContainer = styled.div`
 
           &.linkedin div {
             &:hover {
-              background: rgba(29, 113, 156, 0.3);
+              background: rgba(29, 113, 156, 0.15);
               border: 1px solid rgb(29, 113, 156);
               box-shadow: 0px 0px 7px 1px rgb(29, 113, 156);
             }
@@ -512,7 +512,7 @@ const MainContainer = styled.div`
 
           &.cv div {
             &:hover {
-              background: rgba(135, 36, 30, 0.3);
+              background: rgba(135, 36, 30, 0.15);
               border: 1px solid rgb(135, 36, 30);
               box-shadow: 0px 0px 7px 1px rgb(135, 36, 30);
             }

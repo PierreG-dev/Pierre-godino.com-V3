@@ -32,7 +32,7 @@ const cases = [
 ];
 
 const Dock: NextPage = () => {
-  const [isDisplayed, setIsDisplayed] = useState(true);
+  const [isDisplayed, setIsDisplayed] = useState(false);
   const [selectedCase, setSelectedCase] = useState(0);
 
   const clickDetector = useCallback((e: MouseEvent) => {
@@ -48,6 +48,14 @@ const Dock: NextPage = () => {
     };
   }, [clickDetector]);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsDisplayed(true);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <MainContainer>
       <button
@@ -60,7 +68,7 @@ const Dock: NextPage = () => {
           setIsDisplayed((prevstate) => !prevstate);
           setSelectedCase(0);
         }}>
-        {!isDisplayed ? (
+        {isDisplayed ? (
           <FontAwesomeIcon icon={faEye} />
         ) : (
           <FontAwesomeIcon icon={faEyeSlash} />

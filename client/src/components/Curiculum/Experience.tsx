@@ -61,10 +61,15 @@ const MainContainer = styled.div`
   display: flex;
   margin: 10px 0;
 
+  h4 {
+    line-height: 15px;
+  }
+
   p {
     display: flex;
     gap: 5px;
     align-items: center;
+
     img {
       width: 20px;
       height: 20px;

@@ -4,10 +4,10 @@ import { FC } from 'react';
 const LearnCase: FC = () => {
   return (
     <MainContainer>
-      <img src="/icons/learn_icon.png" alt="" />
+      <img src="/icons/learn_icon.svg" alt="" />
       <p>
         Envie d'apprendre la programmation ? <br />
-        <a href="mailto:contact@pierre-godino.com">contact@pierre-godino.com</a>
+        <a href="https://learn.pierre-godino.com">learn.pierre-godino.com</a>
       </p>
     </MainContainer>
   );
@@ -26,20 +26,20 @@ const MainContainer = styled.div`
   p {
     width: 400px;
     a {
-      color: #798af566;
+      color: #df7a5f66;
       position: relative;
       z-index: 8;
-      text-shadow: #798af5aa 0 0 1px;
+      text-shadow: #df7a5faa 0 0 1px;
       cursor: pointer;
 
       &:hover {
-        color: #798af5aa;
+        color: #df7a5faa;
       }
     }
   }
 
   img {
-    filter: drop-shadow(#798af5aa 0 0 1px);
+    filter: drop-shadow(#df7a5faa 0 0 1px);
   }
 `;
 

@@ -125,6 +125,8 @@ function MyApp({ Component, pageProps }) {
     <Contexts>
       <Head>
         <meta property="og:image" content="/res/OG-image.png" />
+        <meta name="twitter:image" content="/res/OG-image.png" />
+        <meta property="og:type" content="website" />
       </Head>
       <Layout handleLoad={handleLoad} isLoaded={isLoaded} variant="classic">
         <Component {...pageProps}></Component>

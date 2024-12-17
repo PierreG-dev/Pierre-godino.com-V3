@@ -1,9 +1,22 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CustomLink from '../routing/CustomLink';
+import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import ForumIcon from '@mui/icons-material/Forum';
+import WorkIcon from '@mui/icons-material/Work';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
-export type displayType = 'full' | 'displayed';
+export type displayType = 'full' | 'displayed' | 'navbar';
 
 export type Props = {
   loaded: boolean;
@@ -11,37 +24,48 @@ export type Props = {
 };
 
 const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
-  const [displayed, setDisplayed]: [displayType, any] = useState('full');
+  const navRef = useRef();
+  const [displayed, setDisplayed] = useState<displayType>('full');
   const [dropdownDisplay, setDropdownDisplay] = useState(false);
 
   useEffect(() => {
     if (!loaded) setDisplayed('full');
-    else setDisplayed('hidden');
+    else setDisplayed('displayed');
   }, [loaded]);
 
-  const translationPicker = useCallback((): 'displayed' | 'full' => {
-    // switch (displayed as displayType) {
-    //   case 'full':
-    //     return {
-    //       transform: 'translate3d(0, 0%, 0)',
-    //       display: noLayoutMode ? 'none' : 'block',
-    //     };
-    //   case 'displayed':
-    //     return {
-    //       transform: 'translate3d(0, calc(-100% + 65px), 0)',
-    //       display: noLayoutMode ? 'none' : 'block',
-    //     };
-    //   default:
-    //     return {
-    //       transform: 'translate3d(0, calc(-100% + 65px), 0)',
-    //       display: noLayoutMode ? 'none' : 'block',
-    //     };
-    // }
-    switch (displayed as displayType) {
+  useEffect(() => {
+    if (displayed !== 'navbar') return;
+    const navElement = navRef.current;
+
+    const handleNavClick = (e: MouseEvent<HTMLElement>) => {
+      console.log(e.target);
+      if (e.target !== navElement && !navElement.contains(e.target))
+        setDisplayed('displayed');
+    };
+
+    window.addEventListener('click', handleNavClick);
+    return () => window.removeEventListener('click', handleNavClick);
+  }, [displayed]);
+
+  const toggleNavbar = useCallback(() => {
+    if (displayed === 'full') return;
+    else if (displayed === 'displayed') setDisplayed('navbar');
+    else setDisplayed('displayed');
+  }, [displayed]);
+
+  const isNotchAvailable = useMemo(() => {
+    if (loaded && window.innerWidth < 550) return true;
+    else return false;
+  }, [loaded]);
+
+  const translationPicker = useCallback((): displayType => {
+    switch (displayed) {
       case 'full':
         return 'full';
       case 'displayed':
         return 'displayed';
+      case 'navbar':
+        return 'navbar';
       default:
         return 'displayed';
     }
@@ -50,42 +74,108 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
   return (
     <MainContainer
       className={translationPicker()}
-      style={{ display: noLayoutMode ? 'none' : 'block' }}>
+      style={{ display: noLayoutMode ? 'none' : 'block' }}
+      ref={navRef}>
       <nav className={`${displayed === 'full' ? 'd-full' : ''}`}>
+        <ul id="alt_links_list">
+          <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <CustomLink href={'/realisations'}>
+              {' '}
+              <WorkIcon /> Réalisations
+            </CustomLink>
+          </li>
+          <li
+            className="effect-underl"
+            style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <CustomLink href={'/pricing'}>
+              {' '}
+              <AssignmentIcon /> Prestations
+            </CustomLink>
+          </li>{' '}
+          <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <CustomLink href={'/contact'}>
+              {' '}
+              <ForumIcon /> Contact
+            </CustomLink>
+          </li>{' '}
+          <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <CustomLink href={'/about'}>
+              {' '}
+              <PersonSearchIcon /> A propos
+            </CustomLink>
+          </li>
+          <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <CustomLink href={'/'}>
+              {' '}
+              <HomeIcon /> Accueil
+            </CustomLink>
+          </li>
+        </ul>
         <div className="flex column justify-center">
           <div className="flex items-end justify-between">
-            <div className="middle-square"></div>
+            <div className="middle-square" />
+            <div
+              className={`notch ${isNotchAvailable && 'activated'}`}
+              onClick={isNotchAvailable ? toggleNavbar : null}>
+              {displayed !== 'full' && <MenuIcon />}
+            </div>
           </div>
         </div>
         <ul id="links_list">
           <li
             className="effect-underline classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/realisations'}>Mes réalisations</CustomLink>
+            <CustomLink href={'/realisations'}>
+              <WorkIcon />
+              Réalisations
+            </CustomLink>
           </li>
           <li
             className="effect-underline small-hidden classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/pricing'}>Tarifs & services</CustomLink>
-            {/* <sup
-              title="Arrive bientôt"
-              style={{
-                color: 'rgba(100,100,100,0.8)',
-                textShadow: 'none',
-                cursor: 'help',
-              }}>
-              beta
-            </sup> */}
+            <CustomLink href={'/pricing'}>
+              {' '}
+              <AssignmentIcon />
+              Prestations
+            </CustomLink>
           </li>
           <li>
-            <CustomLink href={'/'}>
-              <img src="/res/LOGO.png" className="HomeLogo" alt="Logo" />
-            </CustomLink>
+            {isNotchAvailable ? (
+              <img
+                src="/res/LOGO.png"
+                className="HomeLogo"
+                alt="Logo"
+                style={{
+                  transform:
+                    displayed === 'full'
+                      ? 'translateY(20px)'
+                      : 'translateY(-5px)',
+                }}
+                onClick={toggleNavbar}
+              />
+            ) : (
+              <CustomLink href={'/'}>
+                <img
+                  src="/res/LOGO.png"
+                  className="HomeLogo"
+                  alt="Logo"
+                  style={{
+                    transform:
+                      displayed === 'full'
+                        ? 'translateY(20px)'
+                        : 'translateY(-10px)',
+                  }}
+                />
+              </CustomLink>
+            )}
           </li>
           <li
             className="effect-underline classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/contact'}>Contact</CustomLink>
+            <CustomLink href={'/contact'}>
+              <ForumIcon />
+              Contact
+            </CustomLink>
           </li>
           <li
             className="small-hidden"
@@ -95,7 +185,9 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 id="custom_nav_dropdown"
                 onMouseEnter={() => setDropdownDisplay(true)}
                 onMouseLeave={() => setDropdownDisplay(false)}>
-                <CustomLink href="/about">A propos de moi</CustomLink>
+                <CustomLink href="/about">
+                  <PersonSearchIcon />A propos
+                </CustomLink>
                 <KeyboardArrowDownIcon
                   style={{
                     transform: dropdownDisplay
@@ -138,12 +230,31 @@ const MainContainer = styled.div`
   left: 0;
   width: 100vw;
   height: calc(50%);
-  z-index: 7;
+  z-index: 10;
   transition: 0.5s ease;
   transform: translate3d(0, -80%, 0);
 
   &.displayed {
     transform: translate3d(0, calc(-100% + 65px), 0);
+  }
+
+  &.navbar {
+    transform: translate3d(0, calc(-100% + 220px), 0);
+
+    @media (max-width: 315px) {
+      transform: translate3d(0, calc(-100% + 250px), 0);
+    }
+
+    nav {
+      backdrop-filter: blur(5px);
+
+      .notch {
+        backdrop-filter: blur(5px);
+      }
+      ul#alt_links_list {
+        opacity: 1;
+      }
+    }
   }
 
   &.full {
@@ -158,13 +269,12 @@ const MainContainer = styled.div`
     height: 50vh;
     background: #2d343655;
     z-index: 3;
-    backdrop-filter: blur(0.8px);
+    backdrop-filter: blur(1.8px);
     transition: 0.5s ease;
-    // box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
 
     #custom_nav_dropdown {
       position: relative;
-      svg {
+      & > svg {
         cursor: pointer;
         @media (max-width: 1000px) {
           display: none;
@@ -222,17 +332,55 @@ const MainContainer = styled.div`
         content: none !important;
       }
     }
+  }
+  ul#alt_links_list {
+    position: absolute;
+    bottom: 65px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 5;
+    opacity: 0;
+    gap: 5px;
 
-    li:hover {
-      position: relative;
-      max-width: 20%;
-      width: 20%;
-      min-width: 10%;
+    li {
+      user-select: none;
       display: flex;
       justify-content: center;
-      transition-delay: 4s;
-      transition: 0.2s;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
+
+      @media (max-width: 480px) {
+        margin: 2px;
+        font-size: 0.75rem;
+
+        svg {
+          font-size: 0.9rem;
+        }
+      }
+
+      a {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        width: 150px;
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        padding: 5px 12px;
+        border-radius: 5px;
+        transition: 0.2s;
+        font-family: 'Montserrat';
+        letter-spacing: 1px;
+        text-align: center;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
   }
 
@@ -243,14 +391,11 @@ const MainContainer = styled.div`
     height: 65px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
     z-index: 5;
-    @media (max-width: 550px) {
-      align-items: baseline;
-      transform: translateY(-20px);
-    }
 
-    li {
+    & > li {
+      user-select: none;
       position: relative;
       min-width: 10%;
       width: 20%;
@@ -260,14 +405,45 @@ const MainContainer = styled.div`
       transition: 0.2s;
       font-size: 1.1rem;
 
-      @media (max-width: 1000px) {
-        sup {
-          display: none;
+      &.classic-link a:hover {
+        background: rgba(255, 255, 255, 0.02);
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      & #custom_nav_dropdown:hover a {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      &:not(:has(img)) {
+        margin-bottom: 10px;
+
+        @media (max-width: 550px) {
+          visibility: hidden;
         }
       }
 
+      &:hover {
+        position: relative;
+        max-width: 20%;
+        width: 20%;
+        min-width: 10%;
+        display: flex;
+        justify-content: center;
+        transition-delay: 4s;
+        transition: 0.2s;
+        font-size: 1.1rem;
+      }
+      @media (max-width: 1000px) {
+        display: flex;
+        align-items: center;
+        height: 50px;
+      }
+      @media (max-width: 550px) {
+        word-break: break-all !important;
+      }
+
       a,
-      sup,
       #custom_nav_dropdown {
         font-weight: 600;
         color: rgba(255, 255, 255, 0.5);
@@ -278,50 +454,36 @@ const MainContainer = styled.div`
         letter-spacing: 1px;
         text-align: center;
 
+        & > svg {
+          margin-right: 5px;
+          margin-top: -5px;
+        }
+
         @media (max-width: 1000px) {
           font-size: 0.7rem;
-          /* transform: translateY(-10px); */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
-      }
-      sup {
-        transform: translateY(8px);
-        font-size: 0.6rem;
       }
 
       img {
         filter: grayscale(0.3);
-        transform: translateY(0.8vw);
         width: 85px;
         cursor: pointer;
         transition: 0.1s;
+        margin-bottom: -12px;
 
         @media (max-width: 1000px) {
-          transform: translateY(20px) !important;
           width: 70px !important;
-        }
-
-        @media (max-width: 800px) {
-          transform: translateY(30px) !important;
-          width: 70px !important;
+          margin: 0;
         }
       }
       img:hover {
         filter: grayscale(0.1) drop-shadow(0 0 7px #7d1b1333);
-        transform: scale3d(1.1, 1.1, 1) translateY(0.8vw);
+        /* transform: scale3d(1.1, 1.1, 1) translateY(0.8vw); */
       }
-    }
-    li.classic-link a:hover {
-      background: rgba(255, 255, 255, 0.02);
-      cursor: pointer;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    li #custom_nav_dropdown:hover a {
-      color: rgba(255, 255, 255, 0.8);
-    }
-    li:hover sup {
-      color: rgba(255, 255, 255, 0.8);
-      text-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
     }
   }
 
@@ -334,36 +496,55 @@ const MainContainer = styled.div`
     background: transparent;
     width: 210px;
     height: 50vh;
-    z-index: 2;
+    /* z-index: 2; */
   }
-  .middle-square::before {
+
+  .notch {
     transition: 0.5s ease;
     position: absolute;
     bottom: -20px;
-    z-index: 10;
-    content: '';
     width: 213px;
     border-radius: 0 0 20px 20px;
     border-top: 20px solid #2d343655;
-    backdrop-filter: blur(0.8px);
+    backdrop-filter: blur(1.8px);
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
-    // filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
+
+    &.activated {
+      &:hover {
+        transition: 0.1s;
+        border-top: 20px solid #2d343699;
+        cursor: pointer;
+      }
+    }
+
+    & > svg {
+      visibility: hidden;
+      width: 30px;
+      position: absolute;
+      color: rgba(255, 255, 255, 0.5);
+      top: -23px;
+      left: calc((100% - 30px) / 2);
+
+      @media (max-width: 550px) {
+        visibility: visible;
+      }
+    }
   }
 
   nav.d-full {
     background: #121a25;
-    .middle-square:before {
+    .notch {
       border-top: 20px solid #121a25;
     }
   }
   @media (max-width: 800px) {
-    nav li img {
-      transform: translateY(2.4vw) !important;
+    nav #links_list li img {
+      /* transform: translateY(2.4vw) !important; */
       width: 80px !important;
     }
 
-    nav li {
+    nav #links_list li {
       max-width: 50% !important;
       width: 30% !important;
     }

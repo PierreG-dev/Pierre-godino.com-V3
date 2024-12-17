@@ -1,7 +1,7 @@
 {
   "name": "Pierre-Godino.com_V3",
   "homepage": "https://pierre-godino.com",
-  "version": "3.4",
+  "version": "3.41",
   "private": true,
   "scripts": {
     "dev": "next dev",

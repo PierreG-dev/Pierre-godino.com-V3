@@ -244,7 +244,7 @@ const MainContainer = styled.div`
   height: 50vh;
   background: transparent;
   transition: 0.5s ease;
-  z-index: 6;
+  z-index: 9;
   overflow: hidden;
   transition: 0.5s ease;
 
@@ -258,7 +258,7 @@ const MainContainer = styled.div`
     left: calc(50vw - 105px);
     color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    z-index: 1;
+    backdrop-filter: blur(1.8px);
     border-radius: 0 0 20px 20px;
     border-top: 20px solid rgba(255, 255, 255, 0.2);
     border-left: 30px solid transparent;
@@ -287,7 +287,7 @@ const MainContainer = styled.div`
   }
 
   .side-bars {
-    backdrop-filter: blur(0.8px);
+    backdrop-filter: blur(1.8px);
     transition: 0.5s ease;
     // filter: drop-shadow(0 -4px 3px rgba(0, 0, 0, 0.2));
     position: absolute;
@@ -298,7 +298,7 @@ const MainContainer = styled.div`
   }
 
   .middle-square {
-    backdrop-filter: blur(0.8px);
+    backdrop-filter: blur(1.8px);
     transition: 0.5s ease;
     position: relative;
     display: flex;
@@ -312,12 +312,12 @@ const MainContainer = styled.div`
   }
 
   .middle-square div#border_left {
-    backdrop-filter: blur(0.8px);
+    backdrop-filter: blur(1.8px);
     transition: 0.5s ease;
     position: absolute;
     top: -20px;
     left: 0;
-    // filter: drop-shadow(3px -4px 3px rgba(0, 0, 0, 0.2));
+
     content: '';
     width: 1px;
     border-right: 0 solid transparent;
@@ -326,12 +326,12 @@ const MainContainer = styled.div`
   }
 
   .middle-square div#border_right {
-    backdrop-filter: blur(0.8px);
+    backdrop-filter: blur(1.8px);
     transition: 0.5s ease;
     position: absolute;
     top: -20px;
     right: 0;
-    // filter: drop-shadow(-3px -4px 3px rgba(0, 0, 0, 0.2));
+
     content: '';
     width: 1px;
     border-left: 0 solid transparent;
