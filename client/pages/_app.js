@@ -87,7 +87,7 @@ function MyApp({ Component, pageProps }) {
   const firstLoadFinished = useCallback(() => {
     setTimeout(() => {
       const title = document.title;
-      updateJourney(title.split('|')[1]?.trim());
+      updateJourney(title.split('|')[0]?.trim());
       firstLoad.current = false;
     }, 700);
   }, [updateJourney]);
@@ -103,7 +103,7 @@ function MyApp({ Component, pageProps }) {
   const handleComplete = useCallback(() => {
     const pageTitle = document.title;
     setTimeout(() => {
-      updateJourney(pageTitle.split('|')[1].trim());
+      updateJourney(pageTitle.split('|')[0].trim());
       NProgress.done();
       handleLoad();
     }, 700);
