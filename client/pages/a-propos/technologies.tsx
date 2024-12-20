@@ -1,12 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  useMemo,
-  useContext,
-} from 'react';
+import React, { useState, useRef, useEffect, useMemo, useContext } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import data from '../../src/components/Skills/data';
@@ -78,31 +71,31 @@ const Skills: NextPage = () => {
     });
   };
 
-  const metaContentGenerator = useMemo(() => {
-    const metaData = {
-      title: 'Technologies',
-      description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | Mes technologies',
-      ogUrl: 'https://pierre-godino.com/skills',
-    };
-
-    return (
-      <Head>
-        <title>{'Pierre | ' + metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaData.title}
-        />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:description" content={metaData.description} />
-      </Head>
-    );
-  }, []);
-
   return (
     <MainContainer>
-      {metaContentGenerator}
+      <Head>
+        <title>Compétences techniques | Pierre G.</title>
+        <meta
+          property="og:title"
+          content="Compétences techniques | Pierre G."
+        />
+        <meta
+          name="description"
+          content="Découvrez la liste des technologies liées au développement WEB que je maitrise."
+        />
+        <meta
+          property="og:description"
+          content="Découvrez la liste des technologies liées au développement WEB que je maitrise."
+        />
+        <meta
+          name="twitter:description"
+          content="Découvrez la liste des technologies liées au développement WEB que je maitrise."
+        />
+        <meta
+          property="og:url"
+          content="https://pierre-godino.com/a-propos/technologies"
+        />
+      </Head>
       {background}
       <AnimationContainer>
         <img

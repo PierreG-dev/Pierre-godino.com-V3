@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { AiOutlineDownload } from 'react-icons/ai';
 import styled from 'styled-components';
 import { NextPage } from 'next';
@@ -7,31 +7,29 @@ import Head from 'next/head';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
 
 const Curiculum: NextPage = () => {
-  const metaContentGenerator = useMemo(() => {
-    const metaData = {
-      title: 'CV',
-      description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | Mon CV traditionnel',
-      ogUrl: 'https://pierre-godino.com/curiculum',
-    };
-
-    return (
-      <Head>
-        <title>{'Pierre | ' + metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaData.title}
-        />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:description" content={metaData.description} />
-      </Head>
-    );
-  }, []);
-
   return (
     <MainContainer>
-      {metaContentGenerator}
+      <Head>
+        <title>CV en ligne | Pierre G.</title>
+        <meta property="og:title" content="CV en ligne | Pierre G." />
+        <meta
+          name="description"
+          content="Découvrez mon CV en ligne, avec une liste non exhaustive de mes compétences, diplômes, langues et expériences."
+        />
+        <meta
+          property="og:description"
+          content="Découvrez mon CV en ligne, avec une liste non exhaustive de mes compétences, diplômes, langues et expériences."
+        />
+        <meta
+          name="twitter:description"
+          content="Découvrez mon CV en ligne, avec une liste non exhaustive de mes compétences, diplômes, langues et expériences."
+        />
+        <meta
+          property="og:url"
+          content="https://pierre-godino.com/a-propos/curiculum"
+        />
+      </Head>
+
       <div
         style={{
           background: "url('/res/overlay.png')",
@@ -106,7 +104,7 @@ const Curiculum: NextPage = () => {
                     />
                     SEO
                   </li>
-                  <CustomLink href="/about/skills">
+                  <CustomLink href="/a-propos/technologies">
                     <button className="more-infos">En savoir plus</button>
                   </CustomLink>
                 </ul>
@@ -190,7 +188,7 @@ const Curiculum: NextPage = () => {
               actual
             />
 
-            <CustomLink href="/about/experiences">
+            <CustomLink href="/a-propos/experiences">
               <button className="more-infos">En savoir plus</button>
             </CustomLink>
           </section>

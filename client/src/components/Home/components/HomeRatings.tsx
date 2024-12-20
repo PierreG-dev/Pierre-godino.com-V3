@@ -105,7 +105,7 @@ const HomeRatings: FC = () => {
             transform: `translateX(-${100 * displayedRatingIndex}%)`,
           }}>
           {[...ratings, ratings[0]].map((rating: Rating, key: number) => (
-            <li key={key} className="rating-item">
+            <li key={rating.customerName + '' + key} className="rating-item">
               <div className="item-wrapper">
                 <div className="infos-wrapper">
                   <p>
@@ -136,13 +136,16 @@ const HomeRatings: FC = () => {
                       <em>{rating.customerName || 'Client'}</em>
                       {rating.stars && (
                         <div className="stars-wrapper">
-                          {Array(rating.stars).fill(
-                            <img
-                              src="/icons/star.png"
-                              alt="Etoile"
-                              loading="lazy"
-                            />
-                          )}
+                          {Array(rating.stars)
+                            .fill(null)
+                            .map((_, index) => (
+                              <img
+                                key={index}
+                                src="/icons/star.png"
+                                alt="Etoile"
+                                loading="lazy"
+                              />
+                            ))}
                         </div>
                       )}
                     </div>
@@ -161,9 +164,16 @@ const HomeRatings: FC = () => {
             <b>Google</b> : 5/5
           </em>
           <div className="stars-container">
-            {Array(5).fill(
-              <img src="/icons/star.png" alt="Etoile" loading="lazy" />
-            )}
+            {Array(5)
+              .fill(null)
+              .map((_, index) => (
+                <img
+                  key={index}
+                  src="/icons/star.png"
+                  alt="Etoile"
+                  loading="lazy"
+                />
+              ))}
           </div>
         </li>
         <li id="malt">
@@ -172,9 +182,16 @@ const HomeRatings: FC = () => {
             <b>Malt</b> : 5/5
           </em>
           <div className="stars-container">
-            {Array(5).fill(
-              <img src="/icons/star.png" alt="Etoile" loading="lazy" />
-            )}
+            {Array(5)
+              .fill(null)
+              .map((_, index) => (
+                <img
+                  key={index}
+                  src="/icons/star.png"
+                  alt="Etoile"
+                  loading="lazy"
+                />
+              ))}
           </div>
         </li>
       </ul>

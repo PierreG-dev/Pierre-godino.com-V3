@@ -1,15 +1,7 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useContext, useMemo } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { BackgroundContext } from '../../src/contexts/Contexts';
 
@@ -17,32 +9,29 @@ const Index: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
 
-  const router = useRouter();
-  const metaContentGenerator = useMemo(() => {
-    const metaData = {
-      title: 'A propos',
-      description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | A propos de moi',
-      ogUrl: 'https://pierre-godino.com/about',
-    };
-
-    return (
-      <Head>
-        <title>{'Pierre | ' + metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaData.title}
-        />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:description" content={metaData.description} />
-      </Head>
-    );
-  }, []);
-
   return (
     <MainContainer>
-      {metaContentGenerator}
+      <Head>
+        <title>Informations personnelles | Pierre G.</title>
+        <meta
+          property="og:title"
+          content="Informations personnelles | Pierre G."
+        />
+        <meta
+          name="description"
+          content="Vous cherchez à recruter un développeur ? Vous trouverez toutes les informations dont vous pourriez avoir besoin sur moi ici."
+        />
+        <meta
+          property="og:description"
+          content="Vous cherchez à recruter un développeur ? Vous trouverez toutes les informations dont vous pourriez avoir besoin sur moi ici."
+        />
+        <meta
+          name="twitter:description"
+          content="Vous cherchez à recruter un développeur ? Vous trouverez toutes les informations dont vous pourriez avoir besoin sur moi ici."
+        />
+        <meta property="og:url" content="https://pierre-godino.com/a-propos" />
+      </Head>
+
       {background}
       <section className="flex flex-col buttons-container">
         <div style={{ maxWidth: '100vw' }}>
@@ -50,7 +39,7 @@ const Index: NextPage = () => {
             notALink={true}
             button={true}
             style={{ animationDelay: '0.1s' }}
-            href={'/about/skills'}>
+            href={'/a-propos/technologies'}>
             <video loop autoPlay muted>
               <source src={'/video/skills-preview.mp4'} type={'video/mp4'} />
             </video>
@@ -60,7 +49,7 @@ const Index: NextPage = () => {
             notALink={true}
             button={true}
             style={{ animationDelay: '0.3s' }}
-            href={'/about/experiences'}>
+            href={'/a-propos/experiences'}>
             <video loop autoPlay muted>
               <source src={'/video/exp-preview.mp4'} type={'video/mp4'} />
             </video>
@@ -71,7 +60,7 @@ const Index: NextPage = () => {
           notALink={true}
           button={true}
           style={{ animationDelay: '0.6s' }}
-          href={'/about/curiculum'}>
+          href={'/a-propos/curiculum'}>
           <video loop autoPlay muted>
             <source src={'/video/cv-preview.mp4'} type={'video/mp4'} />
           </video>

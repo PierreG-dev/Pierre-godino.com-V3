@@ -1,5 +1,4 @@
 import React, {
-  MouseEvent,
   useCallback,
   useEffect,
   useMemo,
@@ -37,9 +36,12 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
     if (displayed !== 'navbar') return;
     const navElement = navRef.current;
 
-    const handleNavClick = (e: MouseEvent<HTMLElement>) => {
-      console.log(e.target);
-      if (e.target !== navElement && !navElement.contains(e.target))
+    const handleNavClick = (e: any) => {
+      if (!navElement) return;
+      if (
+        e.target !== navElement &&
+        !(navElement as HTMLElement).contains(e.target as any)
+      )
         setDisplayed('displayed');
     };
 
@@ -87,7 +89,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underl"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/pricing'}>
+            <CustomLink href={'/prestations'}>
               {' '}
               <AssignmentIcon /> Prestations
             </CustomLink>
@@ -99,7 +101,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
             </CustomLink>
           </li>{' '}
           <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/about'}>
+            <CustomLink href={'/a-propos'}>
               {' '}
               <PersonSearchIcon /> A propos
             </CustomLink>
@@ -133,7 +135,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline small-hidden classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/pricing'}>
+            <CustomLink href={'/prestations'}>
               {' '}
               <AssignmentIcon />
               Prestations
@@ -185,7 +187,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 id="custom_nav_dropdown"
                 onMouseEnter={() => setDropdownDisplay(true)}
                 onMouseLeave={() => setDropdownDisplay(false)}>
-                <CustomLink href="/about">
+                <CustomLink href="/a-propos">
                   <PersonSearchIcon />A propos
                 </CustomLink>
                 <KeyboardArrowDownIcon
@@ -204,15 +206,17 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                       : 'none',
                   }}>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
-                    <CustomLink href={'/about/skills'}>Technologies</CustomLink>
+                    <CustomLink href={'/a-propos/technologies'}>
+                      Technologies
+                    </CustomLink>
                   </li>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
-                    <CustomLink href={'/about/experiences'}>
+                    <CustomLink href={'/a-propos/experiences'}>
                       Expériences
                     </CustomLink>
                   </li>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
-                    <CustomLink href={'/about/curiculum'}>CV</CustomLink>
+                    <CustomLink href={'/a-propos/curiculum'}>CV</CustomLink>
                   </li>
                 </ul>
               </div>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://www.tonsite.com/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Pages principales -->
+  <url>
+    <loc>https://www.tonsite.com/a-propos</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.tonsite.com/services</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.tonsite.com/portfolio</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.tonsite.com/contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Pages spécifiques pour chaque service -->
+  <url>
+    <loc>https://www.tonsite.com/services/site-internet</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tonsite.com/services/boutique-en-ligne</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tonsite.com/services/applications</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog (si applicable) -->
+  <url>
+    <loc>https://www.tonsite.com/blog</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tonsite.com/blog/optimiser-referencement-site</loc>
+    <lastmod>2024-12-19</lastmod>
+    <priority>0.5</priority>
+  </url>
+</urlset>

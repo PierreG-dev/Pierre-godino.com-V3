@@ -516,32 +516,28 @@ const Realisations: NextPage = () => {
     };
   }, [selectPlanet]);
 
-  // Génère les meta éléments
-  const metaContentGenerator = useMemo(() => {
-    const metaData = {
-      title: 'Réalisations',
-      description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | Mes réalisations',
-      ogUrl: 'https://pierre-godino.com/realisations',
-    };
-
-    return (
-      <Head>
-        <title>{'Pierre | ' + metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaData.title}
-        />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:description" content={metaData.description} />
-      </Head>
-    );
-  }, []);
-
   return (
     <MainContainer>
-      {metaContentGenerator}
+      <Head>
+        <title>Réalisations | Pierre G.</title>
+        <meta property="og:title" content="Réalisations | Pierre G." />
+        <meta
+          name="description"
+          content="Parcourez mon portfolio de projets WEB, sur mesure pour répondre aux besoins de mes clients."
+        />
+        <meta
+          property="og:description"
+          content="Parcourez mon portfolio de projets WEB, sur mesure pour répondre aux besoins de mes clients."
+        />
+        <meta
+          name="twitter:description"
+          content="Parcourez mon portfolio de projets WEB, sur mesure pour répondre aux besoins de mes clients."
+        />
+        <meta
+          property="og:url"
+          content="https://pierre-godino.com/realisations"
+        />
+      </Head>
       <div
         id="info_block"
         style={{ display: windowSize < 1250 ? 'block' : 'none' }}>

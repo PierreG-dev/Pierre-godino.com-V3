@@ -136,7 +136,7 @@ const Footer: React.FC<Props> = ({
                   <CustomLink href={'/contact'}>Contact</CustomLink>
                 </li>
                 <li>
-                  <CustomLink href={'/about'}>A propos de moi</CustomLink>
+                  <CustomLink href={'/a-propos'}>A propos de moi</CustomLink>
                 </li>
               </ul>
             </div>
@@ -247,6 +247,7 @@ const MainContainer = styled.div`
   z-index: 9;
   overflow: hidden;
   transition: 0.5s ease;
+  font-family: 'Montserrat';
 
   .burger-container {
     position: absolute;
@@ -312,7 +313,7 @@ const MainContainer = styled.div`
   }
 
   .middle-square div#border_left {
-    backdrop-filter: blur(1.8px);
+    /* backdrop-filter: blur(1.8px); */
     transition: 0.5s ease;
     position: absolute;
     top: -20px;
@@ -326,7 +327,7 @@ const MainContainer = styled.div`
   }
 
   .middle-square div#border_right {
-    backdrop-filter: blur(1.8px);
+    /* backdrop-filter: blur(1.8px); */
     transition: 0.5s ease;
     position: absolute;
     top: -20px;
@@ -357,6 +358,7 @@ const MainContainer = styled.div`
         text-align: center;
         font-size: 1.1rem;
         color: rgba(255, 255, 255, 0.8);
+        font-weight: bold;
       }
 
       ul {

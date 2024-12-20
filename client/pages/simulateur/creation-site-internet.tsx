@@ -142,8 +142,27 @@ const Vitrine: FC = () => {
   return (
     <>
       <Head>
-        <title>Pierre G. | Devis en ligne de site vitrine</title>
-        <meta name="description" content="" />
+        <title>Création de site internet | Pierre G.</title>
+        <meta
+          property="og:title"
+          content="Création de site internet | Pierre G."
+        />
+        <meta
+          name="description"
+          content="Obtenez un devis immédiat pour la création de votre site internet, adapté à vos besoins."
+        />
+        <meta
+          property="og:description"
+          content="Obtenez un devis immédiat pour la création de votre site internet, adapté à vos besoins."
+        />
+        <meta
+          name="twitter:description"
+          content="Obtenez un devis immédiat pour la création de votre site internet, adapté à vos besoins."
+        />
+        <meta
+          property="og:url"
+          content="https://pierre-godino.com/simulateur/creation-site-internet"
+        />
       </Head>
       <MainContainer>
         {background}
@@ -182,7 +201,7 @@ const Vitrine: FC = () => {
               <p>
                 Un <strong>site internet</strong> est un gage de sérieux pour
                 une entreprise, s'il est <strong>bien pensé</strong>, et{' '}
-                <strong>accessible</strong> (Tous mes sites le sont 😉), il
+                <strong>accessible</strong> (Tous mes sites le sont), il
                 renverra <strong>une bonne image</strong> de votre entreprise,
                 ce qui peut faire pencher la balance.
               </p>

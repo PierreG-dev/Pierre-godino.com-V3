@@ -87,7 +87,30 @@ const Experiences: NextPage = () => {
 
   return (
     <MainContainer>
-      {metaContentGenerator}
+      <Head>
+        <title>Expériences professionnelles | Pierre G.</title>
+        <meta
+          property="og:title"
+          content="Expériences professionnelles | Pierre G."
+        />
+        <meta
+          name="description"
+          content="Découvrez le détail de mes expériences professionnelles dans l'informatique et le développpement WEB."
+        />
+        <meta
+          property="og:description"
+          content="Découvrez le détail de mes expériences professionnelles dans l'informatique et le développpement WEB."
+        />
+        <meta
+          name="twitter:description"
+          content="Découvrez le détail de mes expériences professionnelles dans l'informatique et le développpement WEB."
+        />
+        <meta
+          property="og:url"
+          content="https://pierre-godino.com/a-propos/experiences"
+        />
+      </Head>
+
       <BackgroundContainer className={'bcg-star'}>
         <div className="bcg-star">
           <div id="stars"></div>

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import CachedIcon from '@mui/icons-material/Cached';
@@ -33,10 +33,10 @@ const networks = [
     link: 'https://www.linkedin.com/in/pierre-godino-50b503186',
   },
   {
-    name: 'Synthèse',
-    imgUrl: '/res/CV_LOGO.png',
+    name: 'Google',
+    imgUrl: '/icons/google.png',
     className: 'cv',
-    link: 'https://www.pierre-godino.com/about/curiculum',
+    link: 'https://www.google.com/search?q=Cr%C3%A9ation%20sites%20internet%20sur%20Agen%20|%20Pierre%20G.&stick=H4sIAAAAAAAAAONgU1IxqEgzMTFPM01LMzIxSDZJTLICipgaJZolWhpbGlkYJlokGy1i1XUuOrwysSQzP0-hOLMktVghM68ktSgvtUShuLRIwTE9NU-hRiEgM7WoKFXBXQ8Ab1wenFgAAAA',
   },
 ];
 
@@ -83,31 +83,26 @@ const Contact: NextPage = () => {
     }, 1200);
   }, [clearInputs, messageInput, nameInput]);
 
-  const metaContentGenerator = useMemo(() => {
-    const metaData = {
-      title: 'Contact',
-      description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | Mes coordonnées',
-      ogUrl: 'https://pierre-godino.com/contact',
-    };
-
-    return (
-      <Head>
-        <title>{'Pierre | ' + metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaData.title}
-        />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:description" content={metaData.description} />
-      </Head>
-    );
-  }, []);
-
   return (
     <MainContainer>
-      {metaContentGenerator}
+      <Head>
+        <title>Contact | Pierre G.</title>
+        <meta property="og:title" content="Contact | Pierre G." />
+        <meta
+          name="description"
+          content="Contactez-moi pour toute question ou demande d'information. Je suis disponible par email, téléphone ou mon formulaire de contact."
+        />
+        <meta
+          property="og:description"
+          content="Contactez-moi pour toute question ou demande d'information. Je suis disponible par email, téléphone ou mon formulaire de contact."
+        />
+        <meta
+          name="twitter:description"
+          content="Contactez-moi pour toute question ou demande d'information. Je suis disponible par email, téléphone ou mon formulaire de contact."
+        />
+        <meta property="og:url" content="https://pierre-godino.com/contact" />
+      </Head>
+
       {background}
       <div id="satelite_container">
         <img src="/res/satelite.png" alt="Satellite" className="satelite" />

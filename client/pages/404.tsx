@@ -1,33 +1,18 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-const Error404 = () => {
-  const router = useRouter();
-  const metaContentGenerator = useMemo(() => {
-    const metaData = {
-      title: '404',
-      description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur',
-      ogUrl: 'https://pierre-godino.com/',
-    };
 
-    return (
-      <Head>
-        <title>{'Pierre | ' + metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaData.title}
-        />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:description" content={metaData.description} />
-      </Head>
-    );
-  }, []);
+const Error404 = () => {
   return (
     <MainContainer>
-      {metaContentGenerator}
+      <Head>
+        <title>404 | Pierre G.</title>
+        <meta property="og:title" content="404 | Pierre G." />
+        <meta name="description" content="Erreur 404" />
+        <meta property="og:description" content="Erreur 404" />
+        <meta name="twitter:description" content="Erreur 404" />
+        <meta property="og:url" content="https://pierre-godino.com/404" />
+      </Head>
       <div className="bg-indigo-900 relative overflow-hidden h-screen">
         <img
           src="/res/404.svg"

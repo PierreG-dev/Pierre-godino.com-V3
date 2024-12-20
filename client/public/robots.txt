@@ -11,4 +11,5 @@ Allow: /res/LOGO.png
 Allow: /res/LOGO.svg
 
 User-agent: *
+Disallow: /calendar
 Allow: /

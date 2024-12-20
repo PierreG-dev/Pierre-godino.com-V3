@@ -59,7 +59,7 @@ const displayEnvironnements = (environnements: Skill[]) => {
 
   return environnements.map((elem, key) => (
     <CustomLink
-      href={`/about/skills?skillId=${elem.id}`}
+      href={`/a-propos/technologies?skillId=${elem.id}`}
       key={`environment_${elem.id}`}>
       <div
         className={'mini-card cursor-pointer'}
@@ -76,7 +76,7 @@ const displayTechnology = (technology: Skill[]) => {
 
   return technology.map((elem, key) => (
     <CustomLink
-      href={`/about/skills?skillId=${elem.id}`}
+      href={`/a-propos/technologies?skillId=${elem.id}`}
       key={`technology_${elem.id}`}>
       <div
         className={'mini-card cursor-pointer'}

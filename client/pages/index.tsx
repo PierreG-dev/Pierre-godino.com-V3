@@ -38,6 +38,7 @@ const Home: NextPage = () => {
           content="Expert en création de sites Internet et boutiques en ligne. Basé à Agen, j'accompagne vos projets partout en France."></meta>
         <meta property="og:url" content="https://pierre-godino.com" />
       </Head>
+
       {background}
       <HomeHero />
       <HomeRatings />

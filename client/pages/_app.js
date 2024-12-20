@@ -34,14 +34,6 @@ function MyApp({ Component, pageProps }) {
     setIsLoaded(false);
   }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleComplete = useCallback(() => {
-    setTimeout(() => {
-      NProgress.done();
-      handleLoad();
-    }, 700);
-  }, [handleLoad]);
-
   const devicePicker = useCallback(() => {
     const width = window.innerWidth;
     if (!width) return;
@@ -94,20 +86,28 @@ function MyApp({ Component, pageProps }) {
 
   const firstLoadFinished = useCallback(() => {
     setTimeout(() => {
-      updateJourney(document.title.split('|')[1].trim());
+      const title = document.title;
+      updateJourney(title.split('|')[1]?.trim());
       firstLoad.current = false;
-    }, 5000);
+    }, 700);
   }, [updateJourney]);
 
   useEffect(() => {
+    if (!firstLoad.current) return;
     handleLoad();
     initiateMetrics();
     firstLoadFinished();
   }, [firstLoadFinished, handleLoad, initiateMetrics]);
 
-  useEffect(() => {
-    if (!firstLoad.current) updateJourney(document.title.split('|')[1].trim());
-  }, [pageProps, updateJourney]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleComplete = useCallback(() => {
+    const pageTitle = document.title;
+    setTimeout(() => {
+      updateJourney(pageTitle.split('|')[1].trim());
+      NProgress.done();
+      handleLoad();
+    }, 700);
+  }, [handleLoad, updateJourney]);
 
   useEffect(() => {
     // router.events.on('routeChangeStart', handleStart);

@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Head from 'next/head';
@@ -26,31 +26,29 @@ import CustomLink from '../src/components/Layout/routing/CustomLink';
 const Pricing: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
-  const metaContentGenerator = useMemo(() => {
-    const metaData = {
-      title: 'Création de sites internet sur Agen',
-      description:
-        'Détail de mes prestations de création de sites internet sur Agen et dans toute la France',
-      ogUrl: 'https://pierre-godino.com/pricing',
-    };
-
-    return (
-      <Head>
-        <title>{'Pierre | ' + metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaData.title}
-        />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:description" content={metaData.description} />
-      </Head>
-    );
-  }, []);
 
   return (
     <MainContainer>
-      {metaContentGenerator}
+      <Head>
+        <title>Prestations | Pierre G.</title>
+        <meta property="og:title" content="Prestations | Pierre G." />
+        <meta
+          name="description"
+          content="Besoin d'un site internet ? Une boutique en ligne ? Demandez un devis adapté à votre projet, en ligne ou en me contactant."
+        />
+        <meta
+          property="og:description"
+          content="Besoin d'un site internet ? Une boutique en ligne ? Demandez un devis adapté à votre projet, en ligne ou en me contactant."
+        />
+        <meta
+          name="twitter:description"
+          content="Besoin d'un site internet ? Une boutique en ligne ? Demandez un devis adapté à votre projet, en ligne ou en me contactant."
+        />
+        <meta
+          property="og:url"
+          content="https://pierre-godino.com/prestations"
+        />
+      </Head>
       {background}
       <h1>Prestations</h1>
       <ul id="services_list">
@@ -117,7 +115,7 @@ const Pricing: NextPage = () => {
               100% Codé à la main
             </li>
           </ul>
-          <CustomLink href="/simulateur/site-vitrine">
+          <CustomLink href="/simulateur/creation-site-internet">
             Faire une simulation
           </CustomLink>
           {/* <p className="service-support">

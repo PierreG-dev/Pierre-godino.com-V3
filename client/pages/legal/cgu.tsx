@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { useMemo, useContext } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { BackgroundContext } from '../../src/contexts/Contexts';
@@ -8,31 +8,22 @@ const Cgu: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
 
-  const metaContentGenerator = useMemo(() => {
-    const metaData = {
-      title: 'CGU',
-      description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | CGU',
-      ogUrl: 'https://pierre-godino.com/CGU',
-    };
-
-    return (
-      <Head>
-        <title>{'Pierre | ' + metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaData.title}
-        />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:description" content={metaData.description} />
-      </Head>
-    );
-  }, []);
-
   return (
     <MainContainer>
-      {metaContentGenerator}
+      <Head>
+        <title>CGU | Pierre G.</title>
+        <meta property="og:title" content="CGU | Pierre G." />
+        <meta name="description" content="Conditions Générales d'Utilisation" />
+        <meta
+          property="og:description"
+          content="Conditions Générales d'Utilisation"
+        />
+        <meta
+          name="twitter:description"
+          content="Conditions Générales d'Utilisation"
+        />
+        <meta property="og:url" content="https://pierre-godino.com/legal/cgu" />
+      </Head>
       {background}
       <div id="satelite_container">
         <img src="/res/satelite.png" alt="Satellite" className="satelite" />
