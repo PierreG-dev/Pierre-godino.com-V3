@@ -42,7 +42,7 @@ const Calendar: NextPage = () => {
       title: 'Disponibilités',
       description:
         'Créateur de sites Internet, développeur WEB freelance et formateur | Disponibilités',
-      ogUrl: 'https://pierre-godino.com/calendar',
+      ogUrl: 'https://www.pierre-godino.com/calendar',
     };
 
     return (
@@ -55,6 +55,7 @@ const Calendar: NextPage = () => {
         />
         <meta property="og:url" content={metaData.ogUrl} />
         <meta property="og:description" content={metaData.description} />
+        <link rel="canonical" href={metaData.ogUrl} />
       </Head>
     );
   }, []);

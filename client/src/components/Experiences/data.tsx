@@ -504,7 +504,7 @@ const data: Xp[] = [
       'YARN',
       'Github',
     ]),
-    link: 'https://spoom.net/',
+    link: 'https://www.spoom.net/',
   },
   {
     period: 'Freelance',
@@ -562,7 +562,7 @@ const data: Xp[] = [
       'VSCode',
       'YARN',
     ]),
-    link: 'https://axeacademy.fr/',
+    link: 'https://www.axeacademy.fr/',
     actual: false,
   },
   {
@@ -640,7 +640,7 @@ const data: Xp[] = [
     ]),
     actual: false,
     collaboratorsAmount: 1,
-    link: 'https://learn.pierre-godino.com',
+    link: 'https://www.learn.pierre-godino.com',
   },
   {
     period: 'Freelance',
@@ -681,7 +681,7 @@ const data: Xp[] = [
       'Bash',
       'NPM',
     ]),
-    link: 'https://learn.pierre-godino.com',
+    link: 'https://www.learn.pierre-godino.com',
     actual: true,
     collaboratorsAmount: 1,
   },
@@ -717,7 +717,7 @@ const data: Xp[] = [
       'VSCode',
       'YARN',
     ]),
-    link: 'https://oclock.io/',
+    link: 'https://www.oclock.io/',
     actual: true,
   },
   {
@@ -819,7 +819,7 @@ const data: Xp[] = [
       'Algorithmie',
     ]),
     environnements: selectSkillsByName(['Bash', 'Git', 'Github', 'VSCode']),
-    link: 'https://cabinet-misino.fr',
+    link: 'https://www.cabinet-misino.fr',
     actual: true,
   },
   {

@@ -1,7 +1,3 @@
 ErrorDocument 404 /404/index.html
 ErrorDocument 403 /404/index.html
 Options -Indexes
-
-RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]

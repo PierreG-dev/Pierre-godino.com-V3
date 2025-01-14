@@ -210,7 +210,7 @@ const Footer: React.FC<Props> = ({
                 </li>
                 <li>
                   <a
-                    href="https://github.com/PierreG-dev"
+                    href="https://www.github.com/PierreG-dev"
                     target={'_blank'}
                     rel="noreferrer">
                     GitHub

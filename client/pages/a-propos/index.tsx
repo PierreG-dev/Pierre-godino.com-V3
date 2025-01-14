@@ -29,7 +29,11 @@ const Index: NextPage = () => {
           name="twitter:description"
           content="Vous cherchez à recruter un développeur ? Vous trouverez toutes les informations dont vous pourriez avoir besoin sur moi ici."
         />
-        <meta property="og:url" content="https://pierre-godino.com/a-propos" />
+        <meta
+          property="og:url"
+          content="https://www.pierre-godino.com/a-propos"
+        />
+        <link rel="canonical" href="https://www.pierre-godino.com/a-propos" />
       </Head>
 
       {background}

@@ -46,14 +46,14 @@ const HomeHero: FC = () => {
     <MainContainer>
       <section id="landing">
         <div id="content">
-          <h1>
+          <p>
             <span>
               Salut, moi c'est <strong>Pierre</strong>
             </span>
             Je développe des <strong>sites internet</strong>,{' '}
             <strong>boutiques en ligne</strong> et <strong>applications</strong>
             .
-          </h1>
+          </p>
         </div>
 
         <div id="links">
@@ -188,7 +188,7 @@ const MainContainer = styled.section`
       z-index: 5;
       height: fit-content;
 
-      h1 {
+      p {
         font-family: 'Space Mono', monospace;
         font-size: 1.7rem;
         font-weight: normal;

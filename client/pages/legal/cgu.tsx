@@ -22,7 +22,11 @@ const Cgu: NextPage = () => {
           name="twitter:description"
           content="Conditions Générales d'Utilisation"
         />
-        <meta property="og:url" content="https://pierre-godino.com/legal/cgu" />
+        <meta
+          property="og:url"
+          content="https://www.pierre-godino.com/legal/cgu"
+        />
+        <link rel="canonical" href="https://www.pierre-godino.com/legal/cgu" />
       </Head>
       {background}
       <div id="satelite_container">

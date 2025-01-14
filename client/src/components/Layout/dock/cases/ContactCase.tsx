@@ -4,9 +4,11 @@ import { FC } from 'react';
 const ContactCase: FC = () => {
   return (
     <MainContainer>
-      <img src="/icons/contact_icon.png" alt="" />
+      <img src="/icons/contact_icon.png" alt="téléphone" loading="lazy" />
 
-      <a href="tel:+33 7 67 24 99 80">07 67 24 99 80</a>
+      <a href="tel:+33 7 67 24 99 80">
+        <u>07 67 24 99 80</u>
+      </a>
     </MainContainer>
   );
 };

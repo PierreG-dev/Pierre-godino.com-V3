@@ -67,7 +67,7 @@ const Experiences: NextPage = () => {
       title: 'Parcours',
       description:
         'Créateur de sites Internet, développeur WEB freelance et formateur | Mon parcours',
-      ogUrl: 'https://pierre-godino.com/experiences',
+      ogUrl: 'https://www.pierre-godino.com/experiences',
     };
 
     return (
@@ -107,7 +107,11 @@ const Experiences: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://pierre-godino.com/a-propos/experiences"
+          content="https://www.pierre-godino.com/a-propos/experiences"
+        />
+        <link
+          rel="canonical"
+          href="https://www.pierre-godino.com/a-propos/experiences"
         />
       </Head>
 

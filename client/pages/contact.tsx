@@ -100,7 +100,11 @@ const Contact: NextPage = () => {
           name="twitter:description"
           content="Contactez-moi pour toute question ou demande d'information. Je suis disponible par email, téléphone ou mon formulaire de contact."
         />
-        <meta property="og:url" content="https://pierre-godino.com/contact" />
+        <meta
+          property="og:url"
+          content="https://www.pierre-godino.com/contact"
+        />
+        <link rel="canonical" href="https://www.pierre-godino.com/contact" />
       </Head>
 
       {background}

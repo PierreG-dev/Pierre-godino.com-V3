@@ -535,7 +535,11 @@ const Realisations: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://pierre-godino.com/realisations"
+          content="https://www.pierre-godino.com/realisations"
+        />
+        <link
+          rel="canonical"
+          href="https://www.pierre-godino.com/realisations"
         />
       </Head>
       <div
@@ -1766,7 +1770,7 @@ name: 'Portfolio',
       'radial-gradient(circle, rgba(38,2,0,1) 0%, rgba(96,15,0,1) 100%, rgba(96,15,0,1) 100%)',
     auraColor: '#600f00',
     filter: 'drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
-    link: 'https://pierre-godino.com/V1/index.html',
+    link: 'https://www.pierre-godino.com/V1/index.html',
     description: 'Première version de mon portfolio',
 },
 {

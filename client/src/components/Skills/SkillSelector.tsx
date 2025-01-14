@@ -61,7 +61,7 @@ const SkillSelector: FC<IProps> = ({
                 displayedSkillId === key ? 'selected' : ''
               }`}
               onClick={() => setDisplayedSkillId(key)}>
-              <img src={skillItem.icon} alt="" />
+              <img src={skillItem.icon} alt={skillItem.name} />
               <h5>{skillItem.name}</h5>
             </li>
           ))}

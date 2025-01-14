@@ -9,6 +9,7 @@ import HomeServices from '../src/components/Home/components/HomeServices';
 import HomeCustomerSlider from '../src/components/Home/components/HomeCustomerSlider';
 import HomeSimulator from '../src/components/Home/components/HomeSimulator';
 import HomeQuestions from '../src/components/Home/components/HomeQuestions';
+import HomeSEOContent from '../src/components/Home/components/HomeSEOContent';
 
 const Home: NextPage = () => {
   // --- Background
@@ -18,25 +19,31 @@ const Home: NextPage = () => {
     <MainContainer>
       <Head>
         <title>
-          Création de sites Internet performants à Agen et partout en France |
-          Pierre G.
+          Création de sites Internet performants & professionnels | Pierre G.
         </title>
+
         <meta
           property="og:title"
-          content="Création de sites Internet performants à Agen et partout en France | Pierre G."
+          content=" Création de sites Internet performants & professionnels | Pierre G."
         />
+
         <meta
           name="description"
-          content="Expert en création de sites Internet et boutiques en ligne. Basé à Agen, j'accompagne vos projets partout en France."
+          content="Expert en création de sites Internet, boutiques en ligne et SEO. Basé à Agen, j'accompagne vos projets partout en France. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
         />
+
         <meta
           property="og:description"
-          content="Expert en création de sites Internet et boutiques en ligne. Basé à Agen, j'accompagne vos projets partout en France."
+          content="Expert en création de sites Internet, boutiques en ligne et SEO. Basé à Agen, j'accompagne vos projets partout en France. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
         />
+
         <meta
           name="twitter:description"
-          content="Expert en création de sites Internet et boutiques en ligne. Basé à Agen, j'accompagne vos projets partout en France."></meta>
-        <meta property="og:url" content="https://pierre-godino.com" />
+          content="Expert en création de sites Internet, boutiques en ligne et SEO. Basé à Agen, j'accompagne vos projets partout en France. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
+        />
+
+        <meta property="og:url" content="https://www.pierre-godino.com" />
+        <link rel="canonical" href="https://www.pierre-godino.com" />
       </Head>
 
       {background}
@@ -44,8 +51,9 @@ const Home: NextPage = () => {
       <HomeRatings />
       <hr />
       <HomeServices />
-      <hr />
+      {/* <hr /> */}
       <HomeCustomerSlider />
+      <HomeSEOContent />
       <HomeSimulator />
       <HomeQuestions />
     </MainContainer>

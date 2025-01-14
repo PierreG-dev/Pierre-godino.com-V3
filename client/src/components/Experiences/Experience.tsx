@@ -213,7 +213,7 @@ const Experience: React.FC<Props> = ({
               id="panel1a-header">
               <img
                 src={icon}
-                alt=""
+                alt={title}
                 className={'w-8 h-7 mx-3 object-contain rounded-md'}
               />
               <h2

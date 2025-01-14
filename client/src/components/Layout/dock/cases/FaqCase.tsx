@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import { FC } from 'react';
 import CustomLink from '../../routing/CustomLink';
 
-const AgendaCase: FC = () => {
+const FaqCase: FC = () => {
   return (
     <MainContainer>
-      <img src="/icons/agenda_icon.png" alt="Calendrier" loading="lazy" />
+      <img src="/icons/question.png" alt="Calendrier" loading="lazy" />
       <p>
-        Consultez mes disponibilités{' '}
+        Une question ? Visitez la{' '}
         <u>
-          <CustomLink href="/calendar">ICI</CustomLink>
+          <CustomLink href="/faq-creation-site-internet">FAQ</CustomLink>
         </u>
       </p>
     </MainContainer>
@@ -42,4 +42,4 @@ const MainContainer = styled.div`
   }
 `;
 
-export default AgendaCase;
+export default FaqCase;

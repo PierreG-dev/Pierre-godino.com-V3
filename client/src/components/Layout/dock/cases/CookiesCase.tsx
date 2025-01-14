@@ -5,10 +5,12 @@ import CustomLink from '../../routing/CustomLink';
 const CookiesCase: FC = () => {
   return (
     <MainContainer>
-      <img src="/icons/cookie_icon.png" alt="" />
+      <img src="/icons/cookie_icon.png" alt="Cookie" loading="lazy" />
       <p>
         En utilisant ce site vous consentez à l'utilisation de{' '}
-        <CustomLink href="/legal/cgu">cookies</CustomLink>
+        <u>
+          <CustomLink href="/legal/cgu">cookies</CustomLink>
+        </u>
       </p>
     </MainContainer>
   );

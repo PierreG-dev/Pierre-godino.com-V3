@@ -7,6 +7,7 @@ import CookiesCase from './cases/CookiesCase';
 import ContactCase from './cases/ContactCase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
+import FaqCase from './cases/FaqCase';
 
 const cases = [
   {
@@ -28,6 +29,11 @@ const cases = [
     id: 4,
     name: 'Cookies',
     element: <CookiesCase />,
+  },
+  {
+    id: 5,
+    name: 'FAQ',
+    element: <FaqCase />,
   },
 ];
 
