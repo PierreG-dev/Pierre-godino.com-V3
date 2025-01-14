@@ -123,6 +123,10 @@ const MainContainer = styled.nav`
     font-size: 0.7rem;
     transition: 0.1s;
 
+    svg {
+      max-width: 15px;
+    }
+
     &:hover {
       background: #2d3436ff;
     }
