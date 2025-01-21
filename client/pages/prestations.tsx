@@ -46,11 +46,11 @@ const Pricing: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.pierre-godino.com/prestations"
+          content="https://www.creation-sites-godino.fr/prestations"
         />
         <link
           rel="canonical"
-          href="https://www.pierre-godino.com/prestations"
+          href="https://www.creation-sites-godino.fr/prestations"
         />
       </Head>
       {background}

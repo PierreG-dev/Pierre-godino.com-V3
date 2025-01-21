@@ -50,7 +50,7 @@ const personnalProjectsData: IPersonnalProjectData[] = [
       'radial-gradient(circle, rgba(38,2,0,1) 0%, rgba(96,15,0,1) 100%, rgba(96,15,0,1) 100%)',
     auraColor: '#600f00',
     filter: 'drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
-    link: 'https://www.pierre-godino.com',
+    link: 'https://www.creation-sites-godino.fr',
     description: 'Troisième version de mon portfolio | Vitrine',
   },
   {},
@@ -535,11 +535,11 @@ const Realisations: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.pierre-godino.com/realisations"
+          content="https://www.creation-sites-godino.fr/realisations"
         />
         <link
           rel="canonical"
-          href="https://www.pierre-godino.com/realisations"
+          href="https://www.creation-sites-godino.fr/realisations"
         />
       </Head>
       <div
@@ -1770,7 +1770,7 @@ name: 'Portfolio',
       'radial-gradient(circle, rgba(38,2,0,1) 0%, rgba(96,15,0,1) 100%, rgba(96,15,0,1) 100%)',
     auraColor: '#600f00',
     filter: 'drop-shadow(1px 1px 6px rgba(0,0,0,0.7))',
-    link: 'https://www.pierre-godino.com/V1/index.html',
+    link: 'https://www.creation-sites-godino.fr/V1/index.html',
     description: 'Première version de mon portfolio',
 },
 {

@@ -161,11 +161,11 @@ const Vitrine: FC = () => {
         />
         <meta
           property="og:url"
-          content="https://www.pierre-godino.com/simulateur/creation-site-internet"
+          content="https://www.creation-sites-godino.fr/simulateur/creation-site-internet"
         />
         <link
           rel="canonical"
-          href="https://pierre-godino.com/simulateur/creation-site-internet"
+          href="https://www.creation-sites-godino.fr/simulateur/creation-site-internet"
         />
       </Head>
       <MainContainer>

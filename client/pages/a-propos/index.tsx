@@ -31,9 +31,12 @@ const Index: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.pierre-godino.com/a-propos"
+          content="https://www.creation-sites-godino.fr/a-propos"
         />
-        <link rel="canonical" href="https://www.pierre-godino.com/a-propos" />
+        <link
+          rel="canonical"
+          href="https://www.creation-sites-godino.fr/a-propos"
+        />
       </Head>
 
       {background}

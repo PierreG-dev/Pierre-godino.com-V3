@@ -102,9 +102,12 @@ const Contact: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.pierre-godino.com/contact"
+          content="https://www.creation-sites-godino.fr/contact"
         />
-        <link rel="canonical" href="https://www.pierre-godino.com/contact" />
+        <link
+          rel="canonical"
+          href="https://www.creation-sites-godino.fr/contact"
+        />
       </Head>
 
       {background}

@@ -11,8 +11,11 @@ const Error404 = () => {
         <meta name="description" content="Erreur 404" />
         <meta property="og:description" content="Erreur 404" />
         <meta name="twitter:description" content="Erreur 404" />
-        <meta property="og:url" content="https://www.pierre-godino.com/404" />
-        <link rel="canonical" href="https://www.pierre-godino.com/404" />
+        <meta
+          property="og:url"
+          content="https://www.creation-sites-godino.fr/404"
+        />
+        <link rel="canonical" href="https://www.creation-sites-godino.fr/404" />
       </Head>
       <div className="bg-indigo-900 relative overflow-hidden h-screen">
         <img

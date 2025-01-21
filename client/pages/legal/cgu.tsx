@@ -24,9 +24,12 @@ const Cgu: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.pierre-godino.com/legal/cgu"
+          content="https://www.creation-sites-godino.fr/legal/cgu"
         />
-        <link rel="canonical" href="https://www.pierre-godino.com/legal/cgu" />
+        <link
+          rel="canonical"
+          href="https://www.creation-sites-godino.fr/legal/cgu"
+        />
       </Head>
       {background}
       <div id="satelite_container">

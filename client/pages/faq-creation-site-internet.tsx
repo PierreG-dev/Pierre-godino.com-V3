@@ -27,11 +27,11 @@ const FAQ: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.pierre-godino.com/faq-creation-site-internet"
+          content="https://www.creation-sites-godino.fr/faq-creation-site-internet"
         />
         <link
           rel="canonical"
-          href="https://www.pierre-godino.com/faq-creation-site-internet"
+          href="https://www.creation-sites-godino.fr/faq-creation-site-internet"
         />
       </Head>
       {background}

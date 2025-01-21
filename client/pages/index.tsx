@@ -42,8 +42,11 @@ const Home: NextPage = () => {
           content="Expert en création de sites Internet, boutiques en ligne et SEO. Basé à Agen, j'accompagne vos projets partout en France. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
         />
 
-        <meta property="og:url" content="https://www.pierre-godino.com" />
-        <link rel="canonical" href="https://www.pierre-godino.com" />
+        <meta
+          property="og:url"
+          content="https://www.creation-sites-godino.fr"
+        />
+        <link rel="canonical" href="https://www.creation-sites-godino.fr" />
       </Head>
 
       {background}

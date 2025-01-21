@@ -26,11 +26,11 @@ const Curiculum: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.pierre-godino.com/a-propos/curiculum"
+          content="https://www.creation-sites-godino.fr/a-propos/curiculum"
         />
         <link
           rel="canonical"
-          href="https://www.pierre-godino.com/a-propos/curiculum"
+          href="https://www.creation-sites-godino.fr/a-propos/curiculum"
         />
       </Head>
 
@@ -278,9 +278,9 @@ const Curiculum: NextPage = () => {
               </p>
 
               <a
-                href={'https://www.pierre-godino.com'}
+                href={'https://www.creation-sites-godino.fr'}
                 className={'text-sm md:text-base'}>
-                www.pierre-godino.com
+                www.creation-sites-godino.fr
               </a>
             </section>
 

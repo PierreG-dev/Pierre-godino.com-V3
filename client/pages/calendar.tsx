@@ -42,7 +42,7 @@ const Calendar: NextPage = () => {
       title: 'Disponibilités',
       description:
         'Créateur de sites Internet, développeur WEB freelance et formateur | Disponibilités',
-      ogUrl: 'https://www.pierre-godino.com/calendar',
+      ogUrl: 'https://www.creation-sites-godino.fr/calendar',
     };
 
     return (
@@ -117,6 +117,9 @@ const Calendar: NextPage = () => {
 
   return (
     <MainContainer>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       {metaContentGenerator}
       {background}
       <ConnexionModal open className={!isFetched ? 'visible' : ''}>
