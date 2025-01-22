@@ -18,28 +18,26 @@ const Home: NextPage = () => {
   return (
     <MainContainer>
       <Head>
-        <title>
-          Création de sites Internet performants & professionnels | Pierre G.
-        </title>
+        <title>Création de sites internet professionnels | Pierre G.</title>
 
         <meta
           property="og:title"
-          content=" Création de sites Internet performants & professionnels | Pierre G."
+          content=" Création de sites internet professionnels | Pierre G."
         />
 
         <meta
           name="description"
-          content="Expert en création de sites Internet, boutiques en ligne et SEO. Basé à Agen, j'accompagne vos projets partout en France. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
+          content="Expert en création de sites Internet, boutiques en ligne et SEO. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
         />
 
         <meta
           property="og:description"
-          content="Expert en création de sites Internet, boutiques en ligne et SEO. Basé à Agen, j'accompagne vos projets partout en France. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
+          content="Expert en création de sites Internet, boutiques en ligne et SEO. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
         />
 
         <meta
           name="twitter:description"
-          content="Expert en création de sites Internet, boutiques en ligne et SEO. Basé à Agen, j'accompagne vos projets partout en France. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
+          content="Expert en création de sites Internet, boutiques en ligne et SEO. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure."
         />
 
         <meta

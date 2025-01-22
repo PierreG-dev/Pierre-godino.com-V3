@@ -221,9 +221,10 @@ const Footer: React.FC<Props> = ({
           </div>
         </div>
         <div id="sub-footer" className="w-full h-10">
-          <p>
-            Pierre-godino.com <sup>V{process.env.NEXT_PUBLIC_APP_VERSION}</sup>
-          </p>
+          <a href="/">
+            Pierre-godino.com{' '}
+            <sup>V{process.env.NEXT_PUBLIC_APP_VERSION || '3'}</sup>
+          </a>
           <p>
             <CustomLink href="/legal/cgu">CGU</CustomLink>
 
