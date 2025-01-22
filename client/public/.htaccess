@@ -4,8 +4,14 @@ ErrorDocument 404 /404/index.html
 ErrorDocument 403 /404/index.html
 Options -Indexes
 
-RewriteCond %{HTTP_HOST} ^pierre\-godino\.com$
-RewriteRule ^/?$ "https\:\/\/www\.creation\-sites\-godino\.fr\/" [R=301,L]
-RewriteCond %{HTTP_HOST} ^creation\-sites\-godino\.fr$
-RewriteRule ^/?$ "https\:\/\/www\.creation\-sites\-godino\.fr\/" [R=301,L]
+# Rediriger tout le trafic HTTP vers HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
+# Rediriger non-www vers www pour les domaines pierre-godino.com et creation-sites-godino.fr
+RewriteCond %{HTTP_HOST} ^(pierre-godino\.com|creation-sites-godino\.fr)$ [NC]
+RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
+
+# Rediriger tout ce qui ne pointe pas déjà sur www.creation-sites-godino.fr
+RewriteCond %{HTTP_HOST} !^www\.creation\-sites\-godino\.fr$ [NC]
+RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
