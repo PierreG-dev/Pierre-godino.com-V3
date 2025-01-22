@@ -4,6 +4,8 @@ User-agent: *
 Disallow: /a-propos/technologies/?*
 Disallow: /a-propos/technologies/*
 Disallow: /a-propos/technologies?*
+Disallow: /calendar
+Disallow: /calendar/
 Disallow: 
 Disallow: /cgi-bin/
 Sitemap: https://creation-sites-godino.fr/sitemap.xml
