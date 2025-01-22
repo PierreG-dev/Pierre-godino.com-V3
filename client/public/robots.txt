@@ -1,6 +1,9 @@
 User-agent: googlebot-image
 Disallow: /
 User-agent: *
+Disallow: /a-propos/technologies/?*
+Disallow: /a-propos/technologies/*
+Disallow: /a-propos/technologies?*
 Disallow: 
 Disallow: /cgi-bin/
 Sitemap: https://creation-sites-godino.fr/sitemap.xml
