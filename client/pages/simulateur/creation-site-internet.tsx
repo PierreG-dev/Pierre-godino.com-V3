@@ -10,7 +10,7 @@ import {
 import styled from 'styled-components';
 import { BackgroundContext } from '../../src/contexts/Contexts';
 import dynamic from 'next/dynamic';
-import COMPUTER from '../../src/components/Simulateur/Computer';
+import COMPUTER from '../../src/components/Simulateur/COMPUTER';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
