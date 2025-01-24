@@ -81,7 +81,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
       <nav className={`${displayed === 'full' ? 'd-full' : ''}`}>
         <ul id="alt_links_list">
           <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/realisations'}>
+            <CustomLink href={'/realisations/'}>
               {' '}
               <WorkIcon /> Réalisations
             </CustomLink>
@@ -89,19 +89,19 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underl"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/prestations'}>
+            <CustomLink href={'/prestations/'}>
               {' '}
               <AssignmentIcon /> Prestations
             </CustomLink>
           </li>{' '}
           <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/contact'}>
+            <CustomLink href={'/contact/'}>
               {' '}
               <ForumIcon /> Contact
             </CustomLink>
           </li>{' '}
           <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/a-propos'}>
+            <CustomLink href={'/a-propos/'}>
               {' '}
               <PersonSearchIcon /> A propos
             </CustomLink>
@@ -127,7 +127,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/realisations'}>
+            <CustomLink href={'/realisations/'}>
               <WorkIcon />
               Réalisations
             </CustomLink>
@@ -135,7 +135,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline small-hidden classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/prestations'}>
+            <CustomLink href={'/prestations/'}>
               {' '}
               <AssignmentIcon />
               Prestations
@@ -174,7 +174,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/contact'}>
+            <CustomLink href={'/contact/'}>
               <ForumIcon />
               Contact
             </CustomLink>
@@ -187,7 +187,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 id="custom_nav_dropdown"
                 onMouseEnter={() => setDropdownDisplay(true)}
                 onMouseLeave={() => setDropdownDisplay(false)}>
-                <CustomLink href="/a-propos">
+                <CustomLink href="/a-propos/">
                   <PersonSearchIcon />A propos
                 </CustomLink>
                 <KeyboardArrowDownIcon
@@ -206,17 +206,17 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                       : 'none',
                   }}>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
-                    <CustomLink href={'/a-propos/technologies'}>
+                    <CustomLink href={'/a-propos/technologies/'}>
                       Technologies
                     </CustomLink>
                   </li>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
-                    <CustomLink href={'/a-propos/experiences'}>
+                    <CustomLink href={'/a-propos/experiences/'}>
                       Expériences
                     </CustomLink>
                   </li>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
-                    <CustomLink href={'/a-propos/curiculum'}>CV</CustomLink>
+                    <CustomLink href={'/a-propos/curiculum/'}>CV</CustomLink>
                   </li>
                 </ul>
               </div>

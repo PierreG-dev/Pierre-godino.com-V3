@@ -14,9 +14,12 @@ const Error404 = () => {
         <meta name="robots" content="noindex, nofollow" />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/404"
+          content="https://www.creation-sites-godino.fr/404/"
         />
-        <link rel="canonical" href="https://www.creation-sites-godino.fr/404" />
+        <link
+          rel="canonical"
+          href="https://www.creation-sites-godino.fr/404/"
+        />
         meta:
       </Head>
       <div className="bg-indigo-900 relative overflow-hidden h-screen">

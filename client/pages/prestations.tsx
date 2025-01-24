@@ -46,11 +46,11 @@ const Pricing: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/prestations"
+          content="https://www.creation-sites-godino.fr/prestations/"
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/prestations"
+          href="https://www.creation-sites-godino.fr/prestations/"
         />
       </Head>
       {background}
@@ -119,7 +119,7 @@ const Pricing: NextPage = () => {
               100% Codé à la main
             </li>
           </ul>
-          <CustomLink href="/simulateur/creation-site-internet">
+          <CustomLink href="/simulateur/creation-site-internet/">
             Faire une simulation
           </CustomLink>
           {/* <p className="service-support">
@@ -189,7 +189,7 @@ const Pricing: NextPage = () => {
               Statistiques en temps réel
             </li>
           </ul>
-          <CustomLink href="/contact">En savoir plus</CustomLink>
+          <CustomLink href="/contact/">En savoir plus</CustomLink>
           {/* <p className="service-support">
             Maintenance à partir de <span>70 € / mois</span> *
           </p> */}
@@ -256,7 +256,7 @@ const Pricing: NextPage = () => {
               Collaboration continue
             </li>
           </ul>
-          <CustomLink href="/contact">En savoir plus</CustomLink>
+          <CustomLink href="/contact/">En savoir plus</CustomLink>
           {/* <p className="service-support">Maintenance sur devis</p> */}
         </li>
       </ul>

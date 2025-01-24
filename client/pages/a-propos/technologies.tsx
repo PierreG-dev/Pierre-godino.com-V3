@@ -93,11 +93,11 @@ const Skills: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/a-propos/technologies"
+          content="https://www.creation-sites-godino.fr/a-propos/technologies/"
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/a-propos/technologies"
+          href="https://www.creation-sites-godino.fr/a-propos/technologies/"
         />
       </Head>
       {background}

@@ -128,15 +128,15 @@ const Footer: React.FC<Props> = ({
                   <CustomLink href={'/'}>Accueil</CustomLink>
                 </li>
                 <li>
-                  <CustomLink href={'/realisations'}>
+                  <CustomLink href={'/realisations/'}>
                     Mes réalisations
                   </CustomLink>
                 </li>
                 <li>
-                  <CustomLink href={'/contact'}>Contact</CustomLink>
+                  <CustomLink href={'/contact/'}>Contact</CustomLink>
                 </li>
                 <li>
-                  <CustomLink href={'/a-propos'}>A propos de moi</CustomLink>
+                  <CustomLink href={'/a-propos/'}>A propos de moi</CustomLink>
                 </li>
               </ul>
             </div>
@@ -226,9 +226,9 @@ const Footer: React.FC<Props> = ({
             <sup>V{process.env.NEXT_PUBLIC_APP_VERSION || '3'}</sup>
           </a>
           <p>
-            <CustomLink href="/legal/cgu">CGU</CustomLink>
+            <CustomLink href="/legal/cgu/">CGU</CustomLink>
 
-            <CustomLink href="/legal/cgv">CGV</CustomLink>
+            <CustomLink href="/legal/cgv/">CGV</CustomLink>
           </p>
           <p>2019 - {new Date().getFullYear()}</p>
         </div>

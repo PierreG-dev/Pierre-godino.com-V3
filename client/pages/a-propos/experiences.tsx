@@ -107,11 +107,11 @@ const Experiences: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/a-propos/experiences"
+          content="https://www.creation-sites-godino.fr/a-propos/experiences/"
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/a-propos/experiences"
+          href="https://www.creation-sites-godino.fr/a-propos/experiences/"
         />
       </Head>
 

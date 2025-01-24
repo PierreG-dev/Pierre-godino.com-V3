@@ -9,7 +9,7 @@ const FaqCase: FC = () => {
       <p>
         Une question ? Visitez la{' '}
         <u>
-          <CustomLink href="/faq-creation-site-internet">FAQ</CustomLink>
+          <CustomLink href="/faq-creation-site-internet/">FAQ</CustomLink>
         </u>
       </p>
     </MainContainer>

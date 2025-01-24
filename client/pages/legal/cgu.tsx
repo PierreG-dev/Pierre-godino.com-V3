@@ -24,11 +24,11 @@ const Cgu: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/legal/cgu"
+          content="https://www.creation-sites-godino.fr/legal/cgu/"
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/legal/cgu"
+          href="https://www.creation-sites-godino.fr/legal/cgu/"
         />
       </Head>
       {background}

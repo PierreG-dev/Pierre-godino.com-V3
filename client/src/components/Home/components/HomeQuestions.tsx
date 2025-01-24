@@ -5,7 +5,7 @@ import CustomLink from '../../Layout/routing/CustomLink';
 const HomeQuestions: FC = () => {
   return (
     <MainContainer>
-      <CustomLink href="/contact">
+      <CustomLink href="/contact/">
         <button>
           <img
             src="/icons/communication.png"

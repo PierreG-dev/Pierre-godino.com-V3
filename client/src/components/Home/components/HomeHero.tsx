@@ -57,13 +57,13 @@ const HomeHero: FC = () => {
         </div>
 
         <div id="links">
-          <CustomLink href="/prestations">
+          <CustomLink href="/prestations/">
             <button id="pricing_btn">
               <FormatListBulletedIcon />
               Prestations
             </button>
           </CustomLink>
-          <CustomLink href="/a-propos">
+          <CustomLink href="/a-propos/">
             <button id="about_btn">
               <span>{'{ '}</span>Compétences techniques<span>{' }'}</span>
             </button>

@@ -9,7 +9,7 @@ const AgendaCase: FC = () => {
       <p>
         Consultez mes disponibilités{' '}
         <u>
-          <CustomLink href="/calendar">ICI</CustomLink>
+          <CustomLink href="/calendar/">ICI</CustomLink>
         </u>
       </p>
     </MainContainer>
