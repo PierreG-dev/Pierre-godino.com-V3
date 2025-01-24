@@ -11,7 +11,7 @@ interface Post {
     rendered: string;
   };
   featured_media: string;
-  image: string;
+  featured_image: string;
   excerpt: {
     rendered: string;
   };
@@ -74,7 +74,11 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
             <ArticleCard key={post.id}>
               <Thumbnail>
                 {post.featured_image && (
-                  <img src={post.featured_image} alt={post.title.rendered} />
+                  <img
+                    src={post.featured_image}
+                    alt={post.title.rendered}
+                    loading="lazy"
+                  />
                 )}
               </Thumbnail>
 

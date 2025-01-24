@@ -14,6 +14,7 @@ import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import ForumIcon from '@mui/icons-material/Forum';
 import WorkIcon from '@mui/icons-material/Work';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 
 export type displayType = 'full' | 'displayed' | 'navbar';
 
@@ -104,6 +105,12 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
             <CustomLink href={'/a-propos/'}>
               {' '}
               <PersonSearchIcon /> A propos
+            </CustomLink>
+          </li>
+          <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
+            <CustomLink href={'/blog/'}>
+              {' '}
+              <NewspaperIcon /> Blog
             </CustomLink>
           </li>
           <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
@@ -205,6 +212,9 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                       ? '0 1px 5px 1px rgba(0, 0, 0, 0.3)'
                       : 'none',
                   }}>
+                  <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
+                    <CustomLink href={'/blog/'}>Blog</CustomLink>
+                  </li>
                   <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
                     <CustomLink href={'/a-propos/technologies/'}>
                       Technologies

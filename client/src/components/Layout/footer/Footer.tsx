@@ -220,7 +220,7 @@ const Footer: React.FC<Props> = ({
             </div>
           </div>
         </div>
-        <div id="sub-footer" className="w-full h-10">
+        <div id="sub-footer" className="">
           <a href="/">
             Pierre-godino.com{' '}
             <sup>V{process.env.NEXT_PUBLIC_APP_VERSION || '3'}</sup>
@@ -420,13 +420,19 @@ const MainContainer = styled.div`
       display: flex;
       justify-content: space-around;
       align-items: center;
+      width: 100vw !important;
       height: 3vh;
       background: #26262699;
       color: rgba(255, 255, 255, 0.6);
       font-size: 0.9rem;
-      font-family: BebasNeue;
-      p {
+      font-family: 'BebasNeue';
+
+      & > p,
+      & > a {
         width: 30%;
+      }
+
+      p {
         display: flex;
         justify-content: center;
         align-items: center;

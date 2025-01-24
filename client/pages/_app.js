@@ -125,6 +125,7 @@ function MyApp({ Component, pageProps }) {
     <Contexts>
       <Head>
         <meta property="og:image" content="/res/OG-image.png" />
+        <meta name="author" content="Pierre Godino" />
         <meta name="twitter:image" content="/res/OG-image.png" />
         <meta property="og:type" content="website" />
       </Head>
