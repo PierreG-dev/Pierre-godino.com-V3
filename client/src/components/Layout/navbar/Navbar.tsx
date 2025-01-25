@@ -26,7 +26,8 @@ export type Props = {
 const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
   const navRef = useRef();
   const [displayed, setDisplayed] = useState<displayType>('full');
-  const [dropdownDisplay, setDropdownDisplay] = useState(false);
+  const [dropdownDisplayAbout, setDropdownDisplayAbout] = useState(false);
+  const [dropdownDisplayServices, setDropdownDisplayServices] = useState(false);
 
   useEffect(() => {
     if (!loaded) setDisplayed('full');
@@ -140,13 +141,81 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
             </CustomLink>
           </li>
           <li
-            className="effect-underline small-hidden classic-link"
+            className="small-hidden"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/prestations/'}>
-              {' '}
-              <AssignmentIcon />
-              Prestations
-            </CustomLink>
+            <div>
+              <div
+                id="custom_nav_dropdown"
+                className="alt"
+                onMouseEnter={() => setDropdownDisplayServices(true)}
+                onMouseLeave={() => setDropdownDisplayServices(false)}>
+                <CustomLink href="/prestations/">
+                  <AssignmentIcon />
+                  Créations & Tarifs
+                </CustomLink>
+                <KeyboardArrowDownIcon
+                  style={{
+                    transform: dropdownDisplayServices
+                      ? 'rotate(180deg)'
+                      : 'rotate(0deg)',
+                    transition: '0.2s',
+                  }}
+                />
+                <ul
+                  style={{
+                    maxHeight: dropdownDisplayServices ? 1000 : 0,
+                    boxShadow: dropdownDisplayServices
+                      ? '0 1px 5px 1px rgba(0, 0, 0, 0.3)'
+                      : 'none',
+                  }}>
+                  <li
+                    style={{
+                      display: dropdownDisplayServices ? 'block' : 'none',
+                    }}>
+                    <CustomLink href={'/simulateur/creation-site-internet/'}>
+                      Site vitrine pour <br />
+                      TPE/PME
+                    </CustomLink>
+                  </li>
+                  <li
+                    style={{
+                      display: dropdownDisplayServices ? 'block' : 'none',
+                    }}>
+                    <CustomLink
+                      href={'/simulateur/referencement-visibilite-web-seo/'}>
+                      Référencement & visibilité WEB
+                    </CustomLink>
+                  </li>
+                  <li
+                    style={{
+                      display: dropdownDisplayServices ? 'block' : 'none',
+                    }}>
+                    <CustomLink
+                      href={'/simulateur/creation-boutique-e-commerce/'}>
+                      Boutique en ligne / e-commerce
+                    </CustomLink>
+                  </li>
+                  <li
+                    style={{
+                      display: dropdownDisplayServices ? 'block' : 'none',
+                    }}>
+                    <CustomLink
+                      href={'/simulateur/creation-application-en-ligne/'}>
+                      Applications en ligne
+                    </CustomLink>
+                  </li>
+                  <li
+                    style={{
+                      display: dropdownDisplayServices ? 'block' : 'none',
+                    }}>
+                    <CustomLink
+                      href={'/simulateur/creation-application-mobile/'}>
+                      Application Mobile
+                    </CustomLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </li>
           <li>
             {isNotchAvailable ? (
@@ -192,14 +261,14 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
             <div>
               <div
                 id="custom_nav_dropdown"
-                onMouseEnter={() => setDropdownDisplay(true)}
-                onMouseLeave={() => setDropdownDisplay(false)}>
+                onMouseEnter={() => setDropdownDisplayAbout(true)}
+                onMouseLeave={() => setDropdownDisplayAbout(false)}>
                 <CustomLink href="/a-propos/">
                   <PersonSearchIcon />A propos
                 </CustomLink>
                 <KeyboardArrowDownIcon
                   style={{
-                    transform: dropdownDisplay
+                    transform: dropdownDisplayAbout
                       ? 'rotate(180deg)'
                       : 'rotate(0deg)',
                     transition: '0.2s',
@@ -207,25 +276,37 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 />
                 <ul
                   style={{
-                    maxHeight: dropdownDisplay ? 1000 : 0,
-                    boxShadow: dropdownDisplay
+                    maxHeight: dropdownDisplayAbout ? 1000 : 0,
+                    boxShadow: dropdownDisplayAbout
                       ? '0 1px 5px 1px rgba(0, 0, 0, 0.3)'
                       : 'none',
                   }}>
-                  <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
+                  <li
+                    style={{
+                      display: dropdownDisplayAbout ? 'block' : 'none',
+                    }}>
                     <CustomLink href={'/blog/'}>Blog</CustomLink>
                   </li>
-                  <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
+                  <li
+                    style={{
+                      display: dropdownDisplayAbout ? 'block' : 'none',
+                    }}>
                     <CustomLink href={'/a-propos/technologies/'}>
                       Technologies
                     </CustomLink>
                   </li>
-                  <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
+                  <li
+                    style={{
+                      display: dropdownDisplayAbout ? 'block' : 'none',
+                    }}>
                     <CustomLink href={'/a-propos/experiences/'}>
                       Expériences
                     </CustomLink>
                   </li>
-                  <li style={{ display: dropdownDisplay ? 'block' : 'none' }}>
+                  <li
+                    style={{
+                      display: dropdownDisplayAbout ? 'block' : 'none',
+                    }}>
                     <CustomLink href={'/a-propos/curiculum/'}>CV</CustomLink>
                   </li>
                 </ul>
@@ -288,6 +369,13 @@ const MainContainer = styled.div`
 
     #custom_nav_dropdown {
       position: relative;
+
+      &.alt {
+        ul {
+          width: 270px;
+        }
+      }
+
       & > svg {
         cursor: pointer;
         @media (max-width: 1000px) {
