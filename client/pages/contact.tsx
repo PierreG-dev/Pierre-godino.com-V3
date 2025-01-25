@@ -36,7 +36,7 @@ const networks = [
     name: 'Google',
     imgUrl: '/icons/google.png',
     className: 'cv',
-    link: 'https://www.google.com/search?q=Cr%C3%A9ation%20sites%20internet%20sur%20Agen%20|%20Pierre%20G.&stick=H4sIAAAAAAAAAONgU1IxqEgzMTFPM01LMzIxSDZJTLICipgaJZolWhpbGlkYJlokGy1i1XUuOrwysSQzP0-hOLMktVghM68ktSgvtUShuLRIwTE9NU-hRiEgM7WoKFXBXQ8Ab1wenFgAAAA',
+    link: 'https://g.co/kgs/9Y2TGRP',
   },
 ];
 
