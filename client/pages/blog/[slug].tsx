@@ -120,6 +120,7 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
             <img
               src={post.featured_image_url}
               alt={`Vignette de ${post.title.rendered}`}
+              loading="lazy"
             />
             <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
             <div className="wrapper">
