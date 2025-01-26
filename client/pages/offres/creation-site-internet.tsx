@@ -15,7 +15,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import Title from '../../src/utilities/Title';
-const Lottie = dynamic(() => import('react-lottie'), { ssr: true });
+const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
 
 const defaultOptions = {
   loop: false,
