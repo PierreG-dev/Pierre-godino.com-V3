@@ -10,6 +10,7 @@ import HomeCustomerSlider from '../src/components/Home/components/HomeCustomerSl
 import HomeSimulator from '../src/components/Home/components/HomeSimulator';
 import HomeQuestions from '../src/components/Home/components/HomeQuestions';
 import HomeSEOContent from '../src/components/Home/components/HomeSEOContent';
+import HomeExpert from '../src/components/Home/components/HomeExpert';
 
 const Home: NextPage = () => {
   // --- Background
@@ -50,7 +51,8 @@ const Home: NextPage = () => {
       {background}
       <HomeHero />
       <HomeRatings />
-      <hr />
+      {/* <hr /> */}
+      <HomeExpert />
       <HomeServices />
       {/* <hr /> */}
       <HomeCustomerSlider />

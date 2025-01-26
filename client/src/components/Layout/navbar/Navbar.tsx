@@ -97,7 +97,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underl"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/prestations/'}>
+            <CustomLink href={'/offres/'}>
               {' '}
               <AssignmentIcon /> Prestations
             </CustomLink>
@@ -155,7 +155,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 className="alt"
                 onMouseEnter={() => setDropdownDisplayServices(true)}
                 onMouseLeave={() => setDropdownDisplayServices(false)}>
-                <CustomLink href="/prestations/">
+                <CustomLink href="/offres/">
                   <AssignmentIcon />
                   Offres & Tarifs
                 </CustomLink>
@@ -179,7 +179,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/simulateur/creation-site-internet/'}>
+                    <CustomLink href={'/offres/creation-site-internet/'}>
                       <StorefrontIcon />
                       <p>
                         Site vitrine pour <br />
@@ -192,7 +192,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
                     <CustomLink
-                      href={'/simulateur/referencement-visibilite-web-seo/'}>
+                      href={'/offres/referencement-visibilite-web-seo/'}>
                       <SpeedIcon />
                       <p>
                         Référencement & <br />
@@ -204,8 +204,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink
-                      href={'/simulateur/creation-boutique-e-commerce/'}>
+                    <CustomLink href={'/offres/creation-boutique-e-commerce/'}>
                       <LocalGroceryStoreIcon />
                       <p>
                         Boutique en ligne <br /> e-commerce
@@ -216,8 +215,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink
-                      href={'/simulateur/creation-application-en-ligne/'}>
+                    <CustomLink href={'/offres/creation-application-en-ligne/'}>
                       <MonitorIcon />
                       <p>
                         Applications <br />
@@ -229,8 +227,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink
-                      href={'/simulateur/creation-application-mobile/'}>
+                    <CustomLink href={'/offres/creation-application-mobile/'}>
                       <SmartphoneIcon />
                       <p>
                         Application <br /> Mobile

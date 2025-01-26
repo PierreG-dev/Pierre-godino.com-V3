@@ -20,10 +20,10 @@ import BuildIcon from '@mui/icons-material/Build';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import LanguageIcon from '@mui/icons-material/Language';
-import { BackgroundContext } from '../src/contexts/Contexts';
-import CustomLink from '../src/components/Layout/routing/CustomLink';
+import { BackgroundContext } from '../../src/contexts/Contexts';
+import CustomLink from '../../src/components/Layout/routing/CustomLink';
 
-const Pricing: NextPage = () => {
+const Offres: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
 
@@ -46,11 +46,11 @@ const Pricing: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/prestations/"
+          content="https://www.creation-sites-godino.fr/offres/"
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/prestations/"
+          href="https://www.creation-sites-godino.fr/offres/"
         />
       </Head>
       {background}
@@ -119,7 +119,7 @@ const Pricing: NextPage = () => {
               100% Codé à la main
             </li>
           </ul>
-          <CustomLink href="/simulateur/creation-site-internet/">
+          <CustomLink href="/offres/creation-site-internet/">
             Faire une simulation
           </CustomLink>
           {/* <p className="service-support">
@@ -954,4 +954,4 @@ const Caroussel = styled.div`
   }
 `;
 
-export default Pricing;
+export default Offres;

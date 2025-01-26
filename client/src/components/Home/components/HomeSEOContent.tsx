@@ -42,33 +42,6 @@ const HomeSEOContent: FC = () => {
         </ul>
       </section>
 
-      <section id="expertise">
-        <h2>
-          <img src="/icons/qualite.png" alt="expert WEB" loading="lazy" />
-          Mon expertise en création de site internet
-        </h2>
-        <p>
-          Spécialiste en création de sites internet sur mesure, j’accompagne mes
-          clients de la conception à la mise en ligne. Mon approche se base sur
-          trois piliers fondamentaux :
-        </p>
-        <ul>
-          <li>
-            <strong>Un design qui vous ressemble :</strong> Je crée des sites
-            modernes, responsive et optimisés pour une expérience utilisateur
-            optimale.
-          </li>
-          <li>
-            <strong>Un référencement performant (SEO) :</strong> Chaque site que
-            je conçois est optimisé pour le SEO dès le départ.
-          </li>
-          <li>
-            <strong>Un accompagnement complet :</strong> De l’hébergement à la
-            maintenance, je m’assure que votre site reste à jour et sécurisé.
-          </li>
-        </ul>
-      </section>
-
       <section id="steps">
         <h2>
           <img

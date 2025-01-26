@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import PhoneIcon from '@mui/icons-material/Phone';
 import dynamic from 'next/dynamic';
 import CustomLink from '../../Layout/routing/CustomLink';
 import COMPUTER from '../lordicons/computer_lordicon';
@@ -50,22 +51,32 @@ const HomeHero: FC = () => {
             <span>
               Salut, moi c'est <strong>Pierre</strong>
             </span>
-            Je développe des <strong>sites internet</strong>,{' '}
-            <strong>boutiques en ligne</strong> et <strong>applications</strong>
-            .
+            Je développe des <strong>sites internet efficaces</strong>,
+            <strong> rapidement rentables</strong> et conçus pour vous faire
+            <strong> gagner du temps et de l'argent.</strong> <br /> <br />
           </p>
         </div>
 
         <div id="links">
-          <CustomLink href="/prestations/">
+          <a href="tel:+33767249980">
+            <button id="tel_btn">
+              <PhoneIcon />
+              <p>
+                Devis gratuit & personnalisé <br />
+                <span>07 67 24 99 80</span>
+              </p>
+            </button>
+          </a>
+          <CustomLink href="/offres/">
             <button id="pricing_btn">
               <FormatListBulletedIcon />
-              Prestations
+              Offres & tarifs
             </button>
           </CustomLink>
           <CustomLink href="/a-propos/">
             <button id="about_btn">
-              <span>{'{ '}</span>Compétences techniques<span>{' }'}</span>
+              <span>{'{ '}</span>Comment se passent mes prestations ?
+              <span>{' }'}</span>
             </button>
           </CustomLink>
         </div>
@@ -250,7 +261,7 @@ const MainContainer = styled.section`
         backdrop-filter: blur(1px);
         border-radius: 3px;
         font-family: 'Montserrat';
-        flex: 1;
+        /* flex: 1; */
         /* min-width: 320px; */
         max-width: calc(100vw - 100px);
         height: 100px;
@@ -258,33 +269,27 @@ const MainContainer = styled.section`
         button {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 10px;
           font-weight: bold;
           letter-spacing: 2px;
+          width: 100%;
 
-          span {
-            font-family: 'Montserrat';
-            font-size: 2.8rem;
-            font-weight: 500;
-            transform: translateY(-5px);
-            color: rgb(231, 76, 60);
-          }
-
-          svg {
-            color: rgb(46, 204, 113);
-            font-size: 2.4rem;
-          }
           @media (max-width: 500px) {
             font-size: 0.9rem;
 
-            svg,
-            span {
+            svg {
               font-size: 2rem !important;
             }
           }
         }
 
-        &:has(#about_btn):hover {
+        &:has(#about_btn) {
+          width: calc(50% - (15px / 2));
+
+          @media (max-width: 500px) {
+            width: 100%;
+          }
           &:hover {
             background: rgba(231, 76, 60, 0.3);
             border: 1px solid rgb(231, 76, 60);
@@ -292,12 +297,49 @@ const MainContainer = styled.section`
           }
 
           span {
+            font-family: 'Montserrat';
+            font-size: 2.8rem;
+            font-weight: 500;
+            transform: translateY(-5px);
             color: rgb(231, 76, 60);
             filter: drop-shadow(0px 0px 5px rgba(231, 76, 60, 0.4));
           }
         }
 
-        &:has(#pricing_btn):hover {
+        &:has(#pricing_btn) {
+          width: calc(50% - (15px / 2));
+
+          @media (max-width: 500px) {
+            width: 100%;
+          }
+          svg {
+            color: rgba(41, 128, 185, 1);
+            font-size: 2.4rem;
+          }
+
+          &:hover {
+            background: rgba(41, 128, 185, 0.3);
+            border: 1px solid rgba(41, 128, 185, 1);
+            box-shadow: 0px 0px 7px 1px rgba(41, 128, 185, 1);
+          }
+
+          svg {
+            filter: drop-shadow(0px 0px 5px rgba(41, 128, 185, 0.4));
+          }
+        }
+
+        &:has(#tel_btn) {
+          width: 100%;
+
+          span {
+            color: rgb(46, 204, 113);
+            display: inline-block;
+          }
+
+          svg {
+            color: rgb(46, 204, 113);
+            font-size: 3.2rem;
+          }
           &:hover {
             background: rgba(46, 204, 113, 0.3);
             border: 1px solid rgb(46, 204, 113);

@@ -10,7 +10,7 @@ const HomeServices: FC = () => {
       </h2>
       <ul id="services_list">
         <li className="service-item">
-          <CustomLink href="/simulateur/creation-site-internet/">
+          <CustomLink href="/offres/creation-site-internet/">
             {' '}
             <div>
               {' '}
@@ -24,7 +24,7 @@ const HomeServices: FC = () => {
           </CustomLink>
         </li>
         <li className="service-item">
-          <CustomLink href="/prestations/">
+          <CustomLink href="/offres/">
             <div>
               {' '}
               <img
@@ -50,7 +50,7 @@ const HomeServices: FC = () => {
           </CustomLink>
         </li>
         <li className="service-item">
-          <CustomLink href="/prestations/">
+          <CustomLink href="/offres/">
             {' '}
             <div>
               {' '}
@@ -60,7 +60,7 @@ const HomeServices: FC = () => {
           </CustomLink>
         </li>
         <li className="service-item">
-          <CustomLink href="/prestations/">
+          <CustomLink href="/offres/">
             <div>
               <img
                 src="/icons/android.png"

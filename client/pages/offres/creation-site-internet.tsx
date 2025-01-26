@@ -15,7 +15,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import Title from '../../src/utilities/Title';
-const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
+const Lottie = dynamic(() => import('react-lottie'), { ssr: true });
 
 const defaultOptions = {
   loop: false,
@@ -161,11 +161,11 @@ const Vitrine: FC = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/simulateur/creation-site-internet/"
+          content="https://www.creation-sites-godino.fr/offres/creation-site-internet/"
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/simulateur/creation-site-internet/"
+          href="https://www.creation-sites-godino.fr/offres/creation-site-internet/"
         />
       </Head>
       <MainContainer>
