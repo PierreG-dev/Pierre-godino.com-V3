@@ -16,6 +16,12 @@ import WorkIcon from '@mui/icons-material/Work';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import SpeedIcon from '@mui/icons-material/Speed';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import MonitorIcon from '@mui/icons-material/Monitor';
+import SmartphoneIcon from '@mui/icons-material/Smartphone';
+
 export type displayType = 'full' | 'displayed' | 'navbar';
 
 export type Props = {
@@ -151,7 +157,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 onMouseLeave={() => setDropdownDisplayServices(false)}>
                 <CustomLink href="/prestations/">
                   <AssignmentIcon />
-                  Créations & Tarifs
+                  Offres & Tarifs
                 </CustomLink>
                 <KeyboardArrowDownIcon
                   style={{
@@ -161,6 +167,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     transition: '0.2s',
                   }}
                 />
+
                 <ul
                   style={{
                     maxHeight: dropdownDisplayServices ? 1000 : 0,
@@ -173,8 +180,11 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
                     <CustomLink href={'/simulateur/creation-site-internet/'}>
-                      Site vitrine pour <br />
-                      TPE/PME
+                      <StorefrontIcon />
+                      <p>
+                        Site vitrine pour <br />
+                        TPE/PME
+                      </p>
                     </CustomLink>
                   </li>
                   <li
@@ -183,7 +193,11 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     }}>
                     <CustomLink
                       href={'/simulateur/referencement-visibilite-web-seo/'}>
-                      Référencement & visibilité WEB
+                      <SpeedIcon />
+                      <p>
+                        Référencement & <br />
+                        visibilité WEB
+                      </p>
                     </CustomLink>
                   </li>
                   <li
@@ -192,7 +206,10 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     }}>
                     <CustomLink
                       href={'/simulateur/creation-boutique-e-commerce/'}>
-                      Boutique en ligne / e-commerce
+                      <LocalGroceryStoreIcon />
+                      <p>
+                        Boutique en ligne <br /> e-commerce
+                      </p>
                     </CustomLink>
                   </li>
                   <li
@@ -201,7 +218,11 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     }}>
                     <CustomLink
                       href={'/simulateur/creation-application-en-ligne/'}>
-                      Applications en ligne
+                      <MonitorIcon />
+                      <p>
+                        Applications <br />
+                        en ligne
+                      </p>
                     </CustomLink>
                   </li>
                   <li
@@ -210,7 +231,10 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     }}>
                     <CustomLink
                       href={'/simulateur/creation-application-mobile/'}>
-                      Application Mobile
+                      <SmartphoneIcon />
+                      <p>
+                        Application <br /> Mobile
+                      </p>
                     </CustomLink>
                   </li>
                 </ul>
@@ -373,6 +397,24 @@ const MainContainer = styled.div`
       &.alt {
         ul {
           width: 270px;
+
+          a {
+            padding: 5px 25px;
+            display: flex;
+            align-items: center !important;
+            justify-content: start;
+            backdrop-filter: blur(5px);
+
+            p {
+              flex: 1;
+            }
+
+            svg {
+              justify-self: start;
+              font-size: 1.9rem;
+              color: rgb(46, 204, 113);
+            }
+          }
         }
       }
 
