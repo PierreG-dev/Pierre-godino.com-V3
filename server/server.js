@@ -23,6 +23,7 @@ app.use(
       "http://creation-sites-godino.fr/",
       "176.128.76.57:3000",
       "176.128.76.57:*",
+      "*",
     ],
     credentials: true,
     optionsSuccessStatus: 204,
