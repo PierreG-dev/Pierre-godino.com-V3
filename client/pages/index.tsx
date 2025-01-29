@@ -11,6 +11,8 @@ import HomeSimulator from '../src/components/Home/components/HomeSimulator';
 import HomeQuestions from '../src/components/Home/components/HomeQuestions';
 import HomeSEOContent from '../src/components/Home/components/HomeSEOContent';
 import HomeExpert from '../src/components/Home/components/HomeExpert';
+import HomeMaths from '../src/components/Home/components/HomeMaths';
+import HomeNotes from '../src/components/Home/components/HomeNotes';
 
 const Home: NextPage = () => {
   // --- Background
@@ -51,12 +53,14 @@ const Home: NextPage = () => {
       {background}
       <HomeHero />
       <HomeRatings />
+      <HomeMaths />
       {/* <hr /> */}
       <HomeExpert />
       <HomeServices />
       {/* <hr /> */}
       <HomeCustomerSlider />
       <HomeSEOContent />
+      <HomeNotes />
       <HomeSimulator />
       <HomeQuestions />
     </MainContainer>

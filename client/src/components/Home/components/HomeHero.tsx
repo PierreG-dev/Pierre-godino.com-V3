@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import EuroIcon from '@mui/icons-material/Euro';
 import PhoneIcon from '@mui/icons-material/Phone';
 import dynamic from 'next/dynamic';
 import CustomLink from '../../Layout/routing/CustomLink';
@@ -51,10 +52,58 @@ const HomeHero: FC = () => {
             <span>
               Salut, moi c'est <strong>Pierre</strong>
             </span>
-            Je développe des <strong>sites internet efficaces</strong>,
+            Passionné par le WEB, je développe des{' '}
+            <strong>sites internet efficaces</strong>,
             <strong> rapidement rentables</strong> et conçus pour vous faire
-            <strong> gagner du temps et de l'argent.</strong> <br /> <br />
+            gagner
+            <strong> du temps, et de l'argent.</strong> <br /> <br />
           </p>
+        </div>
+
+        <div id="hero_notes">
+          <div>
+            <img src="/icons/google.png" alt="google" loading="lazy" />
+            <div>
+              {' '}
+              <em>
+                <b>Google</b> : 5/5
+              </em>
+              <div className="stars">
+                {Array(5)
+                  .fill(null)
+                  .map((_, index) => (
+                    <img
+                      key={index}
+                      src="/icons/star.png"
+                      alt="Etoile"
+                      loading="lazy"
+                    />
+                  ))}
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="/icons/malt.png" alt="malt" loading="lazy" />
+
+            <div>
+              {' '}
+              <em>
+                <b>Malt</b> : 5/5
+              </em>
+              <div className="stars">
+                {Array(5)
+                  .fill(null)
+                  .map((_, index) => (
+                    <img
+                      key={index}
+                      src="/icons/star.png"
+                      alt="Etoile"
+                      loading="lazy"
+                    />
+                  ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         <div id="links">
@@ -67,10 +116,10 @@ const HomeHero: FC = () => {
               </p>
             </button>
           </a>
-          <CustomLink href="/offres/">
+          <CustomLink href="/offres/creation-site-internet">
             <button id="pricing_btn">
-              <FormatListBulletedIcon />
-              Offres & tarifs
+              <EuroIcon />
+              Combien ça coûte ?
             </button>
           </CustomLink>
           <CustomLink href="/a-propos/">
@@ -96,7 +145,6 @@ const HomeHero: FC = () => {
                 <Lottie
                   options={{ ...defaultOptions, animationData: COMPUTER }}
                   width={'100%'}
-                  // ref={ComputerIconRef}
                 />
               )}
             </div>
@@ -177,7 +225,7 @@ const MainContainer = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 100px;
+    /* gap: 100px; */
     position: relative;
     flex: 1;
     width: 100%;
@@ -185,7 +233,7 @@ const MainContainer = styled.section`
     padding: 0 50px;
 
     @media (max-width: 500px) {
-      gap: 25px;
+      /* gap: 25px; */
     }
 
     #content {
@@ -236,6 +284,59 @@ const MainContainer = styled.section`
         text-shadow: 1px 1px 4px rgba(250, 250, 250, 0.4);
         font-size: 1.2rem;
         margin-left: 10px;
+      }
+    }
+
+    #hero_notes {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 25px;
+      padding: 0 10px;
+
+      // wrapper
+      & > div {
+        display: flex;
+        align-items: end;
+        gap: 15px;
+
+        // logo
+        & > img {
+          width: 50px;
+
+          @media (max-width: 500px) {
+            width: 35px;
+          }
+        }
+
+        // wrapper note + etoiles
+        & > div {
+          display: flex;
+          flex-direction: column;
+
+          em {
+            opacity: 0.7;
+            color: #fafafa;
+
+            @media (max-width: 500px) {
+              font-size: 0.9rem;
+            }
+          }
+
+          // etoiles
+          .stars {
+            display: flex;
+
+            img {
+              width: 20px;
+              height: 20px;
+              @media (max-width: 500px) {
+                width: 10px;
+                height: 10px;
+              }
+            }
+          }
+        }
       }
     }
 

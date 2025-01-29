@@ -155,46 +155,7 @@ const HomeRatings: FC = () => {
             </li>
           ))}
         </ul>
-      </div>{' '}
-      <HomeSimulator />
-      <ul id="google_malt_wrapper">
-        <li id="google">
-          <img src="/icons/google.png" alt="google" loading="lazy" />
-          <em>
-            <b>Google</b> : 5/5
-          </em>
-          <div className="stars-container">
-            {Array(5)
-              .fill(null)
-              .map((_, index) => (
-                <img
-                  key={index}
-                  src="/icons/star.png"
-                  alt="Etoile"
-                  loading="lazy"
-                />
-              ))}
-          </div>
-        </li>
-        <li id="malt">
-          <img src="/icons/malt.png" alt="malt" loading="lazy" />
-          <em>
-            <b>Malt</b> : 5/5
-          </em>
-          <div className="stars-container">
-            {Array(5)
-              .fill(null)
-              .map((_, index) => (
-                <img
-                  key={index}
-                  src="/icons/star.png"
-                  alt="Etoile"
-                  loading="lazy"
-                />
-              ))}
-          </div>
-        </li>
-      </ul>
+      </div>
     </MainContainer>
   );
 };
