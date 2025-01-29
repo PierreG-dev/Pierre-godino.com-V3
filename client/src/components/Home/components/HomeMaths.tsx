@@ -2,6 +2,7 @@ import { FC, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PhoneIcon from '@mui/icons-material/Phone';
+import CustomLink from '../../Layout/routing/CustomLink';
 
 const HomeMaths: FC = () => {
   const [isGaugeVisible, setIsGaugeVisible] = useState<boolean>(false);
@@ -118,12 +119,12 @@ const HomeMaths: FC = () => {
             </p>
           </button>
         </a>
-        <a href="tel:+33767249980">
+        <CustomLink href="/contact">
           <button className="form-btn">
             <FormatListBulletedIcon />
             <p>Formulaire de contact</p>
           </button>
-        </a>
+        </CustomLink>
       </div>
     </MainContainer>
   );

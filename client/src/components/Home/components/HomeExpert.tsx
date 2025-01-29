@@ -4,34 +4,37 @@ const HomeExpert = () => {
   return (
     <MainContainer id="expertise">
       <h2>
-        <img src="/icons/qualite.png" alt="expert WEB" loading="lazy" />
-        Mon expertise en création de site internet
+        Convaincu ?<strong>Je m'occupe de tout.</strong>
+        <img src="/icons/check.png" alt="expert WEB" loading="lazy" />
       </h2>
-      <p>
-        Spécialiste en création de sites internet sur mesure, j’accompagne mes
+      <p className="subtitle">
+        Spécialiste en création de sites internet depuis 2019, j’accompagne mes
         clients <strong>de la conception à la mise en ligne</strong>. Mon
         approche se base sur <strong>trois piliers fondamentaux</strong> :
       </p>
       <ul>
         <li>
-          <strong>
-            <big>Un design qui vous ressemble :</big>
-          </strong>{' '}
-          Je crée des sites modernes, responsive et optimisés pour une
-          expérience utilisateur optimale.
+          <img src="/icons/paint-brush.png" alt="expert WEB" loading="lazy" />
+          <h3>Un design qui vous ressemble</h3>
+          <p>
+            Je crée des sites modernes, responsive et optimisés pour une
+            expérience utilisateur optimale.
+          </p>
         </li>
         <li>
-          <strong>
-            <big>Un référencement performant (SEO) :</big>
-          </strong>{' '}
-          Chaque site que je conçois est optimisé pour le SEO dès le départ.
+          <img src="/icons/google.png" alt="expert WEB" loading="lazy" />
+          <h3>Un référencement performant (SEO)</h3>{' '}
+          <p>
+            Chaque site que je conçois est optimisé pour le SEO dès le départ.
+          </p>
         </li>
         <li>
-          <strong>
-            <big>Un accompagnement complet :</big>
-          </strong>{' '}
-          De l’hébergement à la maintenance, je m’assure que votre site reste à
-          jour et sécurisé.
+          <img src="/icons/qualite.png" alt="expert WEB" loading="lazy" />
+          <h3>Un accompagnement complet</h3>{' '}
+          <p>
+            De l’hébergement à la maintenance, je m’assure que votre site reste
+            à jour et sécurisé.
+          </p>
         </li>
       </ul>
     </MainContainer>
@@ -40,7 +43,7 @@ const HomeExpert = () => {
 
 const MainContainer = styled.section`
   margin: auto;
-  padding: 0 25px;
+  padding: 50px 25px;
   max-width: 1200px;
   z-index: 1;
 
@@ -60,30 +63,34 @@ const MainContainer = styled.section`
     }
   }
 
-  h1,
   h2 {
+    font-size: 2rem;
+    letter-spacing: 1px;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
     color: rgba(255, 255, 255, 1);
-    font-size: 2.5rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    margin-left: -100px;
+    margin-bottom: 50px;
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3) !important;
+
+    strong {
+      color: rgb(46, 204, 113, 0.9);
+      text-shadow: 0px 0px 5px rgba(46, 204, 113, 0.5) !important;
+    }
 
     svg,
     img {
       width: 70px;
       color: #27ae60;
-      filter: drop-shadow(0px 0px 3px rgba(green, 0.2));
+      filter: drop-shadow(0px 0px 3px #27ae6066);
     }
 
     @media (max-width: 700px) {
+      flex-direction: column;
       letter-spacing: 4px;
       font-size: 1.2rem !important;
-      margin-left: -40px;
 
       svg,
       img {
@@ -92,16 +99,16 @@ const MainContainer = styled.section`
     }
   }
 
-  h2 {
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-
-  p,
-  li {
-    font-size: 1.2rem;
+  p.subtitle {
+    font-size: 1.4rem;
     font-weight: 500;
     text-align: justify;
+    margin-bottom: 50px;
+
+    strong {
+      color: rgb(46, 204, 113, 0.9);
+      text-shadow: 0px 0px 5px rgba(46, 204, 113, 0.3) !important;
+    }
 
     @media (max-width: 450px) {
       font-size: 0.8rem;
@@ -109,8 +116,43 @@ const MainContainer = styled.section`
   }
 
   ul {
-    padding-left: 40px;
-    list-style: disc;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    gap: 50px;
+
+    li {
+      width: 300px;
+      max-width: 100%;
+      /* background: red; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-bottom: 25px;
+
+        @media (max-width: 500px) {
+          width: 70px;
+          height: 70px;
+        }
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      p {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+    }
   }
 `;
 
