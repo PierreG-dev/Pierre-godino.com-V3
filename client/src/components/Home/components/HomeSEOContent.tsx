@@ -7,7 +7,7 @@ const HomeSEOContent: FC = () => {
       <header>
         <h1>
           <img src="/icons/web.webp" alt="WEB" loading="lazy" />
-          Création de site internet : Donnez vie à vos idées en ligne
+          Création de site internet : Quelques informations complémentaires
         </h1>
       </header>
 

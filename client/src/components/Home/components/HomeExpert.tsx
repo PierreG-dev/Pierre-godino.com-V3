@@ -1,19 +1,50 @@
+import { NextPage } from 'next';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import CustomLink from '../../Layout/routing/CustomLink';
 
-const HomeExpert = () => {
+const HomeExpert: NextPage = () => {
+  const [isContentVisible, setisContentVisible] = useState<boolean>(false);
+  const contentWrapperRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(
+          (entry) => entry.isIntersecting && setisContentVisible(true)
+        );
+      },
+      {
+        threshold: 0.45,
+      }
+    );
+    observer.observe(contentWrapperRef.current);
+  }, []);
+
   return (
-    <MainContainer id="expertise">
+    <MainContainer id="expertise" ref={contentWrapperRef}>
       <h2>
         Convaincu ?<strong>Je m'occupe de tout.</strong>
         <img src="/icons/check.png" alt="expert WEB" loading="lazy" />
       </h2>
+
       <p className="subtitle">
         Spécialiste en création de sites internet depuis 2019, j’accompagne mes
-        clients <strong>de la conception à la mise en ligne</strong>. Mon
-        approche se base sur <strong>trois piliers fondamentaux</strong> :
+        clients{' '}
+        <strong>
+          de la conception <br /> à la mise en ligne
+        </strong>
+        . Mon approche se base sur <strong>trois piliers fondamentaux</strong> :
       </p>
+
       <ul>
-        <li>
+        <li
+          style={{
+            transform: isContentVisible ? 'none' : 'translateY(50px)',
+            opacity: isContentVisible ? 1 : 0,
+            transitionDelay: '0.4s',
+          }}>
           <img src="/icons/paint-brush.png" alt="expert WEB" loading="lazy" />
           <h3>Un design qui vous ressemble</h3>
           <p>
@@ -21,14 +52,24 @@ const HomeExpert = () => {
             expérience utilisateur optimale.
           </p>
         </li>
-        <li>
+        <li
+          style={{
+            transform: isContentVisible ? 'none' : 'translateY(50px)',
+            opacity: isContentVisible ? 1 : 0,
+            transitionDelay: '0.6s',
+          }}>
           <img src="/icons/google.png" alt="expert WEB" loading="lazy" />
           <h3>Un référencement performant (SEO)</h3>{' '}
           <p>
             Chaque site que je conçois est optimisé pour le SEO dès le départ.
           </p>
         </li>
-        <li>
+        <li
+          style={{
+            transform: isContentVisible ? 'none' : 'translateY(50px)',
+            opacity: isContentVisible ? 1 : 0,
+            transitionDelay: '0.8s',
+          }}>
           <img src="/icons/qualite.png" alt="expert WEB" loading="lazy" />
           <h3>Un accompagnement complet</h3>{' '}
           <p>
@@ -37,13 +78,45 @@ const HomeExpert = () => {
           </p>
         </li>
       </ul>
+
+      <footer>
+        <div
+          style={{
+            transform: isContentVisible ? 'none' : 'translateY(50px)',
+            opacity: isContentVisible ? 1 : 0,
+            transitionDelay: '1s',
+          }}>
+          {' '}
+          <img src="/icons/rush.png" alt="expert WEB" loading="lazy" />{' '}
+          <h3>
+            {' '}
+            Votre site en ligne en <strong>une à deux semaines</strong>{' '}
+          </h3>{' '}
+        </div>{' '}
+        <p
+          style={{
+            transform: isContentVisible ? 'none' : 'translateY(50px)',
+            opacity: isContentVisible ? 1 : 0,
+            transitionDelay: '1.1s',
+          }}>
+          {' '}
+          De <strong>l'idée à la mise en ligne</strong>, chaque étape est
+          optimisée pour un <strong>déploiement rapide et efficace</strong>.{' '}
+          <br /> En quelques jours seulement, vous obtenez{' '}
+          <strong>un site professionnel</strong>, fonctionnel et prêt à{' '}
+          <strong>attirer vos premiers clients</strong>.{' '}
+        </p>
+        <CustomLink href="/contact/">
+          Et si on lançait votre projet aujourd’hui ? <ArrowForwardIosIcon />
+        </CustomLink>
+      </footer>
     </MainContainer>
   );
 };
 
 const MainContainer = styled.section`
   margin: auto;
-  padding: 50px 25px;
+  padding: 0 25px;
   max-width: 1200px;
   z-index: 1;
 
@@ -51,16 +124,6 @@ const MainContainer = styled.section`
     color: #fafafa;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.08);
     font-family: 'Montserrat';
-  }
-
-  section,
-  header {
-    margin: 50px 0;
-    padding-left: 70px;
-
-    @media (max-width: 700px) {
-      padding-left: 20px;
-    }
   }
 
   h2 {
@@ -91,6 +154,7 @@ const MainContainer = styled.section`
       flex-direction: column;
       letter-spacing: 4px;
       font-size: 1.2rem !important;
+      margin-bottom: 15px;
 
       svg,
       img {
@@ -111,7 +175,7 @@ const MainContainer = styled.section`
     }
 
     @media (max-width: 450px) {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -120,15 +184,25 @@ const MainContainer = styled.section`
     flex-wrap: wrap;
     justify-content: center;
     max-width: 100%;
+    width: 100%;
     gap: 50px;
+    margin-bottom: 50px;
 
     li {
+      transition: 1s ease-out;
+      border: 2px solid #ffffff16;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 65px 15px;
+      border-radius: 15px;
       width: 300px;
       max-width: 100%;
-      /* background: red; */
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      @media (max-width: 500px) {
+        padding: 15px;
+      }
 
       img {
         width: 100px;
@@ -137,8 +211,9 @@ const MainContainer = styled.section`
         margin-bottom: 25px;
 
         @media (max-width: 500px) {
-          width: 70px;
-          height: 70px;
+          width: 50px;
+          height: 50px;
+          margin-bottom: 10px;
         }
       }
 
@@ -146,11 +221,92 @@ const MainContainer = styled.section`
         font-size: 1.4rem;
         font-weight: bold;
         text-align: center;
+
+        @media (max-width: 500px) {
+          font-size: 1.1rem;
+          margin-bottom: 5px;
+        }
       }
 
       p {
         font-size: 1.2rem;
         text-align: center;
+
+        @media (max-width: 500px) {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: 1s;
+      margin-bottom: 20px;
+
+      img {
+        width: 100px;
+        height: 100px;
+        filter: drop-shadow(0 0 5px rgba(41, 128, 185, 0.3));
+      }
+
+      h3 {
+        font-size: 2rem;
+
+        @media (max-width: 500px) {
+          font-size: 1.2rem;
+        }
+        strong {
+          color: #3aa4eb;
+          text-shadow: 0px 0px 5px rgba(41, 128, 185, 0.4) !important;
+        }
+      }
+    }
+
+    p {
+      transition: 1s;
+      font-size: 1.3rem;
+      text-align: center;
+      margin-bottom: 25px;
+
+      @media (max-width: 500px) {
+        font-size: 0.9rem;
+      }
+      strong {
+        color: #3aa4eb;
+        text-shadow: 0px 0px 5px rgba(41, 128, 185, 0.4) !important;
+      }
+    }
+
+    a {
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      /* gap: 15px; */
+      text-decoration: underline;
+      font-weight: 600;
+
+      svg {
+        font-size: 2rem;
+
+        path {
+          color: #3aa4eb;
+        }
+      }
+      @media (max-width: 500px) {
+        font-size: 0.9rem;
+
+        svg {
+          font-size: 1.5rem;
+        }
       }
     }
   }

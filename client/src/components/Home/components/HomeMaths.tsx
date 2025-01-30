@@ -119,7 +119,7 @@ const HomeMaths: FC = () => {
             </p>
           </button>
         </a>
-        <CustomLink href="/contact">
+        <CustomLink href="/contact/">
           <button className="form-btn">
             <FormatListBulletedIcon />
             <p>Formulaire de contact</p>
