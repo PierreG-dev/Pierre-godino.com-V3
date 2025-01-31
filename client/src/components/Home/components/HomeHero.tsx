@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import EuroIcon from '@mui/icons-material/Euro';
 import PhoneIcon from '@mui/icons-material/Phone';
 import dynamic from 'next/dynamic';

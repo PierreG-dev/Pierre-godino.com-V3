@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import CustomLink from '../../Layout/routing/CustomLink';
 
 // DEPRECATED
 

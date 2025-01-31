@@ -1,7 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import HomeSimulator from './HomeSimulator';
 
 type Rating = {
   stars?: 1 | 2 | 3 | 4 | 5;
