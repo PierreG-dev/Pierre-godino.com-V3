@@ -8,8 +8,16 @@ Options -Indexes
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
-# Rediriger non-www vers www pour les domaines pierre-godino.com et creation-sites-godino.fr
-RewriteCond %{HTTP_HOST} ^(pierre-godino\.com|creation-sites-godino\.fr)$ [NC]
+# Rediriger pierre-godino.com vers www.pierre-godino.com
+RewriteCond %{HTTP_HOST} ^pierre-godino\.com$ [NC]
+RewriteRule ^(.*)$ https://www.pierre-godino.com/$1 [R=301,L]
+
+# Rediriger www.pierre-godino.com vers www.creation-sites-godino.fr
+RewriteCond %{HTTP_HOST} ^www\.pierre-godino\.com$ [NC]
+RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
+
+# Rediriger creation-sites-godino.fr vers www.creation-sites-godino.fr
+RewriteCond %{HTTP_HOST} ^creation-sites-godino\.fr$ [NC]
 RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
 
 # Rediriger tout ce qui ne pointe pas déjà sur www.creation-sites-godino.fr
