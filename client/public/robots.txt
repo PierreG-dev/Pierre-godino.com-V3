@@ -1,5 +1,6 @@
 User-agent: googlebot-image
 Disallow: /
+allow: /favicon/*
 User-agent: *
 Disallow: /a-propos/technologies/?*
 Disallow: /a-propos/technologies/*
