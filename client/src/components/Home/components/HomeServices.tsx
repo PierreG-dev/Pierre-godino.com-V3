@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import CustomLink from '../../Layout/routing/CustomLink';
+
+// DEPRECATED
 
 const HomeServices: FC = () => {
   return (
@@ -8,77 +9,19 @@ const HomeServices: FC = () => {
       <h2>
         Création de site internet sur mesure : Ce que je peux faire pour vous
       </h2>
-      <ul id="services_list">
-        <li className="service-item">
-          <CustomLink href="/simulateur/creation-site-internet/">
-            {' '}
-            <div>
-              {' '}
-              <img
-                src="/icons/programming.png"
-                alt="programmation"
-                loading="lazy"
-              />
-              <h3>Création de sites internet</h3>
-            </div>
-          </CustomLink>
-        </li>
-        <li className="service-item">
-          <CustomLink href="/prestations/">
-            <div>
-              {' '}
-              <img
-                src="/icons/work-tools.png"
-                alt="maintenance"
-                loading="lazy"
-              />
-              <h3>Maintenance et modifications</h3>
-            </div>
-          </CustomLink>
-        </li>
-        <li className="service-item">
-          <CustomLink href="/a-propos/">
-            <div>
-              {' '}
-              <img
-                src="/icons/layer.png"
-                alt="Développement WEB"
-                loading="lazy"
-              />
-              <h3>Développement WEB</h3>
-            </div>
-          </CustomLink>
-        </li>
-        <li className="service-item">
-          <CustomLink href="/prestations/">
-            {' '}
-            <div>
-              {' '}
-              <img src="/icons/google.png" alt="SEO" loading="lazy" />
-              <h3>Optimisation de référencement</h3>
-            </div>
-          </CustomLink>
-        </li>
-        <li className="service-item">
-          <CustomLink href="/prestations/">
-            <div>
-              <img
-                src="/icons/android.png"
-                alt="Android & IOS"
-                loading="lazy"
-              />
-              <h3>Applications</h3>
-            </div>
-          </CustomLink>
-        </li>
-        <li className="service-item">
-          <CustomLink href="https://www.learn.pierre-godino.com">
-            <div>
-              {' '}
-              <img src="/icons/teacher.png" alt="Formation" loading="lazy" />
-              <h3>Formation</h3>
-            </div>
-          </CustomLink>
+
+      <ul id="expectations">
+        <li id="delay">
+          <header>
+            <img src="/icons/rush.png" alt="expert WEB" loading="lazy" />
+            <h3>
+              Comptez <strong>une</strong> à <strong>deux</strong> semaines
+            </h3>{' '}
+          </header>
+          <p>
+            De l’hébergement à la maintenance, je m’assure que votre site reste
+            à jour et sécurisé.
+          </p>
         </li>
       </ul>
     </MainContainer>
@@ -112,64 +55,46 @@ const MainContainer = styled.section`
     }
   }
 
-  ul#services_list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    justify-content: center;
+  ul#expectations {
+    li {
+      width: 1000px;
+      max-width: calc(100vw - 50px);
+      color: #fafafaee;
+      border: 2px solid #ffffff16;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 65px 15px;
+      border-radius: 15px;
 
-    @media (max-width: 500px) {
-      gap: 0px;
-    }
-
-    li.service-item {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      max-width: 450px;
-
-      div {
-        gap: 15px;
+      header {
+        padding: 0;
+        margin: 0;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        width: 300px;
-        height: 300px;
-        border-radius: 5px;
-        transition: 0.1s;
+        justify-content: center;
+        gap: 15px;
 
-        &:hover {
-          background: #ffffff03;
-          cursor: pointer;
-        }
-
-        h3 {
-          font-size: 1.3rem;
-          font-weight: bold;
-          color: #fafafa;
-          filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.05));
-          text-align: center;
-          font-family: 'Montserrat';
+        strong {
+          color: #3aa4eb;
+          text-shadow: 0px 0px 5px rgba(41, 128, 185, 0.3) !important;
         }
 
         img {
           width: 100px;
-          filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.05));
+          height: 100px;
+          object-fit: cover;
+          margin: 0;
+
+          @media (max-width: 500px) {
+            width: 70px;
+            height: 70px;
+          }
         }
 
-        @media (max-width: 500px) {
-          width: 200px;
-          height: 200px;
-
-          img {
-            width: 65px;
-          }
-
-          h3 {
-            font-size: 1.1rem;
-          }
+        h3 {
+          font-size: 2rem;
+          font-weight: bold;
+          text-align: center;
+          letter-spacing: 1px;
         }
       }
     }

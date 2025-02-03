@@ -1,15 +1,17 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { BackgroundContext } from '../src/contexts/Contexts';
 import HomeHero from '../src/components/Home/components/HomeHero';
 import HomeRatings from '../src/components/Home/components/HomeRatings';
-import HomeServices from '../src/components/Home/components/HomeServices';
 import HomeCustomerSlider from '../src/components/Home/components/HomeCustomerSlider';
 import HomeSimulator from '../src/components/Home/components/HomeSimulator';
 import HomeQuestions from '../src/components/Home/components/HomeQuestions';
 import HomeSEOContent from '../src/components/Home/components/HomeSEOContent';
+import HomeExpert from '../src/components/Home/components/HomeExpert';
+import HomeMaths from '../src/components/Home/components/HomeMaths';
+import HomeNotes from '../src/components/Home/components/HomeNotes';
 
 const Home: NextPage = () => {
   // --- Background
@@ -50,10 +52,13 @@ const Home: NextPage = () => {
       {background}
       <HomeHero />
       <HomeRatings />
-      <hr />
-      <HomeServices />
+      <HomeMaths />
       {/* <hr /> */}
+      <HomeExpert />
       <HomeCustomerSlider />
+      {/* <HomeServices /> */}
+      {/* <hr /> */}
+      <HomeNotes />
       <HomeSEOContent />
       <HomeSimulator />
       <HomeQuestions />

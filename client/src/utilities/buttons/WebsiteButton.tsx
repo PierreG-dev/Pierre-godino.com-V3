@@ -5,7 +5,7 @@ import CustomLink from '../../components/Layout/routing/CustomLink';
 const WebsiteButton: FC = () => {
   return (
     <MainContainer>
-      <CustomLink href="/simulateur/creation-site-internet/#simulator">
+      <CustomLink href="/offres/creation-site-internet/#simulator">
         <button>
           Devis de site internet en quelques clics{' '}
           <img src="/icons/click.png" alt="click de souris" loading="lazy" />
