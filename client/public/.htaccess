@@ -12,14 +12,10 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^pierre-godino\.com$ [NC]
 RewriteRule ^(.*)$ https://www.pierre-godino.com/$1 [R=301,L]
 
-# Rediriger creation-sites-godino.fr vers www.creation-sites-godino.fr
-RewriteCond %{HTTP_HOST} ^creation-sites-godino\.fr$ [NC]
-RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
-
 # Rediriger www.pierre-godino.com vers www.creation-sites-godino.fr
 RewriteCond %{HTTP_HOST} ^www\.pierre-godino\.com$ [NC]
 RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
 
-# Rediriger tout autre domaine vers www.creation-sites-godino.fr (sauf si déjà dessus)
+# Rediriger tout autre domaine vers le domaine final www.dr-misino-orthodontie-agen.fr
 RewriteCond %{HTTP_HOST} !^www\.creation\-sites\-godino\.fr$ [NC]
 RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
