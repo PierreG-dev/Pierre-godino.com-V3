@@ -4,7 +4,7 @@ ErrorDocument 404 /404/index.html
 ErrorDocument 403 /404/index.html
 Options -Indexes
 
-# Rediriger tout le trafic HTTP vers HTTPS
+# Rediriger tout le trafic HTTP vers HTTPS (doit être la première règle)
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
@@ -12,10 +12,15 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^pierre-godino\.com$ [NC]
 RewriteRule ^(.*)$ https://www.pierre-godino.com/$1 [R=301,L]
 
+# Rediriger creation-sites-godino.fr vers www.creation-sites-godino.fr
+RewriteCond %{HTTP_HOST} ^creation-sites-godino\.fr$ [NC]
+RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
+
 # Rediriger www.pierre-godino.com vers www.creation-sites-godino.fr
 RewriteCond %{HTTP_HOST} ^www\.pierre-godino\.com$ [NC]
 RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
 
-# Rediriger tout autre domaine vers le domaine final www.dr-misino-orthodontie-agen.fr
+# Redirection globale uniquement si aucune des règles précédentes ne s'est appliquée
 RewriteCond %{HTTP_HOST} !^www\.creation\-sites\-godino\.fr$ [NC]
+RewriteCond %{HTTP_HOST} !^www\.pierre-godino\.com$ [NC]  # Ajout de cette condition pour éviter une redirection prématurée
 RewriteRule ^(.*)$ https://www.creation-sites-godino.fr/$1 [R=301,L]
