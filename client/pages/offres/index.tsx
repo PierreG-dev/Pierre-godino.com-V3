@@ -98,7 +98,7 @@ const Offres: NextPage = () => {
                 <img src="/icons/three-o-clock-clock.png" alt="horloge" />
               </h3>
               <h4>
-                Simulation en ligne disponible
+                Estimation en ligne disponible
                 <img src="/icons/check.png" alt="Disponible" />
               </h4>
             </div>
@@ -143,7 +143,7 @@ const Offres: NextPage = () => {
               </li>
             </ul>
             <CustomLink href="/offres/creation-site-internet/">
-              Faire une simulation
+              Faire une estimation
             </CustomLink>
           </header>
 
@@ -214,7 +214,7 @@ const Offres: NextPage = () => {
                 <img src="/icons/three-o-clock-clock.png" alt="horloge" />
               </h3>
               <h4>
-                Simulation en ligne indisponible <CloseIcon />
+                Estimation en ligne indisponible <CloseIcon />
               </h4>
             </div>
 
@@ -338,7 +338,7 @@ const Offres: NextPage = () => {
                 Devis en 72h <img src="/icons/clock.png" alt="horloge" />
               </h3>
               <h4>
-                Simulation en ligne indisponible <CloseIcon />
+                Estimation en ligne indisponible <CloseIcon />
               </h4>
             </div>
 
@@ -654,6 +654,9 @@ const MainContainer = styled.main`
     max-width: 100%;
 
     &.vitrine {
+      li.option-item {
+        border-color: rgba(52, 152, 219, 1);
+      }
       strong {
         color: rgb(41, 128, 185) !important;
         text-shadow: 0px 0px 7px 1px rgb(41, 128, 185);

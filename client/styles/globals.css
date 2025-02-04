@@ -41,6 +41,9 @@ body {
 
 body {
   background: #040e1d;
+  * {
+    scroll-behavior: smooth;
+  }
 }
 
 * {

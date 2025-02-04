@@ -11,10 +11,16 @@ import styled from 'styled-components';
 import { BackgroundContext } from '../../src/contexts/Contexts';
 import dynamic from 'next/dynamic';
 import COMPUTER from '../../src/components/Simulateur/COMPUTER';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import Title from '../../src/utilities/Title';
+import EuroIcon from '@mui/icons-material/Euro';
+import CustomLink from '../../src/components/Layout/routing/CustomLink';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import PhoneIcon from '@mui/icons-material/Phone';
+
 const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
 
 const defaultOptions = {
@@ -24,6 +30,15 @@ const defaultOptions = {
     preserveAspectRatio: 'xMidYMid slice',
   },
 };
+
+type ClientType =
+  | 'Artisan (plombiers, électriciens, maçons, etc.)'
+  | 'Restaurateur'
+  | 'Commerçant de proximité'
+  | 'Secteur du bien-être (coachs, thérapeutes, salles de sport, etc.)'
+  | 'Profession libérale (avocats, consultants, médecins, etc.)'
+  | 'Entreprise de services B2B'
+  | 'Immobilier (agences, promoteurs)';
 
 const options = {
   budgets: [
@@ -59,41 +74,18 @@ type INbPages = number;
 type IDeploy = undefined | boolean;
 
 const Vitrine: FC = () => {
-  // --- Choix du budget
-  const [budgetIndex, setBudgetIndex] = useState<IBudget>();
-  // --- Choix du type de design
-  const [designType, setDesignType] = useState<IDesignType>();
-  // --- CMS ou non
-  const [editable, setEditable] = useState<IEditable>(undefined);
   // --- Nombre de pages
   const [nbPages, setNbPages] = useState<INbPages>(0);
-  // --- Type de déploiement
-  const [deployIndex, setDeployIndex] = useState<IDeploy>();
-
+  //--- Profession
+  const [clientType, setClientType] = useState<ClientType>(null);
+  // --- Prix calculé
+  const [price, setPrice] = useState<number>(null);
   // --- Visibilité du résultat
-  const [showResult, setShowResult] = useState<boolean>(false);
+  const [processing, setProcessing] = useState<boolean>(false);
+  console.log(clientType);
 
   // --- background
   const { background } = useContext(BackgroundContext);
-
-  const chooseBudget = useCallback((budget: IBudget) => {
-    setBudgetIndex(budget);
-    if (budget === 0) setDesignType(0);
-    if (budget === 2) setDesignType(1);
-  }, []);
-
-  const chooseDesignType = useCallback(
-    (design: IDesignType) => {
-      if (budgetIndex === 0) setDesignType(0);
-      if (budgetIndex === 2) setDesignType(1);
-      setDesignType(design);
-    },
-    [budgetIndex]
-  );
-
-  const chooseEditable = useCallback((editable: IEditable) => {
-    setEditable(editable);
-  }, []);
 
   const chooseNbPages = useCallback((nbPages: INbPages) => {
     if (nbPages <= 0 || nbPages > 10) return;
@@ -107,37 +99,18 @@ const Vitrine: FC = () => {
     [chooseNbPages]
   );
 
-  const handleShowResult = useCallback(() => {
-    setShowResult(true);
-  }, []);
-
-  const price = useMemo(() => {
-    if (
-      budgetIndex === undefined ||
-      designType === undefined ||
-      editable === undefined ||
-      !nbPages
-    )
-      return;
+  const processPrice = useCallback(() => {
+    if (!nbPages || !clientType) return;
     let total = 0;
+    total += options.budgets[1].basePrice;
+    total += options.budgets[1].pagePrice * nbPages;
+    setProcessing(true);
 
-    // --- Ajout du prix de base (budget)
-    total += options.budgets[budgetIndex].basePrice;
-
-    // --- Ajout du prix en fonction du dynamisme
-    if (editable) total += options.budgets[budgetIndex].modifiable;
-
-    // --- Ajout du prix en fonction du nombre de pages et du type de design
-    if (designType === 0) {
-      total += options.budgets[budgetIndex].pagePrice * nbPages;
-      total += options.budgets[budgetIndex].design.theme;
-    } else if (designType === 1) {
-      total += options.budgets[budgetIndex].pagePrice * nbPages;
-      total += options.budgets[budgetIndex].design.customPerPage * nbPages;
-    }
-
-    return total;
-  }, [budgetIndex, designType, editable, nbPages]);
+    setTimeout(() => {
+      setPrice(total);
+      setProcessing(false);
+    }, 1000);
+  }, [nbPages]);
 
   return (
     <>
@@ -187,6 +160,9 @@ const Vitrine: FC = () => {
             <strong>le meilleur rapport qualité / prix</strong> en termes de
             publicité pour une entreprise.
           </p>
+          <a href="#simulator">
+            Aller vers l'outil d'estimation en ligne <ArrowForwardIosIcon />
+          </a>
           <h2>Pourquoi ?</h2>
           <ul>
             <li>
@@ -243,157 +219,47 @@ const Vitrine: FC = () => {
 
         <main className="buttons-group" id="simulator">
           <div className="title-wrapper">
-            <img
-              src="/icons/calculator.png"
-              alt="calculatrice"
-              loading="lazy"
-            />
+            <EuroIcon />
             <h2>Estimer mon site vitrine</h2>
           </div>
-
           <section>
-            <Title
-              content={
-                // eslint-disable-next-line react/jsx-wrap-multilines
-                <>
-                  <p>
-                    Le budget représente la quantité d'attention au détail qui
-                    devra être allouée au projet. Plus le budget est élevé, plus
-                    il sera complexe. <br />
-                    <b>Ce paramètre impactera tous vos autres choix.</b>
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>{options.budgets[0].name}</strong> : Une solution
-                      simple et efficace, idéale pour les projets avec un budget
-                      limité.
-                    </li>
-                    <li>
-                      <strong>{options.budgets[1].name}</strong> : Un juste
-                      milieu entre performance et coût, offrant un excellent
-                      rapport qualité-prix.
-                    </li>
-                    <li>
-                      <strong>{options.budgets[2].name}</strong> : Une
-                      expérience haut de gamme avec des fonctionnalités avancées
-                      et une attention au détail.{' '}
-                      <b>
-                        <i>Codé à la main</i>
-                      </b>{' '}
-                      |{' '}
-                      <b>
-                        <i>Design sur-mesure inclus.</i>
-                      </b>
-                    </li>
-                  </ul>
-                </>
-              }>
-              <h3>
-                Budget
-                <HelpOutlineIcon />
-              </h3>
-            </Title>
+            <h3>Type de profession</h3>
             <div className="buttons-row">
-              <button
-                className={`budget-button ${
-                  budgetIndex !== undefined && budgetIndex !== 0 && 'disabled'
-                } ${budgetIndex === 0 && 'selected'}`}
-                onClick={() => chooseBudget(0)}>
-                <u>{options.budgets[0].name}</u>
-              </button>
-              <button
-                className={`budget-button ${
-                  budgetIndex !== undefined && budgetIndex !== 1 && 'disabled'
-                } ${budgetIndex === 1 && 'selected'}`}
-                onClick={() => chooseBudget(1)}>
-                <u>{options.budgets[1].name}</u>
-              </button>
-              <button
-                className={`budget-button ${
-                  budgetIndex !== undefined && budgetIndex !== 2 && 'disabled'
-                } ${budgetIndex === 2 && 'selected'}`}
-                onClick={() => chooseBudget(2)}>
-                <u>{options.budgets[2].name}</u>
-              </button>
+              <select
+                name=""
+                id=""
+                value={clientType}
+                onChange={(e) => setClientType(e.target.value as ClientType)}>
+                <option value="">Sélectionnez un secteur d'activité</option>
+                <option value="Artisan (plombiers, électriciens, maçons, etc.)">
+                  Artisan (plombiers, électriciens, maçons, etc.)
+                </option>
+                <option value="Restaurateur">Restaurateur</option>
+                <option value="Commerçant de proximité">
+                  Commerçant de proximité
+                </option>
+                <option value="Secteur du bien-être (coachs, thérapeutes, salles de sport, etc.)">
+                  Secteur du bien-être (coachs, thérapeutes, salles de sport,
+                  etc.)
+                </option>
+                <option value="Profession libérale (avocats, consultants, médecins, etc.)">
+                  Profession libérale (avocats, consultants, médecins, etc.)
+                </option>
+                <option value="Entreprise de services B2B">
+                  Entreprise de services B2B
+                </option>
+                <option value="Immobilier (agences, promoteurs)">
+                  Immobilier (agences, promoteurs)
+                </option>
+              </select>
             </div>
           </section>
 
-          <section className={`${budgetIndex !== undefined ? '' : 'disabled'}`}>
-            <h3>Graphisme</h3>
-            <div className="buttons-row">
-              <button
-                disabled={budgetIndex === undefined || budgetIndex === 2}
-                className={`budget-button ${
-                  designType !== undefined && designType !== 0 && 'disabled'
-                } ${designType === 0 && 'selected'} ${
-                  budgetIndex === 0 && 'default'
-                }`}
-                onClick={() => chooseDesignType(0)}>
-                Thème existant
-              </button>
-              <button
-                disabled={budgetIndex === undefined || budgetIndex === 0}
-                className={`budget-button ${
-                  designType !== undefined && designType !== 1 && 'disabled'
-                } ${designType === 1 && 'selected'} ${
-                  budgetIndex === 2 && 'default'
-                }`}
-                onClick={() => chooseDesignType(1)}>
-                Sur mesure
-              </button>
-            </div>
-          </section>
-
-          <section className={`${designType !== undefined ? '' : 'disabled'}`}>
-            <Title
-              content={
-                // eslint-disable-next-line react/jsx-wrap-multilines
-                <>
-                  <ul>
-                    <li>
-                      <strong>Statique</strong> : Site internet au{' '}
-                      <b>contenu fixe</b>, nécessitant une{' '}
-                      <b>intervention technique</b> pour editer son contenu.
-                    </li>
-                    <li>
-                      <strong>Modifiable</strong> : Site internet avec des
-                      parties figées, mais dont <b>certaines</b> sont prévues
-                      pour être <b>modifiées</b> à l'aide d'une <b>interface</b>
-                      .
-                    </li>
-                  </ul>
-                </>
-              }>
-              <h3>
-                Site modifiable <HelpOutlineIcon />
-              </h3>
-            </Title>
-
-            <div className="buttons-row">
-              <button
-                disabled={designType === undefined}
-                className={`budget-button ${
-                  editable !== undefined && editable !== false && 'disabled'
-                } ${editable === false && 'selected'}`}
-                onClick={() => chooseEditable(false)}>
-                Statique
-              </button>
-              <button
-                disabled={designType === undefined}
-                className={`budget-button ${
-                  editable !== undefined && editable !== true && 'disabled'
-                } ${editable === true && 'selected'}`}
-                onClick={() => chooseEditable(true)}>
-                Modifiable
-              </button>
-            </div>
-          </section>
-
-          <section className={`${editable !== undefined ? '' : 'disabled'}`}>
+          <section className={`${clientType ? '' : 'disabled'}`}>
             <h3>Nombre de pages</h3>
             <div className="buttons-row">
               <input
-                disabled={editable === undefined}
+                disabled={clientType ? false : true}
                 type="number"
                 className="nbPages-input"
                 value={nbPages}
@@ -402,55 +268,193 @@ const Vitrine: FC = () => {
             </div>
           </section>
 
-          <section className={`${nbPages && !showResult ? '' : 'disabled'}`}>
+          <section className={`${nbPages ? '' : 'disabled'}`}>
             <div className="buttons-row">
               <button
                 className="budget-button"
-                disabled={!nbPages || showResult}
-                onClick={handleShowResult}>
-                Calculer
+                disabled={!nbPages || !clientType}
+                onClick={processPrice}>
+                {processing ? (
+                  <div className="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                ) : (
+                  'Calculer'
+                )}
               </button>
             </div>
           </section>
 
-          <section id="result_section" style={{ opacity: showResult ? 1 : 0 }}>
+          <section id="result_section" style={{ opacity: price ? 1 : 0 }}>
             <h3>
               Estimation: <span>{price} €</span>
             </h3>
 
             <p>
-              <i>
-                <em>
-                  L'estimation ne représente qu'un <b>aperçu</b> de la
-                  prestation. <br />
-                  Le prix variera en fonction de variables trop imprévisibles
-                  pour une simulation précise. <br />
-                  <small>
-                    {
-                      '(Délai de livraison, fonctionnalités supplémentaires... etc.)'
-                    }
-                  </small>
-                </em>
-              </i>
+              <em>
+                <strong>Le prix affiché</strong> représente une{' '}
+                <strong>estimation rapide</strong> de la création d'un site
+                vitrine <strong>sans fonctionnalités supplémentaires</strong>{' '}
+                (réservation en ligne, intégration de services tiers... etc.) .{' '}
+                <br />
+                Pour le prix définitif, veuillez{' '}
+                <CustomLink href="/contact/">prendre contact</CustomLink>.
+              </em>
             </p>
           </section>
-          <div className="cta-wrapper" style={{ opacity: showResult ? 1 : 0 }}>
-            <a href="tel:+767249980">
-              <button>
-                <CallIcon />
-                07 67 24 99 80
+
+          <section
+            id="professions_infos_wrapper"
+            style={{ opacity: price ? 1 : 0 }}>
+            <div
+              className="profession-infos"
+              style={{
+                opacity:
+                  clientType ===
+                  'Artisan (plombiers, électriciens, maçons, etc.)'
+                    ? 1
+                    : 0,
+              }}>
+              <p>
+                Un <strong>site vitrine</strong> bien <strong>optimisé</strong>{' '}
+                permet d’<strong>attirer des clients locaux</strong> en
+                facilitant la
+                <strong> prise de contact</strong> et la{' '}
+                <strong>demande de devis</strong>. Combiné à un{' '}
+                <strong>bon référencement</strong> et une{' '}
+                <strong>présence sur Google My Business</strong>, il devient un
+                outil <strong>efficace</strong> pour générer des{' '}
+                <strong>chantiers</strong> réguliers.
+              </p>
+            </div>
+
+            <div
+              className="profession-infos"
+              style={{ opacity: clientType === 'Restaurateur' ? 1 : 0 }}>
+              <p>
+                Un <strong>site vitrine</strong> permet de présenter le{' '}
+                <strong>menu</strong>, les <strong>horaires</strong>, et
+                d’intégrer des <strong>outils de réservation en ligne</strong>.
+                Il améliore la <strong>visibilité sur Google</strong> et{' '}
+                <strong>rassure</strong> les clients, surtout lorsqu’il est
+                couplé aux <strong>réseaux sociaux</strong> et aux{' '}
+                <strong>plateformes d’avis</strong>.
+              </p>
+            </div>
+
+            <div
+              className="profession-infos"
+              style={{
+                opacity: clientType === 'Commerçant de proximité' ? 1 : 0,
+              }}>
+              <p>
+                Un <strong>site vitrine</strong> renforce la{' '}
+                <strong>notoriété locale</strong>, permet d’
+                <strong>annoncer des promotions</strong> et facilite la{' '}
+                <strong>fidélisation</strong>. Il peut être combiné avec une{' '}
+                <strong>stratégie de référencement local</strong> et des{' '}
+                <strong>campagnes sur les réseaux sociaux</strong> pour attirer
+                plus de <strong>clients en boutique</strong>.
+              </p>
+            </div>
+
+            <div
+              className="profession-infos"
+              style={{
+                opacity:
+                  clientType ===
+                  'Secteur du bien-être (coachs, thérapeutes, salles de sport, etc.)'
+                    ? 1
+                    : 0,
+              }}>
+              <p>
+                Un <strong>site web</strong> apporte{' '}
+                <strong>crédibilité</strong> et{' '}
+                <strong>professionnalisme</strong>. Il facilite la{' '}
+                <strong>prise de rendez-vous</strong> et améliore la{' '}
+                <strong>visibilité sur Google</strong>. Un{' '}
+                <strong>bon référencement local</strong> et des{' '}
+                <strong>avis clients positifs</strong> peuvent considérablement{' '}
+                <strong>augmenter le nombre de contacts entrants</strong>.
+              </p>
+            </div>
+
+            <div
+              className="profession-infos"
+              style={{
+                opacity:
+                  clientType ===
+                  'Profession libérale (avocats, consultants, médecins, etc.)'
+                    ? 1
+                    : 0,
+              }}>
+              <p>
+                Une <strong>présence en ligne</strong> bien structurée{' '}
+                <strong>rassure</strong> les prospects et permet d’{' '}
+                <strong>attirer de nouveaux clients</strong>. Un{' '}
+                <strong>site vitrine</strong> avec des{' '}
+                <strong>études de cas</strong>, des <strong>témoignages</strong>{' '}
+                et du <strong>contenu spécialisé</strong> renforce l’
+                <strong>image d’expertise</strong> et génère des{' '}
+                <strong>leads qualifiés</strong>.
+              </p>
+            </div>
+
+            <div
+              className="profession-infos"
+              style={{
+                opacity: clientType === 'Entreprise de services B2B' ? 1 : 0,
+              }}>
+              <p>
+                Un <strong>site web</strong> permet de mettre en avant des{' '}
+                <strong>biens et services</strong>, de{' '}
+                <strong>capter des acheteurs et vendeurs</strong>, et de{' '}
+                <strong>faciliter la prise de rendez-vous</strong>. Avec un{' '}
+                <strong>bon référencement</strong> et un{' '}
+                <strong>contenu pertinent</strong>, il devient un{' '}
+                <strong>atout majeur</strong> face à la concurrence.
+              </p>
+            </div>
+
+            <div
+              className="profession-infos"
+              style={{
+                opacity:
+                  clientType === 'Immobilier (agences, promoteurs)' ? 1 : 0,
+              }}>
+              <p>
+                Un <strong>site web</strong> aide à <strong>rassurer</strong> et{' '}
+                <strong>attirer de nouveaux clients</strong> en mettant en avant
+                les <strong>services</strong>, les <strong>témoignages</strong>{' '}
+                et les <strong>possibilités de réservation en ligne</strong>.
+                Associé aux <strong>réseaux sociaux</strong> et à un{' '}
+                <strong>bon référencement</strong>, il devient une{' '}
+                <strong>source constante de nouveaux prospects</strong>.
+              </p>
+            </div>
+          </section>
+
+          <div className="contact-links">
+            <a href="tel:+33767249980">
+              <button className="tel-btn">
+                <PhoneIcon />
+                <p>
+                  Devis gratuit & personnalisé <br />
+                  <span>07 67 24 99 80</span>
+                </p>
               </button>
             </a>
-            <a href="mailto:contact@pierre-godino.com">
-              <button>
-                <EmailIcon />
-                contact@pierre-godino.com
+            <CustomLink href="/contact/">
+              <button className="form-btn">
+                <FormatListBulletedIcon />
+                <p>Formulaire de contact</p>
               </button>
-            </a>
+            </CustomLink>
           </div>
         </main>
-
-        <hr />
 
         <footer>
           <div className="title-wrapper">
@@ -467,25 +471,25 @@ const Vitrine: FC = () => {
               />
             </div>
             <div>
-              <h3>Accompagnement</h3>
+              <h3>Je m'occupe de tout</h3>
               <p>
                 <strong>
-                  Comptez sur moi pour vous accompagner du début à la fin
+                  De la conception à la mise en ligne, je prends tout en charge
                 </strong>
-                , en vous impliquant si besoin dans les étapes clés du projet,
-                telles que:
-                <ul>
-                  <li>
-                    <strong>Choix du design</strong>
-                  </li>
-                  <li>
-                    <strong>Relecture</strong>
-                  </li>
-                  <li>
-                    <strong>Validation des images</strong>
-                  </li>
-                </ul>
+                , tout en vous impliquant dans les étapes clés du projet si vous
+                le souhaitez :
               </p>
+              <ul>
+                <li>
+                  - <strong>Choix du design</strong>
+                </li>
+                <li>
+                  - <strong>Relecture</strong>
+                </li>
+                <li>
+                  - <strong>Validation des images</strong>
+                </li>
+              </ul>
             </div>
           </section>
 
@@ -572,23 +576,22 @@ const Vitrine: FC = () => {
             </div>
           </section>
         </footer>
-        <div className="cta-wrapper">
-          <div className="title-wrapper">
-            <img src="/icons/discuss.png" alt="discussion" loading="lazy" />
-            <h2>Discutons de votre projet</h2>
-          </div>
-          <a href="tel:+767249980">
-            <button>
-              <CallIcon />
-              07 67 24 99 80
+        <div className="contact-links">
+          <a href="tel:+33767249980">
+            <button className="tel-btn">
+              <PhoneIcon />
+              <p>
+                Devis gratuit & personnalisé <br />
+                <span>07 67 24 99 80</span>
+              </p>
             </button>
           </a>
-          <a href="mailto:contact@pierre-godino.com">
-            <button>
-              <EmailIcon />
-              contact@pierre-godino.com
+          <CustomLink href="/contact/">
+            <button className="form-btn">
+              <FormatListBulletedIcon />
+              <p>Formulaire de contact</p>
             </button>
-          </a>
+          </CustomLink>
         </div>
       </MainContainer>
     </>
@@ -601,6 +604,7 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: 'Montserrat';
   align-items: center;
   position: relative;
   padding: 120px 30px;
@@ -675,8 +679,22 @@ const MainContainer = styled.div`
     }
 
     #subtitle {
-      font-size: 1%.1;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    & > a {
       margin-bottom: 100px;
+      text-decoration: underline;
+      font-size: 1.2rem;
+      font-weight: bold;
+
+      svg {
+        font-size: 2rem;
+        path {
+          color: rgba(52, 152, 219, 1) !important;
+        }
+      }
     }
 
     h2 {
@@ -761,6 +779,15 @@ const MainContainer = styled.div`
         width: 50px;
         filter: grayscale(0.3);
       }
+
+      svg {
+        font-size: 4rem;
+        filter: drop-shadow(0px 0px 5px rgba(52, 152, 219, 0.4));
+
+        path {
+          color: rgba(52, 152, 219, 1);
+        }
+      }
       h2 {
         font-size: 2.5rem;
         font-weight: bold;
@@ -787,13 +814,14 @@ const MainContainer = styled.div`
       }
 
       &#result_section {
+        margin-bottom: 15px;
         h3 {
           padding: 10px 15px;
-
           font-weight: normal;
           font-size: 1.9rem;
           margin: 0;
           width: fit-content;
+          transition: 1s 0.2s;
 
           span {
             display: inline-block;
@@ -802,6 +830,49 @@ const MainContainer = styled.div`
             padding: 5px 10px;
             border-radius: 5px;
             color: #214207;
+            transition: 1s 0.5s;
+          }
+        }
+
+        em {
+          a {
+            text-decoration: underline;
+            font-weight: bold;
+          }
+
+          strong {
+            color: rgba(52, 152, 219, 1);
+            text-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+          }
+        }
+      }
+
+      &#professions_infos_wrapper {
+        position: relative;
+        height: 100px;
+        width: 1200px;
+        max-width: 100vw;
+
+        @media (max-width: 500px) {
+          height: 150px;
+        }
+
+        .profession-infos {
+          text-align: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 0 50px;
+          width: 100%;
+          height: 100%;
+          transition: 1s;
+          transition-delay: 1s;
+
+          p {
+            strong {
+              color: rgba(52, 152, 219, 1);
+              text-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+            }
           }
         }
       }
@@ -839,6 +910,19 @@ const MainContainer = styled.div`
           }
         }
 
+        select {
+          background: #2d343655;
+          padding: 15px;
+          border-radius: 5px;
+          font-weight: 600;
+
+          option {
+            font-family: 'Montserrat';
+            color: #373737;
+            background: #fafafa;
+          }
+        }
+
         input {
           background: #2d343655;
           padding: 15px;
@@ -865,6 +949,12 @@ const MainContainer = styled.div`
           border-radius: 5px;
           font-weight: bold;
           border: 2px solid transparent;
+
+          &.budget-button {
+            height: 60px;
+            width: 150px;
+            justify-content: center;
+          }
 
           &.selected {
             border: 2px solid #71b73c;
@@ -931,7 +1021,8 @@ const MainContainer = styled.div`
           font-size: 1.5rem;
           font-weight: bold;
           margin-bottom: 10px;
-          color: #73b0f7;
+          color: #59b6f5;
+          text-shadow: 0 0 5px rgba(52, 152, 219, 0.1);
 
           @media (max-width: 450px) {
             font-size: 1.1rem;
@@ -940,6 +1031,11 @@ const MainContainer = styled.div`
 
         p {
           width: 100%;
+
+          strong {
+            color: rgba(52, 152, 219, 1);
+            /* text-shadow: 0 0 5px rgba(52, 152, 219, 0.3); */
+          }
         }
 
         img {
@@ -960,65 +1056,148 @@ const MainContainer = styled.div`
     }
   }
 
-  div.cta-wrapper {
+  div.contact-links {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 2;
-    transition: 0.2s 0.2s;
+    gap: 15px;
+    /* margin-top: 50px; */
 
-    .title-wrapper {
+    @media (max-width: 500px) {
+      flex-direction: column;
+    }
+    a {
       display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 15px;
-      margin-bottom: 50px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      /* box-shadow: 0 0px 7px rgba(255, 255, 255, 0.1); */
+      backdrop-filter: blur(1px);
+      border-radius: 3px;
+      font-family: 'Montserrat';
+      /* flex: 1; */
+      /* min-width: 320px; */
+      max-width: calc(100vw - 100px);
+      height: 100px;
 
-      img {
-        width: 50px;
-        filter: saturate(1.5);
-      }
-      h2 {
-        font-size: 2.5rem;
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
         font-weight: bold;
-        letter-spacing: 1px;
-        @media (max-width: 450px) {
-          font-size: 1.7rem;
+        letter-spacing: 2px;
+        width: 100%;
+
+        @media (max-width: 500px) {
+          font-size: 0.9rem;
+
+          svg {
+            font-size: 2rem !important;
+          }
         }
       }
-    }
 
-    a {
-      button {
-        width: 100%;
-        padding: 15px 20px;
-        background: #55a1fa;
-        color: #12355d;
-        font-weight: bold;
-        opacity: 0.8;
-        border-radius: 5px;
-        font-size: 2rem;
+      &:has(.form-btn) {
+        width: calc(50% - (15px / 2));
 
+        @media (max-width: 500px) {
+          width: 100%;
+        }
         svg {
-          font-size: 2.5rem;
-          margin-right: 5px;
-
           path {
-            color: #12355d;
+            color: rgba(41, 128, 185, 1);
           }
+          font-size: 2.4rem;
         }
 
         &:hover {
-          opacity: 1;
+          background: rgba(41, 128, 185, 0.3);
+          border: 1px solid rgba(41, 128, 185, 1);
+          box-shadow: 0px 0px 7px 1px rgba(41, 128, 185, 1);
         }
 
-        @media (max-width: 450px) {
-          font-size: 1.2rem;
-
-          svg {
-            font-size: 1.2rem;
-          }
+        svg {
+          filter: drop-shadow(0px 0px 5px rgba(41, 128, 185, 0.4));
         }
       }
+
+      &:has(.tel-btn) {
+        width: calc(50% - (15px / 2));
+
+        @media (max-width: 500px) {
+          width: 100%;
+        }
+
+        span {
+          color: rgb(46, 204, 113);
+          display: inline-block;
+        }
+
+        svg {
+          path {
+            color: rgb(46, 204, 113);
+          }
+          font-size: 3.2rem;
+        }
+        &:hover {
+          background: rgba(46, 204, 113, 0.3);
+          border: 1px solid rgb(46, 204, 113);
+          box-shadow: 0px 0px 7px 1px rgb(46, 204, 113);
+        }
+
+        svg {
+          filter: drop-shadow(0px 0px 5px rgba(46, 204, 113, 0.4));
+        }
+      }
+    }
+  }
+
+  .lds-ring,
+  .lds-ring div {
+    box-sizing: border-box;
+  }
+
+  .lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 40px; /* Taille réduite de moitié */
+    height: 40px; /* Taille réduite de moitié */
+  }
+
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 32px; /* Taille réduite de moitié */
+    height: 32px; /* Taille réduite de moitié */
+    margin: 4px; /* Réduit la marge proportionnellement */
+    border: 4px solid currentColor; /* Réduit l'épaisseur de la bordure */
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: currentColor transparent transparent transparent;
+  }
+
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 `;
