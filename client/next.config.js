@@ -1,5 +1,8 @@
-// next.config.js
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    optimizePackageImports: ['icon-library'],
+  },
   async rewrites() {
     return [
       // {
@@ -17,3 +20,10 @@ module.exports = {
     return config;
   },
 };
+
+// Ajout de l'analyse du bundle
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+module.exports = withBundleAnalyzer(nextConfig);

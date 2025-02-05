@@ -26,6 +26,7 @@
     "@mui/lab": "^5.0.0-alpha.65",
     "@mui/material": "^5.2.8",
     "@mui/styled-engine-sc": "^5.1.0",
+    "@next/bundle-analyzer": "^15.1.6",
     "@types/react-dom": "17",
     "@types/react-lottie": "^1.2.10",
     "autoprefixer": "^10.2.1",

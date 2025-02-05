@@ -179,11 +179,12 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/offres/creation-site-internet/'}>
-                      <StorefrontIcon />
+                    <CustomLink
+                      href={'/offres/referencement-visibilite-web-seo/'}>
+                      <SpeedIcon />
                       <p>
-                        Site vitrine pour <br />
-                        TPE/PME
+                        Référencement & <br />
+                        visibilité WEB
                       </p>
                     </CustomLink>
                   </li>
@@ -191,12 +192,11 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink
-                      href={'/offres/referencement-visibilite-web-seo/'}>
-                      <SpeedIcon />
+                    <CustomLink href={'/offres/creation-site-internet/'}>
+                      <StorefrontIcon />
                       <p>
-                        Référencement & <br />
-                        visibilité WEB
+                        Site vitrine pour <br />
+                        TPE/PME
                       </p>
                     </CustomLink>
                   </li>
