@@ -25,11 +25,11 @@ const Cgu: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/legal/cgv/"
+          content={'https://www.creation-sites-godino.fr/legal/cgv'}
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/legal/cgv/"
+          href={'https://www.creation-sites-godino.fr/legal/cgv'}
         />
       </Head>
 

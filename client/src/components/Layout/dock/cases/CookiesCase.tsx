@@ -9,7 +9,7 @@ const CookiesCase: FC = () => {
       <p>
         En utilisant ce site vous consentez à l'utilisation de{' '}
         <u>
-          <CustomLink href="/legal/cgu/">cookies</CustomLink>
+          <CustomLink href={'/legal/cgu'}>cookies</CustomLink>
         </u>
       </p>
     </MainContainer>

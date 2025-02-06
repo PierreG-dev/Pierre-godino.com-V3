@@ -53,7 +53,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/contact/"
+          content={'https://www.creation-sites-godino.fr/contact'}
         />
         <meta name="robots" content="index, follow" />
         <meta
@@ -62,7 +62,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/contact/"
+          href={'https://www.creation-sites-godino.fr/contact'}
         />
       </Head>
 

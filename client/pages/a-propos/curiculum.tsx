@@ -26,11 +26,11 @@ const Curiculum: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/a-propos/curiculum/"
+          content={'https://www.creation-sites-godino.fr/a-propos/curiculum'}
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/a-propos/curiculum/"
+          href={'https://www.creation-sites-godino.fr/a-propos/curiculum'}
         />
       </Head>
 
@@ -108,7 +108,7 @@ const Curiculum: NextPage = () => {
                     />
                     SEO
                   </li>
-                  <CustomLink href="/a-propos/technologies/">
+                  <CustomLink href={'/a-propos/technologies'}>
                     <button className="more-infos">En savoir plus</button>
                   </CustomLink>
                 </ul>
@@ -192,7 +192,7 @@ const Curiculum: NextPage = () => {
               actual
             />
 
-            <CustomLink href="/a-propos/experiences/">
+            <CustomLink href={'/a-propos/experiences'}>
               <button className="more-infos">En savoir plus</button>
             </CustomLink>
           </section>

@@ -106,7 +106,7 @@ const HomeExpert: NextPage = () => {
           <strong>un site professionnel</strong>, fonctionnel et prêt à{' '}
           <strong>attirer vos premiers clients</strong>.{' '}
         </p>
-        <CustomLink href="/contact/">
+        <CustomLink href={'/contact'}>
           Et si on lançait votre projet aujourd’hui ? <ArrowForwardIosIcon />
         </CustomLink>
       </footer>

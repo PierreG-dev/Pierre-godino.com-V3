@@ -24,11 +24,11 @@ const Cgu: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/legal/cgu/"
+          content={'https://www.creation-sites-godino.fr/legal/cgu'}
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/legal/cgu/"
+          href={'https://www.creation-sites-godino.fr/legal/cgu'}
         />
       </Head>
       {background}
@@ -78,7 +78,7 @@ const Cgu: NextPage = () => {
         </p>
 
         <h2>Mentions légales</h2>
-        <a href="https://lordicon.com/">Icons by Lordicon.com</a>
+        <a href={'https://lordicon.com'}>Icons by Lordicon.com</a>
         <a
           href="https://www.flaticon.com/fr/icones-gratuites/google"
           title="google icônes">

@@ -121,7 +121,7 @@ const HomeHero: FC = () => {
               Combien ça coûte ?
             </button>
           </CustomLink>
-          <CustomLink href="/a-propos/">
+          <CustomLink href={'/a-propos'}>
             <button id="about_btn">
               <span>{'{ '}</span>Comment se passent mes prestations ?
               <span>{' }'}</span>

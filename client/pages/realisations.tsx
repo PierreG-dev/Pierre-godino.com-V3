@@ -535,11 +535,11 @@ const Realisations: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/realisations/"
+          content={'https://www.creation-sites-godino.fr/realisations'}
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/realisations/"
+          href={'https://www.creation-sites-godino.fr/realisations'}
         />
       </Head>
       <div

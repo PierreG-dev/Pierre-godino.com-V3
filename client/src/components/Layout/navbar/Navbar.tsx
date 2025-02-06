@@ -89,7 +89,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
       <nav className={`${displayed === 'full' ? 'd-full' : ''}`}>
         <ul id="alt_links_list">
           <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/realisations/'}>
+            <CustomLink href={'/realisations'}>
               {' '}
               <WorkIcon /> Réalisations
             </CustomLink>
@@ -97,25 +97,25 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underl"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/offres/'}>
+            <CustomLink href={'/offres'}>
               {' '}
               <AssignmentIcon /> Prestations
             </CustomLink>
           </li>{' '}
           <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/contact/'}>
+            <CustomLink href={'/contact'}>
               {' '}
               <ForumIcon /> Contact
             </CustomLink>
           </li>{' '}
           <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/a-propos/'}>
+            <CustomLink href={'/a-propos'}>
               {' '}
               <PersonSearchIcon /> A propos
             </CustomLink>
           </li>
           <li className="" style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/blog/'}>
+            <CustomLink href={'/blog'}>
               {' '}
               <NewspaperIcon /> Blog
             </CustomLink>
@@ -141,7 +141,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/realisations/'}>
+            <CustomLink href={'/realisations'}>
               <WorkIcon />
               Réalisations
             </CustomLink>
@@ -155,7 +155,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 className="alt"
                 onMouseEnter={() => setDropdownDisplayServices(true)}
                 onMouseLeave={() => setDropdownDisplayServices(false)}>
-                <CustomLink href="/offres/">
+                <CustomLink href={'/offres'}>
                   <AssignmentIcon />
                   Offres & Tarifs
                 </CustomLink>
@@ -180,7 +180,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
                     <CustomLink
-                      href={'/offres/referencement-visibilite-web-seo/'}>
+                      href={'/offres/referencement-visibilite-web-seo'}>
                       <SpeedIcon />
                       <p>
                         Référencement & <br />
@@ -192,7 +192,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/offres/creation-site-internet/'}>
+                    <CustomLink href={'/offres/creation-site-internet'}>
                       <StorefrontIcon />
                       <p>
                         Site vitrine pour <br />
@@ -204,7 +204,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/offres/creation-boutique-e-commerce/'}>
+                    <CustomLink href={'/offres/creation-boutique-e-commerce'}>
                       <LocalGroceryStoreIcon />
                       <p>
                         Boutique en ligne <br /> e-commerce
@@ -215,7 +215,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/offres/creation-application-en-ligne/'}>
+                    <CustomLink href={'/offres/creation-application-en-ligne'}>
                       <MonitorIcon />
                       <p>
                         Applications <br />
@@ -227,7 +227,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/offres/creation-application-mobile/'}>
+                    <CustomLink href={'/offres/creation-application-mobile'}>
                       <SmartphoneIcon />
                       <p>
                         Application <br /> Mobile
@@ -271,7 +271,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           <li
             className="effect-underline classic-link"
             style={{ opacity: displayed === 'full' ? 0 : 1 }}>
-            <CustomLink href={'/contact/'}>
+            <CustomLink href={'/contact'}>
               <ForumIcon />
               Contact
             </CustomLink>
@@ -284,7 +284,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 id="custom_nav_dropdown"
                 onMouseEnter={() => setDropdownDisplayAbout(true)}
                 onMouseLeave={() => setDropdownDisplayAbout(false)}>
-                <CustomLink href="/a-propos/">
+                <CustomLink href={'/a-propos'}>
                   <PersonSearchIcon />A propos
                 </CustomLink>
                 <KeyboardArrowDownIcon
@@ -306,13 +306,13 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayAbout ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/blog/'}>Blog</CustomLink>
+                    <CustomLink href={'/blog'}>Blog</CustomLink>
                   </li>
                   <li
                     style={{
                       display: dropdownDisplayAbout ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/a-propos/technologies/'}>
+                    <CustomLink href={'/a-propos/technologies'}>
                       Technologies
                     </CustomLink>
                   </li>
@@ -320,7 +320,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayAbout ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/a-propos/experiences/'}>
+                    <CustomLink href={'/a-propos/experiences'}>
                       Expériences
                     </CustomLink>
                   </li>
@@ -328,7 +328,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayAbout ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/a-propos/curiculum/'}>CV</CustomLink>
+                    <CustomLink href={'/a-propos/curiculum'}>CV</CustomLink>
                   </li>
                 </ul>
               </div>

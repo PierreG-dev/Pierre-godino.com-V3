@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -25,7 +26,6 @@ const Experience: React.FC<Props> = ({
   return (
     <MainContainer>
       <h4
-        className={'font-bold w-1/4 text-base leading-3 text-center'}
         style={{
           transform: actual ? 'translateY(3px)' : 'none',
           color: actual ? '#68a852' : 'inherit',
@@ -39,16 +39,23 @@ const Experience: React.FC<Props> = ({
           <div></div>
         )}
       </h4>
-      <div className={'w-3/4'}>
+      <div className={'right-exp-side'}>
         <h4
-          className={'font-semibold text-base'}
           style={{
             color: titleColor ? titleColor : actual ? '#68a852' : 'inherit',
           }}>
           {title}
         </h4>
-        <p className={'font-semibold text-xs'} style={{ color: '#545454' }}>
-          {img && <img src={img} alt={subtitle} loading="lazy" />}
+        <p style={{ color: '#545454' }}>
+          {img && (
+            <Image
+              width={20}
+              height={20}
+              src={img}
+              alt={subtitle}
+              loading="lazy"
+            />
+          )}
           {subtitle + ' '}
           <span style={{ color: noteColor }}>{note}</span>
         </p>
@@ -61,8 +68,11 @@ const MainContainer = styled.div`
   display: flex;
   margin: 10px 0;
 
-  h4 {
+  & > h4 {
     line-height: 15px;
+    font-weight: bold;
+    width: 25%;
+    text-align: center;
   }
 
   p {
@@ -76,6 +86,20 @@ const MainContainer = styled.div`
       border-radius: 5px;
       filter: none;
       object-fit: contain;
+    }
+  }
+
+  .right-exp-side {
+    width: 75%;
+
+    h4 {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 0.75rem;
     }
   }
 `;

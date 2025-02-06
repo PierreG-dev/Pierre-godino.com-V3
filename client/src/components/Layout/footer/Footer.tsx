@@ -108,7 +108,7 @@ const Footer: React.FC<Props> = ({
           <MenuIcon />
         </span>
         <div className="side-bars" />
-        <div className="flex justify-center">
+        <div className="middle-square-container">
           <div className="middle-square">
             <div id="border_left" /> <div id="border_right" />
           </div>
@@ -128,15 +128,15 @@ const Footer: React.FC<Props> = ({
                   <CustomLink href={'/'}>Accueil</CustomLink>
                 </li>
                 <li>
-                  <CustomLink href={'/realisations/'}>
+                  <CustomLink href={'/realisations'}>
                     Mes réalisations
                   </CustomLink>
                 </li>
                 <li>
-                  <CustomLink href={'/contact/'}>Contact</CustomLink>
+                  <CustomLink href={'/contact'}>Contact</CustomLink>
                 </li>
                 <li>
-                  <CustomLink href={'/a-propos/'}>A propos de moi</CustomLink>
+                  <CustomLink href={'/a-propos'}>A propos de moi</CustomLink>
                 </li>
               </ul>
             </div>
@@ -226,9 +226,9 @@ const Footer: React.FC<Props> = ({
             <sup>V{process.env.NEXT_PUBLIC_APP_VERSION || '3'}</sup>
           </a>
           <p>
-            <CustomLink href="/legal/cgu/">CGU</CustomLink>
+            <CustomLink href={'/legal/cgu'}>CGU</CustomLink>
 
-            <CustomLink href="/legal/cgv/">CGV</CustomLink>
+            <CustomLink href={'/legal/cgv'}>CGV</CustomLink>
           </p>
           <p>2019 - {new Date().getFullYear()}</p>
         </div>
@@ -299,18 +299,22 @@ const MainContainer = styled.div`
     z-index: 1;
   }
 
-  .middle-square {
-    backdrop-filter: blur(1.8px);
-    transition: 0.5s ease;
-    position: relative;
+  .middle-square-container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background: #2d343655;
-    width: 210px;
-    height: 50vh;
-    z-index: 2;
-    transform: translateY(20px);
+    justify-content: center;
+    .middle-square {
+      backdrop-filter: blur(1.8px);
+      transition: 0.5s ease;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: #2d343655;
+      width: 210px;
+      height: 50vh;
+      z-index: 2;
+      transform: translateY(20px);
+    }
   }
 
   .middle-square div#border_left {

@@ -13,16 +13,8 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['icon-library'],
   },
-  async rewrites() {
-    return [
-      // {
-      //   source: '/api/:path*',
-      //   destination: 'https://pierre-godino.com/:path*',
-      // },
-    ];
-  },
   env: {},
-  trailingSlash: true,
+  trailingSlash: false,
 
   // Ajout de la configuration Webpack
   webpack: (config) => {

@@ -134,11 +134,15 @@ const Vitrine: FC = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/offres/creation-site-internet/"
+          content={
+            'https://www.creation-sites-godino.fr/offres/creation-site-internet'
+          }
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/offres/creation-site-internet/"
+          href={
+            'https://www.creation-sites-godino.fr/offres/creation-site-internet'
+          }
         />
       </Head>
       <MainContainer>
@@ -301,7 +305,7 @@ const Vitrine: FC = () => {
                 (réservation en ligne, intégration de services tiers... etc.) .{' '}
                 <br />
                 Pour le prix définitif, veuillez{' '}
-                <CustomLink href="/contact/">prendre contact</CustomLink>.
+                <CustomLink href={'/contact'}>prendre contact</CustomLink>.
               </em>
             </p>
           </section>
@@ -447,7 +451,7 @@ const Vitrine: FC = () => {
                 </p>
               </button>
             </a>
-            <CustomLink href="/contact/">
+            <CustomLink href={'/contact'}>
               <button className="form-btn">
                 <FormatListBulletedIcon />
                 <p>Formulaire de contact</p>
@@ -586,7 +590,7 @@ const Vitrine: FC = () => {
               </p>
             </button>
           </a>
-          <CustomLink href="/contact/">
+          <CustomLink href={'/contact'}>
             <button className="form-btn">
               <FormatListBulletedIcon />
               <p>Formulaire de contact</p>

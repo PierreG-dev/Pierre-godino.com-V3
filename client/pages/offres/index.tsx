@@ -72,11 +72,11 @@ const Offres: NextPage = () => {
         />
         <meta
           property="og:url"
-          content="https://www.creation-sites-godino.fr/offres/"
+          content={'https://www.creation-sites-godino.fr/offres'}
         />
         <link
           rel="canonical"
-          href="https://www.creation-sites-godino.fr/offres/"
+          href={'https://www.creation-sites-godino.fr/offres'}
         />
       </Head>
       {background}
@@ -142,7 +142,7 @@ const Offres: NextPage = () => {
                 Rapide et sécurisé
               </li>
             </ul>
-            <CustomLink href="/offres/creation-site-internet/">
+            <CustomLink href={'/offres/creation-site-internet'}>
               Faire une estimation
             </CustomLink>
           </header>
@@ -177,7 +177,7 @@ const Offres: NextPage = () => {
                 gestion de la présence sur les réseaux sociaux pour un meilleur
                 référencement.
               </p>
-              <CustomLink href="/offres/referencement-visibilite-web-seo/">
+              <CustomLink href={'/offres/referencement-visibilite-web-seo'}>
                 En savoir plus
               </CustomLink>
             </li>
@@ -193,7 +193,7 @@ const Offres: NextPage = () => {
                 Mise en place de campagnes publicitaires sur des plateformes
                 d'annonces pour augmenter la visibilité.
               </p>
-              <CustomLink href="/offres/referencement-visibilite-web-seo/">
+              <CustomLink href={'/offres/referencement-visibilite-web-seo'}>
                 En savoir plus
               </CustomLink>
             </li>
@@ -269,7 +269,7 @@ const Offres: NextPage = () => {
                 Stats en temps réel
               </li>
             </ul>
-            <CustomLink href="/offres/creation-boutique-e-commerce/">
+            <CustomLink href={'/offres/creation-boutique-e-commerce'}>
               En savoir plus
             </CustomLink>
           </header>
@@ -303,7 +303,7 @@ const Offres: NextPage = () => {
                 gestion de la présence sur les réseaux sociaux pour un meilleur
                 référencement.
               </p>
-              <CustomLink href="/offres/referencement-visibilite-web-seo/">
+              <CustomLink href={'/offres/referencement-visibilite-web-seo'}>
                 En savoir plus
               </CustomLink>
             </li>
@@ -319,7 +319,7 @@ const Offres: NextPage = () => {
                 Mise en place de campagnes publicitaires sur des plateformes
                 d'annonces pour augmenter la visibilité.
               </p>
-              <CustomLink href="/offres/referencement-visibilite-web-seo/">
+              <CustomLink href={'/offres/referencement-visibilite-web-seo'}>
                 En savoir plus
               </CustomLink>
             </li>
@@ -394,7 +394,7 @@ const Offres: NextPage = () => {
               </li>
             </ul>
 
-            <CustomLink href="/offres/creation-application-en-ligne/">
+            <CustomLink href={'/offres/creation-application-en-ligne'}>
               En savoir plus
             </CustomLink>
           </header>
@@ -413,7 +413,7 @@ const Offres: NextPage = () => {
                 Développement d'applications mobiles compatibles Android et iOS,
                 offrant une portée large et une croissance durable.
               </p>
-              <CustomLink href="/offres/creation-application-mobile/">
+              <CustomLink href={'/offres/creation-application-mobile'}>
                 En savoir plus
               </CustomLink>
             </li>
@@ -429,7 +429,7 @@ const Offres: NextPage = () => {
                 Création d'une page d'atterrissage optimisée pour capter
                 l'attention des visiteurs et convertir rapidement.
               </p>
-              <CustomLink href="/offres/referencement-visibilite-web-seo/">
+              <CustomLink href={'/offres/referencement-visibilite-web-seo'}>
                 En savoir plus
               </CustomLink>
             </li>

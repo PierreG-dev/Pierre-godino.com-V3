@@ -86,12 +86,12 @@ const Maintenance: NextPage = () => {
         style={{ zIndex: 2 }}>
         {devMode ? (
           <React.Fragment>
-            <Link href="/a-propos/">ESPACE RECRUTEUR</Link>
-            <Link href="/a-propos/experiences/">EXPERIENCES</Link>
-            <Link href="/a-propos/technologies/">TECHNOLOGIES</Link>
-            <Link href="/a-propos/curiculum/">CV</Link>
-            <Link href="/contact/">CONTACT</Link>
-            <Link href="/realisations/">REALISATIONS</Link>
+            <Link href={'/a-propos'}>ESPACE RECRUTEUR</Link>
+            <Link href={'/a-propos/experiences'}>EXPERIENCES</Link>
+            <Link href={'/a-propos/technologies'}>TECHNOLOGIES</Link>
+            <Link href={'/a-propos/curiculum'}>CV</Link>
+            <Link href={'/contact'}>CONTACT</Link>
+            <Link href={'/realisations'}>REALISATIONS</Link>
           </React.Fragment>
         ) : (
           <React.Fragment>
