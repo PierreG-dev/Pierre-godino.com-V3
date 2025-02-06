@@ -13,12 +13,12 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import ShareIcon from '@mui/icons-material/Share';
 import { BackgroundContext } from '../src/contexts/Contexts';
 import Image from 'next/image';
-import SATELITE_IMG from '@/assets/satelite.png';
-import FRANCE_MAP from '@/assets/france-map.png';
-import GITHUB_LOGO from '@/assets/GITHUB_LOGO.png';
-import MALT_LOGO from '@/assets/MALT_LOGO.png';
-import LINKEDIN_LOGO from '@/assets/LINKEDIN_LOGO.png';
-import GOOGLE_LOGO from '@/assets/google.png';
+import SATELITE_IMG from '@/assets/global/satelite.png';
+import FRANCE_MAP from '@/assets/contact/france-map.png';
+import GITHUB_LOGO from '@/assets/global/GITHUB_LOGO.png';
+import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
+import LINKEDIN_LOGO from '@/assets/global/LINKEDIN_LOGO.png';
+import GOOGLE_LOGO from '@/assets/global/google.png';
 
 const networks = [
   {

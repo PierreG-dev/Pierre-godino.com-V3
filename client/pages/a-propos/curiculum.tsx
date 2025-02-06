@@ -5,6 +5,27 @@ import { NextPage } from 'next';
 import Experience from '../../src/components/Curiculum/Experience';
 import Head from 'next/head';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
+import Image from 'next/image';
+// Les imports d'images
+import LOGO from '@/assets/global/LOGO.svg';
+import JS_ICON from '@/assets/icons/js.png';
+import REACT_ICON from '@/assets/icons/react.png';
+import NODE_ICON from '@/assets/icons/nodejs.png';
+import HTML_ICON from '@/assets/icons/html.png';
+import GOOGLE_ICON from '@/assets/icons/google.png';
+import FR_FLAG from '@/assets/icons/fr_flag.png';
+import EN_FLAG from '@/assets/icons/en_flag.jpeg';
+import JP_FLAG from '@/assets/icons/jp_flag.png';
+import WAGON_ICON from '@/assets/icons/wagon.png';
+import CENEF_ICON from '@/assets/icons/cenef.svg';
+import OCLOCK_ICON from '@/assets/icons/oclock.png';
+import DOZER_ICON from '@/assets/icons/dozer.png';
+// import WEB_ICON from '@/assets/icons/web.webp';
+import DC_ICON from '@/assets/icons/dc.png';
+import UPS_ICON from '@/assets/icons/ups.jpg';
+import GITHUB_LOGO from '@/assets/global/GITHUB_LOGO.png';
+import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
+import LINKEDIN_LOGO from '@/assets/global/LINKEDIN_LOGO.png';
 
 const Curiculum: NextPage = () => {
   return (
@@ -48,64 +69,68 @@ const Curiculum: NextPage = () => {
           left: 0,
           zIndex: -1,
         }}></div>
-      <div
-        className={
-          'grid grid-cols-1 md:grid-cols-2 gap-4 p-6 max-w-6xl mx-auto my-auto'
-        }>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 max-w-6xl mx-auto my-auto">
         <InfosContainer>
           <div className="flex flex-col justify-between p-6 block md:hidden mb-7">
-            <img className={'mb-7'} src="/res/LOGO.svg" alt="pierre godino" />
-            <h1 style={{ color: '#fafafa' }}>
+            <Image
+              width={200}
+              height={200}
+              className={'mb-7'}
+              src={LOGO}
+              alt="pierre godino"
+            />
+            <h2 style={{ color: '#fafafa' }}>
               Pierre <br />
               Godino
-            </h1>
+            </h2>
           </div>
 
           <section>
             <h2>Compétences</h2>
 
-            <div className="flex justify-between">
+            <div id="skill_lang_wrapper">
               <div id="skills">
                 <h3 className={'text-center w-full'}>Informatique</h3>
                 <ul className={'text-sm'}>
                   <li>
-                    <img
-                      src={'/icons/js.png'}
+                    <Image
+                      width={17}
+                      height={17}
+                      src={JS_ICON}
                       alt="Javascript"
-                      loading="lazy"
                     />
                     JavaScript 🔥
                   </li>
                   <li>
-                    <img
-                      src={'/icons/react.png'}
-                      alt="Javascript"
-                      loading="lazy"
+                    <Image
+                      width={17}
+                      height={17}
+                      src={REACT_ICON}
+                      alt="ReactJS"
                     />
                     ReactJs | NextJs 🔥
                   </li>
                   <li>
-                    <img
-                      src={'/icons/nodejs.png'}
-                      alt="Javascript"
-                      loading="lazy"
+                    <Image
+                      width={17}
+                      height={17}
+                      src={NODE_ICON}
+                      alt="Node | MongoDB"
                     />
                     Node | MongoDB
                   </li>
                   <li>
-                    <img
-                      src={'/icons/html.png'}
-                      alt="Javascript"
-                      loading="lazy"
+                    <Image
+                      width={17}
+                      height={17}
+                      src={HTML_ICON}
+                      alt="HTML | CSS | JS"
                     />
                     Vanilla (HTML / CSS / JS)
                   </li>
                   <li>
-                    <img
-                      src={'/icons/google.png'}
-                      alt="Javascript"
-                      loading="lazy"
-                    />
+                    <Image width={17} height={17} src={GOOGLE_ICON} alt="SEO" />
                     SEO
                   </li>
                   <CustomLink href={'/a-propos/technologies'}>
@@ -118,32 +143,32 @@ const Curiculum: NextPage = () => {
                 <h3 className={'text-center w-full'}>Langues</h3>
                 <ul>
                   <li>
-                    <img
-                      src="/icons/fr_flag.png"
+                    <Image
+                      width={17}
+                      height={17}
+                      src={FR_FLAG}
                       alt="Drapeau français"
-                      loading="lazy"
                     />
-                    <strong>Français</strong> - natif{' '}
+                    <strong>Français</strong> - natif
                   </li>
                   <li>
-                    <img
-                      src="/icons/en_flag.jpeg"
-                      alt="Drapeau français"
-                      loading="lazy"
+                    <Image
+                      width={17}
+                      height={17}
+                      src={EN_FLAG}
+                      alt="Drapeau anglais"
                     />
-                    <strong>Anglais</strong> - professionnel <br />
-                    {/* <span style={{ color: '#37373799', fontSize: '0.9rem' }}>
-                      (77/100 EF SET)
-                    </span> */}
+                    <strong>Anglais</strong> - professionnel
                   </li>
-                  <li>
-                    <img
-                      src="/icons/jp_flag.png"
-                      alt="Drapeau français"
-                      loading="lazy"
+                  {/* <li>
+                    <Image
+                      width={17}
+                      height={17}
+                      src={JP_FLAG}
+                      alt="Drapeau japonais"
                     />
                     <strong>Japonais</strong> - moyen
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -157,21 +182,21 @@ const Curiculum: NextPage = () => {
               title={'Formateur | Assistant'}
               subtitle={'Le Wagon'}
               actual
-              img={'/icons/wagon.png'}
+              img={WAGON_ICON}
             />
 
             <Experience
               date={'Sep. 2023'}
               title={'Mentor'}
               subtitle={'Centre Européen de Formation'}
-              img={'/icons/cenef.svg'}
+              img={CENEF_ICON}
             />
 
             <Experience
               date={'Mai 2023'}
               title={'Formateur'}
               subtitle={"O'Clock"}
-              img={'/icons/oclock.png'}
+              img={OCLOCK_ICON}
               actual
             />
 
@@ -179,16 +204,16 @@ const Curiculum: NextPage = () => {
               date={'Déc. 2020'}
               title={'Front-end React | Next'}
               subtitle={'Hackathon 60-Dozer'}
-              img={'/icons/dozer.png'}
+              img={DOZER_ICON}
               note={'(1ère place)'}
               noteColor={'#ffbd59'}
             />
 
             <Experience
               date={'Août 2019'}
-              title={'Développeur'}
+              title={'Développeur WEB'}
               subtitle={'Freelance'}
-              img={'/icons/web.webp'}
+              img={LOGO}
               actual
             />
 
@@ -205,7 +230,7 @@ const Curiculum: NextPage = () => {
               title={'RNCP Niv.5 - Développeur WEB/Mobile'}
               subtitle={'Digital Campus'}
               titleColor={'#8e44ad'}
-              img={'/icons/dc.png'}
+              img={DC_ICON}
             />
 
             <Experience
@@ -213,15 +238,8 @@ const Curiculum: NextPage = () => {
               title={'Licence Informatique'}
               subtitle={'Université Paul Sabatier, Toulouse'}
               titleColor={'#c0392b'}
-              img={'/icons/ups.jpg'}
+              img={UPS_ICON}
             />
-
-            {/* <Experience
-              date={'2016'}
-              title={'Baccalauréat Scientifique'}
-              subtitle={'Lycée Jean de Prades, Castelsarrasin'}
-              titleColor={'#f39c12'}
-            /> */}
           </section>
 
           <section title={'Mon profil'}>
@@ -249,7 +267,7 @@ const Curiculum: NextPage = () => {
           </form>
 
           <div className="flex flex-col justify-between p-6 hidden md:block">
-            <img src="/res/LOGO.svg" alt="pierre godino" />
+            <Image width={200} height={200} src={LOGO} alt="pierre godino" />
             <h1>
               Pierre <br />
               Godino
@@ -289,10 +307,11 @@ const Curiculum: NextPage = () => {
 
               <div className={'w-full break-words mb-3'}>
                 <header>
-                  <img
-                    src="/res/GITHUB_LOGO.png"
+                  <Image
+                    src={GITHUB_LOGO}
                     alt="github"
-                    loading="lazy"
+                    width={19}
+                    height={19}
                     style={{
                       filter: 'grayscale(1) brightness(2) invert(100%)',
                     }}
@@ -309,7 +328,7 @@ const Curiculum: NextPage = () => {
 
               <div className={'w-full break-words mb-3'}>
                 <header>
-                  <img src="/res/MALT_LOGO.png" alt="malt" loading="lazy" />
+                  <Image src={MALT_LOGO} alt="malt" width={19} height={19} />
                   <h3>Malt</h3>
                 </header>
                 <a
@@ -322,10 +341,11 @@ const Curiculum: NextPage = () => {
 
               <div className={'w-full break-words mb-3'}>
                 <header>
-                  <img
-                    src="/res/LINKEDIN_LOGO.png"
+                  <Image
+                    src={LINKEDIN_LOGO}
                     alt="linkedin"
-                    loading="lazy"
+                    width={19}
+                    height={19}
                   />
                   <h3>LinkedIn</h3>
                 </header>
@@ -422,9 +442,19 @@ const MainContainer = styled.div`
   }
 
   section > div:has(#skills, #lang) {
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    display: flex;
+    justify-content: space-between;
     gap: 30px;
     width: 100%;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+
+    @media (min-width: 667px) and (max-width: 1144px) {
+      flex-direction: column;
+    }
 
     #skills,
     #lang {
@@ -547,9 +577,9 @@ const ContactContainer = styled.div`
   }
 
   img {
-    width: 200px;
-    height: auto;
-    margin: 70px auto 70px auto;
+    width: 200px !important;
+    height: auto !important;
+    margin: 70px auto 70px auto !important;
   }
 
   header {
@@ -566,9 +596,9 @@ const ContactContainer = styled.div`
 
     img {
       object-fit: cover;
-      width: 19px;
-      height: 19px;
-      margin: 0;
+      width: 19px !important;
+      height: 19px !important;
+      margin: 0 !important;
       filter: grayscale(1) brightness(2);
     }
   }

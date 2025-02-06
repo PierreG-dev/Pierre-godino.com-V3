@@ -10,7 +10,7 @@ export type Props = {
   noteColor?: string;
   titleColor?: string;
   actual?: boolean;
-  img?: string;
+  img?: any;
 };
 
 const Experience: React.FC<Props> = ({

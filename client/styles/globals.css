@@ -1,3 +1,8 @@
+/* TAILWIND CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* -------- FONTS -------- */
 
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Space+Mono&display=swap');
