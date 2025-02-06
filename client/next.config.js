@@ -1,5 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    domains: [
+      'localhost:3000',
+      'creation-sites-godino.fr',
+      'blog.api.pierre-godino.com',
+    ],
+  },
+  productionBrowserSourceMaps: false,
+  reactStrictMode: true,
   experimental: {
     optimizePackageImports: ['icon-library'],
   },
@@ -23,7 +33,7 @@ const nextConfig = {
 
 // Ajout de l'analyse du bundle
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+  enabled: process.env.ANALYZE === 'false', // TRUE pour faire un rapport a chaque build
 });
 
 module.exports = withBundleAnalyzer(nextConfig);

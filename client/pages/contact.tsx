@@ -12,29 +12,36 @@ import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import ShareIcon from '@mui/icons-material/Share';
 import { BackgroundContext } from '../src/contexts/Contexts';
+import Image from 'next/image';
+import SATELITE_IMG from '@/assets/satelite.png';
+import FRANCE_MAP from '@/assets/france-map.png';
+import GITHUB_LOGO from '@/assets/GITHUB_LOGO.png';
+import MALT_LOGO from '@/assets/MALT_LOGO.png';
+import LINKEDIN_LOGO from '@/assets/LINKEDIN_LOGO.png';
+import GOOGLE_LOGO from '@/assets/google.png';
 
 const networks = [
   {
     name: 'GitHub',
-    imgUrl: '/res/GITHUB_LOGO.png',
+    img: GITHUB_LOGO,
     className: 'github',
     link: 'https://www.github.com/pierreG-dev',
   },
   {
     name: 'Malt',
-    imgUrl: '/res/MALT_LOGO.png',
+    img: MALT_LOGO,
     className: 'malt',
     link: 'https://www.malt.fr/profile/pierregodino',
   },
   {
     name: 'LinkedIn',
-    imgUrl: '/res/LINKEDIN_LOGO.png',
+    img: LINKEDIN_LOGO,
     className: 'linkedin',
     link: 'https://www.linkedin.com/in/pierre-godino-50b503186',
   },
   {
     name: 'Google',
-    imgUrl: '/icons/google.png',
+    img: GOOGLE_LOGO,
     className: 'cv',
     link: 'https://g.co/kgs/9Y2TGRP',
   },
@@ -112,7 +119,14 @@ const Contact: NextPage = () => {
 
       {background}
       <div id="satelite_container">
-        <img src="/res/satelite.png" alt="Satellite" className="satelite" />
+        <Image
+          className="satelite"
+          src={SATELITE_IMG}
+          alt="Satellite"
+          width={50}
+          height={50}
+          layout="intrinsic" // Cela permet de laisser l'image ajustable sans styles CSS supplémentaires
+        />
       </div>
       <div id="content-container">
         <div id="left">
@@ -148,7 +162,11 @@ const Contact: NextPage = () => {
               </div>
             </div>
             <div id="map">
-              <img src="/res/france-map.png" alt="france vue depuis l'espace" />
+              <Image
+                layout="fill"
+                src={FRANCE_MAP}
+                alt="france vue depuis l'espace"
+              />
               <div className="pin bounce"></div>
               <div className="pulse"></div>
             </div>
@@ -212,9 +230,12 @@ const Contact: NextPage = () => {
                       rel="noreferrer">
                       <div>
                         <h3>{elem.name}</h3>
-                        <img
-                          src={`${elem.imgUrl}`}
+                        <Image
+                          width={100}
+                          height={100}
+                          src={elem.img}
                           alt={`Logo de la plateforme ${elem.name}`}
+                          objectFit={'contain'}
                         />
                       </div>
                     </a>
@@ -482,10 +503,6 @@ const MainContainer = styled.div`
               filter: grayscale(0.3);
               transition: 0.3s;
             }
-
-            img {
-              /* filter: grayscale(0); */
-            }
           }
 
           &.github div {
@@ -576,11 +593,13 @@ const MainContainer = styled.div`
     width: 100%;
     min-height: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .satelite {
+  #satelite_container > span {
     position: absolute;
-    width: 50px;
     animation: 40s satelite_animation linear infinite;
     filter: contrast(0.6);
   }
@@ -591,7 +610,6 @@ const MainContainer = styled.div`
       left: 150%;
       transform: rotate(50deg);
     }
-
     100% {
       top: -50%;
       left: 20%;

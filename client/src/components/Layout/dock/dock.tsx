@@ -5,8 +5,8 @@ import LearnCase from './cases/LearnCase';
 import AgendaCase from './cases/AgendaCase';
 import CookiesCase from './cases/CookiesCase';
 import ContactCase from './cases/ContactCase';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import FaqCase from './cases/FaqCase';
 
 const cases = [
@@ -74,11 +74,7 @@ const Dock: NextPage = () => {
           setIsDisplayed((prevstate) => !prevstate);
           setSelectedCase(0);
         }}>
-        {isDisplayed ? (
-          <FontAwesomeIcon icon={faEye} />
-        ) : (
-          <FontAwesomeIcon icon={faEyeSlash} />
-        )}
+        {isDisplayed ? <VisibilityIcon /> : <VisibilityOffIcon />}
       </button>
       <ul className={isDisplayed ? '' : 'hidden'}>
         {cases.map((elem) => (

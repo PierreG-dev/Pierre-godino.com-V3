@@ -12,9 +12,7 @@ import styled from 'styled-components';
 import FullCalendar, { LocaleSingularArg } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import frLocale from '@fullcalendar/core/locales/fr';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRotate } from '@fortawesome/free-solid-svg-icons';
-import seedrandom from 'seedrandom';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
@@ -137,9 +135,7 @@ const Calendar: NextPage = () => {
             />
             {error.status && <em>{error.msg}</em>}
           </div>
-          <button>
-            {!isFetching ? 'Consulter' : <FontAwesomeIcon icon={faRotate} />}
-          </button>
+          <button>{!isFetching ? 'Consulter' : <RefreshIcon />}</button>
         </form>
       </ConnexionModal>
       {isFetched && (

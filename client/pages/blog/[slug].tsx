@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
@@ -198,7 +198,24 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  // Récupérer les slugs des articles pour la génération des pages statiques
+  const res = await fetch(
+    'https://blog.api.pierre-godino.com/wp-json/wp/v2/posts'
+  );
+  const posts = await res.json();
+
+  const paths = posts.map((post: { slug: string }) => ({
+    params: { slug: post.slug },
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking', // Utilise 'blocking' pour générer la page au premier accès si elle n'est pas encore générée
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params!;
 
   try {
@@ -232,6 +249,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           featured_image_url: featuredImageUrl,
         },
       },
+      revalidate: 60,
     };
   } catch (error) {
     console.error('Error fetching post or media:', error);

@@ -1,7 +1,8 @@
 // tailwind.config.js
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  mode: 'jit', // Just-In-Time mode
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'], // Purge uniquement ce qui est utilisé
+  darkMode: 'class', // ou 'media'
   theme: {
     extend: {},
   },

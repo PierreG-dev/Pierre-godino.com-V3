@@ -1,4 +1,4 @@
-import { NextPage, GetServerSideProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
@@ -105,7 +105,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const res = await fetch(
       'https://blog.api.pierre-godino.com/wp-json/wp/v2/posts'
@@ -133,6 +133,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       props: {
         posts: postsWithFeaturedImage,
       },
+      revalidate: 60,
     };
   } catch (error) {
     console.error('Error fetching posts:', error);
