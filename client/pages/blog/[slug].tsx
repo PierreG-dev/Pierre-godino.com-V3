@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { BackgroundContext } from '../../src/contexts/Contexts';
-import QuestionsButton from '../../src/utilities/buttons/QuestionsButton';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CustomLink from '@/components/Layout/routing/CustomLink';
