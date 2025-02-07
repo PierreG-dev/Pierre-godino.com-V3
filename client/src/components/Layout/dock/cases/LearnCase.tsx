@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import { FC } from 'react';
+import Image from 'next/image';
+import GEARS from '@/assets/icons/learn_icon.svg';
 
 const LearnCase: FC = () => {
   return (
     <MainContainer>
-      <img src="/icons/learn_icon.svg" alt="Learn" loading="lazy" />
+      <Image src={GEARS} alt="Learn" />
       <p>
         Envie d'apprendre la programmation ? <br />
-        <a href="https://www.learn.pierre-godino.com">
+        <a href="https://www.learn.pierre-godino.com" rel="nofollow">
           <u>learn.pierre-godino.com</u>
         </a>
       </p>

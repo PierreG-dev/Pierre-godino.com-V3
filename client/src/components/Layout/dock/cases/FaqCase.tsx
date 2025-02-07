@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { FC } from 'react';
 import CustomLink from '../../routing/CustomLink';
+import Image from 'next/image';
+import FAQ from '@/assets/icons/question.png';
 
 const FaqCase: FC = () => {
   return (
     <MainContainer>
-      <img src="/icons/question.png" alt="Calendrier" loading="lazy" />
+      <Image src={FAQ} alt="FAQ" />
       <p>
         Une question ? Visitez la{' '}
         <u>

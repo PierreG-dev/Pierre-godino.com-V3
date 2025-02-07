@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import Image from 'next/image';
 import styled from 'styled-components';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CustomLink from '../routing/CustomLink';
@@ -22,6 +23,8 @@ import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MonitorIcon from '@mui/icons-material/Monitor';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
 
+import LOGO from '@/assets/global/LOGO.png';
+
 export type displayType = 'full' | 'displayed' | 'navbar';
 
 export type Props = {
@@ -30,7 +33,7 @@ export type Props = {
 };
 
 const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
-  const navRef = useRef();
+  const navRef = useRef(null);
   const [displayed, setDisplayed] = useState<displayType>('full');
   const [dropdownDisplayAbout, setDropdownDisplayAbout] = useState(false);
   const [dropdownDisplayServices, setDropdownDisplayServices] = useState(false);
@@ -240,10 +243,12 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
           </li>
           <li>
             {isNotchAvailable ? (
-              <img
-                src="/res/LOGO.png"
+              <Image
+                priority
+                src={LOGO}
                 className="HomeLogo"
                 alt="Logo"
+                width={85}
                 style={{
                   transform:
                     displayed === 'full'
@@ -254,10 +259,12 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
               />
             ) : (
               <CustomLink href={'/'}>
-                <img
-                  src="/res/LOGO.png"
+                <Image
+                  priority
+                  src={LOGO}
                   className="HomeLogo"
                   alt="Logo"
+                  width={85}
                   style={{
                     transform:
                       displayed === 'full'

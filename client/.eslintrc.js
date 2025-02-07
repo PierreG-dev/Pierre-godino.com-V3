@@ -1,14 +1,16 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
     'react-app',
-    'plugin:prettier/recommended',
     'prettier/prettier',
+    'plugin:prettier/recommended',
+    'prettier/@typescript-eslint',
+    'eslint:recommended',
   ],
   plugins: ['@typescript-eslint', 'react', 'jsx-a11y'],
   rules: {
+    'react/jsx-no-duplicate-props': 'off',
+    'react/jsx-no-target-blank': 'off',
     'prettier/prettier': [
       'error',
       {
@@ -25,7 +27,6 @@ module.exports = {
         declaration: 'parens-new-line',
         assignment: 'parens-new-line',
         return: 'parens-new-line',
-        arrow: 'parens-new-line',
         arrow: 'parens-new-line',
         condition: 'parens-new-line',
         logical: 'parens-new-line',

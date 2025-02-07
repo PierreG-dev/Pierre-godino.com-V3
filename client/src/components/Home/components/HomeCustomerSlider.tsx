@@ -2,6 +2,19 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
+import Image from 'next/image';
+import OCLOCK from '@/assets/icons/oclock.png';
+import PHILIANCE from '@/assets/icons/philliance.png';
+import APFORMATIONS from '@/assets/icons/apformation.png';
+import GEMA from '@/assets/icons/GEMA.jpg';
+import AXEACADEMY from '@/assets/icons/axeacademy.png';
+import ABNATURE from '@/assets/icons/ab-nature_full.png';
+import CHECKYOURSMILE from '@/assets/icons/checkyoursmile.png';
+import SPEEDYNANIE from '@/assets/icons/speedynanie_alpha.png';
+import VIDEOMENTHE from '@/assets/icons/videomenthe_alpha.png';
+import YOOP from '@/assets/icons/yoop_alpha.png';
+import MISINO from '@/assets/icons/misino_icon_alt.png';
+
 const HomeCustomerSlider: FC = () => {
   return (
     <MainContainer>
@@ -11,139 +24,61 @@ const HomeCustomerSlider: FC = () => {
       <Caroussel>
         <div className="wrapper">
           {' '}
-          <img
-            loading="lazy"
+          <Image className="logo-element" src={OCLOCK} alt="Ecoles O'Clock" />
+          <Image
             className="logo-element"
-            src="/icons/oclock.png"
-            alt="Ecoles O'Clock"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/philliance.png"
+            src={PHILIANCE}
             alt="Philiance Formations"
           />
-          <img
-            loading="lazy"
+          <Image
             className="logo-element"
-            src="/icons/apformation.png"
+            src={APFORMATIONS}
             alt="AP Formations"
           />
-          <img
-            loading="lazy"
+          <Image className="logo-element" src={GEMA} alt="GEMA" />
+          <Image className="logo-element" src={AXEACADEMY} alt="Axe academy" />
+          <Image className="logo-element" src={ABNATURE} alt="AB Nature" />
+          <Image
             className="logo-element"
-            src="/icons/GEMA.jpg"
-            alt="GEMA"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/axeacademy.png"
-            alt="Axe academy"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/ab-nature_full.png"
-            alt="AB Nature"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/checkyoursmile.png"
+            src={CHECKYOURSMILE}
             alt="Check Your Smile"
           />
-          <img
-            loading="lazy"
+          <Image
             className="logo-element"
-            src="/icons/speedynanie_alpha.png"
+            src={SPEEDYNANIE}
             alt="Speedy Nanie"
           />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/videomenthe_alpha.png"
-            alt="Videomenthe"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/yoop_alpha.png"
-            alt="Yoop Digital"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/misino_icon_alt.png"
-            alt="Dr. Misino"
-          />
+          <Image className="logo-element" src={VIDEOMENTHE} alt="Videomenthe" />
+          <Image className="logo-element" src={YOOP} alt="Yoop Digital" />
+          <Image className="logo-element" src={MISINO} alt="Dr. Misino" />
           {/* DEBUT SENTINEL */}
-          <img
-            loading="lazy"
+          <Image className="logo-element" src={OCLOCK} alt="Ecoles O'Clock" />
+          <Image
             className="logo-element"
-            src="/icons/oclock.png"
-            alt="Ecoles O'Clock"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/philliance.png"
+            src={PHILIANCE}
             alt="Philiance Formations"
           />
-          <img
-            loading="lazy"
+          <Image
             className="logo-element"
-            src="/icons/apformation.png"
+            src={APFORMATIONS}
             alt="AP Formations"
           />
-          <img
-            loading="lazy"
+          <Image className="logo-element" src={GEMA} alt="GEMA" />
+          <Image className="logo-element" src={AXEACADEMY} alt="Axe academy" />
+          <Image className="logo-element" src={ABNATURE} alt="AB Nature" />
+          <Image
             className="logo-element"
-            src="/icons/GEMA.jpg"
-            alt="GEMA"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/axeacademy.png"
-            alt="Axe academy"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/ab-nature_full.png"
-            alt="AB Nature"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/checkyoursmile.png"
+            src={CHECKYOURSMILE}
             alt="Check Your Smile"
           />
-          <img
-            loading="lazy"
+          <Image
             className="logo-element"
-            src="/icons/speedynanie_alpha.png"
+            src={SPEEDYNANIE}
             alt="Speedy Nanie"
           />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/videomenthe_alpha.png"
-            alt="Videomenthe"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/yoop_alpha.png"
-            alt="Yoop Digital"
-          />
-          <img
-            loading="lazy"
-            className="logo-element"
-            src="/icons/misino_icon_alt.png"
-            alt="Dr. Misino"
-          />
+          <Image className="logo-element" src={VIDEOMENTHE} alt="Videomenthe" />
+          <Image className="logo-element" src={YOOP} alt="Yoop Digital" />
+          <Image className="logo-element" src={MISINO} alt="Dr. Misino" />
         </div>
       </Caroussel>
     </MainContainer>
@@ -212,6 +147,16 @@ const Caroussel = styled.div`
       height: 100px;
       object-fit: contain;
       filter: drop-shadow(0px 0px 0.5px rgba(255, 255, 255, 0.5));
+      animation: appear 1s 1 ease;
+
+      @keyframes appear {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
     }
 
     @media (max-width: 800px) {

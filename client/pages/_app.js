@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
   // const [onMaintenance, setOnMaintenance] = useState(false);
-  const visitUpdateInterval = useRef();
+  const visitUpdateInterval = useRef(null);
   const firstLoad = useRef(true);
 
   const handleLoad = useCallback(() => {
@@ -122,7 +122,7 @@ function MyApp({ Component, pageProps }) {
   }, [handleComplete, router.events]);
 
   return (
-    <Contexts>
+    <Contexts suppressHydrationWarning>
       <Head>
         <meta property="og:image" content="/res/OG-image.png" />
         <meta name="author" content="Pierre Godino" />

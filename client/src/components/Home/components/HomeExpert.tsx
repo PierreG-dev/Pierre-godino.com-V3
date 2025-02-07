@@ -4,6 +4,13 @@ import styled from 'styled-components';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CustomLink from '../../Layout/routing/CustomLink';
 
+import Image from 'next/image';
+import RUSH from '@/assets/icons/rush.png';
+import GOOGLE_LOGO from '@/assets/global/google.png';
+import CHECK from '@/assets/icons/check.png';
+import BRUSH from '@/assets/icons/paint-brush.png';
+import QUALITE from '@/assets/icons/qualite.png';
+
 const HomeExpert: NextPage = () => {
   const [isContentVisible, setisContentVisible] = useState<boolean>(false);
   const contentWrapperRef = useRef(null);
@@ -26,7 +33,7 @@ const HomeExpert: NextPage = () => {
     <MainContainer id="expertise" ref={contentWrapperRef}>
       <h2>
         Convaincu ?<strong>Je m'occupe de tout.</strong>
-        <img src="/icons/check.png" alt="expert WEB" loading="lazy" />
+        <Image src={CHECK} alt="expert WEB" />
       </h2>
 
       <p className="subtitle">
@@ -45,7 +52,7 @@ const HomeExpert: NextPage = () => {
             opacity: isContentVisible ? 1 : 0,
             transitionDelay: '0.4s',
           }}>
-          <img src="/icons/paint-brush.png" alt="expert WEB" loading="lazy" />
+          <Image src={BRUSH} alt="expert WEB" />
           <h3>Un design qui vous ressemble</h3>
           <p>
             Je crée des sites modernes, responsive et optimisés pour une
@@ -58,7 +65,7 @@ const HomeExpert: NextPage = () => {
             opacity: isContentVisible ? 1 : 0,
             transitionDelay: '0.6s',
           }}>
-          <img src="/icons/google.png" alt="expert WEB" loading="lazy" />
+          <Image src={GOOGLE_LOGO} alt="expert WEB" />
           <h3>Un référencement performant (SEO)</h3>{' '}
           <p>
             Chaque site que je conçois est optimisé pour le SEO dès le départ.
@@ -70,7 +77,7 @@ const HomeExpert: NextPage = () => {
             opacity: isContentVisible ? 1 : 0,
             transitionDelay: '0.8s',
           }}>
-          <img src="/icons/qualite.png" alt="expert WEB" loading="lazy" />
+          <Image src={QUALITE} alt="expert WEB" />
           <h3>Un accompagnement complet</h3>{' '}
           <p>
             De l’hébergement à la maintenance, je m’assure que votre site reste
@@ -87,7 +94,7 @@ const HomeExpert: NextPage = () => {
             transitionDelay: '1s',
           }}>
           {' '}
-          <img src="/icons/rush.png" alt="expert WEB" loading="lazy" />{' '}
+          <Image src={RUSH} alt="expert WEB" />{' '}
           <h3>
             {' '}
             Votre site en ligne en <strong>une à deux semaines</strong>{' '}

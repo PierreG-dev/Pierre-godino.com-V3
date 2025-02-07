@@ -9,6 +9,11 @@ import SHOP from '../lordicons/shop_lordicon';
 import APP from '../lordicons/app_lordicon';
 import BOOK from '../lordicons/book_lordicon';
 
+import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
+import GOOGLE_LOGO from '@/assets/global/google.png';
+import STAR from '@/assets/icons/star.png';
+import Image from 'next/image';
+
 const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
 
 const defaultOptions = {
@@ -61,7 +66,7 @@ const HomeHero: FC = () => {
 
         <div id="hero_notes">
           <div>
-            <img src="/icons/google.png" alt="google" loading="lazy" />
+            <Image src={GOOGLE_LOGO} alt="google" priority />
             <div>
               {' '}
               <em>
@@ -71,18 +76,13 @@ const HomeHero: FC = () => {
                 {Array(5)
                   .fill(null)
                   .map((_, index) => (
-                    <img
-                      key={index}
-                      src="/icons/star.png"
-                      alt="Etoile"
-                      loading="lazy"
-                    />
+                    <Image key={index} src={STAR} alt="Etoile" priority />
                   ))}
               </div>
             </div>
           </div>
           <div>
-            <img src="/icons/malt.png" alt="malt" loading="lazy" />
+            <Image src={MALT_LOGO} alt="malt" priority />
 
             <div>
               {' '}
@@ -93,12 +93,7 @@ const HomeHero: FC = () => {
                 {Array(5)
                   .fill(null)
                   .map((_, index) => (
-                    <img
-                      key={index}
-                      src="/icons/star.png"
-                      alt="Etoile"
-                      loading="lazy"
-                    />
+                    <Image key={index} src={STAR} alt="Etoile" priority />
                   ))}
               </div>
             </div>
@@ -147,7 +142,7 @@ const HomeHero: FC = () => {
                 />
               )}
             </div>
-            <h2>Création de sites internet</h2>
+            <h1>Création de sites internet</h1>
           </li>
           <li
             className="reverse"
@@ -497,7 +492,8 @@ const MainContainer = styled.section`
           text-align: right;
         }
 
-        h2 {
+        h2,
+        h1 {
           font-size: 2.5rem;
           letter-spacing: 1px;
           width: calc(100% - 150px);

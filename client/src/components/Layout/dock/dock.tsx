@@ -55,6 +55,15 @@ const Dock: NextPage = () => {
   }, [clickDetector]);
 
   useEffect(() => {
+    if (window.innerWidth >= 700) return;
+    const timeout = setTimeout(() => {
+      setIsDisplayed(false);
+    }, 6500);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
       setIsDisplayed(true);
     }, 2000);
@@ -76,18 +85,22 @@ const Dock: NextPage = () => {
         }}>
         {isDisplayed ? <VisibilityIcon /> : <VisibilityOffIcon />}
       </button>
-      <ul className={isDisplayed ? '' : 'hidden'}>
-        {cases.map((elem) => (
-          <DockElement
-            key={elem.id}
-            id={elem.name}
-            className={selectedCase === elem.id ? 'selected' : ''}
-            onClick={() => {
-              setSelectedCase(selectedCase === elem.id ? 0 : elem.id);
-            }}>
-            <div className="dock-case-identifier" />
-            {elem.element}
-          </DockElement>
+      <ul>
+        {cases.map((elem, key) => (
+          <li
+            style={{ transition: `0.3s ${0.1 * (key + 1)}s` }}
+            className={isDisplayed ? '' : 'hidden-dock-item'}>
+            <DockElement
+              key={elem.id}
+              id={elem.name}
+              className={selectedCase === elem.id ? 'selected' : ''}
+              onClick={() => {
+                setSelectedCase(selectedCase === elem.id ? 0 : elem.id);
+              }}>
+              <div className="dock-case-identifier" />
+              {elem.element}
+            </DockElement>
+          </li>
         ))}
       </ul>
     </MainContainer>
@@ -131,15 +144,16 @@ const MainContainer = styled.nav`
   ul {
     display: flex;
     flex-direction: column;
-    transition: 0.2s;
 
-    &.hidden {
-      transform: translateX(calc(100% + 5px));
+    li {
+      &.hidden-dock-item {
+        transform: translateX(calc(100% + 5px));
+      }
     }
   }
 `;
 
-const DockElement = styled.li`
+const DockElement = styled.div`
   background: #2d343655;
   backdrop-filter: blur(2px);
   border: 1px solid #2d343655;

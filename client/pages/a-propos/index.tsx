@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';

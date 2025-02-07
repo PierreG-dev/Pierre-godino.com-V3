@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useRef, useEffect, useMemo, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import data from '../../src/components/Skills/data';
@@ -22,7 +22,6 @@ const Skills: NextPage = () => {
   const router = useRouter();
   const { skillId } = router.query;
   const [displayedSkillId, setDisplayedSkillId] = useState(0);
-  const starsArray: any = useRef();
 
   // --- Mise à jour du state en fonction de l'url (post mount)
   useEffect(() => {
@@ -286,19 +285,7 @@ const SkillsContainer = styled.section`
   align-items: center;
   transition: 1.5s ease;
 `;
-const FilterContainer = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 15px;
-  outline: none !important;
 
-  #filter-selector {
-    background: #373737;
-    padding: 12px 32px;
-    outline: none !important;
-  }
-`;
 const InfosContainer = styled.section`
   position: relative;
   height: 60vh;

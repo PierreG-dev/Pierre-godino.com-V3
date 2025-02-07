@@ -1,6 +1,6 @@
 import {
+  Dispatch,
   FC,
-  MouseEvent,
   SetStateAction,
   useCallback,
   useEffect,
@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 type IProps = {
   displayedSkillId: number;
-  setDisplayedSkillId: React.Dispatch<SetStateAction<number>>;
+  setDisplayedSkillId: Dispatch<SetStateAction<number>>;
 };
 
 const SkillSelector: FC<IProps> = ({

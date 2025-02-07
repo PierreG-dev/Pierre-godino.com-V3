@@ -13,7 +13,6 @@ import FullCalendar, { LocaleSingularArg } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import frLocale from '@fullcalendar/core/locales/fr';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
   getFromLocalStorage,
@@ -34,7 +33,6 @@ const Calendar: NextPage = () => {
   const [isFetching, setIsfetching] = useState<boolean>(false);
   const [isFetched, setIsFetched] = useState<boolean>(false);
 
-  const router = useRouter();
   const metaContentGenerator = useMemo(() => {
     const metaData = {
       title: 'Disponibilités',

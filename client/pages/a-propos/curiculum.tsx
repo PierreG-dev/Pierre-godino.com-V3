@@ -15,7 +15,7 @@ import HTML_ICON from '@/assets/icons/html.png';
 import GOOGLE_ICON from '@/assets/icons/google.png';
 import FR_FLAG from '@/assets/icons/fr_flag.png';
 import EN_FLAG from '@/assets/icons/en_flag.jpeg';
-import JP_FLAG from '@/assets/icons/jp_flag.png';
+// import JP_FLAG from '@/assets/icons/jp_flag.png';
 import WAGON_ICON from '@/assets/icons/wagon.png';
 import CENEF_ICON from '@/assets/icons/cenef.svg';
 import OCLOCK_ICON from '@/assets/icons/oclock.png';

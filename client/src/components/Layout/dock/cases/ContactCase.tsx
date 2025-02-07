@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { FC } from 'react';
+import Image from 'next/image';
+import PHONE from '@/assets/icons/contact_icon.png';
 
 const ContactCase: FC = () => {
   return (
     <MainContainer>
-      <img src="/icons/contact_icon.png" alt="téléphone" loading="lazy" />
+      <Image src={PHONE} alt="téléphone" />
 
-      <a href="tel:+33 7 67 24 99 80">
+      <a href="tel:+33767249980">
         <u>07 67 24 99 80</u>
       </a>
     </MainContainer>

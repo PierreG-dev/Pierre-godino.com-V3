@@ -1,4 +1,4 @@
-import { FC, createContext, useMemo } from 'react';
+import { FC, ReactNode, createContext, useMemo } from 'react';
 import StarsBackground from '../components/Layout/background/StarsBackground';
 
 interface ColorPackageType {
@@ -13,7 +13,7 @@ interface ThemeContextType {
 }
 
 interface BackgroundContextType {
-  background?: Element;
+  background?: ReactNode;
 }
 
 const ThemeContext = createContext<ThemeContextType>(null);
@@ -24,9 +24,9 @@ export const BackgroundContext = createContext<BackgroundContextType>({
   background: undefined,
 });
 
-export const Contexts: FC = ({ children }) => {
-  const background: Element = useMemo(
-    () => (<StarsBackground />) as unknown as Element,
+export const Contexts: FC<{ children: any }> = ({ children }) => {
+  const background: ReactNode = useMemo(
+    () => (<StarsBackground />) as unknown as ReactNode,
     []
   );
 

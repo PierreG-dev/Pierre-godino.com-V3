@@ -33,12 +33,12 @@ const GlitchHandler: React.FC<Props> = ({ sentences, delay }) => {
 
   useEffect(() => {
     sentenceSwitcher();
-    const interval: NodeJS.Timeout = setInterval(sentenceSwitcher, delay);
+    // const interval: NodeJS.Timeout = setInterval(sentenceSwitcher, delay); CAUSAIT PB DE BUILD
 
     return () => {
-      clearInterval(interval);
+      // clearInterval(interval);
     };
-  }, []);
+  }, [sentenceSwitcher]);
 
   return (
     <React.Fragment>

@@ -1,8 +1,23 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { CSSProperties } from 'styled-components';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import CustomLink from '../routing/CustomLink';
+
+import HomeIcon from '@mui/icons-material/Home';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import ForumIcon from '@mui/icons-material/Forum';
+import WorkIcon from '@mui/icons-material/Work';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+
+import Image from 'next/image';
+import LOGO_UP from '@/assets/global/LOGO_upperpart.png';
+import LOGO_LOW from '@/assets/global/LOGO_lowerpart.png';
+import GITHUB_LOGO from '@/assets/global/GITHUB_LOGO.png';
+import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
+import LINKEDIN_LOGO from '@/assets/global/LINKEDIN_LOGO.png';
+import GOOGLE_LOGO from '@/assets/global/google.png';
 
 export type displayType = 'full' | 'displayed' | 'hidden';
 
@@ -50,10 +65,7 @@ const Footer: React.FC<Props> = ({
     };
   }, [displayed]);
 
-  const translationPicker = useCallback((): {
-    transform: string | void;
-    display: string | void;
-  } => {
+  const translationPicker = useCallback((): CSSProperties => {
     switch (displayed as displayType) {
       case 'full':
         return {
@@ -125,18 +137,33 @@ const Footer: React.FC<Props> = ({
               <h5>Navigation</h5>
               <ul>
                 <li>
-                  <CustomLink href={'/'}>Accueil</CustomLink>
-                </li>
-                <li>
-                  <CustomLink href={'/realisations'}>
-                    Mes réalisations
+                  <CustomLink href={'/'}>
+                    <HomeIcon />
+                    Accueil
                   </CustomLink>
                 </li>
                 <li>
-                  <CustomLink href={'/contact'}>Contact</CustomLink>
+                  <CustomLink href={'/a-propos'}>
+                    <AssignmentIcon />
+                    Offres & Tarifs
+                  </CustomLink>
                 </li>
                 <li>
-                  <CustomLink href={'/a-propos'}>A propos de moi</CustomLink>
+                  <CustomLink href={'/realisations'}>
+                    <WorkIcon />
+                    Réalisations
+                  </CustomLink>
+                </li>
+                <li>
+                  <CustomLink href={'/contact'}>
+                    <ForumIcon />
+                    Contact
+                  </CustomLink>
+                </li>
+                <li>
+                  <CustomLink href={'/a-propos'}>
+                    <PersonSearchIcon />A propos
+                  </CustomLink>
                 </li>
               </ul>
             </div>
@@ -146,8 +173,8 @@ const Footer: React.FC<Props> = ({
               style={{ transform: displayLock ? 'rotate(-90deg)' : 'none' }}
               onMouseOver={handleLogoHover}
               onMouseLeave={handleLogoLeave}>
-              <img
-                src="/res/LOGO_upperpart.png"
+              <Image
+                src={LOGO_UP}
                 id="logo_upperpart"
                 style={{
                   transform:
@@ -169,9 +196,9 @@ const Footer: React.FC<Props> = ({
                     : 'rotate(90deg) scale3d(0.7,0.7,1)',
                 }}
               />
-              <img
+              <Image
                 id="logo_lowerpart"
-                src="/res/LOGO_lowerpart.png"
+                src={LOGO_LOW}
                 style={{
                   transform: !displayLock && 'translateY(-13.5px)',
                   height: 40,
@@ -188,7 +215,8 @@ const Footer: React.FC<Props> = ({
                   <a
                     href="https://www.malt.fr/profile/pierregodino"
                     target={'_blank'}
-                    rel="noreferrer">
+                    rel="noreferrer nofollow">
+                    <Image src={MALT_LOGO} alt="logo_malt" />
                     Malt
                   </a>
                 </li>
@@ -196,24 +224,27 @@ const Footer: React.FC<Props> = ({
                   <a
                     href="https://www.linkedin.com/in/pierre-godino-50b503186"
                     target={'_blank'}
-                    rel="noreferrer">
+                    rel="noreferrer nofollow">
+                    <Image src={LINKEDIN_LOGO} alt="logo_linkedin" />
                     LinkedIn
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.google.fr/maps/place/D%C3%A9veloppeur+WEB+-+Pierre+Godino/@44.2010925,0.6126983,14z/data=!3m1!4b1!4m5!3m4!1s0x12abf374e1251189:0x8265400e1564dd61!8m2!3d44.201063!4d0.6302079"
+                    href="https://www.github.com/pierreG-dev"
                     target={'_blank'}
-                    rel="noreferrer">
-                    Maps
+                    rel="noreferrer nofollow">
+                    <Image src={GITHUB_LOGO} alt="logo_github" />
+                    GitHub
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.github.com/PierreG-dev"
+                    href="https://g.co/kgs/9Y2TGRP"
                     target={'_blank'}
-                    rel="noreferrer">
-                    GitHub
+                    rel="noreferrer nofollow">
+                    <Image src={GOOGLE_LOGO} alt="logo_MALT" />
+                    Google
                   </a>
                 </li>
               </ul>
@@ -221,10 +252,10 @@ const Footer: React.FC<Props> = ({
           </div>
         </div>
         <div id="sub-footer" className="">
-          <a href="/">
+          <CustomLink href="/">
             Pierre-godino.com{' '}
             <sup>V{process.env.NEXT_PUBLIC_APP_VERSION || '3'}</sup>
-          </a>
+          </CustomLink>
           <p>
             <CustomLink href={'/legal/cgu'}>CGU</CustomLink>
 
@@ -398,6 +429,25 @@ const MainContainer = styled.div`
         max-height: 100%;
         max-width: 100%;
         flex-wrap: wrap;
+
+        li {
+          margin-bottom: 2px;
+          text-decoration: underline;
+
+          a {
+            font-family: 'Montserrat';
+            font-weight: 600;
+            display: flex;
+            gap: 3px;
+            align-items: center;
+
+            svg {
+              font-size: 0.9rem;
+              filter: grayscale(0.5);
+              color: rgb(46, 204, 113);
+            }
+          }
+        }
       }
     }
     #center {
@@ -418,6 +468,26 @@ const MainContainer = styled.div`
       justify-content: center;
       width: 31%;
       height: 15vh;
+
+      ul {
+        li {
+          margin-bottom: 2px;
+          a {
+            font-family: 'Montserrat';
+            display: flex;
+            gap: 5px;
+            font-weight: 600;
+            align-items: center;
+            text-decoration: underline;
+
+            img {
+              filter: grayscale(0.8);
+              width: 15px;
+              height: 15px;
+            }
+          }
+        }
+      }
     }
 
     #sub-footer {

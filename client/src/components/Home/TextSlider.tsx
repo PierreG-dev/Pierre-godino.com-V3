@@ -7,7 +7,7 @@ export type Props = {
 
 const TextSlider: React.FC<Props> = ({ textArray, delay }) => {
   const [displayedText, setDisplayedText] = useState(0);
-  const pageWidth = useRef<number>();
+  const pageWidth = useRef<number>(null);
 
   useEffect(() => {
     pageWidth.current = window.innerWidth;
@@ -20,7 +20,7 @@ const TextSlider: React.FC<Props> = ({ textArray, delay }) => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [delay, textArray.length]);
 
   return (
     <React.Fragment>

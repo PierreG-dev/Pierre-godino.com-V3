@@ -1,12 +1,21 @@
-import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  FC,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 
 type IProps = {
-  content: React.ReactNode;
+  content: ReactNode;
+  children: ReactNode;
 };
 
 const Title: FC<IProps> = ({ content, children }) => {
-  const targetedElementRef = useRef<HTMLDivElement>();
+  const targetedElementRef = useRef<HTMLDivElement>(null);
   const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
 
   const handleShowContent = useCallback(() => {

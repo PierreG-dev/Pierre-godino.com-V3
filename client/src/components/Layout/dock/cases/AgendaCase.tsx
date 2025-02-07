@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { FC } from 'react';
 import CustomLink from '../../routing/CustomLink';
+import Image from 'next/image';
+import AGENDA from '@/assets/icons/agenda_icon.png';
 
 const AgendaCase: FC = () => {
   return (
     <MainContainer>
-      <img src="/icons/agenda_icon.png" alt="Calendrier" loading="lazy" />
+      <Image src={AGENDA} alt="Calendrier" />
       <p>
         Consultez mes disponibilités{' '}
         <u>

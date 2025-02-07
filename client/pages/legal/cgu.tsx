@@ -78,10 +78,13 @@ const Cgu: NextPage = () => {
         </p>
 
         <h2>Mentions légales</h2>
-        <a href={'https://lordicon.com'}>Icons by Lordicon.com</a>
+        <a href={'https://lordicon.com'} rel="nofollow">
+          Icons by Lordicon.com
+        </a>
         <a
           href="https://www.flaticon.com/fr/icones-gratuites/google"
-          title="google icônes">
+          title="google icônes"
+          rel="nofollow">
           Google icônes créées par Freepik - Flaticon
         </a>
       </main>

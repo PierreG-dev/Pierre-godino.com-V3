@@ -2,11 +2,20 @@ import { FC, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
+import CHECKYOURSMILE from '@/assets/icons/checkyoursmile.png';
+import OCLOCK from '@/assets/icons/oclock.png';
+import SPEEDY_NANIE from '@/assets/icons/speedynanie_alpha.png';
+import GARAGE_BRINCAT from '@/assets/icons/sarlgaragebrincat.png';
+import GOOGLE_LOGO from '@/assets/global/google.png';
+import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
+import STAR from '@/assets/icons/star.png';
+import Image from 'next/image';
+
 type Rating = {
   stars?: 1 | 2 | 3 | 4 | 5;
   text: string;
   customerName?: string;
-  img?: string;
+  img?: any;
   source: 'Google' | 'Malt';
   link: string;
 };
@@ -17,7 +26,7 @@ const ratings: Rating[] = [
     text: 'Réactif, efficace et professionnel, Je le recommande sans hésiter.',
     customerName: 'SARL Garage Brincat',
     source: 'Malt',
-    img: '/icons/sarlgaragebrincat.png',
+    img: GARAGE_BRINCAT,
     link: 'https://www.malt.fr/profile/pierregodino',
   },
   {
@@ -30,14 +39,14 @@ const ratings: Rating[] = [
     stars: 5,
     text: 'Pierre a su mettre en avant ses connaissances et prendre des initiatives afin d’améliorer notre service. Je recommande.',
     customerName: 'Speedy Nanie',
-    img: '/icons/speedynanie_alpha.png',
+    img: SPEEDY_NANIE,
     source: 'Malt',
     link: 'https://www.malt.fr/profile/pierregodino',
   },
   {
     stars: 5,
     customerName: "Écoles O'Clock",
-    img: '/icons/oclock.png',
+    img: OCLOCK,
     text: 'Pierre est un formateur compétent, impliqué et sérieux. Notre collaboration est plaisante et efficace. ',
     source: 'Malt',
     link: 'https://www.malt.fr/profile/pierregodino',
@@ -45,7 +54,7 @@ const ratings: Rating[] = [
   {
     stars: 5,
     customerName: 'CheckYourSmile',
-    img: '/icons/checkyoursmile.png',
+    img: CHECKYOURSMILE,
     text: 'Pierre a su rendre dans les temps un code correspondant tout à fait aux attentes et fonctionnel. Je recommande.',
     source: 'Malt',
     link: 'https://www.malt.fr/profile/pierregodino',
@@ -65,7 +74,7 @@ const ratings: Rating[] = [
 ];
 
 const HomeRatings: FC = () => {
-  const sliderRef = useRef();
+  const sliderRef = useRef(null);
   const [displayedRatingIndex, setDisplayedRatingIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -114,19 +123,16 @@ const HomeRatings: FC = () => {
                   </p>
                   <div className="source-customer-stars-wrapper">
                     {rating.img ? (
-                      <img
+                      <Image
                         className="source-img"
                         src={rating.img}
                         alt={rating.customerName}
                       />
                     ) : (
-                      <img
-                        loading="lazy"
+                      <Image
                         className="source-img"
                         src={
-                          rating.source === 'Google'
-                            ? '/icons/google.png'
-                            : '/icons/malt.png'
+                          rating.source === 'Google' ? GOOGLE_LOGO : MALT_LOGO
                         }
                         alt={rating.source}
                       />
@@ -138,12 +144,7 @@ const HomeRatings: FC = () => {
                           {Array(rating.stars)
                             .fill(null)
                             .map((_, index) => (
-                              <img
-                                key={index}
-                                src="/icons/star.png"
-                                alt="Etoile"
-                                loading="lazy"
-                              />
+                              <Image key={index} src={STAR} alt="Etoile" />
                             ))}
                         </div>
                       )}
@@ -259,6 +260,7 @@ const MainContainer = styled.section`
               height: 50px;
 
               img.source-img {
+                width: auto;
                 height: 50px;
                 border-radius: 5px;
                 object-fit: cover;

@@ -3,8 +3,8 @@ import React, {
   useState,
   useEffect,
   useRef,
-  useMemo,
   useContext,
+  JSX,
 } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
@@ -180,7 +180,7 @@ const Realisations: NextPage = () => {
   const [windowSize, setWindowSize] = useState(999);
   const [selectedTab, setSelectedTab] = useState<0 | 1>(0);
 
-  const starsArray = useRef<JSX.Element[]>();
+  const starsArray = useRef<JSX.Element[]>(null);
 
   // Générateur d'étoiles
   const starsGenerator = useCallback(() => {
@@ -480,7 +480,10 @@ const Realisations: NextPage = () => {
                   <h3>{elem.name}</h3>
                   <p>{elem.description}</p>
                   {elem.link && (
-                    <a href={elem.link} target="_blank" rel="noreferrer">
+                    <a
+                      href={elem.link}
+                      target="_blank"
+                      rel="noreferrer nofollow">
                       <LinkIcon />
                     </a>
                   )}

@@ -1,4 +1,4 @@
-import { useCallback, Fragment } from 'react';
+import { useCallback, Fragment, FC } from 'react';
 import Router from 'next/router';
 import { handleStart } from '../../../../pages/_app';
 export type Props = {
@@ -10,7 +10,7 @@ export type Props = {
   disabled?: boolean;
 };
 
-const CustomLink: React.FC<Props> = ({
+const CustomLink: FC<Props> = ({
   href,
   children,
   notALink = false,

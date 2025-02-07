@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 
 export type Props = {
   url: string;
@@ -6,14 +6,14 @@ export type Props = {
 };
 
 const Video: React.FC<Props> = ({ url, handleLoadingScreen }) => {
-  const videoRef = useRef();
+  const videoRef = useRef(null);
 
   useLayoutEffect(() => {
     // @ts-ignore
     videoRef.current.play();
     console.info("i'm loading the video");
     handleLoadingScreen();
-  }, []);
+  }, [handleLoadingScreen]);
 
   return (
     <video

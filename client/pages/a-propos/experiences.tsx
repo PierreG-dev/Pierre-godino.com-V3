@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Experience from '../../src/components/Experiences/Experience';
 import data from '../../src/components/Experiences/data';
@@ -61,29 +61,6 @@ const Experiences: NextPage = () => {
         );
       });
   }, [setExpanded, expandedXp, screenSize]);
-
-  const metaContentGenerator = useMemo(() => {
-    const metaData = {
-      title: 'Parcours',
-      description:
-        'Créateur de sites Internet, développeur WEB freelance et formateur | Mon parcours',
-      ogUrl: 'https://www.creation-sites-godino.fr/experiences',
-    };
-
-    return (
-      <Head>
-        <title>{'Pierre | ' + metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta
-          property="og:title"
-          content={'Pierre GODINO | ' + metaData.title}
-        />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:description" content={metaData.description} />
-      </Head>
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <MainContainer>

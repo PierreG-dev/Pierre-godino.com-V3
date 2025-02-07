@@ -1,11 +1,13 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import * as DOMPurify from 'isomorphic-dompurify';
 import Head from 'next/head';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { BackgroundContext } from '../../src/contexts/Contexts';
-import PhoneButton from '../../src/utilities/buttons/PhoneButton';
 import QuestionsButton from '../../src/utilities/buttons/QuestionsButton';
-import WebsiteButton from '../../src/utilities/buttons/WebsiteButton';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import CustomLink from '@/components/Layout/routing/CustomLink';
 
 interface Post {
   id: number;
@@ -28,20 +30,54 @@ interface PostPageProps {
   post: Post;
 }
 
+const truncateText = (text: string, maxLength: number) => {
+  const plainText = text.replace(/<[^>]*>?/gm, ''); // Supprime les balises HTML
+  if (plainText.length <= maxLength) return plainText;
+  return `${plainText.slice(0, maxLength)}[...]`;
+};
+
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
   const { background } = useContext(BackgroundContext);
   const plainTextExcerpt = stripHtml(post.excerpt.rendered);
   const [headings, setHeadings] = useState<{ id: string; text: string }[]>([]);
-  const articleContentRef = useRef();
+  const articleContentRef = useRef(null);
+  const [sanitizedHTMLContent, setSanitizedHTMLContent] = useState<string>();
+
+  const generateHeadings = useCallback((html: string) => {
+    if (!html) return;
+    let index = 0;
+    return html.replace(
+      /<h(2|3)(.*?)>(.*?)<\/h\1>/g,
+      (match, level, attrs, text) => {
+        return `<h${level} id="heading-${index++}"${attrs}>${text}</h${level}>`;
+      }
+    );
+  }, []);
+
+  const processArticleContent = useCallback(
+    (content: string): string => {
+      const cleanHTML = content;
+      const processedHTML = generateHeadings(cleanHTML);
+
+      return processedHTML;
+    },
+    [generateHeadings]
+  );
 
   useEffect(() => {
+    setSanitizedHTMLContent(DOMPurify.sanitize(post.content.rendered));
+  }, [post.content.rendered]);
+
+  useEffect(() => {
+    if (!sanitizedHTMLContent) return;
     const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = post.content.rendered;
+    tempDiv.innerHTML = sanitizedHTMLContent;
 
     const foundHeadings = Array.from(tempDiv.querySelectorAll('h2, h3')).map(
       (heading, index) => {
         const id = `heading-${index}`;
-        heading.setAttribute('id', id);
+        heading.id = id;
+        console.log(heading.id, heading);
         return { id, text: heading.textContent || '' };
       }
     );
@@ -52,7 +88,7 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
         .forEach((hElem, key) => (hElem.id = `heading-${key}`));
 
     setHeadings(foundHeadings);
-  }, [post.content.rendered]);
+  }, [sanitizedHTMLContent]);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -84,29 +120,38 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{post.title.rendered} | Pierre G.</title>
-        <meta name="description" content={plainTextExcerpt} />
+        <title>{truncateText(post.title.rendered, 75)} | Pierre G.</title>
+        <meta
+          name="description"
+          content={truncateText(plainTextExcerpt, 150)}
+        />
         <meta
           property="og:title"
-          content={`${post.title.rendered} | Pierre G.`}
+          content={`${truncateText(post.title.rendered, 75)} | Pierre G.`}
         />
-        <meta property="og:description" content={plainTextExcerpt} />
+        <meta
+          property="og:description"
+          content={truncateText(plainTextExcerpt, 150)}
+        />
         <meta
           property="og:url"
-          content={`https://www.creation-sites-godino.fr/blog/${post.slug}/`}
+          content={`https://www.creation-sites-godino.fr/blog/${post.slug}`}
         />
         <meta property="og:type" content="article" />
         <meta property="og:image" content={post.featured_image_url} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content={`${post.title.rendered} | Pierre G.`}
+          content={`${truncateText(post.title.rendered, 75)} | Pierre G.`}
         />
-        <meta name="twitter:description" content={plainTextExcerpt} />
+        <meta
+          name="twitter:description"
+          content={truncateText(plainTextExcerpt, 150)}
+        />
         <meta name="twitter:image" content={post.featured_image_url} />
         <link
           rel="canonical"
-          href={`https://www.creation-sites-godino.fr/blog/${post.slug}/`}
+          href={`https://www.creation-sites-godino.fr/blog/${post.slug}`}
         />
         {/* Données structurées JSON-LD */}
         <script
@@ -128,12 +173,12 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
               <MetaInfo>
                 <b>
                   Temps de lecture :{' '}
-                  {calculateReadingTime(post.content.rendered)} minute
-                  {parseInt(calculateReadingTime(post.content.rendered)) > 1
+                  {calculateReadingTime(sanitizedHTMLContent)} minute
+                  {parseInt(calculateReadingTime(sanitizedHTMLContent)) > 1
                     ? 's'
                     : ''}
                 </b>
-                <p>
+                <div>
                   <time dateTime={new Date(post.date).toISOString()}>
                     Publié le{' '}
                     {new Date(post.date).toLocaleDateString('fr-FR', {
@@ -143,15 +188,21 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
                     })}
                   </time>
                   <address>Pierre G.</address>
-                </p>
+                </div>
               </MetaInfo>
-              <PhoneButton />
+              <a href="tel:+33767249980">
+                <LocalPhoneIcon /> 07 67 24 99 80
+              </a>
             </div>
           </header>
+
+          <section className="cta" style={{ marginBottom: 40 }}>
+            <CustomLink href="/contact">
+              Envie d'attirer des clients ? <ArrowForwardIosIcon />
+            </CustomLink>
+          </section>
+
           <main>
-            <section className="cta" style={{ marginBottom: 40 }}>
-              <WebsiteButton />
-            </section>
             <NavMenu>
               <h2>Table des matières</h2>
               <ul>
@@ -164,7 +215,9 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
             </NavMenu>
             <ArticleContent
               ref={articleContentRef}
-              dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+              dangerouslySetInnerHTML={{
+                __html: processArticleContent(sanitizedHTMLContent),
+              }}
             />
           </main>
           <footer>
@@ -175,24 +228,25 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
                   post.id
                 }&text=${encodeURIComponent(post.title.rendered)}`}
                 target="_blank"
-                rel="noopener noreferrer">
+                rel="noopener noreferrer nofollow">
                 Twitter
               </a>{' '}
               |{' '}
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=https://www.creation-sites-godino.fr/blog/${post.id}`}
                 target="_blank"
-                rel="noopener noreferrer">
+                rel="noopener noreferrer nofollow">
                 Facebook
               </a>
             </p>
           </footer>
-
-          <section className="cta" style={{ marginTop: 90 }}>
-            <QuestionsButton />
-          </section>
         </Article>
-      </MainContainer>{' '}
+        <section className="cta" style={{ marginTop: 90 }}>
+          <CustomLink href="/contact">
+            Et si on lançait votre projet aujourd'hui ? <ArrowForwardIosIcon />
+          </CustomLink>
+        </section>
+      </MainContainer>
       {background}
     </>
   );
@@ -264,6 +318,7 @@ const stripHtml = (html: string): string => {
 };
 
 const calculateReadingTime = (content: string): string => {
+  if (!content) return;
   const textContent = content.replace(/<[^>]*>/g, '');
   const wordCount = textContent.trim().split(/\s+/).length;
   const readingTime = Math.ceil(wordCount / 200);
@@ -271,26 +326,37 @@ const calculateReadingTime = (content: string): string => {
 };
 
 const MainContainer = styled.div`
-  padding: 100px 0;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100vw;
+  padding: 100px 0;
   min-height: 100vh;
   font-family: 'Montserrat';
   z-index: 2;
 
   section.cta {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px);
     position: relative;
     width: 100%;
-    height: 200px;
+    padding: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     height: fit-content;
+    z-index: 1;
 
     * {
       flex-shrink: 0;
+    }
+
+    a {
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-decoration: underline;
+      color: #fafafa;
+      svg {
+        color: rgba(52, 152, 219, 1);
+      }
     }
   }
 `;
@@ -346,12 +412,13 @@ const NavMenu = styled.nav`
 
 const Article = styled.article`
   padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+
   position: relative;
   z-index: 1;
 
   header {
+    margin: 0 auto;
+    max-width: 1200px;
     padding: 25px;
     border-radius: 10px;
     background: #fafafaef;
@@ -378,6 +445,20 @@ const Article = styled.article`
       }
     }
 
+    a {
+      text-decoration: underline;
+      font-weight: 600;
+      color: rgba(39, 174, 96, 1);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      svg {
+        filter: drop-shadow(0 0 7px gba(0, 0, 0, 0.9));
+        color: rgba(39, 174, 96, 1);
+      }
+    }
+
     .wrapper {
       display: flex;
       justify-content: space-between;
@@ -387,14 +468,6 @@ const Article = styled.article`
         flex-direction: column;
         justify-content: flex-start;
         align-items: unset;
-
-        button {
-          margin-top: 70px;
-
-          svg {
-            filter: drop-shadow(0 0 7px gba(0, 0, 0, 0.9));
-          }
-        }
       }
 
       button {
@@ -405,7 +478,14 @@ const Article = styled.article`
     }
   }
 
+  main {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
   footer {
+    margin: 0 auto;
+    max-width: 1200px;
     p {
       color: #fafafaef;
       display: flex;

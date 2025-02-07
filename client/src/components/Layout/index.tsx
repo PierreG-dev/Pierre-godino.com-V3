@@ -9,6 +9,7 @@ export type Props = {
   variant: 'classic' | 'about';
   isLoaded: boolean;
   handleLoad: () => void;
+  children: any;
 };
 
 const Index: React.FC<Props> = ({ children, variant, isLoaded }) => {

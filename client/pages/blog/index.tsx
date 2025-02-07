@@ -94,7 +94,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
                   }}
                 />
                 <CustomLink href={`/blog/${post.slug}`}>
-                  <a>Lire l'article</a>
+                  Lire l'article
                 </CustomLink>
               </div>
             </ArticleCard>

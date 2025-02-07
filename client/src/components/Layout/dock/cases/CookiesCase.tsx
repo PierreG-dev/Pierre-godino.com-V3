@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { FC } from 'react';
 import CustomLink from '../../routing/CustomLink';
+import Image from 'next/image';
+import COOKIE from '@/assets/icons/cookie_icon.png';
 
 const CookiesCase: FC = () => {
   return (
     <MainContainer>
-      <img src="/icons/cookie_icon.png" alt="Cookie" loading="lazy" />
+      <Image src={COOKIE} alt="Cookie" />
       <p>
         En utilisant ce site vous consentez à l'utilisation de{' '}
         <u>

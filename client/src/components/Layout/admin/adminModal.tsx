@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Modal from '@mui/material/Modal';
@@ -48,7 +48,7 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
     (e) => {
       if (e.key === 'Enter') tryAuth(passwordInput);
     },
-    [passwordInput]
+    [passwordInput, tryAuth]
   );
 
   const getDailyConnections = useCallback(() => {
@@ -111,7 +111,12 @@ const AdminModal: React.FC<Props> = ({ isOpened, handleClose }) => {
       default:
         return getAllConnections();
     }
-  }, [selectedTab, metricsData]);
+  }, [
+    selectedTab,
+    getDailyConnections,
+    getMonthlyConnections,
+    getAllConnections,
+  ]);
 
   const handleTabChange = useCallback((newTab) => {
     setSelectedTab(newTab);
@@ -203,7 +208,7 @@ const AdminModalContent = styled.div`
   backdrop-filter: blur(7px);
   background: rgba(255, 255, 255, 0.2);
   /* box-shadow: rgba(255, 255, 255, 0.7) 0 0 7px, */
-    inset rgba(255, 255, 255, 0.7) 0 0 7px;
+  /* inset rgba(255, 255, 255, 0.7) 0 0 7px; */
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   padding: 60px;

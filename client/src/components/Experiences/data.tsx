@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { skills, Skill } from '../Skills/data';
 
 const selectSkillsByName = (names: string[]) => {

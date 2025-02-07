@@ -2,39 +2,31 @@ import React, { useContext } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Head from 'next/head';
-import BrushIcon from '@mui/icons-material/Brush';
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
-// import SearchIcon from '@mui/icons-material/Search';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
-import CodeIcon from '@mui/icons-material/Code';
-import SecurityIcon from '@mui/icons-material/Security';
-import InventoryIcon from '@mui/icons-material/Inventory';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import InsightsIcon from '@mui/icons-material/Insights';
 import AppShortcutIcon from '@mui/icons-material/AppShortcut';
-import VerifiedIcon from '@mui/icons-material/Verified';
-import DevicesOtherIcon from '@mui/icons-material/DevicesOther';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import CheckIcon from '@mui/icons-material/Check';
-import CallIcon from '@mui/icons-material/Call';
-import EmailIcon from '@mui/icons-material/Email';
-import LanguageIcon from '@mui/icons-material/Language';
 import { BackgroundContext } from '../../src/contexts/Contexts';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import AndroidIcon from '@mui/icons-material/Android';
 import AppleIcon from '@mui/icons-material/Apple';
-import DeviceHubIcon from '@mui/icons-material/DeviceHub';
 import GoogleIcon from '@mui/icons-material/Google';
 import CloseIcon from '@mui/icons-material/Close';
+
+import THREEOCLOCK from '@/assets/icons/three-o-clock-clock.png';
+import CHECK from '@/assets/icons/check.png';
+import CLOCK from '@/assets/icons/clock.png';
+
+import Image from 'next/image';
 
 import {
   Visibility as VisibilityIcon,
   Palette as PaletteIcon,
   Phonelink as PhonelinkIcon,
-  Search as SearchIcon,
   Speed as SpeedIcon,
+  ArrowForwardIos,
 } from '@mui/icons-material';
 
 import {
@@ -43,11 +35,8 @@ import {
   BarChart as BarChartIcon,
 } from '@mui/icons-material';
 
-import {
-  Devices as DevicesIcon,
-  RocketLaunch as RocketLaunchIcon,
-  BuildCircle as BuildCircleIcon,
-} from '@mui/icons-material';
+import { RocketLaunch as RocketLaunchIcon } from '@mui/icons-material';
+import HomeCustomerSlider from '@/components/Home/components/HomeCustomerSlider';
 
 const Offres: NextPage = () => {
   // --- Background
@@ -94,12 +83,11 @@ const Offres: NextPage = () => {
             </p>
             <div className="service-price">
               <h3 className="price">
-                Devis en 24h{' '}
-                <img src="/icons/three-o-clock-clock.png" alt="horloge" />
+                Devis en 24h <Image src={THREEOCLOCK} alt="horloge" />
               </h3>
               <h4>
                 Estimation en ligne disponible
-                <img src="/icons/check.png" alt="Disponible" />
+                <Image src={CHECK} alt="Disponible" />
               </h4>
             </div>
             <ul className="service-details-list">
@@ -210,8 +198,7 @@ const Offres: NextPage = () => {
             </p>
             <div className="service-price">
               <h3 className="price">
-                Devis en 24h{' '}
-                <img src="/icons/three-o-clock-clock.png" alt="horloge" />
+                Devis en 24h <Image src={THREEOCLOCK} alt="horloge" />
               </h3>
               <h4>
                 Estimation en ligne indisponible <CloseIcon />
@@ -335,7 +322,7 @@ const Offres: NextPage = () => {
             </p>
             <div className="service-price">
               <h3 className="price">
-                Devis en 72h <img src="/icons/clock.png" alt="horloge" />
+                Devis en 72h <Image src={CLOCK} alt="horloge" />
               </h3>
               <h4>
                 Estimation en ligne indisponible <CloseIcon />
@@ -437,175 +424,18 @@ const Offres: NextPage = () => {
         </li>
       </ul>
 
-      <section id="clients">
-        <h3>
-          Ils m'ont fait confiance <VerifiedIcon />
-        </h3>
-
-        <Caroussel>
-          <div className="wrapper">
-            {' '}
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/oclock.png"
-              alt="Ecoles O'Clock"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/philliance.png"
-              alt="Philiance Formations"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/apformation.png"
-              alt="AP Formations"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/GEMA.jpg"
-              alt="GEMA"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/axeacademy.png"
-              alt="Axe academy"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/ab-nature_full.png"
-              alt="AB Nature"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/checkyoursmile.png"
-              alt="Check Your Smile"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/speedynanie_alpha.png"
-              alt="Speedy Nanie"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/videomenthe_alpha.png"
-              alt="Videomenthe"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/yoop_alpha.png"
-              alt="Yoop Digital"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/misino_icon_alt.png"
-              alt="Dr. Misino"
-            />
-            {/* DEBUT SENTINEL */}
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/oclock.png"
-              alt="Ecoles O'Clock"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/philliance.png"
-              alt="Philiance Formations"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/apformation.png"
-              alt="AP Formations"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/GEMA.jpg"
-              alt="GEMA"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/axeacademy.png"
-              alt="Axe academy"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/ab-nature_full.png"
-              alt="AB Nature"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/checkyoursmile.png"
-              alt="Check Your Smile"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/speedynanie_alpha.png"
-              alt="Speedy Nanie"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/videomenthe_alpha.png"
-              alt="Videomenthe"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/yoop_alpha.png"
-              alt="Yoop Digital"
-            />
-            <img
-              loading="lazy"
-              className="logo-element"
-              src="/icons/misino_icon_alt.png"
-              alt="Dr. Misino"
-            />
-          </div>
-        </Caroussel>
-      </section>
-
       <section id="call_to_action">
         <h3>
-          <LanguageIcon />
+          {/* <LanguageIcon /> */}
           Intéressé par une stratégie en ligne ?
         </h3>
-        <p>
-          Estimations, informations, précisions... <br />
-          <span>Faisons le point ensemble ☕</span>
-        </p>
-        <div className="btn-group">
-          {' '}
-          <a href="tel:+767249980">
-            <button id="tel_btn">
-              <CallIcon />
-              07 67 24 99 80
-            </button>
-          </a>
-          <a href="mailto:contact@pierre-godino.com">
-            <button id="email_btn">
-              <EmailIcon />
-              contact@pierre-godino.com
-            </button>
-          </a>
-        </div>
+        <CustomLink href="/contact">
+          Faisons le point ensemble <ArrowForwardIos />
+        </CustomLink>
+      </section>
+
+      <section id="clients">
+        <HomeCustomerSlider />
       </section>
     </MainContainer>
   );
@@ -934,121 +764,14 @@ const MainContainer = styled.main`
     }
   }
 
-  h5#maintenance_infos {
-    color: rgba(255, 255, 255, 0.8);
-    text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
-    font-weight: bold;
-    margin-top: 15px;
-    width: 400px;
-
-    @media (min-width: 1550px) {
-      width: 100%;
-      max-width: 1500px;
-    }
-  }
-
-  h3#on_budget_title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 2.5rem;
-    font-weight: bold;
-    letter-spacing: 5px;
-    margin: 25px;
-    text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
-
-    svg {
-      color: #27ae60;
-      font-size: 3rem;
-    }
-
-    @media (max-width: 700px) {
-      letter-spacing: 4px;
-      font-size: 1.2rem;
-
-      svg {
-        font-size: 1.5rem;
-      }
-    }
-  }
-
-  /* div#online_visit_card {
-    @media (min-width: 1550px) {
-      padding-bottom: 100px;
-      width: 100%;
-      max-width: 1500px;
-
-      p.service-description {
-        width: 90%;
-        height: fit-content;
-      }
-
-      p.service-price {
-        height: fit-content;
-      }
-
-      ul.service-details-list {
-        width: 100%;
-        padding-top: 20px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-      }
-    }
-
-    h2.service-title {
-      width: fit-content;
-      background: rgba(211, 84, 0, 0.3);
-      border: 1px solid rgb(211, 84, 0);
-      box-shadow: 0px 0px 7px 1px rgb(211, 84, 0);
-
-      &::before,
-      &::after {
-        border: 3px solid rgb(211, 84, 0);
-      }
-    }
-  } */
-
-  section#clients {
-    padding-top: 100px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h3 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 2.5rem;
-      font-weight: bold;
-      letter-spacing: 5px;
-      margin: 25px;
-      text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
-
-      svg {
-        font-size: 3rem;
-        color: #27ae60;
-        filter: drop-shadow(0px 0px 3px rgba(green, 0.2));
-      }
-
-      @media (max-width: 700px) {
-        letter-spacing: 4px;
-        font-size: 1.2rem;
-
-        svg {
-          font-size: 1.5rem;
-        }
-      }
-    }
-  }
-
   section#call_to_action {
-    width: 100%;
-    padding-top: 100px;
+    width: 100vw;
+    margin: 100px 0;
+    padding: 50px;
+    background: #111a29;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 
     h3 {
       text-align: center;
@@ -1057,15 +780,15 @@ const MainContainer = styled.main`
       justify-content: center;
       gap: 10px;
       color: rgba(255, 255, 255, 0.8);
-      font-size: 2.5rem;
+      font-size: 1.7rem;
       font-weight: bold;
       letter-spacing: 5px;
       margin: 25px;
-      text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
+      /* text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3); */
       max-width: 100%;
 
       svg {
-        font-size: 3rem;
+        font-size: 2.5rem;
         color: #27ae60;
         filter: drop-shadow(0px 0px 3px rgba(green, 0.2));
       }
@@ -1080,21 +803,16 @@ const MainContainer = styled.main`
       }
     }
 
-    p {
-      text-align: center;
-      color: rgba(255, 255, 255, 0.8);
-      text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
-      font-weight: 500;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-      margin-top: -15px;
+    a {
+      display: block;
+      margin: auto;
+      color: #fafafa !important;
+      text-decoration: underline;
+      font-weight: 600;
+      font-size: 1.2rem;
 
-      span {
-        font-weight: bold;
-      }
-
-      @media (max-width: 700px) {
-        font-size: 1.1rem;
+      svg {
+        color: rgba(52, 152, 219, 1);
       }
     }
 
@@ -1115,6 +833,7 @@ const MainContainer = styled.main`
         width: 100%;
         display: flex;
         justify-content: center;
+
         button {
           width: 100%;
           max-width: 400px;
@@ -1169,65 +888,6 @@ const MainContainer = styled.main`
           }
         }
       }
-    }
-  }
-`;
-
-const Caroussel = styled.div`
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  max-width: 1200px;
-  padding: 25px;
-  border-radius: 5px;
-  margin: 10px 0;
-  background: rgba(255, 255, 255, 0.01);
-  overflow: hidden;
-
-  .wrapper {
-    display: flex;
-    gap: 100px;
-    width: fit-content;
-    animation: 60s caroussel infinite linear;
-
-    @media (max-width: 800px) {
-      width: 50px;
-    }
-
-    img.logo-element {
-      border-radius: 15px;
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      filter: drop-shadow(0px 0px 0.5px rgba(255, 255, 255, 0.5));
-    }
-
-    @media (max-width: 800px) {
-      animation: 60s carousselSmallSize infinite linear;
-
-      img.logo-element {
-        width: 50px;
-        height: 50px;
-      }
-    }
-  }
-
-  @keyframes caroussel {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(-2200px, 0, 0);
-    }
-  }
-
-  @keyframes carousselSmallSize {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(-1100px, 0, 0);
     }
   }
 `;

@@ -1,21 +1,10 @@
 import Head from 'next/head';
-import {
-  ChangeEvent,
-  FC,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
+import { ChangeEvent, FC, useCallback, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { BackgroundContext } from '../../src/contexts/Contexts';
 import dynamic from 'next/dynamic';
 import COMPUTER from '../../src/components/Simulateur/COMPUTER';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import CallIcon from '@mui/icons-material/Call';
-import EmailIcon from '@mui/icons-material/Email';
-import Title from '../../src/utilities/Title';
 import EuroIcon from '@mui/icons-material/Euro';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
@@ -67,11 +56,7 @@ const options = {
   structureOptions: [{ name: 'Mono page', discount: 20 }, { name: '3+ pages' }],
 };
 
-type IBudget = undefined | 0 | 1 | 2;
-type IDesignType = 0 | 1;
-type IEditable = undefined | boolean;
 type INbPages = number;
-type IDeploy = undefined | boolean;
 
 const Vitrine: FC = () => {
   // --- Nombre de pages
@@ -110,7 +95,7 @@ const Vitrine: FC = () => {
       setPrice(total);
       setProcessing(false);
     }, 1000);
-  }, [nbPages]);
+  }, [clientType, nbPages]);
 
   return (
     <>

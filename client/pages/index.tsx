@@ -6,9 +6,6 @@ import { BackgroundContext } from '../src/contexts/Contexts';
 import HomeHero from '../src/components/Home/components/HomeHero';
 import HomeRatings from '../src/components/Home/components/HomeRatings';
 import HomeCustomerSlider from '../src/components/Home/components/HomeCustomerSlider';
-import HomeSimulator from '../src/components/Home/components/HomeSimulator';
-import HomeQuestions from '../src/components/Home/components/HomeQuestions';
-import HomeSEOContent from '../src/components/Home/components/HomeSEOContent';
 import HomeExpert from '../src/components/Home/components/HomeExpert';
 import HomeMaths from '../src/components/Home/components/HomeMaths';
 import HomeNotes from '../src/components/Home/components/HomeNotes';
@@ -55,13 +52,13 @@ const Home: NextPage = () => {
       <HomeMaths />
       {/* <hr /> */}
       <HomeExpert />
+      <HomeNotes />
       <HomeCustomerSlider />
       {/* <HomeServices /> */}
       {/* <hr /> */}
-      <HomeNotes />
-      <HomeSEOContent />
-      <HomeSimulator />
-      <HomeQuestions />
+      {/* <HomeSEOContent /> */}
+      {/* <HomeSimulator /> */}
+      {/* <HomeQuestions /> */}
     </MainContainer>
   );
 };

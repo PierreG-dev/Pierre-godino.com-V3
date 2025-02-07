@@ -15,7 +15,7 @@ const Bar: React.FC<Props> = ({ variant, level }) => {
       setTimeout(() => {
         widthPicker(level);
       }, 1500);
-  }, [level]);
+  }, [level, width]);
 
   const colorPicker = (
     variant: 'experience' | 'mastery' | 'affinity'

@@ -1,7 +1,6 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, JSX, useMemo } from 'react';
 import styled from 'styled-components';
 import seedrandom from 'seedrandom';
-import { createPortal } from 'react-dom';
 
 const StarsBackground: FC = React.memo(() => {
   const view = useMemo(() => {

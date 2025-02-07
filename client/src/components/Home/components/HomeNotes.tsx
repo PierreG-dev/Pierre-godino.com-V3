@@ -4,12 +4,17 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PhoneIcon from '@mui/icons-material/Phone';
 import CustomLink from '../../Layout/routing/CustomLink';
 
+import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
+import GOOGLE_LOGO from '@/assets/global/google.png';
+import STAR from '@/assets/icons/star.png';
+import Image from 'next/image';
+
 const HomeNotes: FC = () => {
   return (
     <MainContainer id="ratings_section">
       <ul id="google_malt_wrapper">
         <li id="google">
-          <img src="/icons/google.png" alt="google" loading="lazy" />
+          <Image src={GOOGLE_LOGO} alt="google" />
           <em>
             <b>Google</b> : 5/5
           </em>
@@ -17,17 +22,12 @@ const HomeNotes: FC = () => {
             {Array(5)
               .fill(null)
               .map((_, index) => (
-                <img
-                  key={index}
-                  src="/icons/star.png"
-                  alt="Etoile"
-                  loading="lazy"
-                />
+                <Image key={index} src={STAR} alt="Etoile" />
               ))}
           </div>
         </li>
         <li id="malt">
-          <img src="/icons/malt.png" alt="malt" loading="lazy" />
+          <Image src={MALT_LOGO} alt="malt" />
           <em>
             <b>Malt</b> : 5/5
           </em>
@@ -35,12 +35,7 @@ const HomeNotes: FC = () => {
             {Array(5)
               .fill(null)
               .map((_, index) => (
-                <img
-                  key={index}
-                  src="/icons/star.png"
-                  alt="Etoile"
-                  loading="lazy"
-                />
+                <Image key={index} src={STAR} alt="Etoile" />
               ))}
           </div>
         </li>

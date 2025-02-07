@@ -156,7 +156,7 @@ const Contact: NextPage = () => {
               <div className="flex" id="location">
                 <LocationOnIcon />
                 <ul>
-                  <li>Toulouse, Agen </li>
+                  {/* <li>Toulouse, Agen </li> */}
                   <li>France</li>
                 </ul>
               </div>
@@ -167,8 +167,8 @@ const Contact: NextPage = () => {
                 src={FRANCE_MAP}
                 alt="france vue depuis l'espace"
               />
-              <div className="pin bounce"></div>
-              <div className="pulse"></div>
+              {/* <div className="pin bounce"></div>
+              <div className="pulse"></div> */}
             </div>
           </section>
 
@@ -598,7 +598,7 @@ const MainContainer = styled.div`
     align-items: center;
   }
 
-  #satelite_container > span {
+  #satelite_container > img {
     position: absolute;
     animation: 40s satelite_animation linear infinite;
     filter: contrast(0.6);
