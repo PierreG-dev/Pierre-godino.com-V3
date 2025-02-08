@@ -309,6 +309,7 @@ const MainContainer = styled.section`
           flex-direction: column;
 
           em {
+            font-family: "Montserrat";
             opacity: 0.7;
             color: #fafafa;
 

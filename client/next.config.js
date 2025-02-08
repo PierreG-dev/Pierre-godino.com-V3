@@ -25,7 +25,7 @@ const nextConfig = {
   env: {},
   trailingSlash: false,
 
-  // Ajout de la configuration Webpack
+  // Configuration Webpack
   webpack: (config) => {
     config.resolve.alias['./main.css'] = false; // Désactivation de l'importation de main.css
     return config;
@@ -34,7 +34,7 @@ const nextConfig = {
 
 // Ajout de l'analyse du bundle
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'false', // TRUE pour faire un rapport a chaque build
+  enabled: process.env.ANALYZE === 'true', // TRUE pour faire un rapport à chaque build
 });
 
 module.exports = withBundleAnalyzer(nextConfig);
