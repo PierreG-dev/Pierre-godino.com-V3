@@ -1,11 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    formats: ['image/avif', 'image/webp'],
-    domains: [
-      'localhost:3000',
-      'creation-sites-godino.fr',
-      'blog.api.pierre-godino.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'localhost',
+        port: '3000',
+      },
+      {
+        protocol: 'https',
+        hostname: 'creation-sites-godino.fr',
+      },
+      {
+        protocol: 'https',
+        hostname: 'blog.api.pierre-godino.com',
+      },
     ],
   },
   productionBrowserSourceMaps: false,
