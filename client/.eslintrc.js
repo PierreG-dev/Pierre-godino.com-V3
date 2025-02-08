@@ -3,14 +3,24 @@ module.exports = {
   extends: [
     'react-app',
     'eslint:recommended',
-    'plugin:prettier/recommended',  // Utilise cette extension uniquement
+    'plugin:prettier/recommended',
   ],
   plugins: ['@typescript-eslint', 'react', 'jsx-a11y'],
   rules: {
     'react/jsx-no-duplicate-props': 'off',
     'react/jsx-no-target-blank': 'off',
+    // Désactivation de la règle ESLint pour les variables inutilisées
+    'no-unused-vars': 'off', // Désactive cette règle
+    '@typescript-eslint/no-unused-vars': [
+      'warn', // Change à 'warn' pour les variables inutilisées
+      {
+        vars: 'all',
+        args: 'after-used',
+        ignoreRestSiblings: false,
+      },
+    ],
     'prettier/prettier': [
-      'warn',  // Utilise "warn" au lieu de "error" pour ne pas bloquer le build
+      'warn',  // Change à "warn" pour ne pas bloquer le build
       {
         endOfLine: 'auto',
       },
