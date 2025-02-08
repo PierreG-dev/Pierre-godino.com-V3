@@ -249,6 +249,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                 className="HomeLogo"
                 alt="Logo"
                 width={85}
+                height={59}
                 style={{
                   transform:
                     displayed === 'full'
@@ -265,6 +266,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                   className="HomeLogo"
                   alt="Logo"
                   width={85}
+                  height={59}
                   style={{
                     transform:
                       displayed === 'full'

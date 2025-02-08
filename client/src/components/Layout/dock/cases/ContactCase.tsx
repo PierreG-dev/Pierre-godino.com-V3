@@ -6,7 +6,7 @@ import PHONE from '@/assets/icons/contact_icon.png';
 const ContactCase: FC = () => {
   return (
     <MainContainer>
-      <Image src={PHONE} alt="téléphone" />
+      <Image src={PHONE} alt="téléphone" width={50} height={50} />
 
       <a href="tel:+33767249980">
         <u>07 67 24 99 80</u>

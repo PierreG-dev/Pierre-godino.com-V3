@@ -6,7 +6,7 @@ import GEARS from '@/assets/icons/learn_icon.svg';
 const LearnCase: FC = () => {
   return (
     <MainContainer>
-      <Image src={GEARS} alt="Learn" />
+      <Image src={GEARS} alt="Learn" width={50} height={50}/>
       <p>
         Envie d'apprendre la programmation ? <br />
         <a href="https://www.learn.pierre-godino.com" rel="nofollow">

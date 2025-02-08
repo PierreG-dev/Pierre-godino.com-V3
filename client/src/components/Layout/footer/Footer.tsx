@@ -174,6 +174,8 @@ const Footer: React.FC<Props> = ({
               onMouseOver={handleLogoHover}
               onMouseLeave={handleLogoLeave}>
               <Image
+                width={31}
+                height={45}
                 src={LOGO_UP}
                 id="logo_upperpart"
                 style={{
@@ -197,6 +199,8 @@ const Footer: React.FC<Props> = ({
                 }}
               />
               <Image
+                width={41}
+                height={42}
                 id="logo_lowerpart"
                 src={LOGO_LOW}
                 style={{
@@ -216,7 +220,7 @@ const Footer: React.FC<Props> = ({
                     href="https://www.malt.fr/profile/pierregodino"
                     target={'_blank'}
                     rel="noreferrer nofollow">
-                    <Image src={MALT_LOGO} alt="logo_malt" />
+                    <Image width={15} height={15}src={MALT_LOGO} alt="logo_malt" />
                     Malt
                   </a>
                 </li>
@@ -225,7 +229,7 @@ const Footer: React.FC<Props> = ({
                     href="https://www.linkedin.com/in/pierre-godino-50b503186"
                     target={'_blank'}
                     rel="noreferrer nofollow">
-                    <Image src={LINKEDIN_LOGO} alt="logo_linkedin" />
+                    <Image width={15} height={15}src={LINKEDIN_LOGO} alt="logo_linkedin" />
                     LinkedIn
                   </a>
                 </li>
@@ -234,7 +238,7 @@ const Footer: React.FC<Props> = ({
                     href="https://www.github.com/pierreG-dev"
                     target={'_blank'}
                     rel="noreferrer nofollow">
-                    <Image src={GITHUB_LOGO} alt="logo_github" />
+                    <Image width={15} height={15}src={GITHUB_LOGO} alt="logo_github" />
                     GitHub
                   </a>
                 </li>
@@ -243,7 +247,7 @@ const Footer: React.FC<Props> = ({
                     href="https://g.co/kgs/9Y2TGRP"
                     target={'_blank'}
                     rel="noreferrer nofollow">
-                    <Image src={GOOGLE_LOGO} alt="logo_MALT" />
+                    <Image width={15} height={15}src={GOOGLE_LOGO} alt="logo_MALT" />
                     Google
                   </a>
                 </li>

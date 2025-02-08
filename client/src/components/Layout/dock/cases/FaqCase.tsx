@@ -7,7 +7,7 @@ import FAQ from '@/assets/icons/question.png';
 const FaqCase: FC = () => {
   return (
     <MainContainer>
-      <Image src={FAQ} alt="FAQ" />
+      <Image src={FAQ} alt="FAQ" width={50} height={50}/>
       <p>
         Une question ? Visitez la{' '}
         <u>

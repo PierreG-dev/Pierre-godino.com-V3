@@ -7,7 +7,7 @@ import AGENDA from '@/assets/icons/agenda_icon.png';
 const AgendaCase: FC = () => {
   return (
     <MainContainer>
-      <Image src={AGENDA} alt="Calendrier" />
+      <Image src={AGENDA} alt="Calendrier" width={50} height={50}/>
       <p>
         Consultez mes disponibilités{' '}
         <u>

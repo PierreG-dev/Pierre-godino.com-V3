@@ -7,7 +7,7 @@ import COOKIE from '@/assets/icons/cookie_icon.png';
 const CookiesCase: FC = () => {
   return (
     <MainContainer>
-      <Image src={COOKIE} alt="Cookie" />
+      <Image src={COOKIE} alt="Cookie" width={50} height={50}/>
       <p>
         En utilisant ce site vous consentez à l'utilisation de{' '}
         <u>
