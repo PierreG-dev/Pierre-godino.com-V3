@@ -123,13 +123,13 @@ const HomeRatings: FC = () => {
                   </p>
                   <div className="source-customer-stars-wrapper">
                     {rating.img ? (
-                      <Image
+                      <Image width={50} height={50}
                         className="source-img"
                         src={rating.img}
                         alt={rating.customerName}
                       />
                     ) : (
-                      <Image
+                      <Image width={50} height={50}
                         className="source-img"
                         src={
                           rating.source === 'Google' ? GOOGLE_LOGO : MALT_LOGO
@@ -144,7 +144,7 @@ const HomeRatings: FC = () => {
                           {Array(rating.stars)
                             .fill(null)
                             .map((_, index) => (
-                              <Image key={index} src={STAR} alt="Etoile" />
+                              <Image width={20} height={20} key={index} src={STAR} alt="Etoile" />
                             ))}
                         </div>
                       )}

@@ -66,7 +66,7 @@ const HomeHero: FC = () => {
 
         <div id="hero_notes">
           <div>
-            <Image src={GOOGLE_LOGO} alt="google" priority />
+            <Image width={50} height={50} src={GOOGLE_LOGO} alt="google" priority />
             <div>
               {' '}
               <em>
@@ -76,13 +76,13 @@ const HomeHero: FC = () => {
                 {Array(5)
                   .fill(null)
                   .map((_, index) => (
-                    <Image key={index} src={STAR} alt="Etoile" priority />
+                    <Image width={20} height={20} key={index} src={STAR} alt="Etoile" priority />
                   ))}
               </div>
             </div>
           </div>
           <div>
-            <Image src={MALT_LOGO} alt="malt" priority />
+            <Image width={50} height={50} src={MALT_LOGO} alt="malt" priority />
 
             <div>
               {' '}
@@ -93,7 +93,7 @@ const HomeHero: FC = () => {
                 {Array(5)
                   .fill(null)
                   .map((_, index) => (
-                    <Image key={index} src={STAR} alt="Etoile" priority />
+                    <Image width={20} height={20} key={index} src={STAR} alt="Etoile" priority />
                   ))}
               </div>
             </div>

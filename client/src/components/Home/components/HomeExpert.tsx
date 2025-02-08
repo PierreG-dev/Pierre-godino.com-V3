@@ -33,7 +33,7 @@ const HomeExpert: NextPage = () => {
     <MainContainer id="expertise" ref={contentWrapperRef}>
       <h2>
         Convaincu ?<strong>Je m'occupe de tout.</strong>
-        <Image src={CHECK} alt="expert WEB" />
+        <Image width={70} height={70} src={CHECK} alt="expert WEB" />
       </h2>
 
       <p className="subtitle">
@@ -52,7 +52,7 @@ const HomeExpert: NextPage = () => {
             opacity: isContentVisible ? 1 : 0,
             transitionDelay: '0.4s',
           }}>
-          <Image src={BRUSH} alt="expert WEB" />
+          <Image width={100} height={100} src={BRUSH} alt="expert WEB" />
           <h3>Un design qui vous ressemble</h3>
           <p>
             Je crée des sites modernes, responsive et optimisés pour une
@@ -65,7 +65,7 @@ const HomeExpert: NextPage = () => {
             opacity: isContentVisible ? 1 : 0,
             transitionDelay: '0.6s',
           }}>
-          <Image src={GOOGLE_LOGO} alt="expert WEB" />
+          <Image width={100} height={100} src={GOOGLE_LOGO} alt="expert WEB" />
           <h3>Un référencement performant (SEO)</h3>{' '}
           <p>
             Chaque site que je conçois est optimisé pour le SEO dès le départ.
@@ -77,7 +77,7 @@ const HomeExpert: NextPage = () => {
             opacity: isContentVisible ? 1 : 0,
             transitionDelay: '0.8s',
           }}>
-          <Image src={QUALITE} alt="expert WEB" />
+          <Image width={100} height={100} src={QUALITE} alt="expert WEB" />
           <h3>Un accompagnement complet</h3>{' '}
           <p>
             De l’hébergement à la maintenance, je m’assure que votre site reste
@@ -94,7 +94,7 @@ const HomeExpert: NextPage = () => {
             transitionDelay: '1s',
           }}>
           {' '}
-          <Image src={RUSH} alt="expert WEB" />{' '}
+          <Image width={100} height={100} src={RUSH} alt="expert WEB" />{' '}
           <h3>
             {' '}
             Votre site en ligne en <strong>une à deux semaines</strong>{' '}

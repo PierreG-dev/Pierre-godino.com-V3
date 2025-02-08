@@ -14,7 +14,7 @@ const HomeNotes: FC = () => {
     <MainContainer id="ratings_section">
       <ul id="google_malt_wrapper">
         <li id="google">
-          <Image src={GOOGLE_LOGO} alt="google" />
+          <Image width={150} height={150} src={GOOGLE_LOGO} alt="google" />
           <em>
             <b>Google</b> : 5/5
           </em>
@@ -22,12 +22,12 @@ const HomeNotes: FC = () => {
             {Array(5)
               .fill(null)
               .map((_, index) => (
-                <Image key={index} src={STAR} alt="Etoile" />
+                <Image width={30} height={30} key={index} src={STAR} alt="Etoile" />
               ))}
           </div>
         </li>
         <li id="malt">
-          <Image src={MALT_LOGO} alt="malt" />
+          <Image width={150} height={150} src={MALT_LOGO} alt="malt" />
           <em>
             <b>Malt</b> : 5/5
           </em>
@@ -35,7 +35,7 @@ const HomeNotes: FC = () => {
             {Array(5)
               .fill(null)
               .map((_, index) => (
-                <Image key={index} src={STAR} alt="Etoile" />
+                <Image width={30} height={30} key={index} src={STAR} alt="Etoile" />
               ))}
           </div>
         </li>

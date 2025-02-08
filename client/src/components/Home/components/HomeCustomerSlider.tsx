@@ -24,61 +24,61 @@ const HomeCustomerSlider: FC = () => {
       <Caroussel>
         <div className="wrapper">
           {' '}
-          <Image className="logo-element" src={OCLOCK} alt="Ecoles O'Clock" />
-          <Image
+          <Image width={100} height={100} className="logo-element" src={OCLOCK} alt="Ecoles O'Clock" />
+          <Image width={100} height={100}
             className="logo-element"
             src={PHILIANCE}
             alt="Philiance Formations"
           />
-          <Image
+          <Image width={100} height={100}
             className="logo-element"
             src={APFORMATIONS}
             alt="AP Formations"
           />
-          <Image className="logo-element" src={GEMA} alt="GEMA" />
-          <Image className="logo-element" src={AXEACADEMY} alt="Axe academy" />
-          <Image className="logo-element" src={ABNATURE} alt="AB Nature" />
-          <Image
+          <Image width={100} height={100} className="logo-element" src={GEMA} alt="GEMA" />
+          <Image width={100} height={100} className="logo-element" src={AXEACADEMY} alt="Axe academy" />
+          <Image width={100} height={100} className="logo-element" src={ABNATURE} alt="AB Nature" />
+          <Image width={100} height={100}
             className="logo-element"
             src={CHECKYOURSMILE}
             alt="Check Your Smile"
           />
-          <Image
+          <Image width={100} height={100}
             className="logo-element"
             src={SPEEDYNANIE}
             alt="Speedy Nanie"
           />
-          <Image className="logo-element" src={VIDEOMENTHE} alt="Videomenthe" />
-          <Image className="logo-element" src={YOOP} alt="Yoop Digital" />
-          <Image className="logo-element" src={MISINO} alt="Dr. Misino" />
+          <Image width={100} height={100} className="logo-element" src={VIDEOMENTHE} alt="Videomenthe" />
+          <Image width={100} height={100} className="logo-element" src={YOOP} alt="Yoop Digital" />
+          <Image width={100} height={100} className="logo-element" src={MISINO} alt="Dr. Misino" />
           {/* DEBUT SENTINEL */}
-          <Image className="logo-element" src={OCLOCK} alt="Ecoles O'Clock" />
-          <Image
+          <Image width={100} height={100} className="logo-element" src={OCLOCK} alt="Ecoles O'Clock" />
+          <Image width={100} height={100}
             className="logo-element"
             src={PHILIANCE}
             alt="Philiance Formations"
           />
-          <Image
+          <Image width={100} height={100}
             className="logo-element"
             src={APFORMATIONS}
             alt="AP Formations"
           />
-          <Image className="logo-element" src={GEMA} alt="GEMA" />
-          <Image className="logo-element" src={AXEACADEMY} alt="Axe academy" />
-          <Image className="logo-element" src={ABNATURE} alt="AB Nature" />
-          <Image
+          <Image width={100} height={100} className="logo-element" src={GEMA} alt="GEMA" />
+          <Image width={100} height={100} className="logo-element" src={AXEACADEMY} alt="Axe academy" />
+          <Image width={100} height={100} className="logo-element" src={ABNATURE} alt="AB Nature" />
+          <Image width={100} height={100}
             className="logo-element"
             src={CHECKYOURSMILE}
             alt="Check Your Smile"
           />
-          <Image
+          <Image width={100} height={100}
             className="logo-element"
             src={SPEEDYNANIE}
             alt="Speedy Nanie"
           />
-          <Image className="logo-element" src={VIDEOMENTHE} alt="Videomenthe" />
-          <Image className="logo-element" src={YOOP} alt="Yoop Digital" />
-          <Image className="logo-element" src={MISINO} alt="Dr. Misino" />
+          <Image width={100} height={100} className="logo-element" src={VIDEOMENTHE} alt="Videomenthe" />
+          <Image width={100} height={100} className="logo-element" src={YOOP} alt="Yoop Digital" />
+          <Image width={100} height={100} className="logo-element" src={MISINO} alt="Dr. Misino" />
         </div>
       </Caroussel>
     </MainContainer>
