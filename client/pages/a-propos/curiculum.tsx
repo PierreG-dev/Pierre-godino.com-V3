@@ -408,7 +408,7 @@ const MainContainer = styled.div`
   }
 
   h1 {
-    font-family: BebasNeue;
+    font-family: "Bebas Neue", serif;
     font-size: 4.5rem;
     letter-spacing: 0.8rem;
     text-align: justify;
@@ -419,12 +419,12 @@ const MainContainer = styled.div`
     text-shadow: 0px 0 5px rgba(0, 0, 0, 0.3);
   }
   h2 {
-    font-family: BebasNeue;
+    font-family: "Bebas Neue", serif;
     font-size: 1.8rem;
     letter-spacing: 0.5rem;
   }
   h3 {
-    font-family: BebasNeue;
+    font-family: "Bebas Neue", serif;
     font-size: 1.3rem;
   }
 

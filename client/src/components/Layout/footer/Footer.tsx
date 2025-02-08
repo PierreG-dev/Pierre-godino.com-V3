@@ -503,7 +503,7 @@ const MainContainer = styled.div`
       background: #26262699;
       color: rgba(255, 255, 255, 0.6);
       font-size: 0.9rem;
-      font-family: 'BebasNeue';
+      font-family: "Bebas Neue", serif;
 
       & > p,
       & > a {

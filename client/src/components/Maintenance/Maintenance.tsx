@@ -114,7 +114,7 @@ const MainContainer = styled.div`
   color: #fafafa;
 
   h1 {
-    font-family: BebasNeue;
+    font-family: "Bebas Neue", serif;
   }
   p {
     font-family: Montserrat;

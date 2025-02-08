@@ -657,7 +657,7 @@ const MainContainer = styled.div`
         cursor: auto !important;
       }
       h1 {
-        font-family: 'BebasNeue';
+        font-family: "Bebas Neue", serif;
         letter-spacing: 1px;
         font-size: 3.5rem;
 

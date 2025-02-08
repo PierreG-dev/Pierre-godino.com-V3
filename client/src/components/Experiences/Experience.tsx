@@ -229,7 +229,7 @@ const Experience: React.FC<Props> = ({
                 <React.Fragment>
                   <h3
                     style={{
-                      fontFamily: 'BebasNeue',
+                      fontFamily: '"Bebas Neue", serif',
                       fontSize: 20,
                       alignSelf: 'flex-start',
                     }}>
@@ -240,7 +240,7 @@ const Experience: React.FC<Props> = ({
                   </div>
                   <h3
                     style={{
-                      fontFamily: 'BebasNeue',
+                      fontFamily: '"Bebas Neue", serif',
                       fontSize: 20,
                       alignSelf: 'flex-start',
                     }}>

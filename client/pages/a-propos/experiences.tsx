@@ -215,7 +215,7 @@ const MainContainer = styled.div`
   .experience-wrapper {
     min-height: 150px;
     h2 {
-      font-family: BebasNeue;
+      font-family: "Bebas Neue", serif;
     }
     p {
       font-family: Montserrat;
@@ -268,7 +268,7 @@ const MainContainer = styled.div`
 
     .date-container {
       font-size: 20px;
-      font-family: BebasNeue;
+      font-family: "Bebas Neue", serif;
     }
   }
 `;

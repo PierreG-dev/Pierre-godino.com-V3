@@ -470,7 +470,7 @@ const MainContainer = styled.section`
         align-items: center;
         justify-content: flex-start;
         gap: 0px;
-        font-family: 'BebasNeue';
+        font-family: "Bebas Neue", serif;
         color: #fafafa;
         width: 600px;
         max-width: calc(100vw - 100px);

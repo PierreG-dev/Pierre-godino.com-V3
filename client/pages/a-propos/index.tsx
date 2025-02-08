@@ -143,7 +143,7 @@ const MainContainer = styled.div`
   }
 
   h3 {
-    font-family: BebasNeue;
+    font-family: "Bebas Neue", serif;
   }
 
   h2,

@@ -459,7 +459,7 @@ const MainContainer = styled.main`
     letter-spacing: 5px;
     text-align: center;
     font-size: 3.2rem;
-    font-family: 'BebasNeue';
+    font-family: "Bebas Neue", serif;
     color: rgba(255, 255, 255, 0.8);
   }
 
@@ -653,7 +653,7 @@ const MainContainer = styled.main`
     font-weight: bold;
     letter-spacing: 5px;
     font-size: 1.65rem;
-    font-family: 'BebasNeue';
+    font-family: "Bebas Neue", serif;
     color: rgba(255, 255, 255, 0.9);
     position: relative;
     display: inline-block;
