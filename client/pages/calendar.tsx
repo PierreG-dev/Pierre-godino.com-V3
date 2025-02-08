@@ -259,7 +259,7 @@ const MainContainer = styled.div`
     }
   }
   .fc-header-toolbar {
-    font-family: '"Bebas Neue", serif';
+    font-family: 'Bebas Neue', serif;
     padding: 5px 20px;
     text-shadow: #ffffff22 0px 0px 7px;
 

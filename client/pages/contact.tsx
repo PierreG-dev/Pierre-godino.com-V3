@@ -120,6 +120,7 @@ const Contact: NextPage = () => {
       {background}
       <div id="satelite_container">
         <Image
+          loading="eager"
           className="satelite"
           src={SATELITE_IMG}
           alt="Satellite"
@@ -163,6 +164,7 @@ const Contact: NextPage = () => {
             </div>
             <div id="map">
               <Image
+                loading="eager"
                 layout="fill"
                 src={FRANCE_MAP}
                 alt="france vue depuis l'espace"
@@ -199,8 +201,8 @@ const Contact: NextPage = () => {
                 buttonAnimationActive === 'active'
                   ? 'active'
                   : buttonAnimationActive === 'finished'
-                  ? 'finished'
-                  : buttonAnimationActive === 'idle' && ''
+                    ? 'finished'
+                    : buttonAnimationActive === 'idle' && ''
               }>
               <span className="submit">Soumettre</span>
               <span className="loading">
@@ -231,6 +233,7 @@ const Contact: NextPage = () => {
                       <div>
                         <h3>{elem.name}</h3>
                         <Image
+                          loading="eager"
                           width={100}
                           height={100}
                           src={elem.img}

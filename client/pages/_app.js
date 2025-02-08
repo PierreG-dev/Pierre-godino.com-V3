@@ -1,5 +1,5 @@
-import '@styles/globals.css';
-import 'tailwindcss/tailwind.css';
+import '../styles/globals.css';
+// import 'tailwindcss/tailwind.css';
 import '../styles/nprogress.min.css';
 import '../styles/stars.css';
 import '../styles/bubbles.css';
@@ -10,6 +10,7 @@ import NProgress from 'nprogress';
 import { Contexts } from '../src/contexts/Contexts';
 import Layout from '../src/components/Layout';
 import Head from 'next/head';
+import { bebasNeue, montserrat, spaceMono } from '@/utilities/fonts';
 
 NProgress.configure({ showSpinner: true });
 let handleStart;
@@ -130,7 +131,10 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:type" content="website" />
       </Head>
       <Layout handleLoad={handleLoad} isLoaded={isLoaded} variant="classic">
-        <Component {...pageProps}></Component>
+        <div
+          className={`${montserrat.className} ${spaceMono.className} ${bebasNeue.className}`}>
+          <Component {...pageProps}></Component>
+        </div>
       </Layout>
     </Contexts>
   );
