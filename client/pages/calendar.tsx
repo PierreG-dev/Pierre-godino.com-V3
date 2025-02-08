@@ -9,9 +9,9 @@ import {
   useContext,
 } from 'react';
 import styled from 'styled-components';
-import FullCalendar, { LocaleSingularArg } from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import frLocale from '@fullcalendar/core/locales/fr';
+// import FullCalendar, { LocaleSingularArg } from '@fullcalendar/react';
+// import dayGridPlugin from '@fullcalendar/daygrid';
+// import frLocale from '@fullcalendar/core/locales/fr';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Head from 'next/head';
 import {
@@ -136,7 +136,7 @@ const Calendar: NextPage = () => {
           <button>{!isFetching ? 'Consulter' : <RefreshIcon />}</button>
         </form>
       </ConnexionModal>
-      {isFetched && (
+      {/*isFetched && (
         <FullCalendar
           locale={frLocale as unknown as LocaleSingularArg}
           plugins={[dayGridPlugin]}
@@ -194,7 +194,7 @@ const Calendar: NextPage = () => {
             }
           }}
         />
-      )}
+      )*/}
     </MainContainer>
   );
 };

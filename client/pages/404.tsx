@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
+import BG404 from "@/assets/404/404.svg"
 
 const Error404 = () => {
   return (
@@ -23,8 +25,8 @@ const Error404 = () => {
         meta:
       </Head>
       <div className="bg-indigo-900 relative overflow-hidden h-screen">
-        <img
-          src="/res/404.svg"
+        <Image
+          src={BG404}
           className="absolute h-full w-full object-cover"
           alt="astronaute perdu dans l'espace"
         />

@@ -4,6 +4,8 @@ import HomeQuestions from '../src/components/Home/components/HomeQuestions';
 import { BackgroundContext } from '../src/contexts/Contexts';
 import { useContext } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
+import QUESTIONS from "@/assets/icons/question.png"
 
 const FAQ: NextPage = () => {
   const { background } = useContext(BackgroundContext);
@@ -42,7 +44,7 @@ const FAQ: NextPage = () => {
       <main>
         <header>
           <h1>
-            <img src="/icons/question.png" alt="question, faq" loading="lazy" />
+            <Image src={QUESTIONS} alt="question, faq" loading="lazy" />
             FAQ - Création de Site Internet
           </h1>
           <p>
@@ -148,6 +150,7 @@ const FAQ: NextPage = () => {
             <p>
               Il existe plusieurs stratégies pour améliorer le SEO d'un site
               internet après sa création :
+            </p>
               <ul>
                 <li>
                   Créer régulièrement du contenu optimisé pour les moteurs de
@@ -169,7 +172,6 @@ const FAQ: NextPage = () => {
               </ul>
               N’hésitez pas à me contacter pour un accompagnement continu dans
               l'optimisation SEO de votre site.
-            </p>
           </details>
 
           <details>
