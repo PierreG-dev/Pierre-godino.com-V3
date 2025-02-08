@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
-import BG404 from "@/assets/404/404.svg"
+import BG404 from "@/assets/404/404.svg";
 
 const Error404 = () => {
   return (

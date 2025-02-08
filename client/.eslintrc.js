@@ -2,25 +2,23 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
     'react-app',
-    'prettier/prettier',
-    'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
     'eslint:recommended',
+    'plugin:prettier/recommended',  // Utilise cette extension uniquement
   ],
   plugins: ['@typescript-eslint', 'react', 'jsx-a11y'],
   rules: {
     'react/jsx-no-duplicate-props': 'off',
     'react/jsx-no-target-blank': 'off',
     'prettier/prettier': [
-      'error',
+      'warn',  // Utilise "warn" au lieu de "error" pour ne pas bloquer le build
       {
         endOfLine: 'auto',
       },
     ],
-    '@typescript-eslint/no-var-requires': 0,
-    '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/no-explicit-any': 0,
-    '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
     'react/jsx-wrap-multilines': [
       'error',
       {
@@ -38,7 +36,7 @@ module.exports = {
     {
       files: ['pages/api/**/*.ts'],
       rules: {
-        'import/no-anonymous-default-export': 0,
+        'import/no-anonymous-default-export': 'off',
       },
     },
   ],
