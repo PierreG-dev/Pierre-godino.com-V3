@@ -55,7 +55,7 @@ export default class MyDocument extends Document {
       <Html lang="fr">
         <Head>
           {/* ----- GOOGLE ADS ----- */}
-          {/* <script
+          <script
             async
             defer
             src="https://www.googletagmanager.com/gtag/js?id=AW-16765589576"></script>
@@ -68,7 +68,7 @@ export default class MyDocument extends Document {
             gtag('config', 'AW-16765589576');
           `,
             }}
-          /> */}
+          />
 
           {/* ----- FAVICON ----- */}
           <link
