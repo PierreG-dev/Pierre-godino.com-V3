@@ -1,5 +1,5 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true', // Assurez-vous que la variable d'environnement est définie sur 'true' pour activer l'analyse
+  enabled: process.env.ANALYZE === 'false', // Assurez-vous que la variable d'environnement est définie sur 'true' pour activer l'analyse
 });
 
 module.exports = withBundleAnalyzer({
