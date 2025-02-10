@@ -7,9 +7,11 @@ import { BackgroundContext } from '../../src/contexts/Contexts';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CustomLink from '@/components/Layout/routing/CustomLink';
+import Image from 'next/image';
 
 interface Post {
   id: number;
+  modified: string;
   title: {
     rendered: string;
   };
@@ -29,15 +31,9 @@ interface PostPageProps {
   post: Post;
 }
 
-const truncateText = (text: string, maxLength: number) => {
-  const plainText = text.replace(/<[^>]*>?/gm, ''); // Supprime les balises HTML
-  if (plainText.length <= maxLength) return plainText;
-  return `${plainText.slice(0, maxLength)}[...]`;
-};
-
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
   const { background } = useContext(BackgroundContext);
-  const plainTextExcerpt = stripHtml(post.excerpt.rendered);
+  const plainTextExcerpt = stripHtml(post.content.rendered);
   const [headings, setHeadings] = useState<{ id: string; text: string }[]>([]);
   const articleContentRef = useRef(null);
   const [sanitizedHTMLContent, setSanitizedHTMLContent] = useState<string>();
@@ -76,7 +72,6 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
       (heading, index) => {
         const id = `heading-${index}`;
         heading.id = id;
-        console.log(heading.id, heading);
         return { id, text: heading.textContent || '' };
       }
     );
@@ -97,7 +92,7 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
       '@id': `https://www.creation-sites-godino.fr/blog/${post.slug}/`,
     },
     headline: post.title.rendered,
-    description: plainTextExcerpt,
+    description: truncateText(plainTextExcerpt, 150),
     image: post.featured_image_url,
     author: {
       '@type': 'Person',
@@ -112,7 +107,7 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
       },
     },
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.modified,
     timeRequired: `PT${calculateReadingTime(post.content.rendered)}M`,
   };
 
@@ -161,10 +156,14 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
       <MainContainer>
         <Article>
           <header>
-            <img
+            <Image
               src={post.featured_image_url}
               alt={`Vignette de ${post.title.rendered}`}
-              loading="lazy"
+              width={1200}
+              height={300}
+              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 100vw, 1200px"
+              quality={85}
+              priority
             />
             <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
             <div className="wrapper">
@@ -195,11 +194,11 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
             </div>
           </header>
 
-          <section className="cta" style={{ marginBottom: 40 }}>
+          {/* <section className="cta" style={{ marginBottom: 40 }}>
             <CustomLink href="/contact">
               Envie d'attirer des clients ? <ArrowForwardIosIcon />
             </CustomLink>
-          </section>
+          </section> */}
 
           <main>
             <NavMenu>
@@ -313,7 +312,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const stripHtml = (html: string): string => {
-  return html.replace(/<[^>]*>/g, '').trim();
+  const cleanText = html
+    .replace(/<h[1-6][^>]*>.*?<\/h[1-6]>/g, '') // Supprime les titres
+    .replace(/<[^>]*>?/gm, ''); // Supprime les autres balises HTML
+  return cleanText.trim();
 };
 
 const calculateReadingTime = (content: string): string => {
@@ -322,6 +324,12 @@ const calculateReadingTime = (content: string): string => {
   const wordCount = textContent.trim().split(/\s+/).length;
   const readingTime = Math.ceil(wordCount / 200);
   return `${readingTime}`;
+};
+
+const truncateText = (text: string, maxLength: number) => {
+  const plainText = text.replace(/<[^>]*>?/gm, ''); // Supprime les balises HTML
+  if (plainText.length <= maxLength) return plainText;
+  return `${plainText.slice(0, maxLength)}[...]`;
 };
 
 const MainContainer = styled.div`

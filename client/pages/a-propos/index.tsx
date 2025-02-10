@@ -4,10 +4,37 @@ import styled from 'styled-components';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
 import Head from 'next/head';
 import { BackgroundContext } from '../../src/contexts/Contexts';
+import JSONLD from '@/utilities/JSONLD';
 
 const Index: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
+
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Pierre Godino',
+    url: 'https://www.creation-sites-godino.fr/a-propos',
+    description:
+      'Vous cherchez à recruter un développeur ? Vous trouverez toutes les informations dont vous pourriez avoir besoin sur moi ici.',
+    jobTitle: 'Développeur Web',
+    image: 'https://www.creation-sites-godino.fr/logo.png',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      url: 'https://www.creation-sites-godino.fr',
+    },
+    sameAs: [
+      'https://www.linkedin.com/in/pierre-godino',
+      'https://github.com/pierregodino',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Recruitment',
+      email: 'contact@creation-sites-godino.fr',
+      url: 'https://www.creation-sites-godino.fr/contact',
+    },
+  };
 
   return (
     <MainContainer>
@@ -38,6 +65,8 @@ const Index: NextPage = () => {
           href={'https://www.creation-sites-godino.fr/a-propos'}
         />
       </Head>
+
+      <JSONLD data={jsonld} />
 
       {background}
       <section className="flex flex-col buttons-container">
@@ -143,7 +172,7 @@ const MainContainer = styled.div`
   }
 
   h3 {
-    font-family: "Bebas Neue", serif;
+    font-family: 'Bebas Neue', serif;
   }
 
   h2,

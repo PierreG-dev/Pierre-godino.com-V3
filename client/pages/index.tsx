@@ -9,10 +9,36 @@ import HomeCustomerSlider from '../src/components/Home/components/HomeCustomerSl
 import HomeExpert from '../src/components/Home/components/HomeExpert';
 import HomeMaths from '../src/components/Home/components/HomeMaths';
 import HomeNotes from '../src/components/Home/components/HomeNotes';
+import JSONLD from '@/utilities/JSONLD';
 
 const Home: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
+
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Création Sites Godino',
+    url: 'https://www.creation-sites-godino.fr',
+    description:
+      'Expert en création de sites Internet, boutiques en ligne et SEO. Contactez-moi au 06 12 34 56 78 pour des solutions sur-mesure.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Pierre G.',
+      logo: 'https://www.creation-sites-godino.fr/logo.png',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://www.creation-sites-godino.fr',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+33 6 12 34 56 78',
+      contactType: 'Customer Service',
+      areaServed: 'FR',
+      availableLanguage: 'fr',
+    },
+  };
 
   return (
     <MainContainer>
@@ -45,6 +71,8 @@ const Home: NextPage = () => {
         />
         <link rel="canonical" href="https://www.creation-sites-godino.fr" />
       </Head>
+
+      <JSONLD data={jsonld} />
 
       {background}
       <HomeHero />

@@ -4,10 +4,26 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { BackgroundContext } from '../../src/contexts/Contexts';
+import JSONLD from '@/utilities/JSONLD';
 
 const Cgu: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
+
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Conditions Générales de Vente | Pierre G.',
+    url: 'https://www.creation-sites-godino.fr/legal/cgv',
+    description:
+      'Conditions générales de vente pour les services de Création Sites Godino.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      url: 'https://www.creation-sites-godino.fr',
+      logo: 'https://www.creation-sites-godino.fr/logo.png',
+    },
+  };
 
   return (
     <MainContainer>
@@ -32,6 +48,8 @@ const Cgu: NextPage = () => {
           href={'https://www.creation-sites-godino.fr/legal/cgv'}
         />
       </Head>
+
+      <JSONLD data={jsonld} />
 
       {background}
       <div id="satelite_container">

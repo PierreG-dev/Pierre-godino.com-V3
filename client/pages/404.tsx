@@ -2,9 +2,25 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
-import BG404 from "@/assets/404/404.svg";
+import BG404 from '@/assets/404/404.svg';
+import JSONLD from '@/utilities/JSONLD';
 
 const Error404 = () => {
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Erreur 404 | Pierre G.',
+    url: 'https://www.creation-sites-godino.fr/404',
+    description: 'Page non trouvée - Erreur 404',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      url: 'https://www.creation-sites-godino.fr',
+      logo: 'https://www.creation-sites-godino.fr/logo.png',
+    },
+    robots: 'noindex, nofollow',
+  };
+
   return (
     <MainContainer>
       <Head>
@@ -22,8 +38,10 @@ const Error404 = () => {
           rel="canonical"
           href={'https://www.creation-sites-godino.fr/404'}
         />
-        meta:
       </Head>
+
+      <JSONLD data={jsonld} />
+
       <div className="bg-indigo-900 relative overflow-hidden h-screen">
         <Image
           src={BG404}

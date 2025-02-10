@@ -26,8 +26,29 @@ import UPS_ICON from '@/assets/icons/ups.jpg';
 import GITHUB_LOGO from '@/assets/global/GITHUB_LOGO.png';
 import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
 import LINKEDIN_LOGO from '@/assets/global/LINKEDIN_LOGO.png';
+import JSONLD from '@/utilities/JSONLD';
 
 const Curiculum: NextPage = () => {
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Pierre Godino',
+    url: 'https://www.creation-sites-godino.fr/a-propos/curiculum',
+    description:
+      'Découvrez mon CV en ligne, avec une liste non exhaustive de mes compétences, diplômes, langues et expériences.',
+    sameAs: [
+      'https://www.linkedin.com/in/pierre-godino',
+      'https://github.com/pierregodino',
+    ],
+    jobTitle: 'Développeur Web',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      url: 'https://www.creation-sites-godino.fr',
+    },
+    image: 'https://www.creation-sites-godino.fr/logo.png',
+  };
+
   return (
     <MainContainer>
       <Head>
@@ -54,6 +75,8 @@ const Curiculum: NextPage = () => {
           href={'https://www.creation-sites-godino.fr/a-propos/curiculum'}
         />
       </Head>
+
+      <JSONLD data={jsonld} />
 
       <div
         style={{
@@ -408,7 +431,7 @@ const MainContainer = styled.div`
   }
 
   h1 {
-    font-family: "Bebas Neue", serif;
+    font-family: 'Bebas Neue', serif;
     font-size: 4.5rem;
     letter-spacing: 0.8rem;
     text-align: justify;
@@ -419,12 +442,12 @@ const MainContainer = styled.div`
     text-shadow: 0px 0 5px rgba(0, 0, 0, 0.3);
   }
   h2 {
-    font-family: "Bebas Neue", serif;
+    font-family: 'Bebas Neue', serif;
     font-size: 1.8rem;
     letter-spacing: 0.5rem;
   }
   h3 {
-    font-family: "Bebas Neue", serif;
+    font-family: 'Bebas Neue', serif;
     font-size: 1.3rem;
   }
 

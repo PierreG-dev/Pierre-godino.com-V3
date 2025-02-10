@@ -5,10 +5,44 @@ import { BackgroundContext } from '../src/contexts/Contexts';
 import { useContext } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import QUESTIONS from "@/assets/icons/question.png"
+import QUESTIONS from '@/assets/icons/question.png';
+import JSONLD from '@/utilities/JSONLD';
 
 const FAQ: NextPage = () => {
   const { background } = useContext(BackgroundContext);
+
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    name: 'FAQ | Pierre G.',
+    url: 'https://www.creation-sites-godino.fr/faq-creation-site-internet',
+    description:
+      'Découvrez les réponses aux questions fréquemment posées sur la création de site internet, le SEO et la gestion de votre présence en ligne.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      url: 'https://www.creation-sites-godino.fr',
+      logo: 'https://www.creation-sites-godino.fr/logo.png',
+    },
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Comment choisir le bon nom de domaine pour mon site internet ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Il est conseillé de choisir un nom de domaine simple, mémorable, et représentatif de votre activité.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Pourquoi le SEO est-il important pour mon site web ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "Le SEO permet d'optimiser la visibilité de votre site sur les moteurs de recherche, améliorant ainsi son trafic.",
+        },
+      },
+    ],
+  };
 
   return (
     <MainContainer id="faq">
@@ -40,6 +74,9 @@ const FAQ: NextPage = () => {
           }
         />
       </Head>
+
+      <JSONLD data={jsonld} />
+
       {background}
       <main>
         <header>
@@ -151,27 +188,26 @@ const FAQ: NextPage = () => {
               Il existe plusieurs stratégies pour améliorer le SEO d'un site
               internet après sa création :
             </p>
-              <ul>
-                <li>
-                  Créer régulièrement du contenu optimisé pour les moteurs de
-                  recherche (articles de blog, pages produits, témoignages,
-                  etc.),
-                </li>
-                <li>
-                  Optimiser les performances du site (temps de chargement,
-                  images compressées, etc.),
-                </li>
-                <li>
-                  Obtenir des backlinks de qualité provenant d’autres sites
-                  pertinents dans votre domaine,
-                </li>
-                <li>
-                  Analyser régulièrement les performances SEO à l’aide d’outils
-                  comme Google Analytics ou Google Search Console.
-                </li>
-              </ul>
-              N’hésitez pas à me contacter pour un accompagnement continu dans
-              l'optimisation SEO de votre site.
+            <ul>
+              <li>
+                Créer régulièrement du contenu optimisé pour les moteurs de
+                recherche (articles de blog, pages produits, témoignages, etc.),
+              </li>
+              <li>
+                Optimiser les performances du site (temps de chargement, images
+                compressées, etc.),
+              </li>
+              <li>
+                Obtenir des backlinks de qualité provenant d’autres sites
+                pertinents dans votre domaine,
+              </li>
+              <li>
+                Analyser régulièrement les performances SEO à l’aide d’outils
+                comme Google Analytics ou Google Search Console.
+              </li>
+            </ul>
+            N’hésitez pas à me contacter pour un accompagnement continu dans
+            l'optimisation SEO de votre site.
           </details>
 
           <details>

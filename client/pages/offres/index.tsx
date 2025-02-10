@@ -37,10 +37,31 @@ import {
 
 import { RocketLaunch as RocketLaunchIcon } from '@mui/icons-material';
 import HomeCustomerSlider from '@/components/Home/components/HomeCustomerSlider';
+import JSONLD from '@/utilities/JSONLD';
 
 const Offres: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);
+
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Offres & Tarifs | Pierre G.',
+    description:
+      "Besoin d'un site internet ? Une boutique en ligne ? Demandez un devis adapté à votre projet, en ligne ou en me contactant.",
+    url: 'https://www.creation-sites-godino.fr/offres',
+    image: 'https://www.creation-sites-godino.fr/logo.png',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.creation-sites-godino.fr/logo.png',
+        width: 600,
+        height: 60,
+      },
+    },
+  };
 
   return (
     <MainContainer>
@@ -68,6 +89,7 @@ const Offres: NextPage = () => {
           href={'https://www.creation-sites-godino.fr/offres'}
         />
       </Head>
+      <JSONLD data={jsonld} />
       {background}
       <h1>Offres</h1>
       <ul id="services_list">
@@ -459,7 +481,7 @@ const MainContainer = styled.main`
     letter-spacing: 5px;
     text-align: center;
     font-size: 3.2rem;
-    font-family: "Bebas Neue", serif;
+    font-family: 'Bebas Neue', serif;
     color: rgba(255, 255, 255, 0.8);
   }
 
@@ -653,7 +675,7 @@ const MainContainer = styled.main`
     font-weight: bold;
     letter-spacing: 5px;
     font-size: 1.65rem;
-    font-family: "Bebas Neue", serif;
+    font-family: 'Bebas Neue', serif;
     color: rgba(255, 255, 255, 0.9);
     position: relative;
     display: inline-block;

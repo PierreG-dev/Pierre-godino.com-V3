@@ -6,6 +6,7 @@ import { NextPage } from 'next';
 
 import Timeline from '@mui/lab/Timeline';
 import Head from 'next/head';
+import JSONLD from '@/utilities/JSONLD';
 
 // --- Titre dynamique (calcul automatique du montant d'années)
 const dateObj = new Date();
@@ -62,6 +63,28 @@ const Experiences: NextPage = () => {
       });
   }, [setExpanded, expandedXp, screenSize]);
 
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Pierre Godino',
+    url: 'https://www.creation-sites-godino.fr/a-propos/experiences',
+    description:
+      "Découvrez le détail de mes expériences professionnelles dans l'informatique et le développement WEB.",
+    jobTitle: 'Développeur Web',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      url: 'https://www.creation-sites-godino.fr',
+    },
+    image: 'https://www.creation-sites-godino.fr/logo.png',
+    hasOccupation: {
+      '@type': 'Occupation',
+      name: 'Développeur Web',
+      description:
+        "Développement et conception de sites internet et d'applications web sur mesure.",
+    },
+  };
+
   return (
     <MainContainer>
       <Head>
@@ -91,6 +114,8 @@ const Experiences: NextPage = () => {
           href={'https://www.creation-sites-godino.fr/a-propos/experiences'}
         />
       </Head>
+
+      <JSONLD data={jsonld} />
 
       <BackgroundContainer className={'bcg-star'}>
         <div className="bcg-star">
@@ -215,7 +240,7 @@ const MainContainer = styled.div`
   .experience-wrapper {
     min-height: 150px;
     h2 {
-      font-family: "Bebas Neue", serif;
+      font-family: 'Bebas Neue', serif;
     }
     p {
       font-family: Montserrat;
@@ -268,7 +293,7 @@ const MainContainer = styled.div`
 
     .date-container {
       font-size: 20px;
-      font-family: "Bebas Neue", serif;
+      font-family: 'Bebas Neue', serif;
     }
   }
 `;

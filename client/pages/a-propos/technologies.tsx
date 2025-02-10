@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import SkillSelector from '../../src/components/Skills/SkillSelector';
 import { BackgroundContext } from '../../src/contexts/Contexts';
+import JSONLD from '@/utilities/JSONLD';
 
 const Skills: NextPage = () => {
   // --- Background
@@ -70,6 +71,33 @@ const Skills: NextPage = () => {
     });
   };
 
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Pierre Godino',
+    url: 'https://www.creation-sites-godino.fr/a-propos/technologies',
+    description:
+      'Découvrez la liste des technologies liées au développement WEB que je maitrise.',
+    jobTitle: 'Développeur Web',
+    knowsAbout: [
+      'JavaScript',
+      'TypeScript',
+      'React',
+      'Next.js',
+      'Node.js',
+      'SCSS',
+      'NoSQL',
+      'Shopify Headless',
+      'WooCommerce Headless',
+    ],
+    image: 'https://www.creation-sites-godino.fr/logo.png',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      url: 'https://www.creation-sites-godino.fr',
+    },
+  };
+
   return (
     <MainContainer>
       <Head>
@@ -99,6 +127,9 @@ const Skills: NextPage = () => {
           href={'https://www.creation-sites-godino.fr/a-propos/technologies'}
         />
       </Head>
+
+      <JSONLD data={jsonld} />
+
       {background}
       <AnimationContainer>
         <img

@@ -5,9 +5,22 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'localhost', port: '3000' },
-      { protocol: 'https', hostname: 'creation-sites-godino.fr' },
-      { protocol: 'https', hostname: 'blog.api.pierre-godino.com' },
+      {
+        protocol: 'https',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.creation-sites-godino.fr',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.blog.api.pierre-godino.com',
+        pathname: '/**',
+      },
     ],
   },
   productionBrowserSourceMaps: false,

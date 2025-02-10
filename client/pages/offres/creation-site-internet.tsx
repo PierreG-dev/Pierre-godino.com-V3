@@ -9,6 +9,7 @@ import EuroIcon from '@mui/icons-material/Euro';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PhoneIcon from '@mui/icons-material/Phone';
+import JSONLD from '@/utilities/JSONLD';
 
 const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
 
@@ -97,6 +98,26 @@ const Vitrine: FC = () => {
     }, 1000);
   }, [clientType, nbPages]);
 
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Création de site internet | Pierre G.',
+    description:
+      'Obtenez un devis immédiat pour la création de votre site internet, adapté à vos besoins.',
+    url: 'https://www.creation-sites-godino.fr/offres/creation-site-internet',
+    serviceType: 'Création de site internet',
+    provider: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.creation-sites-godino.fr/logo.png',
+        width: 600,
+        height: 60,
+      },
+    },
+  };
+
   return (
     <>
       <Head>
@@ -130,6 +151,7 @@ const Vitrine: FC = () => {
           }
         />
       </Head>
+      <JSONLD data={jsonld} />
       <MainContainer>
         {background}
         <header>
@@ -657,7 +679,7 @@ const MainContainer = styled.div`
         cursor: auto !important;
       }
       h1 {
-        font-family: "Bebas Neue", serif;
+        font-family: 'Bebas Neue', serif;
         letter-spacing: 1px;
         font-size: 3.5rem;
 

@@ -16,6 +16,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import LinkOffIcon from '@mui/icons-material/LinkOff';
 import LockIcon from '@mui/icons-material/Lock';
 import { BackgroundContext } from '../src/contexts/Contexts';
+import JSONLD from '@/utilities/JSONLD';
 
 export type IPersonnalProjectData = {
   name?: string;
@@ -519,6 +520,26 @@ const Realisations: NextPage = () => {
     };
   }, [selectPlanet]);
 
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Réalisations | Pierre G.',
+    description:
+      'Parcourez mon portfolio de projets WEB, sur mesure pour répondre aux besoins de mes clients.',
+    url: 'https://www.creation-sites-godino.fr/realisations',
+    image: 'https://www.creation-sites-godino.fr/logo.png',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.creation-sites-godino.fr/logo.png',
+        width: 600,
+        height: 60,
+      },
+    },
+  };
+
   return (
     <MainContainer>
       <Head>
@@ -545,6 +566,7 @@ const Realisations: NextPage = () => {
           href={'https://www.creation-sites-godino.fr/realisations'}
         />
       </Head>
+      <JSONLD data={jsonld} />
       <div
         id="info_block"
         style={{ display: windowSize < 1250 ? 'block' : 'none' }}>

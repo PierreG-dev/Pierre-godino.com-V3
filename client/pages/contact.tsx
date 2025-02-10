@@ -19,6 +19,7 @@ import GITHUB_LOGO from '@/assets/global/GITHUB_LOGO.png';
 import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
 import LINKEDIN_LOGO from '@/assets/global/LINKEDIN_LOGO.png';
 import GOOGLE_LOGO from '@/assets/global/google.png';
+import JSONLD from '@/utilities/JSONLD';
 
 const networks = [
   {
@@ -90,6 +91,21 @@ const Contact: NextPage = () => {
     }, 1200);
   }, [clearInputs, messageInput, nameInput]);
 
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact | Pierre G.',
+    url: 'https://www.creation-sites-godino.fr/contact',
+    description:
+      "Contactez-moi pour toute question ou demande d'information. Je suis disponible par email, téléphone ou mon formulaire de contact.",
+    publisher: {
+      '@type': 'Organization',
+      name: 'Création Sites Godino',
+      url: 'https://www.creation-sites-godino.fr',
+      logo: 'https://www.creation-sites-godino.fr/logo.png',
+    },
+  };
+
   return (
     <MainContainer>
       <Head>
@@ -116,6 +132,8 @@ const Contact: NextPage = () => {
           href={'https://www.creation-sites-godino.fr/contact'}
         />
       </Head>
+
+      <JSONLD data={jsonld} />
 
       {background}
       <div id="satelite_container">
@@ -201,8 +219,8 @@ const Contact: NextPage = () => {
                 buttonAnimationActive === 'active'
                   ? 'active'
                   : buttonAnimationActive === 'finished'
-                    ? 'finished'
-                    : buttonAnimationActive === 'idle' && ''
+                  ? 'finished'
+                  : buttonAnimationActive === 'idle' && ''
               }>
               <span className="submit">Soumettre</span>
               <span className="loading">
