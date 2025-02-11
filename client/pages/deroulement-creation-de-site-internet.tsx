@@ -157,42 +157,44 @@ const PrestationDetails: NextPage = () => {
           <CustomLink href="/creation-site-internet">En savoir plus</CustomLink>
         </section>
 
-        <section id="maintainance">
-          <div className="title-wrapper">
-            <SupportIcon />
-            <div>
-              <h2>Maintenance & Support</h2>
-              <i>
-                Distribution du site <br /> <em>En continu</em>
-              </i>
+        <div className="section-wrapper">
+          <section id="maintainance">
+            <div className="title-wrapper">
+              <SupportIcon />
+              <div>
+                <h2>Maintenance & Support</h2>
+                <i>
+                  Distribution du site <br /> <em>En continu</em>
+                </i>
+              </div>
             </div>
-          </div>
-          <ul>
-            <li>
-              <strong>Mises à jour régulières</strong> Je veille à ce que votre
-              site reste sécurisé, compatible avec les dernières technologies et
-              toujours performant.
-            </li>
-            <li>
-              <strong>Support technique</strong> Une question, un souci
-              technique ? Je suis disponible pour vous aider rapidement et
-              assurer la continuité de votre activité en ligne.
-            </li>
-            <li>
-              <strong>Améliorations continues</strong> Votre site évolue avec
-              votre activité. J’ajoute de nouvelles fonctionnalités et optimise
-              les performances pour qu’il reste toujours au top.
-            </li>
-            <li>
-              <strong>Surveillance et sauvegardes</strong> Pour éviter toute
-              perte de données, je mets en place des sauvegardes régulières et
-              une surveillance proactive.
-            </li>
-          </ul>
-          <CustomLink href="/creation-site-internet#maintenance">
-            En savoir plus
-          </CustomLink>
-        </section>
+            <ul>
+              <li>
+                <strong>Mises à jour régulières</strong> Je veille à ce que
+                votre site reste sécurisé, compatible avec les dernières
+                technologies et toujours performant.
+              </li>
+              <li>
+                <strong>Support technique</strong> Une question, un souci
+                technique ? Je suis disponible pour vous aider rapidement et
+                assurer la continuité de votre activité en ligne.
+              </li>
+              <li>
+                <strong>Améliorations continues</strong> Votre site évolue avec
+                votre activité. J’ajoute de nouvelles fonctionnalités et
+                optimise les performances pour qu’il reste toujours au top.
+              </li>
+              <li>
+                <strong>Surveillance et sauvegardes</strong> Pour éviter toute
+                perte de données, je mets en place des sauvegardes régulières et
+                une surveillance proactive.
+              </li>
+            </ul>
+            <CustomLink href="/creation-site-internet#maintenance">
+              En savoir plus
+            </CustomLink>
+          </section>
+        </div>
 
         <section id="SEO">
           <div className="title-wrapper">
@@ -200,7 +202,7 @@ const PrestationDetails: NextPage = () => {
             <div>
               <h2>Campagne SEO - Référencement</h2>
               <i>
-                Croissance moyen-terme <br /> <em>Durée 2 ~ 5 mois</em>
+                Croissance moyen/long-terme <br /> <em>Durée 2 ~ 5 mois</em>
               </i>
             </div>
           </div>
@@ -279,11 +281,9 @@ const MainContainer = styled.div`
   width: 100vw;
   background: #040e1d;
   min-height: 100vh;
-  padding: 150px 50px;
+  padding: 100px 0;
 
   main {
-    margin: auto;
-    max-width: 1200px;
     z-index: 1;
     position: relative;
     color: #fafafa;
@@ -297,8 +297,25 @@ const MainContainer = styled.div`
       text-align: center;
     }
 
+    .section-wrapper {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(5px);
+      width: 100vw;
+      margin-top: 100px;
+      padding: 50px 0;
+
+      section {
+        padding: 0 50px;
+        margin: auto;
+      }
+    }
+
     section {
-      padding-top: 150px;
+      padding: 0 50px;
+      margin: auto;
+      max-width: 1200px;
+      padding-top: 100px;
+      padding-bottom: 50px;
 
       .title-wrapper {
         display: flex;
@@ -426,13 +443,18 @@ const MainContainer = styled.div`
       }
 
       &#sommaire {
-        padding: 0;
+        padding: 0 50px;
+
         li {
           a {
             text-align: left;
             text-decoration: underline;
             font-size: 1.1rem;
             color: #2ecc71;
+
+            @media (max-width: 700px) {
+              font-size: 1rem;
+            }
           }
         }
       }
