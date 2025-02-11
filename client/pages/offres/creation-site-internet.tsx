@@ -9,7 +9,17 @@ import EuroIcon from '@mui/icons-material/Euro';
 import CustomLink from '../../src/components/Layout/routing/CustomLink';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PhoneIcon from '@mui/icons-material/Phone';
+import BalanceIcon from '@mui/icons-material/Balance';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import SearchIcon from '@mui/icons-material/Search';
+import AdsClickIcon from '@mui/icons-material/AdsClick';
+import confetti from 'canvas-confetti';
+
 import JSONLD from '@/utilities/JSONLD';
+import HomeNotes from '@/components/Home/components/HomeNotes';
+const HomeCustomerSlider = dynamic(
+  () => import('@/components/Home/components/HomeCustomerSlider')
+);
 
 const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
 
@@ -97,6 +107,32 @@ const Vitrine: FC = () => {
       setProcessing(false);
     }, 1000);
   }, [clientType, nbPages]);
+
+  const displayConfettis = useCallback(() => {
+    const end = Date.now() + 0.7 * 1000;
+    const colors = ['#e74c3c', '#f1c40f', '#e67e22', '#8e44ad'];
+
+    (function frame() {
+      confetti({
+        particleCount: 4,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: colors,
+      });
+      confetti({
+        particleCount: 4,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: colors,
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  }, []);
 
   const jsonld = {
     '@context': 'https://schema.org',
@@ -275,6 +311,7 @@ const Vitrine: FC = () => {
                 className="nbPages-input"
                 value={nbPages}
                 onChange={handleNbPagesChange}
+                onKeyDown={(e) => e.key === 'Enter' && processPrice()}
               />
             </div>
           </section>
@@ -449,7 +486,11 @@ const Vitrine: FC = () => {
           </section>
 
           <div className="contact-links">
-            <a href="tel:+33767249980">
+            <a
+              href="tel:+33767249980"
+              style={{
+                animation: price ? 'appear 1s 0s 1 ease-out both' : 'unset',
+              }}>
               <button className="tel-btn">
                 <PhoneIcon />
                 <p>
@@ -458,7 +499,11 @@ const Vitrine: FC = () => {
                 </p>
               </button>
             </a>
-            <CustomLink href={'/contact'}>
+            <CustomLink
+              href={'/contact'}
+              style={{
+                animation: price ? 'appear 1s 0.2s 1 ease-out both' : 'unset',
+              }}>
               <button className="form-btn">
                 <FormatListBulletedIcon />
                 <p>Formulaire de contact</p>
@@ -467,128 +512,104 @@ const Vitrine: FC = () => {
           </div>
         </main>
 
-        <footer>
-          <div className="title-wrapper">
-            <img src="/icons/info.png" alt="infos" loading="lazy" />
-            <h2>De quoi se compose la prestation ?</h2>
-          </div>
+        <section id="web-visibility">
+          <h2>
+            <EmojiEventsIcon style={{ color: '#f39c12 !important' }} /> Un site
+            web, et après ?
+          </h2>
+          <p>
+            <big>
+              {' '}
+              <b>Félicitations, vous avez un site web !</b>
+            </big>{' '}
+            <br /> Mais saviez-vous qu’un <b>site seul</b>, sans visibilité, est
+            comme une
+            <b> boutique magnifique… perdue en plein désert</b> ?
+          </p>
+          <p>
+            Avoir un site, c’est <b>bien</b>. Mais s’assurer qu’il{' '}
+            <b>attire des visiteurs</b>, c’est encore mieux. <br />
+            Par défaut, un site n'attire que des <b>visiteurs</b> qui vous
+            <b> connaissent déjà</b>, car il apparaitra sur les{' '}
+            <b>recherches</b> vous
+            <b> concernant directement</b>.
+            <br />
+            C’est ici qu’interviennent
+            <b> le référencement (SEO)</b> et
+            <b> les campagnes publicitaires Google Ads</b>.
+          </p>
+        </section>
 
-          <section>
-            <div>
-              <img
-                src="/undraw/handshake.svg"
-                alt="poignée de mains"
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <h3>Je m'occupe de tout</h3>
-              <p>
-                <strong>
-                  De la conception à la mise en ligne, je prends tout en charge
-                </strong>
-                , tout en vous impliquant dans les étapes clés du projet si vous
-                le souhaitez :
-              </p>
-              <ul>
-                <li>
-                  - <strong>Choix du design</strong>
-                </li>
-                <li>
-                  - <strong>Relecture</strong>
-                </li>
-                <li>
-                  - <strong>Validation des images</strong>
-                </li>
-              </ul>
-            </div>
+        <div className="section-wrapper">
+          <section id="seo">
+            <h3>
+              <SearchIcon style={{ color: '#3498db' }} />
+              Le SEO : Attirer naturellement des visiteurs
+            </h3>
+            <p>
+              Le <b>référencement naturel (SEO)</b> permet à votre site
+              d’apparaître dans les premiers résultats Google lorsque quelqu’un
+              recherche vos services. C’est une stratégie <b>long terme</b>,
+              mais redoutablement efficace pour générer du trafic qualifié…{' '}
+              <b>gratuitement</b> !
+            </p>
           </section>
 
-          <section>
-            <div>
-              <h3>Compatibilité</h3>
-              <p>
-                De nos jours, les petits écrans représentent{' '}
-                <strong>82% des visites totales</strong> sur le net. <br />
-                <strong>
-                  Tous mes sites sont donc évidemment compatibles pour les
-                  smartphones et tablettes
-                </strong>
-                .
-              </p>
-            </div>
-            <div>
-              <img
-                src="/undraw/responsive.svg"
-                alt="responsive"
-                loading="lazy"
-              />
-            </div>
+          <section id="ads">
+            <h3>
+              <AdsClickIcon style={{ color: '#e67e22' }} /> Les campagnes
+              publicitaires : Un accélérateur de croissance
+            </h3>
+            <p>
+              Besoin de résultats plus rapides ? Les{' '}
+              <b>campagnes publicitaires Google Ads </b>
+              permettent de <b>cibler précisément votre audience</b> et
+              d’attirer des visiteurs <b>dès aujourd’hui</b>. C’est le moyen
+              idéal pour
+              <b>lancer un site ou booster son activité</b>.
+            </p>
           </section>
+        </div>
 
-          <section>
-            <div>
-              <img src="/undraw/design.svg" alt="design" loading="lazy" />
-            </div>
-            <div>
-              <h3>Création du design</h3>
+        <section id="seo-vs-ads">
+          <h3>
+            <BalanceIcon style={{ color: '#16a085' }} /> SEO ou publicité ?
+            Pourquoi pas les deux ?
+          </h3>
+          <ul>
+            <li>
               <p>
-                Si vous souhaitez un design basé sur des thèmes existants, je
-                l'adapterai à vos besoin et en fonctions de votre logo. <br />
-                Si vous souhaitez une <strong>apparence sur-mesure</strong> pour
-                votre site internet, je ferai appel à des professionnels pour un
-                résutat <strong>unique et de qualité</strong>.
+                <b>Le SEO</b> construit votre <b>présence</b> sur le{' '}
+                <b>long terme</b>.
               </p>
-            </div>
-          </section>
+            </li>
+            <li>
+              <p>
+                {' '}
+                <b>Les ADS</b> vous apportent des <b>résultats immédiats</b>.
+              </p>
+            </li>
+          </ul>
+          <p>
+            Ces deux stratégies sont complémentaires: elles assurent un{' '}
+            <b>maximum de visibilité</b> à votre site.
+          </p>
+          <br />
+          <big>
+            La <b>meilleure approche</b> consiste à lancer une{' '}
+            <b>campagne de référencement</b> tout en mettant en place une{' '}
+            <b>campagne publicitaire</b> en parallèle. Ainsi, la publicité{' '}
+            <b>génère rapidement</b> du trafic, le temps que le{' '}
+            <b>référencement</b> produise ses effets <b>durables</b>.
+          </big>
+        </section>
 
-          <section>
-            <div>
-              <h3>Création du site</h3>
-              <p>
-                Je créé votre site de A à Z,{' '}
-                <strong>en fonction de vos besoins</strong>. <br />
-                Petit ou gros budget,{' '}
-                <strong>tous mes produits sont soignés</strong> et{' '}
-                <strong>correspondent aux exigeances du net moderne</strong>.
-              </p>
-            </div>
-            <div>
-              <img src="/undraw/coding.svg" alt="coding" loading="lazy" />
-            </div>
-          </section>
-
-          <section>
-            <div>
-              <img src="/undraw/seo.svg" alt="search" loading="lazy" />
-            </div>
-            <div>
-              <h3>Optimisation pour Google</h3>
-              <p>
-                Au delà de l'écriture du contenu, le site sera pensé pour être
-                compréhensible aussi bien aux visiteurs qu'aux{' '}
-                <strong>moteurs de recherche</strong>, vous donnant un{' '}
-                <strong>avantage</strong> sur le référencement.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <div>
-              <h3>Mise en ligne</h3>
-              <p>
-                Je m'occupe du <strong>déploiement</strong> sur le net de votre
-                site afin qu'il soit{' '}
-                <strong>accessible à tous et de partout</strong>.
-              </p>
-            </div>
-            <div>
-              <img src="/undraw/internet.svg" alt="search" loading="lazy" />
-            </div>
-          </section>
-        </footer>
         <div className="contact-links">
-          <a href="tel:+33767249980">
+          <a
+            href="tel:+33767249980"
+            style={{
+              animation: 'appear 1s 0s 1 ease-out both',
+            }}>
             <button className="tel-btn">
               <PhoneIcon />
               <p>
@@ -597,7 +618,11 @@ const Vitrine: FC = () => {
               </p>
             </button>
           </a>
-          <CustomLink href={'/contact'}>
+          <CustomLink
+            href={'/contact'}
+            style={{
+              animation: 'appear 1s 0.2s 1 ease-out both',
+            }}>
             <button className="form-btn">
               <FormatListBulletedIcon />
               <p>Formulaire de contact</p>
@@ -960,6 +985,7 @@ const MainContainer = styled.div`
           border-radius: 5px;
           font-weight: bold;
           border: 2px solid transparent;
+          cursor: pointer;
 
           &.budget-button {
             height: 60px;
@@ -1067,15 +1093,120 @@ const MainContainer = styled.div`
     }
   }
 
+  section#web-visibility,
+  section#seo,
+  section#ads,
+  section#seo-vs-ads,
+  section#cta {
+    z-index: 1;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 100px;
+    width: 100%;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      /* font-family: 'Bebas Neue'; */
+      letter-spacing: 3px;
+      font-size: 1.7rem;
+      font-weight: bold;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+
+      svg {
+        font-size: 4rem;
+        path {
+          color: inherit;
+        }
+      }
+
+      @media (max-width: 700px) {
+        font-size: 1.2rem;
+      }
+    }
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      /* font-family: 'Bebas Neue'; */
+      letter-spacing: 3px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+
+      svg {
+        font-size: 2.5rem;
+        path {
+          color: inherit;
+        }
+      }
+
+      @media (max-width: 700px) {
+        font-size: 1rem;
+
+        svg {
+          display: none;
+        }
+      }
+    }
+
+    p {
+      font-weight: 500;
+    }
+
+    &#web-visibility {
+      b {
+        color: #f39c12;
+      }
+    }
+    &#seo {
+      margin-top: unset;
+      b {
+        color: #3498db;
+      }
+    }
+    &#ads {
+      margin-top: 35px;
+      b {
+        color: #e67e22;
+      }
+    }
+    &#seo-vs-ads {
+      margin-bottom: 50px;
+      b {
+        color: #16a085 !important;
+      }
+
+      big {
+        display: block;
+        border: 2px solid #16a085;
+        padding: 10px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  div.section-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px);
+    width: 100vw;
+    margin-top: 50px;
+    padding: 50px;
+  }
+
   div.contact-links {
     display: flex;
     gap: 15px;
-    /* margin-top: 50px; */
+    margin-bottom: 50px;
 
     @media (max-width: 500px) {
       flex-direction: column;
     }
     a {
+      opacity: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1084,14 +1215,22 @@ const MainContainer = styled.div`
       color: rgba(255, 255, 255, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(255, 255, 255, 0.05);
-      /* box-shadow: 0 0px 7px rgba(255, 255, 255, 0.1); */
       backdrop-filter: blur(1px);
       border-radius: 3px;
       font-family: 'Montserrat';
-      /* flex: 1; */
-      /* min-width: 320px; */
       max-width: calc(100vw - 100px);
       height: 100px;
+
+      @keyframes appear {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+      }
 
       button {
         display: flex;

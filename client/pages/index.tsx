@@ -5,11 +5,20 @@ import Head from 'next/head';
 import { BackgroundContext } from '../src/contexts/Contexts';
 import HomeHero from '../src/components/Home/components/HomeHero';
 import HomeRatings from '../src/components/Home/components/HomeRatings';
-import HomeCustomerSlider from '../src/components/Home/components/HomeCustomerSlider';
-import HomeExpert from '../src/components/Home/components/HomeExpert';
 import HomeMaths from '../src/components/Home/components/HomeMaths';
-import HomeNotes from '../src/components/Home/components/HomeNotes';
 import JSONLD from '@/utilities/JSONLD';
+
+import dynamic from 'next/dynamic';
+
+const HomeCustomerSlider = dynamic(
+  () => import('../src/components/Home/components/HomeCustomerSlider')
+);
+const HomeExpert = dynamic(
+  () => import('../src/components/Home/components/HomeExpert')
+);
+const HomeNotes = dynamic(
+  () => import('../src/components/Home/components/HomeNotes')
+);
 
 const Home: NextPage = () => {
   // --- Background

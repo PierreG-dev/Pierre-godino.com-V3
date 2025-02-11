@@ -45,16 +45,19 @@ const CustomLink: FC<Props> = ({
           title="Arrive bientôt"
           style={{
             ...style,
+            position: 'relative',
+            zIndex: 5,
             color: 'rgba(100,100,100,0.8)',
             textShadow: 'none',
             cursor: 'help',
           }}
+          className="disabled"
           href={href}
           onClick={(e) => e.preventDefault()}>
           {children}
         </a>
       ) : (
-        <a style={style} href={href} onClick={handlePageChange}>
+        <a style={style} href={href} onClick={handlePageChange} rel="dofollow">
           {children}
         </a>
       )}

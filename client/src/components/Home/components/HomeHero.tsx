@@ -66,7 +66,13 @@ const HomeHero: FC = () => {
 
         <div id="hero_notes">
           <div>
-            <Image width={50} height={50} src={GOOGLE_LOGO} alt="google" priority />
+            <Image
+              width={50}
+              height={50}
+              src={GOOGLE_LOGO}
+              alt="google"
+              priority
+            />
             <div>
               {' '}
               <em>
@@ -76,7 +82,14 @@ const HomeHero: FC = () => {
                 {Array(5)
                   .fill(null)
                   .map((_, index) => (
-                    <Image width={20} height={20} key={index} src={STAR} alt="Etoile" priority />
+                    <Image
+                      width={20}
+                      height={20}
+                      key={index}
+                      src={STAR}
+                      alt="Etoile"
+                      priority
+                    />
                   ))}
               </div>
             </div>
@@ -93,7 +106,14 @@ const HomeHero: FC = () => {
                 {Array(5)
                   .fill(null)
                   .map((_, index) => (
-                    <Image width={20} height={20} key={index} src={STAR} alt="Etoile" priority />
+                    <Image
+                      width={20}
+                      height={20}
+                      key={index}
+                      src={STAR}
+                      alt="Etoile"
+                      priority
+                    />
                   ))}
               </div>
             </div>
@@ -116,7 +136,7 @@ const HomeHero: FC = () => {
               Combien ça coûte ?
             </button>
           </CustomLink>
-          <CustomLink href={'/a-propos'}>
+          <CustomLink href={'/deroulement-creation-de-site-internet'}>
             <button id="about_btn">
               <span>{'{ '}</span>Comment se passent mes prestations ?
               <span>{' }'}</span>
@@ -309,7 +329,7 @@ const MainContainer = styled.section`
           flex-direction: column;
 
           em {
-            font-family: "Montserrat";
+            font-family: 'Montserrat';
             opacity: 0.7;
             color: #fafafa;
 
@@ -471,7 +491,7 @@ const MainContainer = styled.section`
         align-items: center;
         justify-content: flex-start;
         gap: 0px;
-        font-family: "Bebas Neue", serif;
+        font-family: 'Bebas Neue', serif;
         color: #fafafa;
         width: 600px;
         max-width: calc(100vw - 100px);

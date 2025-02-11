@@ -94,7 +94,7 @@ const Contact: NextPage = () => {
   const jsonld = {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
-    name: 'Contact | Pierre G.',
+    name: 'Contact - Création de sites internet | Pierre G.',
     url: 'https://www.creation-sites-godino.fr/contact',
     description:
       "Contactez-moi pour toute question ou demande d'information. Je suis disponible par email, téléphone ou mon formulaire de contact.",
@@ -109,8 +109,11 @@ const Contact: NextPage = () => {
   return (
     <MainContainer>
       <Head>
-        <title>Contact | Pierre G.</title>
-        <meta property="og:title" content="Contact | Pierre G." />
+        <title>Contact - Création de sites internet | Pierre G.</title>
+        <meta
+          property="og:title"
+          content="Contact - Création de sites internet | Pierre G."
+        />
         <meta
           name="description"
           content="Contactez-moi pour toute question ou demande d'information. Je suis disponible par email, téléphone ou mon formulaire de contact."
@@ -151,10 +154,10 @@ const Contact: NextPage = () => {
         <div id="left">
           <section id="contact">
             <div id="text">
-              <h2>
+              <h1>
                 <ContactPhoneIcon />
                 Coordonnées
-              </h2>
+              </h1>
               <ul>
                 <li id="name">
                   <PersonIcon />
@@ -287,7 +290,8 @@ const MainContainer = styled.div`
   position: relative;
   padding-bottom: 40px;
 
-  h2 {
+  h2,
+  h1 {
     font-family: 'Space Mono', monospace;
     font-size: 1.7rem;
   }
@@ -348,6 +352,7 @@ const MainContainer = styled.div`
     }
 
     h2,
+    h1,
     h3 {
       text-transform: uppercase;
       letter-spacing: 3px;
@@ -479,13 +484,15 @@ const MainContainer = styled.div`
         justify-content: center;
         padding-bottom: 30px;
 
-        h2 {
+        h2,
+        h1 {
           position: absolute;
           top: 20px;
         }
       }
 
-      h2 {
+      h2,
+      h1 {
         width: 100%;
       }
 

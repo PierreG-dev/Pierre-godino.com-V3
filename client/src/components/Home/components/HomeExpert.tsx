@@ -113,9 +113,11 @@ const HomeExpert: NextPage = () => {
           <strong>un site professionnel</strong>, fonctionnel et prêt à{' '}
           <strong>attirer vos premiers clients</strong>.{' '}
         </p>
-        <CustomLink href={'/contact'}>
-          Et si on lançait votre projet aujourd’hui ? <ArrowForwardIosIcon />
-        </CustomLink>
+        <div className="cta">
+          <CustomLink href={'/contact'}>
+            Et si on lançait votre projet aujourd’hui ? <ArrowForwardIosIcon />
+          </CustomLink>
+        </div>
       </footer>
     </MainContainer>
   );
@@ -293,26 +295,36 @@ const MainContainer = styled.section`
       }
     }
 
-    a {
-      font-size: 1.4rem;
+    div.cta {
+      background: #ffffff08;
+      backdrop-filter: blur(5px);
+      width: 100vw;
       display: flex;
+      justify-content: center;
       align-items: center;
-      /* gap: 15px; */
-      text-decoration: underline;
-      font-weight: 600;
+      padding: 75px;
 
-      svg {
-        font-size: 2rem;
-
-        path {
-          color: #3aa4eb;
-        }
-      }
-      @media (max-width: 500px) {
-        font-size: 0.9rem;
+      a {
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        /* gap: 15px; */
+        text-decoration: underline;
+        font-weight: 600;
 
         svg {
-          font-size: 1.5rem;
+          font-size: 2rem;
+
+          path {
+            color: #3aa4eb;
+          }
+        }
+        @media (max-width: 500px) {
+          font-size: 0.9rem;
+
+          svg {
+            font-size: 1.5rem;
+          }
         }
       }
     }

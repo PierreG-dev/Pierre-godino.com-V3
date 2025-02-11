@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { NextPage } from 'next';
 import {
@@ -93,18 +94,18 @@ const Calendar: NextPage = () => {
     [password]
   );
 
-  const dayStatusMap = useMemo(() => {
-    const map = {};
-    events.forEach((event) => {
-      const startDate = new Date(event.start).toLocaleDateString('fr');
-      if (event.allDay || (event.end && new Date(event.end).getHours() > 17)) {
-        map[startDate] = 'unavailable';
-      } else {
-        map[startDate] = 'partly-available';
-      }
-    });
-    return map;
-  }, [events]);
+  // const dayStatusMap = useMemo(() => {
+  //   const map = {};
+  //   events.forEach((event) => {
+  //     const startDate = new Date(event.start).toLocaleDateString('fr');
+  //     if (event.allDay || (event.end && new Date(event.end).getHours() > 17)) {
+  //       map[startDate] = 'unavailable';
+  //     } else {
+  //       map[startDate] = 'partly-available';
+  //     }
+  //   });
+  //   return map;
+  // }, [events]);
 
   useEffect(() => {
     const localCalendar = getFromLocalStorage('calendar');
@@ -294,9 +295,7 @@ const MainContainer = styled.div`
       -webkit-backdrop-filter: blur(1px);
       backdrop-filter: blur(1px);
       -webkit-backdrop-filter: blur(1px);
-      transition:
-        transform 0.2s,
-        opacity 0.2s;
+      transition: transform 0.2s, opacity 0.2s;
       transform: translate3d(0, 0, 0);
       z-index: 5;
       position: relative;
@@ -321,9 +320,7 @@ const MainContainer = styled.div`
 
       &.available {
         background-color: #ffffff33;
-        box-shadow:
-          #ffffff33 0px 0px 7px,
-          inset #ffffff22 0px 0px 7px 2px;
+        box-shadow: #ffffff33 0px 0px 7px, inset #ffffff22 0px 0px 7px 2px;
         border-color: #ffffff33;
 
         &:hover {
@@ -334,9 +331,7 @@ const MainContainer = styled.div`
 
       &.unavailable {
         background-color: #ff450066;
-        box-shadow:
-          #ff4500 0px 0px 7px,
-          inset #ff450033 0px 0px 7px 2px;
+        box-shadow: #ff4500 0px 0px 7px, inset #ff450033 0px 0px 7px 2px;
         border-color: #ff450066;
 
         &:hover {
@@ -347,9 +342,7 @@ const MainContainer = styled.div`
 
       &.partly-available {
         background-color: #f39c1266;
-        box-shadow:
-          #f39c12 0px 0px 7px,
-          inset #f39c1233 0px 0px 7px 2px;
+        box-shadow: #f39c12 0px 0px 7px, inset #f39c1233 0px 0px 7px 2px;
         border-color: #f39c1266;
 
         &:hover {
@@ -385,8 +378,7 @@ const ConnexionModal = styled.dialog`
   padding: 20px 30px;
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  box-shadow:
-    rgba(255, 255, 255, 0.4) 0px 0px 7px,
+  box-shadow: rgba(255, 255, 255, 0.4) 0px 0px 7px,
     inset rgba(255, 255, 255, 0.3) 0px 0px 7px;
   border-radius: 5px;
   -webkit-backdrop-filter: blur(1px);

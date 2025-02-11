@@ -372,6 +372,7 @@ const InfosContainer = styled.section`
       font-weight: bold;
       letter-spacing: 1px;
       width: 80px;
+      font-family: 'Montserrat';
     }
     svg:hover {
       transform: scale3d(1.7, 1.7, 1);

@@ -207,7 +207,9 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/offres/creation-boutique-e-commerce'}>
+                    <CustomLink
+                      href={'/offres/creation-boutique-e-commerce'}
+                      disabled>
                       <LocalGroceryStoreIcon />
                       <p>
                         Boutique en ligne <br /> e-commerce
@@ -218,7 +220,9 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/offres/creation-application-en-ligne'}>
+                    <CustomLink
+                      href={'/offres/creation-application-en-ligne'}
+                      disabled>
                       <MonitorIcon />
                       <p>
                         Applications <br />
@@ -230,7 +234,9 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
                     style={{
                       display: dropdownDisplayServices ? 'block' : 'none',
                     }}>
-                    <CustomLink href={'/offres/creation-application-mobile'}>
+                    <CustomLink
+                      href={'/offres/creation-application-mobile'}
+                      disabled>
                       <SmartphoneIcon />
                       <p>
                         Application <br /> Mobile
@@ -468,6 +474,14 @@ const MainContainer = styled.div`
           letter-spacing: 1px;
           width: 100% !important;
           display: block;
+
+          &.disabled {
+            color: rgba(255, 255, 255, 0.1) !important;
+            svg {
+              color: rgba(255, 255, 255, 0.1) !important;
+              filter: grayscale(1);
+            }
+          }
         }
       }
 

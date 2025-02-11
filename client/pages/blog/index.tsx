@@ -214,13 +214,13 @@ const stripHtml = (html: string): string => {
   return cleanText.trim();
 };
 
-const calculateReadingTime = (content: string): string => {
-  if (!content) return;
-  const textContent = content.replace(/<[^>]*>/g, '');
-  const wordCount = textContent.trim().split(/\s+/).length;
-  const readingTime = Math.ceil(wordCount / 200);
-  return `${readingTime}`;
-};
+// const calculateReadingTime = (content: string): string => {
+//   if (!content) return;
+//   const textContent = content.replace(/<[^>]*>/g, '');
+//   const wordCount = textContent.trim().split(/\s+/).length;
+//   const readingTime = Math.ceil(wordCount / 200);
+//   return `${readingTime}`;
+// };
 
 const truncateText = (text: string, maxLength: number) => {
   const plainText = text.replace(/<[^>]*>?/gm, ''); // Supprime les balises HTML
