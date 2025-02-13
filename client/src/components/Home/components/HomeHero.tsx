@@ -232,8 +232,13 @@ const MainContainer = styled.section`
   flex-wrap: wrap;
   z-index: 1;
   width: 100%;
-  padding-top: 100px;
+  padding-top: 50px;
   gap: 50px;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   section#landing {
     display: flex;
@@ -244,6 +249,7 @@ const MainContainer = styled.section`
     flex: 1;
     width: 100%;
     max-width: 800px;
+    /* min-width: 600px; */
     padding: 0 50px;
 
     @media (max-width: 500px) {
@@ -403,7 +409,7 @@ const MainContainer = styled.section`
         &:has(#about_btn) {
           width: calc(50% - (15px / 2));
 
-          @media (max-width: 500px) {
+          @media (max-width: 565px) {
             width: 100%;
           }
           &:hover {
@@ -425,7 +431,7 @@ const MainContainer = styled.section`
         &:has(#pricing_btn) {
           width: calc(50% - (15px / 2));
 
-          @media (max-width: 500px) {
+          @media (max-width: 565px) {
             width: 100%;
           }
           svg {
@@ -473,7 +479,7 @@ const MainContainer = styled.section`
   section#prestations {
     margin: 0;
     width: 100%;
-    max-width: 900px;
+    max-width: 600px;
     padding: 0 50px;
 
     ul {
