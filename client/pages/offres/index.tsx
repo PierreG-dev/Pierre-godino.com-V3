@@ -278,7 +278,7 @@ const Offres: NextPage = () => {
                 Stats en temps réel
               </li>
             </ul>
-            <CustomLink href={'/offres/creation-boutique-e-commerce'}>
+            <CustomLink href={'/offres/creation-boutique-e-commerce'} disabled>
               En savoir plus
             </CustomLink>
           </header>
@@ -403,7 +403,7 @@ const Offres: NextPage = () => {
               </li>
             </ul>
 
-            <CustomLink href={'/offres/creation-application-en-ligne'}>
+            <CustomLink href={'/offres/creation-application-en-ligne'} disabled>
               En savoir plus
             </CustomLink>
           </header>

@@ -514,8 +514,7 @@ const Vitrine: FC = () => {
 
         <section id="web-visibility">
           <h2>
-            <EmojiEventsIcon style={{ color: '#f39c12 !important' }} /> Un site
-            web, et après ?
+            <EmojiEventsIcon /> Un site web, et après ?
           </h2>
           <p>
             <big>
@@ -644,10 +643,10 @@ const MainContainer = styled.div`
   align-items: center;
   position: relative;
   padding: 120px 30px;
+  color: #fafafa;
 
   * {
     font-family: 'Montserrat';
-    color: #fafafa;
   }
 
   p {
@@ -1158,6 +1157,9 @@ const MainContainer = styled.div`
     }
 
     &#web-visibility {
+      svg path {
+        color: #f39c12 !important;
+      }
       b {
         color: #f39c12;
       }
