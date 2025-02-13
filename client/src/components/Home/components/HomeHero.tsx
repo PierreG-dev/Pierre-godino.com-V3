@@ -235,7 +235,7 @@ const MainContainer = styled.section`
   padding-top: 50px;
   gap: 50px;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     flex-direction: column;
     align-items: center;
   }
@@ -248,7 +248,7 @@ const MainContainer = styled.section`
     position: relative;
     flex: 1;
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     /* min-width: 600px; */
     padding: 0 50px;
 
@@ -479,7 +479,7 @@ const MainContainer = styled.section`
   section#prestations {
     margin: 0;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     padding: 0 50px;
 
     ul {
