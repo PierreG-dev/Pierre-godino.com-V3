@@ -4,6 +4,7 @@ const useMetrics = ({ updateFirstLoad }) => {
   const visitUpdateInterval = useRef(null);
 
   const devicePicker = useCallback(() => {
+    if (!window) return;
     const width = window.innerWidth;
     if (!width) return;
 

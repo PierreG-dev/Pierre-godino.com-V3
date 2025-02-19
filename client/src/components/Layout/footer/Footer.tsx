@@ -19,7 +19,7 @@ import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
 import LINKEDIN_LOGO from '@/assets/global/LINKEDIN_LOGO.png';
 import GOOGLE_LOGO from '@/assets/global/google.png';
 
-export type displayType = 'full' | 'displayed' | 'hidden';
+export type displayType = 'full' | 'displayed' | 'hidden' | 'initial';
 
 export type Props = {
   loaded: boolean;
@@ -33,7 +33,7 @@ const Footer: React.FC<Props> = ({
   handleAdminModalOpen,
 }) => {
   const footerRef = useRef(null);
-  const [displayed, setDisplayed] = useState<displayType>('full');
+  const [displayed, setDisplayed] = useState<displayType>('initial');
   const [displayLock, setDisplayLock] = useState<boolean>(false);
 
   useEffect(() => {
@@ -77,9 +77,14 @@ const Footer: React.FC<Props> = ({
           transform: 'translate3d(0, 60%, 0)',
           display: noLayoutMode ? 'none' : 'block',
         };
-      default:
+      case 'hidden':
         return {
           transform: 'translate3d(0, 93%, 0)',
+          display: noLayoutMode ? 'none' : 'block',
+        };
+      default:
+        return {
+          transform: 'translate3d(0, 100%, 0)',
           display: noLayoutMode ? 'none' : 'block',
         };
     }
@@ -220,7 +225,12 @@ const Footer: React.FC<Props> = ({
                     href="https://www.malt.fr/profile/pierregodino"
                     target={'_blank'}
                     rel="noreferrer nofollow">
-                    <Image width={15} height={15}src={MALT_LOGO} alt="logo_malt" />
+                    <Image
+                      width={15}
+                      height={15}
+                      src={MALT_LOGO}
+                      alt="logo_malt"
+                    />
                     Malt
                   </a>
                 </li>
@@ -229,7 +239,12 @@ const Footer: React.FC<Props> = ({
                     href="https://www.linkedin.com/in/pierre-godino-50b503186"
                     target={'_blank'}
                     rel="noreferrer nofollow">
-                    <Image width={15} height={15}src={LINKEDIN_LOGO} alt="logo_linkedin" />
+                    <Image
+                      width={15}
+                      height={15}
+                      src={LINKEDIN_LOGO}
+                      alt="logo_linkedin"
+                    />
                     LinkedIn
                   </a>
                 </li>
@@ -238,7 +253,12 @@ const Footer: React.FC<Props> = ({
                     href="https://www.github.com/pierreG-dev"
                     target={'_blank'}
                     rel="noreferrer nofollow">
-                    <Image width={15} height={15}src={GITHUB_LOGO} alt="logo_github" />
+                    <Image
+                      width={15}
+                      height={15}
+                      src={GITHUB_LOGO}
+                      alt="logo_github"
+                    />
                     GitHub
                   </a>
                 </li>
@@ -247,7 +267,12 @@ const Footer: React.FC<Props> = ({
                     href="https://g.co/kgs/9Y2TGRP"
                     target={'_blank'}
                     rel="noreferrer nofollow">
-                    <Image width={15} height={15}src={GOOGLE_LOGO} alt="logo_MALT" />
+                    <Image
+                      width={15}
+                      height={15}
+                      src={GOOGLE_LOGO}
+                      alt="logo_MALT"
+                    />
                     Google
                   </a>
                 </li>
@@ -284,6 +309,7 @@ const MainContainer = styled.div`
   overflow: hidden;
   transition: 0.5s ease;
   font-family: 'Montserrat';
+  transform: translate3d(0, 100%, 0);
 
   .burger-container {
     position: absolute;
@@ -503,7 +529,7 @@ const MainContainer = styled.div`
       background: #26262699;
       color: rgba(255, 255, 255, 0.6);
       font-size: 0.9rem;
-      font-family: "Bebas Neue", serif;
+      font-family: 'Bebas Neue', serif;
 
       & > p,
       & > a {

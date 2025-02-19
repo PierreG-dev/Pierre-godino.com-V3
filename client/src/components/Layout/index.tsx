@@ -16,7 +16,7 @@ const Footer = dynamic(() => import('./footer/Footer'), {
   ssr: true,
 });
 const Navbar = dynamic(() => import('./navbar/Navbar'), {
-  ssr: true,
+  ssr: false,
 });
 
 export type Props = {

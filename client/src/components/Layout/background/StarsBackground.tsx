@@ -29,16 +29,18 @@ const StarsBackground: FC = React.memo(() => {
 });
 
 const StarsContainer = styled.div`
-  height: 100%;
+  height: 100vh;
   min-height: 100vh;
   top: 0;
   left: 0;
   width: 100vw;
   z-index: 0;
   position: absolute;
+  transition: 1s;
 
   .star {
-    position: absolute;
+    transition: 1s;
+    position: fixed;
     background: #fafafa;
     box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.9);
     animation: 6s star_glow infinite linear;

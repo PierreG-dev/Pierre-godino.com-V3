@@ -19,7 +19,7 @@ let handleStart;
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
   // const [onMaintenance, setOnMaintenance] = useState(false);
 
   const firstLoad = useRef(true);

@@ -17,6 +17,20 @@ import LinkOffIcon from '@mui/icons-material/LinkOff';
 import LockIcon from '@mui/icons-material/Lock';
 import { BackgroundContext } from '../src/contexts/Contexts';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Misino_thumbnail from '@/assets/realisations/cabinet_misino_thumbnail.png';
+import Checkyoursmile_thumbnail from '@/assets/realisations/checkyoursmile_thumbnail.png';
+import Sarlgaragebrincat_thumbnail from '@/assets/realisations/sarl_garage_brincat_thumbnail.png';
+import Abnature_thumbnail from '@/assets/realisations/abnature_thumbnail.png';
+import Eoleedit_thumbnail from '@/assets/realisations/eoleedit_thumbnail.png';
+import Learn_thumbnail from '@/assets/realisations/learn_thumbnail.png';
+import Misino_icon from '@/assets/icons/misino_icon_alt.png';
+import Checkyoursmile_icon from '@/assets/icons/checkyoursmile.png';
+import Sarlgaragebrincat_icon from '@/assets/icons/sarlgaragebrincat.png';
+import Abnature_icon from '@/assets/icons/abnature.svg';
+import Eoleedit_icon from '@/assets/icons/videomenthe_alpha.png';
+import Learn_icon from '@/assets/icons/learn_icon.svg';
+
 const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 export type IPersonnalProjectData = {
@@ -31,8 +45,8 @@ export type IPersonnalProjectData = {
 };
 
 export type IProjectdata = {
-  thumbnailUrl: string;
-  iconUrl: string;
+  thumbnail: any;
+  icon: any;
   fontName: string;
   tilted?: boolean;
   title: string;
@@ -96,8 +110,8 @@ const personnalProjectsData: IPersonnalProjectData[] = [
 
 const projectsData: IProjectdata[] = [
   {
-    thumbnailUrl: '/thumbnails/cabinet_misino_thumbnail.png',
-    iconUrl: '/icons/misino_icon_alt.png',
+    thumbnail: Misino_thumbnail,
+    icon: Misino_icon,
     fontName: '"Poppins", sans-serif',
     title: 'Cabinet Misino',
     tilted: true,
@@ -109,8 +123,8 @@ const projectsData: IProjectdata[] = [
     nature: 'Réalisation',
   },
   {
-    thumbnailUrl: '/thumbnails/checkyoursmile_thumbnail.png',
-    iconUrl: '/icons/checkyoursmile.png',
+    thumbnail: Checkyoursmile_thumbnail,
+    icon: Checkyoursmile_icon,
     fontName: '"Courgette", cursive',
     title: 'CheckYourSmile',
     tilted: true,
@@ -122,8 +136,8 @@ const projectsData: IProjectdata[] = [
     nature: 'Contribution',
   },
   {
-    thumbnailUrl: '/thumbnails/sarl_garage_brincat_thumbnail.png',
-    iconUrl: '/icons/sarlgaragebrincat.png',
+    thumbnail: Sarlgaragebrincat_thumbnail,
+    icon: Sarlgaragebrincat_icon,
     fontName: '"Roboto", sans-serif',
     title: 'SARL Garage Brincat',
     description:
@@ -134,8 +148,8 @@ const projectsData: IProjectdata[] = [
     nature: 'Réalisation',
   },
   {
-    thumbnailUrl: '/thumbnails/abnature_thumbnail.png',
-    iconUrl: '/icons/abnature.svg',
+    thumbnail: Abnature_thumbnail,
+    icon: Abnature_icon,
     fontName: '"Mynerve", cursive',
     title: 'AB Nature',
     description:
@@ -147,8 +161,8 @@ const projectsData: IProjectdata[] = [
   },
 
   {
-    thumbnailUrl: '/thumbnails/eoleedit_thumbnail.png',
-    iconUrl: '/icons/videomenthe_alpha.png',
+    thumbnail: Eoleedit_thumbnail,
+    icon: Eoleedit_icon,
     fontName: '"Raleway", sans-serif',
     title: 'EoleEdit',
     tilted: true,
@@ -161,8 +175,8 @@ const projectsData: IProjectdata[] = [
   },
 
   {
-    thumbnailUrl: '/thumbnails/learn_thumbnail.png',
-    iconUrl: '/icons/learn_icon.svg',
+    thumbnail: Learn_thumbnail,
+    icon: Learn_icon,
     fontName: '"Montserrat", sans-serif',
     title: 'LEARN',
     description:
@@ -612,11 +626,12 @@ const Realisations: NextPage = () => {
           <ul id="realisations_list">
             {projectsData.map((projectItem: IProjectdata, key: number) => (
               <li className="realisation" key={`realisation_no_${key}`}>
-                <img
-                  src={projectItem.thumbnailUrl}
+                <Image
+                  src={projectItem.thumbnail}
                   alt={'Aperçu du projet intitulé ' + projectItem.title}
                   className="realisation-thumbnail"
-                  loading="lazy"
+                  width={250}
+                  height={140}
                 />
                 <div className="realisation-text-wrapper">
                   <section>
@@ -629,10 +644,11 @@ const Realisations: NextPage = () => {
                         fontFamily: projectItem.fontName || 'inherit',
                         fontStyle: projectItem.tilted ? 'italic' : 'inherit',
                       }}>
-                      <img
-                        src={projectItem.iconUrl}
+                      <Image
+                        src={projectItem.icon}
                         alt={projectItem.title}
-                        loading="lazy"
+                        width={40}
+                        height={40}
                       />
                       {projectItem.title}
                     </h3>
@@ -749,11 +765,19 @@ const MainContainer = styled.div`
         height: 2.5px;
         transition: 0.2s;
         background: rgba(255, 255, 255, 0.5);
+        @media (max-width: 500px) {
+          left: 33px;
+          width: 147px;
+        }
       }
 
       &.translate-bar::after {
         left: 276px;
         width: 229px;
+        @media (max-width: 500px) {
+          font-size: 0.8rem;
+          left: 205px;
+        }
       }
 
       li {
@@ -765,6 +789,10 @@ const MainContainer = styled.div`
         width: 240px;
         user-select: none;
 
+        @media (max-width: 500px) {
+          width: 180px;
+        }
+
         span,
         svg {
           padding: 0 10px;
@@ -774,6 +802,10 @@ const MainContainer = styled.div`
           cursor: pointer;
           transition: 0.3s;
           border-radius: 0 5px 0 0;
+
+          @media (max-width: 500px) {
+            font-size: 0.8rem;
+          }
         }
 
         &:active {
@@ -787,6 +819,11 @@ const MainContainer = styled.div`
           border-radius: 5px 0 0 0;
           width: 50px;
           font-size: 1.8rem;
+
+          @media (max-width: 500px) {
+            font-size: 1.5rem;
+            width: 45px;
+          }
         }
 
         &.selected,
@@ -843,8 +880,8 @@ const MainContainer = styled.div`
         padding: 15px;
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.02);
-        // backdrop-filter: blur(0.3px);
+        background: #111a29;
+        /* backdrop-filter: blur(5px); */
 
         h3,
         p,
@@ -942,6 +979,8 @@ const MainContainer = styled.div`
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 4;
             line-height: 20px;
+            font-weight: 500;
+            text-align: justify;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: break-spaces;

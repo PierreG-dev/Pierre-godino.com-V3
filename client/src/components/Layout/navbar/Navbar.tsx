@@ -25,7 +25,7 @@ import SmartphoneIcon from '@mui/icons-material/Smartphone';
 
 import LOGO from '@/assets/global/LOGO.png';
 
-export type displayType = 'full' | 'displayed' | 'navbar';
+export type displayType = 'full' | 'displayed' | 'navbar' | 'initial';
 
 export type Props = {
   loaded: boolean;
@@ -34,7 +34,7 @@ export type Props = {
 
 const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
   const navRef = useRef(null);
-  const [displayed, setDisplayed] = useState<displayType>('full');
+  const [displayed, setDisplayed] = useState<displayType>('initial');
   const [dropdownDisplayAbout, setDropdownDisplayAbout] = useState(false);
   const [dropdownDisplayServices, setDropdownDisplayServices] = useState(false);
 
@@ -80,7 +80,7 @@ const Navbar: React.FC<Props> = ({ loaded, noLayoutMode }) => {
       case 'navbar':
         return 'navbar';
       default:
-        return 'displayed';
+        return 'initial';
     }
   }, [displayed]);
 
@@ -363,7 +363,7 @@ const MainContainer = styled.div`
   height: calc(50%);
   z-index: 10;
   transition: 0.5s ease;
-  transform: translate3d(0, -80%, 0);
+  transform: translate3d(0, -100%, 0);
 
   &.displayed {
     transform: translate3d(0, calc(-100% + 65px), 0);
