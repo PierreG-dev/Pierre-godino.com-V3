@@ -3,7 +3,8 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { BackgroundContext } from '../../src/contexts/Contexts';
-import JSONLD from '@/utilities/JSONLD';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 const Cgu: NextPage = () => {
   // --- Background

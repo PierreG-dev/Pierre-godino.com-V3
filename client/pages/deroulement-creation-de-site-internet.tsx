@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 import Head from 'next/head';
-import JSONLD from '@/utilities/JSONLD';
 import { BackgroundContext } from '@/contexts/Contexts';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import SupportIcon from '@mui/icons-material/Support';
 import HomeNotes from '@/components/Home/components/HomeNotes';
 import CustomLink from '@/components/Layout/routing/CustomLink';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 const PrestationDetails: NextPage = () => {
   // --- Background

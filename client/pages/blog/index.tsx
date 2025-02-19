@@ -6,7 +6,8 @@ import { BackgroundContext } from '../../src/contexts/Contexts';
 import { useContext } from 'react';
 import DOMPurify from 'isomorphic-dompurify';
 import Image from 'next/image';
-import JSONLD from '@/utilities/JSONLD';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 interface Post {
   id: number;

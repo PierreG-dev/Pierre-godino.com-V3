@@ -12,6 +12,7 @@ import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import ShareIcon from '@mui/icons-material/Share';
 import { BackgroundContext } from '../src/contexts/Contexts';
+
 import Image from 'next/image';
 import SATELITE_IMG from '@/assets/global/satelite.png';
 import FRANCE_MAP from '@/assets/contact/france-map.png';
@@ -19,7 +20,9 @@ import GITHUB_LOGO from '@/assets/global/GITHUB_LOGO.png';
 import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
 import LINKEDIN_LOGO from '@/assets/global/LINKEDIN_LOGO.png';
 import GOOGLE_LOGO from '@/assets/global/google.png';
-import JSONLD from '@/utilities/JSONLD';
+import dynamic from 'next/dynamic';
+
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 const networks = [
   {

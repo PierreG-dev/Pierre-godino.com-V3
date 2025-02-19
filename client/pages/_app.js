@@ -11,6 +11,7 @@ import { Contexts } from '../src/contexts/Contexts';
 import Layout from '../src/components/Layout';
 import Head from 'next/head';
 import { bebasNeue, montserrat, spaceMono } from '@/utilities/fonts';
+import useMetrics from '@/utilities/useMetrics';
 
 NProgress.configure({ showSpinner: true });
 let handleStart;
@@ -20,8 +21,13 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
   // const [onMaintenance, setOnMaintenance] = useState(false);
-  const visitUpdateInterval = useRef(null);
+
   const firstLoad = useRef(true);
+  const updateFirstLoad = () => (firstLoad.current = false);
+
+  const { firstLoadFinished, updateJourney, initiateMetrics } = useMetrics({
+    updateFirstLoad,
+  });
 
   const handleLoad = useCallback(() => {
     setTimeout(() => {
@@ -34,64 +40,6 @@ function MyApp({ Component, pageProps }) {
     NProgress.start();
     setIsLoaded(false);
   }, []);
-
-  const devicePicker = useCallback(() => {
-    const width = window.innerWidth;
-    if (!width) return;
-
-    if (width <= 480) return 'Mobile';
-    else if (width <= 768) return 'Tablette';
-    else if (width <= 1024) return 'Ordinateur portable | SM';
-    else return 'Ordinateur de bureau | LG';
-  }, []);
-
-  const initiateMetrics = useCallback(() => {
-    if (!process.env.NEXT_PUBLIC_API_URL) return;
-    //visit init
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/newVisit`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        device: devicePicker(),
-      }),
-    }).catch((error) => console.error(error));
-
-    //visit update
-    visitUpdateInterval.current = setInterval(() => {
-      if (!process.env.NEXT_PUBLIC_API_URL) return;
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/updateVisitTime`, {
-        method: 'PUT',
-      }).catch((error) => console.error(error));
-    }, 30000);
-  }, [devicePicker]);
-
-  const updateJourney = useCallback((pageName) => {
-    if (!process.env.NEXT_PUBLIC_API_URL) return;
-    //visit journey update
-    try {
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/updateVisitJourney`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          newPage: pageName,
-        }),
-      }).catch((error) => console.error(error));
-    } catch (err) {
-      console.error(err);
-    }
-  }, []);
-
-  const firstLoadFinished = useCallback(() => {
-    setTimeout(() => {
-      const title = document.title;
-      updateJourney(title.split('|')[0]?.trim());
-      firstLoad.current = false;
-    }, 700);
-  }, [updateJourney]);
 
   useEffect(() => {
     if (!firstLoad.current) return;

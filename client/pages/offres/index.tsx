@@ -37,7 +37,8 @@ import {
 
 import { RocketLaunch as RocketLaunchIcon } from '@mui/icons-material';
 import HomeCustomerSlider from '@/components/Home/components/HomeCustomerSlider';
-import JSONLD from '@/utilities/JSONLD';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 const Offres: NextPage = () => {
   // --- Background

@@ -4,22 +4,33 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { BackgroundContext } from '../src/contexts/Contexts';
 import HomeHero from '../src/components/Home/components/HomeHero';
-import HomeRatings from '../src/components/Home/components/HomeRatings';
-import HomeMaths from '../src/components/Home/components/HomeMaths';
-import JSONLD from '@/utilities/JSONLD';
 
 import dynamic from 'next/dynamic';
 
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
+
 const HomeCustomerSlider = dynamic(
-  () => import('../src/components/Home/components/HomeCustomerSlider')
+  () => import('../src/components/Home/components/HomeCustomerSlider'),
+  { ssr: false }
 );
 const HomeExpert = dynamic(
-  () => import('../src/components/Home/components/HomeExpert')
+  () => import('../src/components/Home/components/HomeExpert'),
+  { ssr: true }
 );
-const HomeNotes = dynamic(
-  () => import('../src/components/Home/components/HomeNotes')
+const HomeRatings = dynamic(
+  () => import('../src/components/Home/components/HomeRatings'),
+  { ssr: false }
 );
 
+const HomeMaths = dynamic(
+  () => import('../src/components/Home/components/HomeMaths'),
+  { ssr: true }
+);
+
+const HomeNotes = dynamic(
+  () => import('../src/components/Home/components/HomeNotes'),
+  { ssr: true }
+);
 const Home: NextPage = () => {
   // --- Background
   const { background } = useContext(BackgroundContext);

@@ -15,12 +15,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 import confetti from 'canvas-confetti';
 
-import JSONLD from '@/utilities/JSONLD';
-import HomeNotes from '@/components/Home/components/HomeNotes';
-const HomeCustomerSlider = dynamic(
-  () => import('@/components/Home/components/HomeCustomerSlider')
-);
-
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
 
 const defaultOptions = {

@@ -8,11 +8,12 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
-import JSONLD from '@/utilities/JSONLD';
 import Image from 'next/image';
 import GOOGLE_LOGO from '@/assets/global/google.png';
 import GOLD_KEY from '@/assets/referencement-visibilite-web-seo/gold-key.png';
 import CustomLink from '@/components/Layout/routing/CustomLink';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 const Seo: FC = () => {
   // --- background

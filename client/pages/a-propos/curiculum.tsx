@@ -26,7 +26,8 @@ import UPS_ICON from '@/assets/icons/ups.jpg';
 import GITHUB_LOGO from '@/assets/global/GITHUB_LOGO.png';
 import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
 import LINKEDIN_LOGO from '@/assets/global/LINKEDIN_LOGO.png';
-import JSONLD from '@/utilities/JSONLD';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 const Curiculum: NextPage = () => {
   const jsonld = {

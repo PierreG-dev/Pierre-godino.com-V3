@@ -6,7 +6,8 @@ import { NextPage } from 'next';
 
 import Timeline from '@mui/lab/Timeline';
 import Head from 'next/head';
-import JSONLD from '@/utilities/JSONLD';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 // --- Titre dynamique (calcul automatique du montant d'années)
 const dateObj = new Date();

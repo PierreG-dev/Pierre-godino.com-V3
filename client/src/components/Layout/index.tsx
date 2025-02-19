@@ -1,9 +1,23 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Navbar from './navbar/Navbar';
-import Footer from './footer/Footer';
-import AdminModal from './admin/adminModal';
-import Dock from './dock/dock';
+// import Navbar from './navbar/Navbar';
+// import Footer from './footer/Footer';
+// import AdminModal from './admin/adminModal';
+// import Dock from './dock/dock';
+import dynamic from 'next/dynamic';
+
+const Dock = dynamic(() => import('./dock/dock'), {
+  ssr: false,
+});
+const AdminModal = dynamic(() => import('./admin/adminModal'), {
+  ssr: false,
+});
+const Footer = dynamic(() => import('./footer/Footer'), {
+  ssr: true,
+});
+const Navbar = dynamic(() => import('./navbar/Navbar'), {
+  ssr: true,
+});
 
 export type Props = {
   variant: 'classic' | 'about';

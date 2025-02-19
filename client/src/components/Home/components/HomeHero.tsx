@@ -14,6 +14,8 @@ import GOOGLE_LOGO from '@/assets/global/google.png';
 import STAR from '@/assets/icons/star.png';
 import Image from 'next/image';
 
+import LOGO from '@/assets/global/LOGO.png';
+
 const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
 
 const defaultOptions = {

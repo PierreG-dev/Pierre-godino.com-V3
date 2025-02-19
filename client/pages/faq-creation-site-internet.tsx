@@ -6,7 +6,8 @@ import { useContext } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import QUESTIONS from '@/assets/icons/question.png';
-import JSONLD from '@/utilities/JSONLD';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 const FAQ: NextPage = () => {
   const { background } = useContext(BackgroundContext);

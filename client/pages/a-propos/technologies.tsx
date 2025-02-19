@@ -14,7 +14,8 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import SkillSelector from '../../src/components/Skills/SkillSelector';
 import { BackgroundContext } from '../../src/contexts/Contexts';
-import JSONLD from '@/utilities/JSONLD';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 const Skills: NextPage = () => {
   // --- Background

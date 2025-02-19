@@ -3,7 +3,8 @@ import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 import BG404 from '@/assets/404/404.svg';
-import JSONLD from '@/utilities/JSONLD';
+import dynamic from 'next/dynamic';
+const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
 const Error404 = () => {
   const jsonld = {
