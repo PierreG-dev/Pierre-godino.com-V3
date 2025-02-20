@@ -23,7 +23,7 @@ const HomeExpert: NextPage = () => {
         );
       },
       {
-        threshold: 0.45,
+        threshold: 0.2,
       }
     );
     observer.observe(contentWrapperRef.current);
@@ -88,6 +88,7 @@ const HomeExpert: NextPage = () => {
 
       <footer>
         <div
+          className="delay"
           style={{
             transform: isContentVisible ? 'none' : 'translateY(50px)',
             opacity: isContentVisible ? 1 : 0,
@@ -127,6 +128,7 @@ const MainContainer = styled.section`
   margin: auto;
   padding: 0 25px;
   max-width: 1200px;
+  width: 100%;
   z-index: 1;
 
   * {
@@ -254,7 +256,10 @@ const MainContainer = styled.section`
     justify-content: center;
     align-items: center;
 
-    div {
+    div.delay {
+      border: 3px solid #3aa4eb;
+      padding: 5px 10px;
+      border-radius: 15px;
       display: flex;
       align-items: center;
       gap: 15px;

@@ -2,6 +2,10 @@ import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import EuroIcon from '@mui/icons-material/Euro';
 import PhoneIcon from '@mui/icons-material/Phone';
+import GroupsIcon from '@mui/icons-material/Groups';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+
 import dynamic from 'next/dynamic';
 import CustomLink from '../../Layout/routing/CustomLink';
 import COMPUTER from '../lordicons/computer_lordicon';
@@ -12,6 +16,7 @@ import BOOK from '../lordicons/book_lordicon';
 import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
 import GOOGLE_LOGO from '@/assets/global/google.png';
 import STAR from '@/assets/icons/star.png';
+import TARGET from '@/assets/icons/target.png';
 import Image from 'next/image';
 
 import LOGO from '@/assets/global/LOGO.png';
@@ -54,16 +59,48 @@ const HomeHero: FC = () => {
     <MainContainer>
       <section id="landing">
         <div id="content">
-          <p>
-            <span>
-              Salut, moi c'est <strong>Pierre</strong>
-            </span>
-            Passionné par le WEB, je développe des{' '}
-            <strong>sites internet efficaces</strong>,
-            <strong> rapidement rentables</strong> et conçus pour vous faire
-            gagner
-            <strong> du temps, et de l'argent.</strong> <br /> <br />
-          </p>
+          <header>
+            <Image
+              src={LOGO}
+              width={150}
+              height={80}
+              alt="Logo pierre godino"
+              priority
+            />
+            <div>
+              <big>
+                Pierre
+                <strong>GODINO</strong>
+              </big>
+              <em>Expert WEB & Marketing Digital</em>
+            </div>
+          </header>
+
+          <main>
+            <ul>
+              <li>
+                <GroupsIcon style={{ color: '#3498db' }} />
+                <p>
+                  Acquisition <br />
+                  de clientèle
+                </p>
+              </li>
+              <li>
+                <TrendingUpIcon style={{ color: '#2ecc71' }} />
+                <p>
+                  Référencement <br />
+                  Google
+                </p>
+              </li>
+              <li>
+                <AutoAwesomeIcon style={{ color: '#f39c12' }} />
+                <p>
+                  Refonte <br />
+                  de sites
+                </p>
+              </li>
+            </ul>
+          </main>
         </div>
 
         <div id="hero_notes">
@@ -268,44 +305,91 @@ const MainContainer = styled.section`
       gap: 10px;
       z-index: 5;
       height: fit-content;
+      font-family: 'Montserrat';
+      color: rgba(255, 255, 255, 0.8);
 
-      p {
-        font-family: 'Space Mono', monospace;
-        font-size: 1.7rem;
-        font-weight: normal;
-        text-shadow: 1px 1px 5px rgba(250, 250, 250, 0.5);
-        color: rgba(255, 255, 255, 0.8);
+      header {
+        display: flex;
+        gap: 5px;
 
-        strong {
-          color: rgb(222, 103, 90);
-          text-shadow: 0px 0px 5px rgba(231, 76, 60, 0.4);
+        img {
+          object-fit: contain;
         }
 
-        span {
-          display: block;
-          font-size: 2.5rem;
-          margin-bottom: 15px;
-
-          strong {
-            color: rgb(231, 76, 60);
-
-            text-shadow: 0px 0px 5px rgba(231, 76, 60, 0.4);
+        div {
+          display: flex;
+          flex-direction: column;
+          big {
+            display: flex;
+            gap: 10px;
+            font-size: 2.5rem;
+          }
+          em {
+            font-size: 1.5rem;
+            font-weight: 500;
           }
         }
-
-        @media (max-width: 500px) {
-          span {
-            font-size: 1.7rem;
+        @media (max-width: 600px) {
+          img {
+            width: 80px;
           }
-          font-size: 1rem;
+
+          div {
+            big {
+              font-size: 1.5rem;
+            }
+
+            em {
+              font-size: 1rem;
+            }
+          }
         }
       }
 
-      i {
-        color: rgba(255, 255, 255, 0.6);
-        text-shadow: 1px 1px 4px rgba(250, 250, 250, 0.4);
-        font-size: 1.2rem;
-        margin-left: 10px;
+      main {
+        width: 100%;
+
+        ul {
+          display: flex;
+          justify-content: space-around;
+          /* margin-top: 50px */
+          padding: 0px 0 50px 0;
+
+          li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            p {
+              text-align: center;
+              font-size: 1.3rem;
+              font-weight: 500;
+              font-style: italic;
+            }
+
+            svg {
+              font-size: 2.5rem;
+            }
+          }
+
+          @media (max-width: 600px) {
+            gap: 0;
+            li {
+              p {
+                font-size: 0.8rem;
+              }
+
+              svg {
+                font-size: 1.9rem;
+              }
+            }
+          }
+        }
+      }
+
+      strong {
+        color: #ec4434;
+        text-shadow: 0px 0px 5px rgba(231, 76, 60, 0.4);
       }
     }
 

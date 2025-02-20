@@ -6,7 +6,7 @@ const StarsBackground: FC = React.memo(() => {
   const view = useMemo(() => {
     const myStars: Array<JSX.Element> = [];
     const rng = seedrandom("Vers l'infin et l'au delà !");
-    for (let i = 0; i < 200; ++i) {
+    for (let i = 0; i < 125; ++i) {
       const size = Math.ceil(rng() * 3) + 'px';
 
       myStars.push(
@@ -37,6 +37,7 @@ const StarsContainer = styled.div`
   z-index: 0;
   position: absolute;
   transition: 1s;
+  opacity: 0.7;
 
   .star {
     transition: 1s;
