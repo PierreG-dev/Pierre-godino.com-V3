@@ -13,6 +13,14 @@ const HomeCustomerSlider = dynamic(
   () => import('../src/components/Home/components/HomeCustomerSlider'),
   { ssr: false }
 );
+const Calendly = dynamic(
+  () => import('../src/components/Home/components/Calendly'),
+  { ssr: false }
+);
+const HomeRealisations = dynamic(
+  () => import('../src/components/Home/components/HomeRealisations'),
+  { ssr: false }
+);
 const HomeExpert = dynamic(
   () => import('../src/components/Home/components/HomeExpert'),
   { ssr: true }
@@ -97,10 +105,12 @@ const Home: NextPage = () => {
       {background}
       <HomeHero />
       <HomeRatings />
+      <Calendly />
       <HomeMaths />
       {/* <hr /> */}
+      <HomeRealisations />
       <HomeExpert />
-      <HomeNotes />
+      {/* <HomeNotes /> */}
       <HomeCustomerSlider />
       {/* <HomeServices /> */}
       {/* <hr /> */}

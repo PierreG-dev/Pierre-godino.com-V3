@@ -21,6 +21,7 @@ import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
 import LINKEDIN_LOGO from '@/assets/global/LINKEDIN_LOGO.png';
 import GOOGLE_LOGO from '@/assets/global/google.png';
 import dynamic from 'next/dynamic';
+import Calendly from '@/components/Home/components/Calendly';
 
 const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 
@@ -273,6 +274,8 @@ const Contact: NextPage = () => {
           </section>
         </div>
       </div>
+
+      <Calendly />
     </MainContainer>
   );
 };
@@ -337,7 +340,7 @@ const MainContainer = styled.div`
     }
   }
 
-  section {
+  section:not(#calendly) {
     z-index: 1;
     padding: 20px 50px;
     background: rgba(255, 255, 255, 0.05);

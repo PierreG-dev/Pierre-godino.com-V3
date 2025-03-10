@@ -167,7 +167,8 @@ const Footer: React.FC<Props> = ({
                 </li>
                 <li>
                   <CustomLink href={'/a-propos'}>
-                    <PersonSearchIcon />A propos
+                    <PersonSearchIcon />
+                    Qui suis-je ?
                   </CustomLink>
                 </li>
               </ul>

@@ -14,6 +14,7 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import SearchIcon from '@mui/icons-material/Search';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 import confetti from 'canvas-confetti';
+import Calendly from '@/components/Home/components/Calendly';
 
 const JSONLD = dynamic(() => import('@/utilities/JSONLD'), { ssr: true });
 const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
@@ -205,59 +206,9 @@ const Vitrine: FC = () => {
           <a href="#simulator">
             Aller vers l'outil d'estimation en ligne <ArrowForwardIosIcon />
           </a>
-          <h2>Pourquoi ?</h2>
-          <ul>
-            <li>
-              <img src="/icons/chercher.png" alt="google" loading="lazy" />
-              <h3>Positionnement</h3>
-              <p>
-                Avoir un <strong>site internet</strong> est un avantage non
-                négligeable en ce qui concerne le référencement. Ce dernier
-                permettra au travers de son contenu, d'indiquer précisément à
-                Google sur quelles recherches apparaître.
-              </p>
-            </li>
-            <li>
-              <img src="/icons/qualite.png" alt="qualité" loading="lazy" />
-              <h3>Professionnalisme</h3>
-              <p>
-                Un <strong>site internet</strong> est un gage de sérieux pour
-                une entreprise, s'il est <strong>bien pensé</strong>, et{' '}
-                <strong>accessible</strong> (Tous mes sites le sont), il
-                renverra <strong>une bonne image</strong> de votre entreprise,
-                ce qui peut faire pencher la balance.
-              </p>
-            </li>
-            <li>
-              <img src="/icons/loupe.png" alt="loupe" loading="lazy" />
-              <h3>Information</h3>
-              <p>
-                Que ce soit pour <strong>détailler les prestations</strong>,{' '}
-                <strong>présenter l'équipe</strong> ou donner des informations
-                complémentaires qui ne passent pas dans une brochure, un{' '}
-                <strong>site internet</strong> est l'endroit idéal pour{' '}
-                <strong>renseigner les clients</strong> qui ne savent pas encore
-                vers quelle entreprise se tourner.
-              </p>
-            </li>
-            <li>
-              <img
-                src="/icons/investissement.png"
-                alt="investissement"
-                loading="lazy"
-              />
-              <h3>Long-terme</h3>
-              <p>
-                L'utilisation d'<strong>Internet</strong> ne cessant de croître
-                au fil des années, un <strong>site internet</strong> attirera du{' '}
-                <strong>traffic en continu</strong>, même plusieurs années après
-                l'avoir mis en ligne.{' '}
-              </p>
-            </li>
-          </ul>
         </header>
 
-        <hr />
+        <Calendly />
 
         <main className="buttons-group" id="simulator">
           <div className="title-wrapper">
@@ -507,6 +458,59 @@ const Vitrine: FC = () => {
           </div>
         </main>
 
+        <section id="pourquoi">
+          <h2>Pourquoi ?</h2>
+          <ul>
+            <li>
+              <img src="/icons/chercher.png" alt="google" loading="lazy" />
+              <h3>Positionnement</h3>
+              <p>
+                Avoir un <strong>site internet</strong> est un avantage non
+                négligeable en ce qui concerne le référencement. Ce dernier
+                permettra au travers de son contenu, d'indiquer précisément à
+                Google sur quelles recherches apparaître.
+              </p>
+            </li>
+            <li>
+              <img src="/icons/qualite.png" alt="qualité" loading="lazy" />
+              <h3>Professionnalisme</h3>
+              <p>
+                Un <strong>site internet</strong> est un gage de sérieux pour
+                une entreprise, s'il est <strong>bien pensé</strong>, et{' '}
+                <strong>accessible</strong> (Tous mes sites le sont), il
+                renverra <strong>une bonne image</strong> de votre entreprise,
+                ce qui peut faire pencher la balance.
+              </p>
+            </li>
+            <li>
+              <img src="/icons/loupe.png" alt="loupe" loading="lazy" />
+              <h3>Information</h3>
+              <p>
+                Que ce soit pour <strong>détailler les prestations</strong>,{' '}
+                <strong>présenter l'équipe</strong> ou donner des informations
+                complémentaires qui ne passent pas dans une brochure, un{' '}
+                <strong>site internet</strong> est l'endroit idéal pour{' '}
+                <strong>renseigner les clients</strong> qui ne savent pas encore
+                vers quelle entreprise se tourner.
+              </p>
+            </li>
+            <li>
+              <img
+                src="/icons/investissement.png"
+                alt="investissement"
+                loading="lazy"
+              />
+              <h3>Long-terme</h3>
+              <p>
+                L'utilisation d'<strong>Internet</strong> ne cessant de croître
+                au fil des années, un <strong>site internet</strong> attirera du{' '}
+                <strong>traffic en continu</strong>, même plusieurs années après
+                l'avoir mis en ligne.{' '}
+              </p>
+            </li>
+          </ul>
+        </section>
+
         <section id="web-visibility">
           <h2>
             <EmojiEventsIcon /> Un site web, et après ?
@@ -723,61 +727,6 @@ const MainContainer = styled.div`
         font-size: 2rem;
         path {
           color: rgba(52, 152, 219, 1) !important;
-        }
-      }
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 50px;
-
-      @media (max-width: 450px) {
-        font-size: 1.7rem;
-      }
-    }
-
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      width: 100%;
-
-      li {
-        flex: 1;
-        width: 40%;
-        min-width: 300px;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 50px;
-        padding: 15px;
-
-        img {
-          width: 100px;
-          height: 100px;
-          object-fit: contain;
-
-          @media (max-width: 450px) {
-            width: 65px;
-            height: 65px;
-          }
-        }
-
-        h3 {
-          font-weight: bold;
-          font-size: 1.2rem;
-          height: 60px;
-          text-align: center;
-          margin: 15px 0;
-        }
-
-        p {
-          font-size: 0.9rem;
-          font-weight: 500;
-          text-align: justify;
         }
       }
     }
@@ -1182,6 +1131,70 @@ const MainContainer = styled.div`
         border: 2px solid #16a085;
         padding: 10px;
         border-radius: 5px;
+      }
+    }
+  }
+
+  section#pourquoi {
+    z-index: 1;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 50px;
+
+      @media (max-width: 450px) {
+        font-size: 1.7rem;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+
+      li {
+        flex: 1;
+        width: 40%;
+        min-width: 300px;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 50px;
+        padding: 15px;
+
+        img {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+
+          @media (max-width: 450px) {
+            width: 65px;
+            height: 65px;
+          }
+        }
+
+        h3 {
+          font-weight: bold;
+          font-size: 1.2rem;
+          height: 60px;
+          text-align: center;
+          margin: 15px 0;
+        }
+
+        p {
+          font-size: 0.9rem;
+          font-weight: 500;
+          text-align: justify;
+        }
       }
     }
   }

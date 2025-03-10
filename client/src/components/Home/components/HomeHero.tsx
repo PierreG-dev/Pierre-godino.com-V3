@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import EuroIcon from '@mui/icons-material/Euro';
+import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
 import PhoneIcon from '@mui/icons-material/Phone';
 import GroupsIcon from '@mui/icons-material/Groups';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import dynamic from 'next/dynamic';
 import CustomLink from '../../Layout/routing/CustomLink';
 import COMPUTER from '../lordicons/computer_lordicon';
@@ -69,20 +69,19 @@ const HomeHero: FC = () => {
             />
             <div>
               <big>
-                Pierre
-                <strong>GODINO</strong>
+                <b>Pierre GODINO</b>
               </big>
-              <em>Expert WEB & Marketing Digital</em>
+              <em>Transformez votre présence en ligne</em>
             </div>
           </header>
 
           <main>
             <ul>
               <li>
-                <GroupsIcon style={{ color: '#3498db' }} />
+                <AutoAwesomeIcon style={{ color: '#f39c12' }} />
                 <p>
-                  Acquisition <br />
-                  de clientèle
+                  Création de <br />
+                  sites internet
                 </p>
               </li>
               <li>
@@ -93,10 +92,10 @@ const HomeHero: FC = () => {
                 </p>
               </li>
               <li>
-                <AutoAwesomeIcon style={{ color: '#f39c12' }} />
+                <LocalOfferIcon style={{ color: '#3498db' }} />
                 <p>
-                  Refonte <br />
-                  de sites
+                  Campagnes <br />
+                  publicitaires
                 </p>
               </li>
             </ul>
@@ -115,7 +114,7 @@ const HomeHero: FC = () => {
             <div>
               {' '}
               <em>
-                <b>Google</b> : 5/5
+                <b>Google</b> : 5/5 (3)
               </em>
               <div className="stars">
                 {Array(5)
@@ -133,7 +132,7 @@ const HomeHero: FC = () => {
               </div>
             </div>
           </div>
-          <div>
+          {/* <div>
             <Image width={50} height={50} src={MALT_LOGO} alt="malt" priority />
 
             <div>
@@ -156,7 +155,7 @@ const HomeHero: FC = () => {
                   ))}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div id="links">
@@ -169,12 +168,13 @@ const HomeHero: FC = () => {
               </p>
             </button>
           </a>
-          <CustomLink href="/offres/creation-site-internet">
+          <a href="#calendly">
             <button id="pricing_btn">
-              <EuroIcon />
-              Combien ça coûte ?
+              <InsertInvitationIcon />
+              Prendre <br />
+              Rendez-vous
             </button>
-          </CustomLink>
+          </a>
           <CustomLink href={'/deroulement-creation-de-site-internet'}>
             <button id="about_btn">
               <span>{'{ '}</span>Comment se passent mes prestations ?
@@ -271,7 +271,7 @@ const MainContainer = styled.section`
   flex-wrap: wrap;
   z-index: 1;
   width: 100%;
-  padding-top: 50px;
+  padding-top: 100px;
   gap: 50px;
 
   @media (max-width: 1400px) {
@@ -567,6 +567,10 @@ const MainContainer = styled.section`
     width: 100%;
     max-width: 800px;
     padding: 0 50px;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
 
     ul {
       width: 100%;

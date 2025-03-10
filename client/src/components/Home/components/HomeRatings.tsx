@@ -8,6 +8,7 @@ import SPEEDY_NANIE from '@/assets/icons/speedynanie_alpha.png';
 import GARAGE_BRINCAT from '@/assets/icons/sarlgaragebrincat.png';
 import GOOGLE_LOGO from '@/assets/global/google.png';
 import MALT_LOGO from '@/assets/global/MALT_LOGO.png';
+import MISINO_LOGO from '@/assets/icons/misino_icon_alt.png';
 import STAR from '@/assets/icons/star.png';
 import Image from 'next/image';
 
@@ -23,10 +24,18 @@ type Rating = {
 const ratings: Rating[] = [
   {
     stars: 5,
-    text: 'Réactif, efficace et professionnel, Je le recommande sans hésiter.',
+    text: 'Réactif, efficace et professionnel. Suivi au top',
     customerName: 'SARL Garage Brincat',
     source: 'Malt',
     img: GARAGE_BRINCAT,
+    link: 'https://www.malt.fr/profile/pierregodino',
+  },
+  {
+    stars: 5,
+    text: 'Le site internet est soigné et bien pensé, je ne pensais pas avoir autant de visiteurs aussi vite.',
+    customerName: 'Dr. Jérôme Misino',
+    source: 'Google',
+    img: MISINO_LOGO,
     link: 'https://www.malt.fr/profile/pierregodino',
   },
   {
@@ -35,39 +44,39 @@ const ratings: Rating[] = [
     source: 'Google',
     link: 'https://www.google.com/search?sca_esv=636238c710bc0fc7&tbm=lcl&q=Cr%C3%A9ation%20sites%20internet%20sur%20Agen%20%7C%20Pierre%20G.%20Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDczMzMwsTQzNzA2M7GwtDQ1MtrAyPiK0ci56PDKxJLM_DyF4syS1GKFzLyS1KK81BKF4tIiBcf01DyFGoWAzNSiolQFdz0Fx7LM4kWsZGgCADkovSuFAAAA&rldimm=17666049670364899522&hl=fr-FR&authuser=2&sa=X&ved=0CAcQ5foLahcKEwio7sWK0J-KAxUAAAAAHQAAAAAQHA&biw=1920&bih=946&dpr=1#lkt=LocalPoiReviews&arid=ChdDSUhNMG9nS0VJQ0FnSUNCOEt1N2xRRRAB',
   },
+  // {
+  //   stars: 5,
+  //   text: 'Pierre a su mettre en avant ses connaissances et prendre des initiatives afin d’améliorer notre service.',
+  //   customerName: 'Speedy Nanie',
+  //   img: SPEEDY_NANIE,
+  //   source: 'Malt',
+  //   link: 'https://www.malt.fr/profile/pierregodino',
+  // },
+  // {
+  //   stars: 5,
+  //   customerName: 'CheckYourSmile',
+  //   img: CHECKYOURSMILE,
+  //   text: 'Pierre a su rendre dans les temps un code correspondant tout à fait aux attentes et fonctionnel. Je recommande.',
+  //   source: 'Malt',
+  //   link: 'https://www.malt.fr/profile/pierregodino',
+  // },
   {
     stars: 5,
-    text: 'Pierre a su mettre en avant ses connaissances et prendre des initiatives afin d’améliorer notre service. Je recommande.',
-    customerName: 'Speedy Nanie',
-    img: SPEEDY_NANIE,
-    source: 'Malt',
-    link: 'https://www.malt.fr/profile/pierregodino',
-  },
-  {
-    stars: 5,
-    customerName: "Écoles O'Clock",
-    img: OCLOCK,
-    text: 'Pierre est un formateur compétent, impliqué et sérieux. Notre collaboration est plaisante et efficace. ',
-    source: 'Malt',
-    link: 'https://www.malt.fr/profile/pierregodino',
-  },
-  {
-    stars: 5,
-    customerName: 'CheckYourSmile',
-    img: CHECKYOURSMILE,
-    text: 'Pierre a su rendre dans les temps un code correspondant tout à fait aux attentes et fonctionnel. Je recommande.',
-    source: 'Malt',
-    link: 'https://www.malt.fr/profile/pierregodino',
-  },
-  {
-    stars: 5,
-    text: 'Rapide, efficace et pas cher ! Très bons conseils.',
+    text: 'Bon rapport qualité / prix, ça change des agences qui proposent des prix délirants !',
     source: 'Google',
     link: 'https://www.google.com/search?sca_esv=636238c710bc0fc7&tbm=lcl&q=Cr%C3%A9ation%20sites%20internet%20sur%20Agen%20%7C%20Pierre%20G.%20Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDczMzMwsTQzNzA2M7GwtDQ1MtrAyPiK0ci56PDKxJLM_DyF4syS1GKFzLyS1KK81BKF4tIiBcf01DyFGoWAzNSiolQFdz0Fx7LM4kWsZGgCADkovSuFAAAA&rldimm=17666049670364899522&hl=fr-FR&authuser=2&sa=X&ved=0CAcQ5foLahcKEwio7sWK0J-KAxUAAAAAHQAAAAAQHA&biw=1920&bih=946&dpr=1#lkt=LocalPoiReviews&arid=ChdDSUhNMG9nS0VJQ0FnSUNCOEt1N2xRRRAB',
   },
   {
     stars: 5,
-    text: 'Très pro, je conseille fortement',
+    customerName: "Écoles O'Clock",
+    img: OCLOCK,
+    text: 'Pierre est un formateur compétent, impliqué et sérieux. Notre collaboration est plaisante et efficace.',
+    source: 'Malt',
+    link: 'https://www.malt.fr/profile/pierregodino',
+  },
+  {
+    stars: 5,
+    text: 'Très professionnel, je conseille !',
     source: 'Google',
     link: 'https://www.google.com/search?sca_esv=636238c710bc0fc7&tbm=lcl&q=Cr%C3%A9ation%20sites%20internet%20sur%20Agen%20%7C%20Pierre%20G.%20Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDczMzMwsTQzNzA2M7GwtDQ1MtrAyPiK0ci56PDKxJLM_DyF4syS1GKFzLyS1KK81BKF4tIiBcf01DyFGoWAzNSiolQFdz0Fx7LM4kWsZGgCADkovSuFAAAA&rldimm=17666049670364899522&hl=fr-FR&authuser=2&sa=X&ved=0CAcQ5foLahcKEwio7sWK0J-KAxUAAAAAHQAAAAAQHA&biw=1920&bih=946&dpr=1#lkt=LocalPoiReviews&arid=ChdDSUhNMG9nS0VJQ0FnSUNCOEt1N2xRRRAB',
   },
@@ -123,13 +132,17 @@ const HomeRatings: FC = () => {
                   </p>
                   <div className="source-customer-stars-wrapper">
                     {rating.img ? (
-                      <Image width={50} height={50}
+                      <Image
+                        width={50}
+                        height={50}
                         className="source-img"
                         src={rating.img}
                         alt={rating.customerName}
                       />
                     ) : (
-                      <Image width={50} height={50}
+                      <Image
+                        width={50}
+                        height={50}
                         className="source-img"
                         src={
                           rating.source === 'Google' ? GOOGLE_LOGO : MALT_LOGO
@@ -138,13 +151,19 @@ const HomeRatings: FC = () => {
                       />
                     )}
                     <div>
-                      <em>{rating.customerName || 'Client'}</em>
+                      <em>{rating.customerName || 'Google'}</em>
                       {rating.stars && (
                         <div className="stars-wrapper">
                           {Array(rating.stars)
                             .fill(null)
                             .map((_, index) => (
-                              <Image width={20} height={20} key={index} src={STAR} alt="Etoile" />
+                              <Image
+                                width={20}
+                                height={20}
+                                key={index}
+                                src={STAR}
+                                alt="Etoile"
+                              />
                             ))}
                         </div>
                       )}
