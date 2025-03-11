@@ -12,6 +12,7 @@ import Layout from '../src/components/Layout';
 import Head from 'next/head';
 import { bebasNeue, montserrat, spaceMono } from '@/utilities/fonts';
 import useMetrics from '@/utilities/useMetrics';
+import TagManager from 'react-gtm-module';
 
 NProgress.configure({ showSpinner: true });
 let handleStart;
@@ -39,6 +40,15 @@ function MyApp({ Component, pageProps }) {
   handleStart = useCallback(() => {
     NProgress.start();
     setIsLoaded(false);
+  }, []);
+
+  //GOOGLE TAG MANAGER INIT
+  useEffect(() => {
+    const tagManagerArgs = {
+      gtmId: 'GTM-PVBV69XD',
+    };
+
+    TagManager.initialize(tagManagerArgs);
   }, []);
 
   useEffect(() => {
