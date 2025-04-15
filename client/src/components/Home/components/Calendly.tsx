@@ -16,12 +16,12 @@ const Calendly: FC = () => {
       </h2>
       <em>Prenez rendez-vous en 2 clics</em>
       <a
-        href="https://calendly.com/pierre-godino-dev/30min"
+        href="https://calendly.com/digiweb-solutions/30min"
         target="_blank"
         rel="noopener noreferrer nofollow"
         ref={iframeRef}>
         <InlineWidget
-          url="https://calendly.com/pierre-godino-dev/30min"
+          url="https://calendly.com/digiweb-solutions/30min"
           pageSettings={{
             hideLandingPageDetails: true,
             hideEventTypeDetails: true,
